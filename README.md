@@ -25,6 +25,6 @@ pub fn main() -> () {
 cargo build --target wasm32-unknown-unknown --release
 ```
 ```html
-<script src="https://unpkg.com/@web-dom/web-dom@latest/web-dom.min.js"></script>
+<script src="https://unpkg.com/@web-dom/web-dom@latest/web-dom.js"></script>
 <web-dom module="helloworld.wasm"></web-dom>
 ```
