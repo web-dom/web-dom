@@ -6,6 +6,10 @@ DOM access for web assembly
 * technology agnostic
 
 ```toml
+[package]
+name = "web-dom"
+...
+
 [dependencies]
 web-dom = "0.1"
 ```
