@@ -20,7 +20,6 @@ crate-type =["cdylib"]
 web-dom = "0.1"
 ```
 ```rust
-use web_dom::*;
 #[no_mangle]
 pub fn main() -> () {
     web_dom::console::log("hello world")
