@@ -1,7 +1,9 @@
 # web-dom
 
 DOM access for web assembly
-* no magical code generation
+* no magical
+* no abstractions
+* no code generation
 * simple api
 * technology agnostic
 
