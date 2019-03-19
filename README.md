@@ -5,6 +5,10 @@ DOM access for web assembly
 * simple api
 * technology agnostic
 
+```toml
+[dependencies]
+web-dom = "0.1"
+```
 ```rust
 use web_dom::*;
 #[no_mangle]
@@ -17,5 +21,5 @@ cargo build --target wasm32-unknown-unknown --release
 ```
 ```html
 <script src="https://unpkg.com/@web-dom/web-dom@latest/web-dom.min.js"></script>
-<web-dom module="drawing.wasm"></web-dom>
+<web-dom module="helloworld.wasm"></web-dom>
 ```
