@@ -9,7 +9,12 @@ DOM access for web assembly
 
 ```toml
 [package]
-name = "web-dom"
+name = "helloworld"
+version = "0.0.0"
+edition = "2018"
+
+[lib]
+crate-type =["cdylib"]
 
 [dependencies]
 web-dom = "0.1"
