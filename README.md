@@ -10,14 +10,14 @@ DOM access for web assembly
 ```toml
 [package]
 name = "helloworld"
-version = "0.0.0"
+version = "0.0.1"
 edition = "2018"
 
 [lib]
 crate-type =["cdylib"]
 
 [dependencies]
-web-dom = "0.1"
+web-dom = "0.0.1"
 ```
 ```rust
 use web_dom::*;
@@ -35,6 +35,8 @@ cargo build --target wasm32-unknown-unknown --release
 <web-dom module="helloworld.wasm"></web-dom>
 ```
 
+See it working [here](https://web-dom.github.io/web-dom/examples/helloworld/)
+
 # Alert
 
 ```rust
@@ -45,6 +47,8 @@ pub fn main() -> () {
     window::alert(window(),"hello world!");
 }
 ```
+
+See it working [here](https://web-dom.github.io/web-dom/examples/alert/)
 
 # Canvas
 
@@ -59,6 +63,8 @@ pub fn main() -> () {
     canvasrenderingcontext2d::fill_rect(ctx,0,0,50,50);
 }
 ```
+
+See it working [here](https://web-dom.github.io/web-dom/examples/canvas/)
 
 # Events
 
@@ -79,3 +85,5 @@ pub fn main() -> () {
     eventtarget::add_event_listener(btn,"click",listener);
 }
 ```
+
+See it working [here](https://web-dom.github.io/web-dom/examples/events/)
