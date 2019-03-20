@@ -212,16 +212,16 @@ pub fn set_related_target(instance: i32, value: i32) {
 }
 extern "C" {
     fn mouseevent_get_region(instance: i32) -> CString;
-    fn mouseevent_set_region(instance: i32, value: i32);
+    fn mouseevent_set_region(instance: i32, value: CString);
 }
 
 pub fn get_region(instance: i32) -> String {
     unsafe { cstr_to_string(mouseevent_get_region(instance)) }
 }
 
-pub fn set_region(instance: i32, value: i32) {
+pub fn set_region(instance: i32, value: &str) {
     unsafe {
-        mouseevent_set_region(instance, value);
+        mouseevent_set_region(instance, cstr(value));
     }
 }
 extern "C" {

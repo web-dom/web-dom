@@ -213,7 +213,9 @@ function processAttribute(interface, idl) {
     fn ${interface.toLowerCase()}_get_${toSnake(name)}(instance:i32) ${
       returnsString ? " -> CString" : " -> i32"
     };
-    fn ${interface.toLowerCase()}_set_${toSnake(name)}(instance:i32,value:i32);
+    fn ${interface.toLowerCase()}_set_${toSnake(name)}(instance:i32,value:${
+      returnsString ? "CString" : "i32"
+    });
 }\n
 pub fn get_${toSnake(name)}(instance:i32) ${
       returnsString ? " -> String" : " -> i32"
@@ -224,8 +226,12 @@ pub fn get_${toSnake(name)}(instance:i32) ${
   ${returnsString ? ")" : ""}
   }\n}\n
 
-  pub fn set_${toSnake(name)}(instance:i32,value:i32){\nunsafe{
-    ${interface.toLowerCase()}_set_${toSnake(name)}(instance,value);
+  pub fn set_${toSnake(name)}(instance:i32,value:${
+      returnsString ? "&str" : "i32"
+    }){\nunsafe{
+  ${interface.toLowerCase()}_set_${toSnake(name)}(instance,  ${
+      returnsString ? "cstr(" : ""
+    }value${returnsString ? ")" : ""});
         }\n}\n`
   );
 }

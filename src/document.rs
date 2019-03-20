@@ -16,100 +16,100 @@ pub fn set_implementation(instance: i32, value: i32) {
 }
 extern "C" {
     fn document_get_url(instance: i32) -> CString;
-    fn document_set_url(instance: i32, value: i32);
+    fn document_set_url(instance: i32, value: CString);
 }
 
 pub fn get_url(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_url(instance)) }
 }
 
-pub fn set_url(instance: i32, value: i32) {
+pub fn set_url(instance: i32, value: &str) {
     unsafe {
-        document_set_url(instance, value);
+        document_set_url(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_document_uri(instance: i32) -> CString;
-    fn document_set_document_uri(instance: i32, value: i32);
+    fn document_set_document_uri(instance: i32, value: CString);
 }
 
 pub fn get_document_uri(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_document_uri(instance)) }
 }
 
-pub fn set_document_uri(instance: i32, value: i32) {
+pub fn set_document_uri(instance: i32, value: &str) {
     unsafe {
-        document_set_document_uri(instance, value);
+        document_set_document_uri(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_compat_mode(instance: i32) -> CString;
-    fn document_set_compat_mode(instance: i32, value: i32);
+    fn document_set_compat_mode(instance: i32, value: CString);
 }
 
 pub fn get_compat_mode(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_compat_mode(instance)) }
 }
 
-pub fn set_compat_mode(instance: i32, value: i32) {
+pub fn set_compat_mode(instance: i32, value: &str) {
     unsafe {
-        document_set_compat_mode(instance, value);
+        document_set_compat_mode(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_character_set(instance: i32) -> CString;
-    fn document_set_character_set(instance: i32, value: i32);
+    fn document_set_character_set(instance: i32, value: CString);
 }
 
 pub fn get_character_set(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_character_set(instance)) }
 }
 
-pub fn set_character_set(instance: i32, value: i32) {
+pub fn set_character_set(instance: i32, value: &str) {
     unsafe {
-        document_set_character_set(instance, value);
+        document_set_character_set(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_charset(instance: i32) -> CString;
-    fn document_set_charset(instance: i32, value: i32);
+    fn document_set_charset(instance: i32, value: CString);
 }
 
 pub fn get_charset(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_charset(instance)) }
 }
 
-pub fn set_charset(instance: i32, value: i32) {
+pub fn set_charset(instance: i32, value: &str) {
     unsafe {
-        document_set_charset(instance, value);
+        document_set_charset(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_input_encoding(instance: i32) -> CString;
-    fn document_set_input_encoding(instance: i32, value: i32);
+    fn document_set_input_encoding(instance: i32, value: CString);
 }
 
 pub fn get_input_encoding(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_input_encoding(instance)) }
 }
 
-pub fn set_input_encoding(instance: i32, value: i32) {
+pub fn set_input_encoding(instance: i32, value: &str) {
     unsafe {
-        document_set_input_encoding(instance, value);
+        document_set_input_encoding(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_content_type(instance: i32) -> CString;
-    fn document_set_content_type(instance: i32, value: i32);
+    fn document_set_content_type(instance: i32, value: CString);
 }
 
 pub fn get_content_type(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_content_type(instance)) }
 }
 
-pub fn set_content_type(instance: i32, value: i32) {
+pub fn set_content_type(instance: i32, value: &str) {
     unsafe {
-        document_set_content_type(instance, value);
+        document_set_content_type(instance, cstr(value));
     }
 }
 extern "C" {
@@ -310,72 +310,72 @@ pub fn set_location(instance: i32, value: i32) {
 }
 extern "C" {
     fn document_get_referrer(instance: i32) -> CString;
-    fn document_set_referrer(instance: i32, value: i32);
+    fn document_set_referrer(instance: i32, value: CString);
 }
 
 pub fn get_referrer(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_referrer(instance)) }
 }
 
-pub fn set_referrer(instance: i32, value: i32) {
+pub fn set_referrer(instance: i32, value: &str) {
     unsafe {
-        document_set_referrer(instance, value);
+        document_set_referrer(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_last_modified(instance: i32) -> CString;
-    fn document_set_last_modified(instance: i32, value: i32);
+    fn document_set_last_modified(instance: i32, value: CString);
 }
 
 pub fn get_last_modified(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_last_modified(instance)) }
 }
 
-pub fn set_last_modified(instance: i32, value: i32) {
+pub fn set_last_modified(instance: i32, value: &str) {
     unsafe {
-        document_set_last_modified(instance, value);
+        document_set_last_modified(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_ready_state(instance: i32) -> CString;
-    fn document_set_ready_state(instance: i32, value: i32);
+    fn document_set_ready_state(instance: i32, value: CString);
 }
 
 pub fn get_ready_state(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_ready_state(instance)) }
 }
 
-pub fn set_ready_state(instance: i32, value: i32) {
+pub fn set_ready_state(instance: i32, value: &str) {
     unsafe {
-        document_set_ready_state(instance, value);
+        document_set_ready_state(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_title(instance: i32) -> CString;
-    fn document_set_title(instance: i32, value: i32);
+    fn document_set_title(instance: i32, value: CString);
 }
 
 pub fn get_title(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_title(instance)) }
 }
 
-pub fn set_title(instance: i32, value: i32) {
+pub fn set_title(instance: i32, value: &str) {
     unsafe {
-        document_set_title(instance, value);
+        document_set_title(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_dir(instance: i32) -> CString;
-    fn document_set_dir(instance: i32, value: i32);
+    fn document_set_dir(instance: i32, value: CString);
 }
 
 pub fn get_dir(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_dir(instance)) }
 }
 
-pub fn set_dir(instance: i32, value: i32) {
+pub fn set_dir(instance: i32, value: &str) {
     unsafe {
-        document_set_dir(instance, value);
+        document_set_dir(instance, cstr(value));
     }
 }
 extern "C" {
@@ -793,44 +793,44 @@ pub fn set_onvisibilitychange(instance: i32, value: i32) {
 }
 extern "C" {
     fn document_get_selected_style_sheet_set(instance: i32) -> CString;
-    fn document_set_selected_style_sheet_set(instance: i32, value: i32);
+    fn document_set_selected_style_sheet_set(instance: i32, value: CString);
 }
 
 pub fn get_selected_style_sheet_set(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_selected_style_sheet_set(instance)) }
 }
 
-pub fn set_selected_style_sheet_set(instance: i32, value: i32) {
+pub fn set_selected_style_sheet_set(instance: i32, value: &str) {
     unsafe {
-        document_set_selected_style_sheet_set(instance, value);
+        document_set_selected_style_sheet_set(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_last_style_sheet_set(instance: i32) -> CString;
-    fn document_set_last_style_sheet_set(instance: i32, value: i32);
+    fn document_set_last_style_sheet_set(instance: i32, value: CString);
 }
 
 pub fn get_last_style_sheet_set(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_last_style_sheet_set(instance)) }
 }
 
-pub fn set_last_style_sheet_set(instance: i32, value: i32) {
+pub fn set_last_style_sheet_set(instance: i32, value: &str) {
     unsafe {
-        document_set_last_style_sheet_set(instance, value);
+        document_set_last_style_sheet_set(instance, cstr(value));
     }
 }
 extern "C" {
     fn document_get_preferred_style_sheet_set(instance: i32) -> CString;
-    fn document_set_preferred_style_sheet_set(instance: i32, value: i32);
+    fn document_set_preferred_style_sheet_set(instance: i32, value: CString);
 }
 
 pub fn get_preferred_style_sheet_set(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_preferred_style_sheet_set(instance)) }
 }
 
-pub fn set_preferred_style_sheet_set(instance: i32, value: i32) {
+pub fn set_preferred_style_sheet_set(instance: i32, value: &str) {
     unsafe {
-        document_set_preferred_style_sheet_set(instance, value);
+        document_set_preferred_style_sheet_set(instance, cstr(value));
     }
 }
 extern "C" {
@@ -940,16 +940,16 @@ pub fn set_is_srcdoc_document(instance: i32, value: i32) {
 }
 extern "C" {
     fn document_get_sandbox_flags_as_string(instance: i32) -> CString;
-    fn document_set_sandbox_flags_as_string(instance: i32, value: i32);
+    fn document_set_sandbox_flags_as_string(instance: i32, value: CString);
 }
 
 pub fn get_sandbox_flags_as_string(instance: i32) -> String {
     unsafe { cstr_to_string(document_get_sandbox_flags_as_string(instance)) }
 }
 
-pub fn set_sandbox_flags_as_string(instance: i32, value: i32) {
+pub fn set_sandbox_flags_as_string(instance: i32, value: &str) {
     unsafe {
-        document_set_sandbox_flags_as_string(instance, value);
+        document_set_sandbox_flags_as_string(instance, cstr(value));
     }
 }
 extern "C" {

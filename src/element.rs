@@ -2,86 +2,86 @@
 use crate::*;
 extern "C" {
     fn element_get_namespace_uri(instance: i32) -> CString;
-    fn element_set_namespace_uri(instance: i32, value: i32);
+    fn element_set_namespace_uri(instance: i32, value: CString);
 }
 
 pub fn get_namespace_uri(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_namespace_uri(instance)) }
 }
 
-pub fn set_namespace_uri(instance: i32, value: i32) {
+pub fn set_namespace_uri(instance: i32, value: &str) {
     unsafe {
-        element_set_namespace_uri(instance, value);
+        element_set_namespace_uri(instance, cstr(value));
     }
 }
 extern "C" {
     fn element_get_prefix(instance: i32) -> CString;
-    fn element_set_prefix(instance: i32, value: i32);
+    fn element_set_prefix(instance: i32, value: CString);
 }
 
 pub fn get_prefix(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_prefix(instance)) }
 }
 
-pub fn set_prefix(instance: i32, value: i32) {
+pub fn set_prefix(instance: i32, value: &str) {
     unsafe {
-        element_set_prefix(instance, value);
+        element_set_prefix(instance, cstr(value));
     }
 }
 extern "C" {
     fn element_get_local_name(instance: i32) -> CString;
-    fn element_set_local_name(instance: i32, value: i32);
+    fn element_set_local_name(instance: i32, value: CString);
 }
 
 pub fn get_local_name(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_local_name(instance)) }
 }
 
-pub fn set_local_name(instance: i32, value: i32) {
+pub fn set_local_name(instance: i32, value: &str) {
     unsafe {
-        element_set_local_name(instance, value);
+        element_set_local_name(instance, cstr(value));
     }
 }
 extern "C" {
     fn element_get_tag_name(instance: i32) -> CString;
-    fn element_set_tag_name(instance: i32, value: i32);
+    fn element_set_tag_name(instance: i32, value: CString);
 }
 
 pub fn get_tag_name(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_tag_name(instance)) }
 }
 
-pub fn set_tag_name(instance: i32, value: i32) {
+pub fn set_tag_name(instance: i32, value: &str) {
     unsafe {
-        element_set_tag_name(instance, value);
+        element_set_tag_name(instance, cstr(value));
     }
 }
 extern "C" {
     fn element_get_id(instance: i32) -> CString;
-    fn element_set_id(instance: i32, value: i32);
+    fn element_set_id(instance: i32, value: CString);
 }
 
 pub fn get_id(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_id(instance)) }
 }
 
-pub fn set_id(instance: i32, value: i32) {
+pub fn set_id(instance: i32, value: &str) {
     unsafe {
-        element_set_id(instance, value);
+        element_set_id(instance, cstr(value));
     }
 }
 extern "C" {
     fn element_get_class_name(instance: i32) -> CString;
-    fn element_set_class_name(instance: i32, value: i32);
+    fn element_set_class_name(instance: i32, value: CString);
 }
 
 pub fn get_class_name(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_class_name(instance)) }
 }
 
-pub fn set_class_name(instance: i32, value: i32) {
+pub fn set_class_name(instance: i32, value: &str) {
     unsafe {
-        element_set_class_name(instance, value);
+        element_set_class_name(instance, cstr(value));
     }
 }
 extern "C" {
@@ -531,30 +531,30 @@ pub fn set_client_height(instance: i32, value: i32) {
 }
 extern "C" {
     fn element_get_inner_html(instance: i32) -> CString;
-    fn element_set_inner_html(instance: i32, value: i32);
+    fn element_set_inner_html(instance: i32, value: CString);
 }
 
 pub fn get_inner_html(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_inner_html(instance)) }
 }
 
-pub fn set_inner_html(instance: i32, value: i32) {
+pub fn set_inner_html(instance: i32, value: &str) {
     unsafe {
-        element_set_inner_html(instance, value);
+        element_set_inner_html(instance, cstr(value));
     }
 }
 extern "C" {
     fn element_get_outer_html(instance: i32) -> CString;
-    fn element_set_outer_html(instance: i32, value: i32);
+    fn element_set_outer_html(instance: i32, value: CString);
 }
 
 pub fn get_outer_html(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_outer_html(instance)) }
 }
 
-pub fn set_outer_html(instance: i32, value: i32) {
+pub fn set_outer_html(instance: i32, value: &str) {
     unsafe {
-        element_set_outer_html(instance, value);
+        element_set_outer_html(instance, cstr(value));
     }
 }
 extern "C" {
@@ -622,16 +622,16 @@ pub fn set_assigned_slot(instance: i32, value: i32) {
 }
 extern "C" {
     fn element_get_slot(instance: i32) -> CString;
-    fn element_set_slot(instance: i32, value: i32);
+    fn element_set_slot(instance: i32, value: CString);
 }
 
 pub fn get_slot(instance: i32) -> String {
     unsafe { cstr_to_string(element_get_slot(instance)) }
 }
 
-pub fn set_slot(instance: i32, value: i32) {
+pub fn set_slot(instance: i32, value: &str) {
     unsafe {
-        element_set_slot(instance, value);
+        element_set_slot(instance, cstr(value));
     }
 }
 extern "C" {

@@ -44,16 +44,16 @@ pub fn set_document(instance: i32, value: i32) {
 }
 extern "C" {
     fn window_get_name(instance: i32) -> CString;
-    fn window_set_name(instance: i32, value: i32);
+    fn window_set_name(instance: i32, value: CString);
 }
 
 pub fn get_name(instance: i32) -> String {
     unsafe { cstr_to_string(window_get_name(instance)) }
 }
 
-pub fn set_name(instance: i32, value: i32) {
+pub fn set_name(instance: i32, value: &str) {
     unsafe {
-        window_set_name(instance, value);
+        window_set_name(instance, cstr(value));
     }
 }
 extern "C" {
@@ -184,16 +184,16 @@ pub fn set_toolbar(instance: i32, value: i32) {
 }
 extern "C" {
     fn window_get_status(instance: i32) -> CString;
-    fn window_set_status(instance: i32, value: i32);
+    fn window_set_status(instance: i32, value: CString);
 }
 
 pub fn get_status(instance: i32) -> String {
     unsafe { cstr_to_string(window_get_status(instance)) }
 }
 
-pub fn set_status(instance: i32, value: i32) {
+pub fn set_status(instance: i32, value: &str) {
     unsafe {
-        window_set_status(instance, value);
+        window_set_status(instance, cstr(value));
     }
 }
 extern "C" {

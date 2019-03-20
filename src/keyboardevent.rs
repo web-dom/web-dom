@@ -135,30 +135,30 @@ pub fn set_is_composing(instance: i32, value: i32) {
 }
 extern "C" {
     fn keyboardevent_get_key(instance: i32) -> CString;
-    fn keyboardevent_set_key(instance: i32, value: i32);
+    fn keyboardevent_set_key(instance: i32, value: CString);
 }
 
 pub fn get_key(instance: i32) -> String {
     unsafe { cstr_to_string(keyboardevent_get_key(instance)) }
 }
 
-pub fn set_key(instance: i32, value: i32) {
+pub fn set_key(instance: i32, value: &str) {
     unsafe {
-        keyboardevent_set_key(instance, value);
+        keyboardevent_set_key(instance, cstr(value));
     }
 }
 extern "C" {
     fn keyboardevent_get_code(instance: i32) -> CString;
-    fn keyboardevent_set_code(instance: i32, value: i32);
+    fn keyboardevent_set_code(instance: i32, value: CString);
 }
 
 pub fn get_code(instance: i32) -> String {
     unsafe { cstr_to_string(keyboardevent_get_code(instance)) }
 }
 
-pub fn set_code(instance: i32, value: i32) {
+pub fn set_code(instance: i32, value: &str) {
     unsafe {
-        keyboardevent_set_code(instance, value);
+        keyboardevent_set_code(instance, cstr(value));
     }
 }
 extern "C" {
