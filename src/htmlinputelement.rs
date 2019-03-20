@@ -57,17 +57,17 @@ pub fn set_autofocus(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_default_checked(instance: i32) -> i32;
-    fn htmlinputelement_set_default_checked(instance: i32, value: i32);
+    fn htmlinputelement_get_defaultChecked(instance: i32) -> i32;
+    fn htmlinputelement_set_defaultChecked(instance: i32, value: i32);
 }
 
 pub fn get_default_checked(instance: i32) -> i32 {
-    unsafe { htmlinputelement_get_default_checked(instance) }
+    unsafe { htmlinputelement_get_defaultChecked(instance) }
 }
 
 pub fn set_default_checked(instance: i32, value: i32) {
     unsafe {
-        htmlinputelement_set_default_checked(instance, value);
+        htmlinputelement_set_defaultChecked(instance, value);
     }
 }
 extern "C" {
@@ -127,73 +127,73 @@ pub fn set_files(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_form_action(instance: i32) -> CString;
-    fn htmlinputelement_set_form_action(instance: i32, value: CString);
+    fn htmlinputelement_get_formAction(instance: i32) -> CString;
+    fn htmlinputelement_set_formAction(instance: i32, value: CString);
 }
 
 pub fn get_form_action(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_form_action(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_formAction(instance)) }
 }
 
 pub fn set_form_action(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_form_action(instance, cstr(value));
+        htmlinputelement_set_formAction(instance, cstr(value));
     }
 }
 extern "C" {
-    fn htmlinputelement_get_form_enctype(instance: i32) -> CString;
-    fn htmlinputelement_set_form_enctype(instance: i32, value: CString);
+    fn htmlinputelement_get_formEnctype(instance: i32) -> CString;
+    fn htmlinputelement_set_formEnctype(instance: i32, value: CString);
 }
 
 pub fn get_form_enctype(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_form_enctype(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_formEnctype(instance)) }
 }
 
 pub fn set_form_enctype(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_form_enctype(instance, cstr(value));
+        htmlinputelement_set_formEnctype(instance, cstr(value));
     }
 }
 extern "C" {
-    fn htmlinputelement_get_form_method(instance: i32) -> CString;
-    fn htmlinputelement_set_form_method(instance: i32, value: CString);
+    fn htmlinputelement_get_formMethod(instance: i32) -> CString;
+    fn htmlinputelement_set_formMethod(instance: i32, value: CString);
 }
 
 pub fn get_form_method(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_form_method(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_formMethod(instance)) }
 }
 
 pub fn set_form_method(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_form_method(instance, cstr(value));
+        htmlinputelement_set_formMethod(instance, cstr(value));
     }
 }
 extern "C" {
-    fn htmlinputelement_get_form_no_validate(instance: i32) -> i32;
-    fn htmlinputelement_set_form_no_validate(instance: i32, value: i32);
+    fn htmlinputelement_get_formNoValidate(instance: i32) -> i32;
+    fn htmlinputelement_set_formNoValidate(instance: i32, value: i32);
 }
 
 pub fn get_form_no_validate(instance: i32) -> i32 {
-    unsafe { htmlinputelement_get_form_no_validate(instance) }
+    unsafe { htmlinputelement_get_formNoValidate(instance) }
 }
 
 pub fn set_form_no_validate(instance: i32, value: i32) {
     unsafe {
-        htmlinputelement_set_form_no_validate(instance, value);
+        htmlinputelement_set_formNoValidate(instance, value);
     }
 }
 extern "C" {
-    fn htmlinputelement_get_form_target(instance: i32) -> CString;
-    fn htmlinputelement_set_form_target(instance: i32, value: CString);
+    fn htmlinputelement_get_formTarget(instance: i32) -> CString;
+    fn htmlinputelement_set_formTarget(instance: i32, value: CString);
 }
 
 pub fn get_form_target(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_form_target(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_formTarget(instance)) }
 }
 
 pub fn set_form_target(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_form_target(instance, cstr(value));
+        htmlinputelement_set_formTarget(instance, cstr(value));
     }
 }
 extern "C" {
@@ -225,17 +225,17 @@ pub fn set_indeterminate(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_input_mode(instance: i32) -> CString;
-    fn htmlinputelement_set_input_mode(instance: i32, value: CString);
+    fn htmlinputelement_get_inputMode(instance: i32) -> CString;
+    fn htmlinputelement_set_inputMode(instance: i32, value: CString);
 }
 
 pub fn get_input_mode(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_input_mode(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_inputMode(instance)) }
 }
 
 pub fn set_input_mode(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_input_mode(instance, cstr(value));
+        htmlinputelement_set_inputMode(instance, cstr(value));
     }
 }
 extern "C" {
@@ -267,17 +267,17 @@ pub fn set_max(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_max_length(instance: i32) -> i32;
-    fn htmlinputelement_set_max_length(instance: i32, value: i32);
+    fn htmlinputelement_get_maxLength(instance: i32) -> i32;
+    fn htmlinputelement_set_maxLength(instance: i32, value: i32);
 }
 
 pub fn get_max_length(instance: i32) -> i32 {
-    unsafe { htmlinputelement_get_max_length(instance) }
+    unsafe { htmlinputelement_get_maxLength(instance) }
 }
 
 pub fn set_max_length(instance: i32, value: i32) {
     unsafe {
-        htmlinputelement_set_max_length(instance, value);
+        htmlinputelement_set_maxLength(instance, value);
     }
 }
 extern "C" {
@@ -295,17 +295,17 @@ pub fn set_min(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_min_length(instance: i32) -> i32;
-    fn htmlinputelement_set_min_length(instance: i32, value: i32);
+    fn htmlinputelement_get_minLength(instance: i32) -> i32;
+    fn htmlinputelement_set_minLength(instance: i32, value: i32);
 }
 
 pub fn get_min_length(instance: i32) -> i32 {
-    unsafe { htmlinputelement_get_min_length(instance) }
+    unsafe { htmlinputelement_get_minLength(instance) }
 }
 
 pub fn set_min_length(instance: i32, value: i32) {
     unsafe {
-        htmlinputelement_set_min_length(instance, value);
+        htmlinputelement_set_minLength(instance, value);
     }
 }
 extern "C" {
@@ -365,17 +365,17 @@ pub fn set_placeholder(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_read_only(instance: i32) -> i32;
-    fn htmlinputelement_set_read_only(instance: i32, value: i32);
+    fn htmlinputelement_get_readOnly(instance: i32) -> i32;
+    fn htmlinputelement_set_readOnly(instance: i32, value: i32);
 }
 
 pub fn get_read_only(instance: i32) -> i32 {
-    unsafe { htmlinputelement_get_read_only(instance) }
+    unsafe { htmlinputelement_get_readOnly(instance) }
 }
 
 pub fn set_read_only(instance: i32, value: i32) {
     unsafe {
-        htmlinputelement_set_read_only(instance, value);
+        htmlinputelement_set_readOnly(instance, value);
     }
 }
 extern "C" {
@@ -449,17 +449,17 @@ pub fn set_type(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_default_value(instance: i32) -> CString;
-    fn htmlinputelement_set_default_value(instance: i32, value: CString);
+    fn htmlinputelement_get_defaultValue(instance: i32) -> CString;
+    fn htmlinputelement_set_defaultValue(instance: i32, value: CString);
 }
 
 pub fn get_default_value(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_default_value(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_defaultValue(instance)) }
 }
 
 pub fn set_default_value(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_default_value(instance, cstr(value));
+        htmlinputelement_set_defaultValue(instance, cstr(value));
     }
 }
 extern "C" {
@@ -477,31 +477,31 @@ pub fn set_value(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_value_as_date(instance: i32) -> i32;
-    fn htmlinputelement_set_value_as_date(instance: i32, value: i32);
+    fn htmlinputelement_get_valueAsDate(instance: i32) -> i32;
+    fn htmlinputelement_set_valueAsDate(instance: i32, value: i32);
 }
 
 pub fn get_value_as_date(instance: i32) -> i32 {
-    unsafe { htmlinputelement_get_value_as_date(instance) }
+    unsafe { htmlinputelement_get_valueAsDate(instance) }
 }
 
 pub fn set_value_as_date(instance: i32, value: i32) {
     unsafe {
-        htmlinputelement_set_value_as_date(instance, value);
+        htmlinputelement_set_valueAsDate(instance, value);
     }
 }
 extern "C" {
-    fn htmlinputelement_get_value_as_number(instance: i32) -> i32;
-    fn htmlinputelement_set_value_as_number(instance: i32, value: i32);
+    fn htmlinputelement_get_valueAsNumber(instance: i32) -> i32;
+    fn htmlinputelement_set_valueAsNumber(instance: i32, value: i32);
 }
 
 pub fn get_value_as_number(instance: i32) -> i32 {
-    unsafe { htmlinputelement_get_value_as_number(instance) }
+    unsafe { htmlinputelement_get_valueAsNumber(instance) }
 }
 
 pub fn set_value_as_number(instance: i32, value: i32) {
     unsafe {
-        htmlinputelement_set_value_as_number(instance, value);
+        htmlinputelement_set_valueAsNumber(instance, value);
     }
 }
 extern "C" {
@@ -519,17 +519,17 @@ pub fn set_width(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_will_validate(instance: i32) -> i32;
-    fn htmlinputelement_set_will_validate(instance: i32, value: i32);
+    fn htmlinputelement_get_willValidate(instance: i32) -> i32;
+    fn htmlinputelement_set_willValidate(instance: i32, value: i32);
 }
 
 pub fn get_will_validate(instance: i32) -> i32 {
-    unsafe { htmlinputelement_get_will_validate(instance) }
+    unsafe { htmlinputelement_get_willValidate(instance) }
 }
 
 pub fn set_will_validate(instance: i32, value: i32) {
     unsafe {
-        htmlinputelement_set_will_validate(instance, value);
+        htmlinputelement_set_willValidate(instance, value);
     }
 }
 extern "C" {
@@ -547,17 +547,17 @@ pub fn set_validity(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_validation_message(instance: i32) -> CString;
-    fn htmlinputelement_set_validation_message(instance: i32, value: CString);
+    fn htmlinputelement_get_validationMessage(instance: i32) -> CString;
+    fn htmlinputelement_set_validationMessage(instance: i32, value: CString);
 }
 
 pub fn get_validation_message(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_validation_message(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_validationMessage(instance)) }
 }
 
 pub fn set_validation_message(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_validation_message(instance, cstr(value));
+        htmlinputelement_set_validationMessage(instance, cstr(value));
     }
 }
 extern "C" {
@@ -603,17 +603,17 @@ pub fn select(instance: i32) {
     unsafe { htmlinputelement_select(instance) }
 }
 extern "C" {
-    fn htmlinputelement_get_selection_direction(instance: i32) -> CString;
-    fn htmlinputelement_set_selection_direction(instance: i32, value: CString);
+    fn htmlinputelement_get_selectionDirection(instance: i32) -> CString;
+    fn htmlinputelement_set_selectionDirection(instance: i32, value: CString);
 }
 
 pub fn get_selection_direction(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_selection_direction(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_selectionDirection(instance)) }
 }
 
 pub fn set_selection_direction(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_selection_direction(instance, cstr(value));
+        htmlinputelement_set_selectionDirection(instance, cstr(value));
     }
 }
 extern "C" {
@@ -658,17 +658,17 @@ pub fn set_align(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinputelement_get_use_map(instance: i32) -> CString;
-    fn htmlinputelement_set_use_map(instance: i32, value: CString);
+    fn htmlinputelement_get_useMap(instance: i32) -> CString;
+    fn htmlinputelement_set_useMap(instance: i32, value: CString);
 }
 
 pub fn get_use_map(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_use_map(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_useMap(instance)) }
 }
 
 pub fn set_use_map(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_use_map(instance, cstr(value));
+        htmlinputelement_set_useMap(instance, cstr(value));
     }
 }
 extern "C" {
@@ -707,16 +707,16 @@ pub fn get_maximum(instance: i32) -> i32 {
     unsafe { htmlinputelement_get_maximum(instance) }
 }
 extern "C" {
-    fn htmlinputelement_get_preview_value(instance: i32) -> CString;
-    fn htmlinputelement_set_preview_value(instance: i32, value: CString);
+    fn htmlinputelement_get_previewValue(instance: i32) -> CString;
+    fn htmlinputelement_set_previewValue(instance: i32, value: CString);
 }
 
 pub fn get_preview_value(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_preview_value(instance)) }
+    unsafe { cstr_to_string(htmlinputelement_get_previewValue(instance)) }
 }
 
 pub fn set_preview_value(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_preview_value(instance, cstr(value));
+        htmlinputelement_set_previewValue(instance, cstr(value));
     }
 }

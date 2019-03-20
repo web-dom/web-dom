@@ -1,17 +1,17 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn element_get_namespace_uri(instance: i32) -> CString;
-    fn element_set_namespace_uri(instance: i32, value: CString);
+    fn element_get_namespaceURI(instance: i32) -> CString;
+    fn element_set_namespaceURI(instance: i32, value: CString);
 }
 
 pub fn get_namespace_uri(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_namespace_uri(instance)) }
+    unsafe { cstr_to_string(element_get_namespaceURI(instance)) }
 }
 
 pub fn set_namespace_uri(instance: i32, value: &str) {
     unsafe {
-        element_set_namespace_uri(instance, cstr(value));
+        element_set_namespaceURI(instance, cstr(value));
     }
 }
 extern "C" {
@@ -29,31 +29,31 @@ pub fn set_prefix(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn element_get_local_name(instance: i32) -> CString;
-    fn element_set_local_name(instance: i32, value: CString);
+    fn element_get_localName(instance: i32) -> CString;
+    fn element_set_localName(instance: i32, value: CString);
 }
 
 pub fn get_local_name(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_local_name(instance)) }
+    unsafe { cstr_to_string(element_get_localName(instance)) }
 }
 
 pub fn set_local_name(instance: i32, value: &str) {
     unsafe {
-        element_set_local_name(instance, cstr(value));
+        element_set_localName(instance, cstr(value));
     }
 }
 extern "C" {
-    fn element_get_tag_name(instance: i32) -> CString;
-    fn element_set_tag_name(instance: i32, value: CString);
+    fn element_get_tagName(instance: i32) -> CString;
+    fn element_set_tagName(instance: i32, value: CString);
 }
 
 pub fn get_tag_name(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_tag_name(instance)) }
+    unsafe { cstr_to_string(element_get_tagName(instance)) }
 }
 
 pub fn set_tag_name(instance: i32, value: &str) {
     unsafe {
-        element_set_tag_name(instance, cstr(value));
+        element_set_tagName(instance, cstr(value));
     }
 }
 extern "C" {
@@ -71,31 +71,31 @@ pub fn set_id(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn element_get_class_name(instance: i32) -> CString;
-    fn element_set_class_name(instance: i32, value: CString);
+    fn element_get_className(instance: i32) -> CString;
+    fn element_set_className(instance: i32, value: CString);
 }
 
 pub fn get_class_name(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_class_name(instance)) }
+    unsafe { cstr_to_string(element_get_className(instance)) }
 }
 
 pub fn set_class_name(instance: i32, value: &str) {
     unsafe {
-        element_set_class_name(instance, cstr(value));
+        element_set_className(instance, cstr(value));
     }
 }
 extern "C" {
-    fn element_get_class_list(instance: i32) -> i32;
-    fn element_set_class_list(instance: i32, value: i32);
+    fn element_get_classList(instance: i32) -> i32;
+    fn element_set_classList(instance: i32, value: i32);
 }
 
 pub fn get_class_list(instance: i32) -> i32 {
-    unsafe { element_get_class_list(instance) }
+    unsafe { element_get_classList(instance) }
 }
 
 pub fn set_class_list(instance: i32, value: i32) {
     unsafe {
-        element_set_class_list(instance, value);
+        element_set_classList(instance, value);
     }
 }
 extern "C" {
@@ -239,17 +239,17 @@ pub fn insert_adjacent_text(instance: i32, location: &str, data: &str) {
     unsafe { element_insert_adjacent_text(instance, cstr(location), cstr(data)) }
 }
 extern "C" {
-    fn element_get_font_size_inflation(instance: i32) -> i32;
-    fn element_set_font_size_inflation(instance: i32, value: i32);
+    fn element_get_fontSizeInflation(instance: i32) -> i32;
+    fn element_set_fontSizeInflation(instance: i32, value: i32);
 }
 
 pub fn get_font_size_inflation(instance: i32) -> i32 {
-    unsafe { element_get_font_size_inflation(instance) }
+    unsafe { element_get_fontSizeInflation(instance) }
 }
 
 pub fn set_font_size_inflation(instance: i32, value: i32) {
     unsafe {
-        element_set_font_size_inflation(instance, value);
+        element_set_fontSizeInflation(instance, value);
     }
 }
 extern "C" {
@@ -397,59 +397,59 @@ pub fn scroll_into_view(instance: i32, arg: i32) {
     unsafe { element_scroll_into_view(instance, arg) }
 }
 extern "C" {
-    fn element_get_scroll_top(instance: i32) -> i32;
-    fn element_set_scroll_top(instance: i32, value: i32);
+    fn element_get_scrollTop(instance: i32) -> i32;
+    fn element_set_scrollTop(instance: i32, value: i32);
 }
 
 pub fn get_scroll_top(instance: i32) -> i32 {
-    unsafe { element_get_scroll_top(instance) }
+    unsafe { element_get_scrollTop(instance) }
 }
 
 pub fn set_scroll_top(instance: i32, value: i32) {
     unsafe {
-        element_set_scroll_top(instance, value);
+        element_set_scrollTop(instance, value);
     }
 }
 extern "C" {
-    fn element_get_scroll_left(instance: i32) -> i32;
-    fn element_set_scroll_left(instance: i32, value: i32);
+    fn element_get_scrollLeft(instance: i32) -> i32;
+    fn element_set_scrollLeft(instance: i32, value: i32);
 }
 
 pub fn get_scroll_left(instance: i32) -> i32 {
-    unsafe { element_get_scroll_left(instance) }
+    unsafe { element_get_scrollLeft(instance) }
 }
 
 pub fn set_scroll_left(instance: i32, value: i32) {
     unsafe {
-        element_set_scroll_left(instance, value);
+        element_set_scrollLeft(instance, value);
     }
 }
 extern "C" {
-    fn element_get_scroll_width(instance: i32) -> i32;
-    fn element_set_scroll_width(instance: i32, value: i32);
+    fn element_get_scrollWidth(instance: i32) -> i32;
+    fn element_set_scrollWidth(instance: i32, value: i32);
 }
 
 pub fn get_scroll_width(instance: i32) -> i32 {
-    unsafe { element_get_scroll_width(instance) }
+    unsafe { element_get_scrollWidth(instance) }
 }
 
 pub fn set_scroll_width(instance: i32, value: i32) {
     unsafe {
-        element_set_scroll_width(instance, value);
+        element_set_scrollWidth(instance, value);
     }
 }
 extern "C" {
-    fn element_get_scroll_height(instance: i32) -> i32;
-    fn element_set_scroll_height(instance: i32, value: i32);
+    fn element_get_scrollHeight(instance: i32) -> i32;
+    fn element_set_scrollHeight(instance: i32, value: i32);
 }
 
 pub fn get_scroll_height(instance: i32) -> i32 {
-    unsafe { element_get_scroll_height(instance) }
+    unsafe { element_get_scrollHeight(instance) }
 }
 
 pub fn set_scroll_height(instance: i32, value: i32) {
     unsafe {
-        element_set_scroll_height(instance, value);
+        element_set_scrollHeight(instance, value);
     }
 }
 extern "C" {
@@ -474,87 +474,87 @@ pub fn scroll_by(instance: i32, x: i32, y: i32) {
     unsafe { element_scroll_by(instance, x, y) }
 }
 extern "C" {
-    fn element_get_client_top(instance: i32) -> i32;
-    fn element_set_client_top(instance: i32, value: i32);
+    fn element_get_clientTop(instance: i32) -> i32;
+    fn element_set_clientTop(instance: i32, value: i32);
 }
 
 pub fn get_client_top(instance: i32) -> i32 {
-    unsafe { element_get_client_top(instance) }
+    unsafe { element_get_clientTop(instance) }
 }
 
 pub fn set_client_top(instance: i32, value: i32) {
     unsafe {
-        element_set_client_top(instance, value);
+        element_set_clientTop(instance, value);
     }
 }
 extern "C" {
-    fn element_get_client_left(instance: i32) -> i32;
-    fn element_set_client_left(instance: i32, value: i32);
+    fn element_get_clientLeft(instance: i32) -> i32;
+    fn element_set_clientLeft(instance: i32, value: i32);
 }
 
 pub fn get_client_left(instance: i32) -> i32 {
-    unsafe { element_get_client_left(instance) }
+    unsafe { element_get_clientLeft(instance) }
 }
 
 pub fn set_client_left(instance: i32, value: i32) {
     unsafe {
-        element_set_client_left(instance, value);
+        element_set_clientLeft(instance, value);
     }
 }
 extern "C" {
-    fn element_get_client_width(instance: i32) -> i32;
-    fn element_set_client_width(instance: i32, value: i32);
+    fn element_get_clientWidth(instance: i32) -> i32;
+    fn element_set_clientWidth(instance: i32, value: i32);
 }
 
 pub fn get_client_width(instance: i32) -> i32 {
-    unsafe { element_get_client_width(instance) }
+    unsafe { element_get_clientWidth(instance) }
 }
 
 pub fn set_client_width(instance: i32, value: i32) {
     unsafe {
-        element_set_client_width(instance, value);
+        element_set_clientWidth(instance, value);
     }
 }
 extern "C" {
-    fn element_get_client_height(instance: i32) -> i32;
-    fn element_set_client_height(instance: i32, value: i32);
+    fn element_get_clientHeight(instance: i32) -> i32;
+    fn element_set_clientHeight(instance: i32, value: i32);
 }
 
 pub fn get_client_height(instance: i32) -> i32 {
-    unsafe { element_get_client_height(instance) }
+    unsafe { element_get_clientHeight(instance) }
 }
 
 pub fn set_client_height(instance: i32, value: i32) {
     unsafe {
-        element_set_client_height(instance, value);
+        element_set_clientHeight(instance, value);
     }
 }
 extern "C" {
-    fn element_get_inner_html(instance: i32) -> CString;
-    fn element_set_inner_html(instance: i32, value: CString);
+    fn element_get_innerHTML(instance: i32) -> CString;
+    fn element_set_innerHTML(instance: i32, value: CString);
 }
 
 pub fn get_inner_html(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_inner_html(instance)) }
+    unsafe { cstr_to_string(element_get_innerHTML(instance)) }
 }
 
 pub fn set_inner_html(instance: i32, value: &str) {
     unsafe {
-        element_set_inner_html(instance, cstr(value));
+        element_set_innerHTML(instance, cstr(value));
     }
 }
 extern "C" {
-    fn element_get_outer_html(instance: i32) -> CString;
-    fn element_set_outer_html(instance: i32, value: CString);
+    fn element_get_outerHTML(instance: i32) -> CString;
+    fn element_set_outerHTML(instance: i32, value: CString);
 }
 
 pub fn get_outer_html(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_outer_html(instance)) }
+    unsafe { cstr_to_string(element_get_outerHTML(instance)) }
 }
 
 pub fn set_outer_html(instance: i32, value: &str) {
     unsafe {
-        element_set_outer_html(instance, cstr(value));
+        element_set_outerHTML(instance, cstr(value));
     }
 }
 extern "C" {
@@ -579,45 +579,45 @@ pub fn query_selector_all(instance: i32, selectors: &str) -> i32 {
     unsafe { element_query_selector_all(instance, cstr(selectors)) }
 }
 extern "C" {
-    fn element_get_shadow_root(instance: i32) -> i32;
-    fn element_set_shadow_root(instance: i32, value: i32);
+    fn element_get_shadowRoot(instance: i32) -> i32;
+    fn element_set_shadowRoot(instance: i32, value: i32);
 }
 
 pub fn get_shadow_root(instance: i32) -> i32 {
-    unsafe { element_get_shadow_root(instance) }
+    unsafe { element_get_shadowRoot(instance) }
 }
 
 pub fn set_shadow_root(instance: i32, value: i32) {
     unsafe {
-        element_set_shadow_root(instance, value);
+        element_set_shadowRoot(instance, value);
     }
 }
 extern "C" {
-    fn element_get_open_or_closed_shadow_root(instance: i32) -> i32;
-    fn element_set_open_or_closed_shadow_root(instance: i32, value: i32);
+    fn element_get_openOrClosedShadowRoot(instance: i32) -> i32;
+    fn element_set_openOrClosedShadowRoot(instance: i32, value: i32);
 }
 
 pub fn get_open_or_closed_shadow_root(instance: i32) -> i32 {
-    unsafe { element_get_open_or_closed_shadow_root(instance) }
+    unsafe { element_get_openOrClosedShadowRoot(instance) }
 }
 
 pub fn set_open_or_closed_shadow_root(instance: i32, value: i32) {
     unsafe {
-        element_set_open_or_closed_shadow_root(instance, value);
+        element_set_openOrClosedShadowRoot(instance, value);
     }
 }
 extern "C" {
-    fn element_get_assigned_slot(instance: i32) -> i32;
-    fn element_set_assigned_slot(instance: i32, value: i32);
+    fn element_get_assignedSlot(instance: i32) -> i32;
+    fn element_set_assignedSlot(instance: i32, value: i32);
 }
 
 pub fn get_assigned_slot(instance: i32) -> i32 {
-    unsafe { element_get_assigned_slot(instance) }
+    unsafe { element_get_assignedSlot(instance) }
 }
 
 pub fn set_assigned_slot(instance: i32, value: i32) {
     unsafe {
-        element_set_assigned_slot(instance, value);
+        element_set_assignedSlot(instance, value);
     }
 }
 extern "C" {

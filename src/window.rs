@@ -85,17 +85,17 @@ pub fn set_history(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn window_get_custom_elements(instance: i32) -> i32;
-    fn window_set_custom_elements(instance: i32, value: i32);
+    fn window_get_customElements(instance: i32) -> i32;
+    fn window_set_customElements(instance: i32, value: i32);
 }
 
 pub fn get_custom_elements(instance: i32) -> i32 {
-    unsafe { window_get_custom_elements(instance) }
+    unsafe { window_get_customElements(instance) }
 }
 
 pub fn set_custom_elements(instance: i32, value: i32) {
     unsafe {
-        window_set_custom_elements(instance, value);
+        window_set_customElements(instance, value);
     }
 }
 extern "C" {
@@ -323,17 +323,17 @@ pub fn set_parent(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn window_get_frame_element(instance: i32) -> i32;
-    fn window_set_frame_element(instance: i32, value: i32);
+    fn window_get_frameElement(instance: i32) -> i32;
+    fn window_set_frameElement(instance: i32, value: i32);
 }
 
 pub fn get_frame_element(instance: i32) -> i32 {
-    unsafe { window_get_frame_element(instance) }
+    unsafe { window_get_frameElement(instance) }
 }
 
 pub fn set_frame_element(instance: i32, value: i32) {
     unsafe {
-        window_set_frame_element(instance, value);
+        window_set_frameElement(instance, value);
     }
 }
 extern "C" {
@@ -372,17 +372,17 @@ pub fn set_external(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn window_get_application_cache(instance: i32) -> i32;
-    fn window_set_application_cache(instance: i32, value: i32);
+    fn window_get_applicationCache(instance: i32) -> i32;
+    fn window_set_applicationCache(instance: i32, value: i32);
 }
 
 pub fn get_application_cache(instance: i32) -> i32 {
-    unsafe { window_get_application_cache(instance) }
+    unsafe { window_get_applicationCache(instance) }
 }
 
 pub fn set_application_cache(instance: i32, value: i32) {
     unsafe {
-        window_set_application_cache(instance, value);
+        window_set_applicationCache(instance, value);
     }
 }
 extern "C" {
@@ -518,31 +518,31 @@ pub fn resize_by(instance: i32, x: i32, y: i32) {
     unsafe { window_resize_by(instance, x, y) }
 }
 extern "C" {
-    fn window_get_inner_width(instance: i32) -> i32;
-    fn window_set_inner_width(instance: i32, value: i32);
+    fn window_get_innerWidth(instance: i32) -> i32;
+    fn window_set_innerWidth(instance: i32, value: i32);
 }
 
 pub fn get_inner_width(instance: i32) -> i32 {
-    unsafe { window_get_inner_width(instance) }
+    unsafe { window_get_innerWidth(instance) }
 }
 
 pub fn set_inner_width(instance: i32, value: i32) {
     unsafe {
-        window_set_inner_width(instance, value);
+        window_set_innerWidth(instance, value);
     }
 }
 extern "C" {
-    fn window_get_inner_height(instance: i32) -> i32;
-    fn window_set_inner_height(instance: i32, value: i32);
+    fn window_get_innerHeight(instance: i32) -> i32;
+    fn window_set_innerHeight(instance: i32, value: i32);
 }
 
 pub fn get_inner_height(instance: i32) -> i32 {
-    unsafe { window_get_inner_height(instance) }
+    unsafe { window_get_innerHeight(instance) }
 }
 
 pub fn set_inner_height(instance: i32, value: i32) {
     unsafe {
-        window_set_inner_height(instance, value);
+        window_set_innerHeight(instance, value);
     }
 }
 extern "C" {
@@ -567,129 +567,129 @@ pub fn scroll_by(instance: i32, x: i32, y: i32) {
     unsafe { window_scroll_by(instance, x, y) }
 }
 extern "C" {
-    fn window_get_scroll_x(instance: i32) -> i32;
-    fn window_set_scroll_x(instance: i32, value: i32);
+    fn window_get_scrollX(instance: i32) -> i32;
+    fn window_set_scrollX(instance: i32, value: i32);
 }
 
 pub fn get_scroll_x(instance: i32) -> i32 {
-    unsafe { window_get_scroll_x(instance) }
+    unsafe { window_get_scrollX(instance) }
 }
 
 pub fn set_scroll_x(instance: i32, value: i32) {
     unsafe {
-        window_set_scroll_x(instance, value);
+        window_set_scrollX(instance, value);
     }
 }
 extern "C" {
-    fn window_get_page_x_offset(instance: i32) -> i32;
-    fn window_set_page_x_offset(instance: i32, value: i32);
+    fn window_get_pageXOffset(instance: i32) -> i32;
+    fn window_set_pageXOffset(instance: i32, value: i32);
 }
 
 pub fn get_page_x_offset(instance: i32) -> i32 {
-    unsafe { window_get_page_x_offset(instance) }
+    unsafe { window_get_pageXOffset(instance) }
 }
 
 pub fn set_page_x_offset(instance: i32, value: i32) {
     unsafe {
-        window_set_page_x_offset(instance, value);
+        window_set_pageXOffset(instance, value);
     }
 }
 extern "C" {
-    fn window_get_scroll_y(instance: i32) -> i32;
-    fn window_set_scroll_y(instance: i32, value: i32);
+    fn window_get_scrollY(instance: i32) -> i32;
+    fn window_set_scrollY(instance: i32, value: i32);
 }
 
 pub fn get_scroll_y(instance: i32) -> i32 {
-    unsafe { window_get_scroll_y(instance) }
+    unsafe { window_get_scrollY(instance) }
 }
 
 pub fn set_scroll_y(instance: i32, value: i32) {
     unsafe {
-        window_set_scroll_y(instance, value);
+        window_set_scrollY(instance, value);
     }
 }
 extern "C" {
-    fn window_get_page_y_offset(instance: i32) -> i32;
-    fn window_set_page_y_offset(instance: i32, value: i32);
+    fn window_get_pageYOffset(instance: i32) -> i32;
+    fn window_set_pageYOffset(instance: i32, value: i32);
 }
 
 pub fn get_page_y_offset(instance: i32) -> i32 {
-    unsafe { window_get_page_y_offset(instance) }
+    unsafe { window_get_pageYOffset(instance) }
 }
 
 pub fn set_page_y_offset(instance: i32, value: i32) {
     unsafe {
-        window_set_page_y_offset(instance, value);
+        window_set_pageYOffset(instance, value);
     }
 }
 extern "C" {
-    fn window_get_screen_x(instance: i32) -> i32;
-    fn window_set_screen_x(instance: i32, value: i32);
+    fn window_get_screenX(instance: i32) -> i32;
+    fn window_set_screenX(instance: i32, value: i32);
 }
 
 pub fn get_screen_x(instance: i32) -> i32 {
-    unsafe { window_get_screen_x(instance) }
+    unsafe { window_get_screenX(instance) }
 }
 
 pub fn set_screen_x(instance: i32, value: i32) {
     unsafe {
-        window_set_screen_x(instance, value);
+        window_set_screenX(instance, value);
     }
 }
 extern "C" {
-    fn window_get_screen_y(instance: i32) -> i32;
-    fn window_set_screen_y(instance: i32, value: i32);
+    fn window_get_screenY(instance: i32) -> i32;
+    fn window_set_screenY(instance: i32, value: i32);
 }
 
 pub fn get_screen_y(instance: i32) -> i32 {
-    unsafe { window_get_screen_y(instance) }
+    unsafe { window_get_screenY(instance) }
 }
 
 pub fn set_screen_y(instance: i32, value: i32) {
     unsafe {
-        window_set_screen_y(instance, value);
+        window_set_screenY(instance, value);
     }
 }
 extern "C" {
-    fn window_get_outer_width(instance: i32) -> i32;
-    fn window_set_outer_width(instance: i32, value: i32);
+    fn window_get_outerWidth(instance: i32) -> i32;
+    fn window_set_outerWidth(instance: i32, value: i32);
 }
 
 pub fn get_outer_width(instance: i32) -> i32 {
-    unsafe { window_get_outer_width(instance) }
+    unsafe { window_get_outerWidth(instance) }
 }
 
 pub fn set_outer_width(instance: i32, value: i32) {
     unsafe {
-        window_set_outer_width(instance, value);
+        window_set_outerWidth(instance, value);
     }
 }
 extern "C" {
-    fn window_get_outer_height(instance: i32) -> i32;
-    fn window_set_outer_height(instance: i32, value: i32);
+    fn window_get_outerHeight(instance: i32) -> i32;
+    fn window_set_outerHeight(instance: i32, value: i32);
 }
 
 pub fn get_outer_height(instance: i32) -> i32 {
-    unsafe { window_get_outer_height(instance) }
+    unsafe { window_get_outerHeight(instance) }
 }
 
 pub fn set_outer_height(instance: i32, value: i32) {
     unsafe {
-        window_set_outer_height(instance, value);
+        window_set_outerHeight(instance, value);
     }
 }
 extern "C" {
-    fn window_get_device_pixel_ratio(instance: i32) -> i32;
-    fn window_set_device_pixel_ratio(instance: i32, value: i32);
+    fn window_get_devicePixelRatio(instance: i32) -> i32;
+    fn window_set_devicePixelRatio(instance: i32, value: i32);
 }
 
 pub fn get_device_pixel_ratio(instance: i32) -> i32 {
-    unsafe { window_get_device_pixel_ratio(instance) }
+    unsafe { window_get_devicePixelRatio(instance) }
 }
 
 pub fn set_device_pixel_ratio(instance: i32, value: i32) {
     unsafe {
-        window_set_device_pixel_ratio(instance, value);
+        window_set_devicePixelRatio(instance, value);
     }
 }
 extern "C" {
@@ -819,17 +819,17 @@ pub fn set_onvrdisplaypresentchange(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn window_get_paint_worklet(instance: i32) -> i32;
-    fn window_set_paint_worklet(instance: i32, value: i32);
+    fn window_get_paintWorklet(instance: i32) -> i32;
+    fn window_set_paintWorklet(instance: i32, value: i32);
 }
 
 pub fn get_paint_worklet(instance: i32) -> i32 {
-    unsafe { window_get_paint_worklet(instance) }
+    unsafe { window_get_paintWorklet(instance) }
 }
 
 pub fn set_paint_worklet(instance: i32, value: i32) {
     unsafe {
-        window_set_paint_worklet(instance, value);
+        window_set_paintWorklet(instance, value);
     }
 }
 extern "C" {

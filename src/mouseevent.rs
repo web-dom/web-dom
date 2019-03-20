@@ -1,59 +1,59 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn mouseevent_get_screen_x(instance: i32) -> i32;
-    fn mouseevent_set_screen_x(instance: i32, value: i32);
+    fn mouseevent_get_screenX(instance: i32) -> i32;
+    fn mouseevent_set_screenX(instance: i32, value: i32);
 }
 
 pub fn get_screen_x(instance: i32) -> i32 {
-    unsafe { mouseevent_get_screen_x(instance) }
+    unsafe { mouseevent_get_screenX(instance) }
 }
 
 pub fn set_screen_x(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_screen_x(instance, value);
+        mouseevent_set_screenX(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_screen_y(instance: i32) -> i32;
-    fn mouseevent_set_screen_y(instance: i32, value: i32);
+    fn mouseevent_get_screenY(instance: i32) -> i32;
+    fn mouseevent_set_screenY(instance: i32, value: i32);
 }
 
 pub fn get_screen_y(instance: i32) -> i32 {
-    unsafe { mouseevent_get_screen_y(instance) }
+    unsafe { mouseevent_get_screenY(instance) }
 }
 
 pub fn set_screen_y(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_screen_y(instance, value);
+        mouseevent_set_screenY(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_client_x(instance: i32) -> i32;
-    fn mouseevent_set_client_x(instance: i32, value: i32);
+    fn mouseevent_get_clientX(instance: i32) -> i32;
+    fn mouseevent_set_clientX(instance: i32, value: i32);
 }
 
 pub fn get_client_x(instance: i32) -> i32 {
-    unsafe { mouseevent_get_client_x(instance) }
+    unsafe { mouseevent_get_clientX(instance) }
 }
 
 pub fn set_client_x(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_client_x(instance, value);
+        mouseevent_set_clientX(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_client_y(instance: i32) -> i32;
-    fn mouseevent_set_client_y(instance: i32, value: i32);
+    fn mouseevent_get_clientY(instance: i32) -> i32;
+    fn mouseevent_set_clientY(instance: i32, value: i32);
 }
 
 pub fn get_client_y(instance: i32) -> i32 {
-    unsafe { mouseevent_get_client_y(instance) }
+    unsafe { mouseevent_get_clientY(instance) }
 }
 
 pub fn set_client_y(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_client_y(instance, value);
+        mouseevent_set_clientY(instance, value);
     }
 }
 extern "C" {
@@ -85,87 +85,87 @@ pub fn set_y(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn mouseevent_get_offset_x(instance: i32) -> i32;
-    fn mouseevent_set_offset_x(instance: i32, value: i32);
+    fn mouseevent_get_offsetX(instance: i32) -> i32;
+    fn mouseevent_set_offsetX(instance: i32, value: i32);
 }
 
 pub fn get_offset_x(instance: i32) -> i32 {
-    unsafe { mouseevent_get_offset_x(instance) }
+    unsafe { mouseevent_get_offsetX(instance) }
 }
 
 pub fn set_offset_x(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_offset_x(instance, value);
+        mouseevent_set_offsetX(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_offset_y(instance: i32) -> i32;
-    fn mouseevent_set_offset_y(instance: i32, value: i32);
+    fn mouseevent_get_offsetY(instance: i32) -> i32;
+    fn mouseevent_set_offsetY(instance: i32, value: i32);
 }
 
 pub fn get_offset_y(instance: i32) -> i32 {
-    unsafe { mouseevent_get_offset_y(instance) }
+    unsafe { mouseevent_get_offsetY(instance) }
 }
 
 pub fn set_offset_y(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_offset_y(instance, value);
+        mouseevent_set_offsetY(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_ctrl_key(instance: i32) -> i32;
-    fn mouseevent_set_ctrl_key(instance: i32, value: i32);
+    fn mouseevent_get_ctrlKey(instance: i32) -> i32;
+    fn mouseevent_set_ctrlKey(instance: i32, value: i32);
 }
 
 pub fn get_ctrl_key(instance: i32) -> i32 {
-    unsafe { mouseevent_get_ctrl_key(instance) }
+    unsafe { mouseevent_get_ctrlKey(instance) }
 }
 
 pub fn set_ctrl_key(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_ctrl_key(instance, value);
+        mouseevent_set_ctrlKey(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_shift_key(instance: i32) -> i32;
-    fn mouseevent_set_shift_key(instance: i32, value: i32);
+    fn mouseevent_get_shiftKey(instance: i32) -> i32;
+    fn mouseevent_set_shiftKey(instance: i32, value: i32);
 }
 
 pub fn get_shift_key(instance: i32) -> i32 {
-    unsafe { mouseevent_get_shift_key(instance) }
+    unsafe { mouseevent_get_shiftKey(instance) }
 }
 
 pub fn set_shift_key(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_shift_key(instance, value);
+        mouseevent_set_shiftKey(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_alt_key(instance: i32) -> i32;
-    fn mouseevent_set_alt_key(instance: i32, value: i32);
+    fn mouseevent_get_altKey(instance: i32) -> i32;
+    fn mouseevent_set_altKey(instance: i32, value: i32);
 }
 
 pub fn get_alt_key(instance: i32) -> i32 {
-    unsafe { mouseevent_get_alt_key(instance) }
+    unsafe { mouseevent_get_altKey(instance) }
 }
 
 pub fn set_alt_key(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_alt_key(instance, value);
+        mouseevent_set_altKey(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_meta_key(instance: i32) -> i32;
-    fn mouseevent_set_meta_key(instance: i32, value: i32);
+    fn mouseevent_get_metaKey(instance: i32) -> i32;
+    fn mouseevent_set_metaKey(instance: i32, value: i32);
 }
 
 pub fn get_meta_key(instance: i32) -> i32 {
-    unsafe { mouseevent_get_meta_key(instance) }
+    unsafe { mouseevent_get_metaKey(instance) }
 }
 
 pub fn set_meta_key(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_meta_key(instance, value);
+        mouseevent_set_metaKey(instance, value);
     }
 }
 extern "C" {
@@ -197,17 +197,17 @@ pub fn set_buttons(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn mouseevent_get_related_target(instance: i32) -> i32;
-    fn mouseevent_set_related_target(instance: i32, value: i32);
+    fn mouseevent_get_relatedTarget(instance: i32) -> i32;
+    fn mouseevent_set_relatedTarget(instance: i32, value: i32);
 }
 
 pub fn get_related_target(instance: i32) -> i32 {
-    unsafe { mouseevent_get_related_target(instance) }
+    unsafe { mouseevent_get_relatedTarget(instance) }
 }
 
 pub fn set_related_target(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_related_target(instance, value);
+        mouseevent_set_relatedTarget(instance, value);
     }
 }
 extern "C" {
@@ -225,31 +225,31 @@ pub fn set_region(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn mouseevent_get_movement_x(instance: i32) -> i32;
-    fn mouseevent_set_movement_x(instance: i32, value: i32);
+    fn mouseevent_get_movementX(instance: i32) -> i32;
+    fn mouseevent_set_movementX(instance: i32, value: i32);
 }
 
 pub fn get_movement_x(instance: i32) -> i32 {
-    unsafe { mouseevent_get_movement_x(instance) }
+    unsafe { mouseevent_get_movementX(instance) }
 }
 
 pub fn set_movement_x(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_movement_x(instance, value);
+        mouseevent_set_movementX(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_movement_y(instance: i32) -> i32;
-    fn mouseevent_set_movement_y(instance: i32, value: i32);
+    fn mouseevent_get_movementY(instance: i32) -> i32;
+    fn mouseevent_set_movementY(instance: i32, value: i32);
 }
 
 pub fn get_movement_y(instance: i32) -> i32 {
-    unsafe { mouseevent_get_movement_y(instance) }
+    unsafe { mouseevent_get_movementY(instance) }
 }
 
 pub fn set_movement_y(instance: i32, value: i32) {
     unsafe {
-        mouseevent_set_movement_y(instance, value);
+        mouseevent_set_movementY(instance, value);
     }
 }
 extern "C" {
