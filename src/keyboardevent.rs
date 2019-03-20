@@ -89,7 +89,7 @@ extern "C" {
 }
 
 pub fn get_modifier_state(instance: i32, key: &str) -> i32 {
-    unsafe { keyboardevent_get_modifier_state(instance, cstr(key)) }
+    unsafe { keyboardevent_get_modifier_state(instance, to_cstring(key)) }
 }
 extern "C" {
     fn keyboardevent_get_location(instance: i32) -> i32;
@@ -139,12 +139,12 @@ extern "C" {
 }
 
 pub fn get_key(instance: i32) -> String {
-    unsafe { cstr_to_string(keyboardevent_get_key(instance)) }
+    unsafe { to_string(keyboardevent_get_key(instance)) }
 }
 
 pub fn set_key(instance: i32, value: &str) {
     unsafe {
-        keyboardevent_set_key(instance, cstr(value));
+        keyboardevent_set_key(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -153,12 +153,12 @@ extern "C" {
 }
 
 pub fn get_code(instance: i32) -> String {
-    unsafe { cstr_to_string(keyboardevent_get_code(instance)) }
+    unsafe { to_string(keyboardevent_get_code(instance)) }
 }
 
 pub fn set_code(instance: i32, value: &str) {
     unsafe {
-        keyboardevent_set_code(instance, cstr(value));
+        keyboardevent_set_code(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -193,11 +193,11 @@ pub fn init_keyboard_event(
     unsafe {
         keyboardevent_init_keyboard_event(
             instance,
-            cstr(type_arg),
+            to_cstring(type_arg),
             bubbles_arg,
             cancelable_arg,
             view_arg,
-            cstr(key_arg),
+            to_cstring(key_arg),
             location_arg,
             ctrl_key,
             alt_key,

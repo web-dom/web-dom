@@ -216,12 +216,12 @@ extern "C" {
 }
 
 pub fn get_region(instance: i32) -> String {
-    unsafe { cstr_to_string(mouseevent_get_region(instance)) }
+    unsafe { to_string(mouseevent_get_region(instance)) }
 }
 
 pub fn set_region(instance: i32, value: &str) {
     unsafe {
-        mouseevent_set_region(instance, cstr(value));
+        mouseevent_set_region(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -294,7 +294,7 @@ pub fn init_mouse_event(
     unsafe {
         mouseevent_init_mouse_event(
             instance,
-            cstr(type_arg),
+            to_cstring(type_arg),
             can_bubble_arg,
             cancelable_arg,
             view_arg,
@@ -317,5 +317,5 @@ extern "C" {
 }
 
 pub fn get_modifier_state(instance: i32, key_arg: &str) -> i32 {
-    unsafe { mouseevent_get_modifier_state(instance, cstr(key_arg)) }
+    unsafe { mouseevent_get_modifier_state(instance, to_cstring(key_arg)) }
 }

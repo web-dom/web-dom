@@ -59,8 +59,8 @@ use web_dom::*;
 pub fn main() -> () {
     let doc = window::get_document(window());
     let canvas = document::query_selector(doc,"#screen");
-    let ctx = htmlcanvaselement::get_context(canvas,"2d");
-    canvasrenderingcontext2d::fill_rect(ctx,0,0,50,50);
+    let ctx = htmlcanvas::get_context(canvas,"2d");
+    drawing::fill_rect(ctx,0,0,50,50);
 }
 ```
 
@@ -74,7 +74,7 @@ use web_dom::*;
 #[no_mangle]
 pub fn callback(_listener:EventListener,_event:Event) -> () {
     let input = document::query_selector(document(),"input");
-    let msg = htmlinputelement::get_value(input);
+    let msg = htmlinput::get_value(input);
     window::alert(window(),&msg);
 }
 

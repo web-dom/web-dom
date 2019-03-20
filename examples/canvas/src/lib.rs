@@ -3,6 +3,6 @@ use web_dom::*;
 pub fn main() -> () {
     let doc = window::get_document(window());
     let canvas = document::query_selector(doc, "#screen");
-    let ctx = htmlcanvaselement::get_context(canvas, "2d");
-    canvasrenderingcontext2d::fill_rect(ctx, 0, 0, 50, 50);
+    let ctx = htmlcanvas::get_context(canvas, "2d");
+    drawing::fill_rect(ctx, 0, 0, 50, 50);
 }

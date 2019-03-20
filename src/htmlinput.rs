@@ -6,12 +6,12 @@ extern "C" {
 }
 
 pub fn get_accept(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_accept(instance)) }
+    unsafe { to_string(htmlinputelement_get_accept(instance)) }
 }
 
 pub fn set_accept(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_accept(instance, cstr(value));
+        htmlinputelement_set_accept(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -20,12 +20,12 @@ extern "C" {
 }
 
 pub fn get_alt(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_alt(instance)) }
+    unsafe { to_string(htmlinputelement_get_alt(instance)) }
 }
 
 pub fn set_alt(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_alt(instance, cstr(value));
+        htmlinputelement_set_alt(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -34,12 +34,12 @@ extern "C" {
 }
 
 pub fn get_autocomplete(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_autocomplete(instance)) }
+    unsafe { to_string(htmlinputelement_get_autocomplete(instance)) }
 }
 
 pub fn set_autocomplete(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_autocomplete(instance, cstr(value));
+        htmlinputelement_set_autocomplete(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -132,12 +132,12 @@ extern "C" {
 }
 
 pub fn get_form_action(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_form_action(instance)) }
+    unsafe { to_string(htmlinputelement_get_form_action(instance)) }
 }
 
 pub fn set_form_action(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_form_action(instance, cstr(value));
+        htmlinputelement_set_form_action(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -146,12 +146,12 @@ extern "C" {
 }
 
 pub fn get_form_enctype(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_form_enctype(instance)) }
+    unsafe { to_string(htmlinputelement_get_form_enctype(instance)) }
 }
 
 pub fn set_form_enctype(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_form_enctype(instance, cstr(value));
+        htmlinputelement_set_form_enctype(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -160,12 +160,12 @@ extern "C" {
 }
 
 pub fn get_form_method(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_form_method(instance)) }
+    unsafe { to_string(htmlinputelement_get_form_method(instance)) }
 }
 
 pub fn set_form_method(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_form_method(instance, cstr(value));
+        htmlinputelement_set_form_method(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -188,12 +188,12 @@ extern "C" {
 }
 
 pub fn get_form_target(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_form_target(instance)) }
+    unsafe { to_string(htmlinputelement_get_form_target(instance)) }
 }
 
 pub fn set_form_target(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_form_target(instance, cstr(value));
+        htmlinputelement_set_form_target(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -230,12 +230,12 @@ extern "C" {
 }
 
 pub fn get_input_mode(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_input_mode(instance)) }
+    unsafe { to_string(htmlinputelement_get_input_mode(instance)) }
 }
 
 pub fn set_input_mode(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_input_mode(instance, cstr(value));
+        htmlinputelement_set_input_mode(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -258,12 +258,12 @@ extern "C" {
 }
 
 pub fn get_max(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_max(instance)) }
+    unsafe { to_string(htmlinputelement_get_max(instance)) }
 }
 
 pub fn set_max(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_max(instance, cstr(value));
+        htmlinputelement_set_max(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -286,12 +286,12 @@ extern "C" {
 }
 
 pub fn get_min(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_min(instance)) }
+    unsafe { to_string(htmlinputelement_get_min(instance)) }
 }
 
 pub fn set_min(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_min(instance, cstr(value));
+        htmlinputelement_set_min(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -328,12 +328,12 @@ extern "C" {
 }
 
 pub fn get_name(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_name(instance)) }
+    unsafe { to_string(htmlinputelement_get_name(instance)) }
 }
 
 pub fn set_name(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_name(instance, cstr(value));
+        htmlinputelement_set_name(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -342,12 +342,12 @@ extern "C" {
 }
 
 pub fn get_pattern(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_pattern(instance)) }
+    unsafe { to_string(htmlinputelement_get_pattern(instance)) }
 }
 
 pub fn set_pattern(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_pattern(instance, cstr(value));
+        htmlinputelement_set_pattern(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -356,12 +356,12 @@ extern "C" {
 }
 
 pub fn get_placeholder(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_placeholder(instance)) }
+    unsafe { to_string(htmlinputelement_get_placeholder(instance)) }
 }
 
 pub fn set_placeholder(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_placeholder(instance, cstr(value));
+        htmlinputelement_set_placeholder(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -412,12 +412,12 @@ extern "C" {
 }
 
 pub fn get_src(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_src(instance)) }
+    unsafe { to_string(htmlinputelement_get_src(instance)) }
 }
 
 pub fn set_src(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_src(instance, cstr(value));
+        htmlinputelement_set_src(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -426,12 +426,12 @@ extern "C" {
 }
 
 pub fn get_step(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_step(instance)) }
+    unsafe { to_string(htmlinputelement_get_step(instance)) }
 }
 
 pub fn set_step(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_step(instance, cstr(value));
+        htmlinputelement_set_step(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -440,12 +440,12 @@ extern "C" {
 }
 
 pub fn get_type(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_type(instance)) }
+    unsafe { to_string(htmlinputelement_get_type(instance)) }
 }
 
 pub fn set_type(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_type(instance, cstr(value));
+        htmlinputelement_set_type(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -454,12 +454,12 @@ extern "C" {
 }
 
 pub fn get_default_value(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_default_value(instance)) }
+    unsafe { to_string(htmlinputelement_get_default_value(instance)) }
 }
 
 pub fn set_default_value(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_default_value(instance, cstr(value));
+        htmlinputelement_set_default_value(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -468,12 +468,12 @@ extern "C" {
 }
 
 pub fn get_value(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_value(instance)) }
+    unsafe { to_string(htmlinputelement_get_value(instance)) }
 }
 
 pub fn set_value(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_value(instance, cstr(value));
+        htmlinputelement_set_value(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -552,12 +552,12 @@ extern "C" {
 }
 
 pub fn get_validation_message(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_validation_message(instance)) }
+    unsafe { to_string(htmlinputelement_get_validation_message(instance)) }
 }
 
 pub fn set_validation_message(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_validation_message(instance, cstr(value));
+        htmlinputelement_set_validation_message(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -579,7 +579,7 @@ extern "C" {
 }
 
 pub fn set_custom_validity(instance: i32, error: &str) {
-    unsafe { htmlinputelement_set_custom_validity(instance, cstr(error)) }
+    unsafe { htmlinputelement_set_custom_validity(instance, to_cstring(error)) }
 }
 extern "C" {
     fn htmlinputelement_get_labels(instance: i32) -> i32;
@@ -608,12 +608,12 @@ extern "C" {
 }
 
 pub fn get_selection_direction(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_selection_direction(instance)) }
+    unsafe { to_string(htmlinputelement_get_selection_direction(instance)) }
 }
 
 pub fn set_selection_direction(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_selection_direction(instance, cstr(value));
+        htmlinputelement_set_selection_direction(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -628,7 +628,13 @@ extern "C" {
 
 pub fn set_range_text(instance: i32, replacement: &str, start: i32, end: i32, selection_mode: i32) {
     unsafe {
-        htmlinputelement_set_range_text(instance, cstr(replacement), start, end, selection_mode)
+        htmlinputelement_set_range_text(
+            instance,
+            to_cstring(replacement),
+            start,
+            end,
+            selection_mode,
+        )
     }
 }
 extern "C" {
@@ -641,7 +647,7 @@ extern "C" {
 }
 
 pub fn set_selection_range(instance: i32, start: i32, end: i32, direction: &str) {
-    unsafe { htmlinputelement_set_selection_range(instance, start, end, cstr(direction)) }
+    unsafe { htmlinputelement_set_selection_range(instance, start, end, to_cstring(direction)) }
 }
 extern "C" {
     fn htmlinputelement_get_align(instance: i32) -> CString;
@@ -649,12 +655,12 @@ extern "C" {
 }
 
 pub fn get_align(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_align(instance)) }
+    unsafe { to_string(htmlinputelement_get_align(instance)) }
 }
 
 pub fn set_align(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_align(instance, cstr(value));
+        htmlinputelement_set_align(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -663,12 +669,12 @@ extern "C" {
 }
 
 pub fn get_use_map(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_use_map(instance)) }
+    unsafe { to_string(htmlinputelement_get_use_map(instance)) }
 }
 
 pub fn set_use_map(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_use_map(instance, cstr(value));
+        htmlinputelement_set_use_map(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -712,11 +718,11 @@ extern "C" {
 }
 
 pub fn get_preview_value(instance: i32) -> String {
-    unsafe { cstr_to_string(htmlinputelement_get_preview_value(instance)) }
+    unsafe { to_string(htmlinputelement_get_preview_value(instance)) }
 }
 
 pub fn set_preview_value(instance: i32, value: &str) {
     unsafe {
-        htmlinputelement_set_preview_value(instance, cstr(value));
+        htmlinputelement_set_preview_value(instance, to_cstring(value));
     }
 }

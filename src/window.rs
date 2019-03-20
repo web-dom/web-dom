@@ -48,12 +48,12 @@ extern "C" {
 }
 
 pub fn get_name(instance: i32) -> String {
-    unsafe { cstr_to_string(window_get_name(instance)) }
+    unsafe { to_string(window_get_name(instance)) }
 }
 
 pub fn set_name(instance: i32, value: &str) {
     unsafe {
-        window_set_name(instance, cstr(value));
+        window_set_name(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -188,12 +188,12 @@ extern "C" {
 }
 
 pub fn get_status(instance: i32) -> String {
-    unsafe { cstr_to_string(window_get_status(instance)) }
+    unsafe { to_string(window_get_status(instance)) }
 }
 
 pub fn set_status(instance: i32, value: &str) {
     unsafe {
-        window_set_status(instance, cstr(value));
+        window_set_status(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -341,7 +341,14 @@ extern "C" {
 }
 
 pub fn open(instance: i32, url: &str, target: &str, features: &str) -> i32 {
-    unsafe { window_open(instance, cstr(url), cstr(target), cstr(features)) }
+    unsafe {
+        window_open(
+            instance,
+            to_cstring(url),
+            to_cstring(target),
+            to_cstring(features),
+        )
+    }
 }
 extern "C" {
     fn window_get_navigator(instance: i32) -> i32;
@@ -390,14 +397,14 @@ extern "C" {
 }
 
 pub fn alert(instance: i32, message: &str) {
-    unsafe { window_alert(instance, cstr(message)) }
+    unsafe { window_alert(instance, to_cstring(message)) }
 }
 extern "C" {
     fn window_confirm(instance: i32, message: CString) -> i32;
 }
 
 pub fn confirm(instance: i32, message: &str) -> i32 {
-    unsafe { window_confirm(instance, cstr(message)) }
+    unsafe { window_confirm(instance, to_cstring(message)) }
 }
 extern "C" {
     fn window_prompt(instance: i32, message: CString, default_message: CString) -> CString;
@@ -405,10 +412,10 @@ extern "C" {
 
 pub fn prompt(instance: i32, message: &str, default_message: &str) -> String {
     unsafe {
-        cstr_to_string(window_prompt(
+        to_string(window_prompt(
             instance,
-            cstr(message),
-            cstr(default_message),
+            to_cstring(message),
+            to_cstring(default_message),
         ))
     }
 }
@@ -424,7 +431,7 @@ extern "C" {
 }
 
 pub fn post_message(instance: i32, message: i32, target_origin: &str, transfer: i32) {
-    unsafe { window_post_message(instance, message, cstr(target_origin), transfer) }
+    unsafe { window_post_message(instance, message, to_cstring(target_origin), transfer) }
 }
 extern "C" {
     fn window_get_onappinstalled(instance: i32) -> i32;
@@ -466,14 +473,14 @@ extern "C" {
 }
 
 pub fn get_computed_style(instance: i32, elt: i32, pseudo_elt: &str) -> i32 {
-    unsafe { window_get_computed_style(instance, elt, cstr(pseudo_elt)) }
+    unsafe { window_get_computed_style(instance, elt, to_cstring(pseudo_elt)) }
 }
 extern "C" {
     fn window_match_media(instance: i32, query: CString) -> i32;
 }
 
 pub fn match_media(instance: i32, query: &str) -> i32 {
-    unsafe { window_match_media(instance, cstr(query)) }
+    unsafe { window_match_media(instance, to_cstring(query)) }
 }
 extern "C" {
     fn window_get_screen(instance: i32) -> i32;
@@ -865,14 +872,14 @@ extern "C" {
 }
 
 pub fn btoa(instance: i32, btoa: &str) -> String {
-    unsafe { cstr_to_string(window_btoa(instance, cstr(btoa))) }
+    unsafe { to_string(window_btoa(instance, to_cstring(btoa))) }
 }
 extern "C" {
     fn window_atob(instance: i32, atob: CString) -> CString;
 }
 
 pub fn atob(instance: i32, atob: &str) -> String {
-    unsafe { cstr_to_string(window_atob(instance, cstr(atob))) }
+    unsafe { to_string(window_atob(instance, to_cstring(atob))) }
 }
 extern "C" {
     fn window_set_timeout(instance: i32, handler: i32, timeout: i32) -> i32;

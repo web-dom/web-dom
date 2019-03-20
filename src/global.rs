@@ -6,17 +6,13 @@ pub type Element = i32;
 pub type EventListener = i32;
 pub type Event = i32;
 
-pub fn cstr(s: &str) -> CString {
+pub fn to_cstring(s: &str) -> CString {
     std::ffi::CString::new(s).unwrap().into_raw() as i32
 }
 
-pub fn cstr_to_string(c: CString) -> String {
+pub fn to_string(c: CString) -> String {
     let s: &CStr = unsafe { CStr::from_ptr(c as *const i8) };
     s.to_str().unwrap().to_owned()
-}
-
-pub fn to_string(p: i32) -> String {
-    cstr_to_string(p)
 }
 
 extern "C" {
@@ -50,7 +46,7 @@ pub fn create_event_listener() -> EventListener {
 }
 
 pub fn get_property(element: Element, property_name: &str) -> i32 {
-    unsafe { global_get_property(element, cstr(property_name)) }
+    unsafe { global_get_property(element, to_cstring(property_name)) }
 }
 
 #[no_mangle]

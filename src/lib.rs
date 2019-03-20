@@ -1,17 +1,17 @@
 
 pub mod canvasgradient;
 pub mod canvaspattern;
-pub mod canvasrenderingcontext2d;
 pub mod console;
 pub mod consoleinstance;
 pub mod customelement;
 pub mod date;
 pub mod document;
+pub mod drawing;
 pub mod element;
 pub mod eventtarget;
 mod global;
-pub mod htmlcanvaselement;
-pub mod htmlinputelement;
+pub mod htmlcanvas;
+pub mod htmlinput;
 pub mod keyboardevent;
 pub mod math;
 pub mod mouseevent;

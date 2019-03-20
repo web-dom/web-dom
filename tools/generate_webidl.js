@@ -32,19 +32,31 @@ function isPrimitive(n) {
 
 let namespaces = [];
 
+function finalNamespaceName(namespace) {
+  namespace = namespace.toLowerCase();
+  if (namespace == "canvasrenderingcontext2d") {
+    return "drawing";
+  } else if (namespace != "element" && namespace.indexOf("element") != -1) {
+    return namespace.replace("element", "");
+  }
+  return namespace;
+}
+
 function processNamespace(namespace) {
+  namespace = finalNamespaceName(namespace);
   if (namespaces.includes(namespace)) {
     return;
   }
   namespaces.push(namespace);
   fs.writeFileSync(
-    "src/" + namespace.toLowerCase() + ".rs",
+    "src/" + namespace + ".rs",
     "#[allow(unused_imports)]\nuse crate::*;\n"
   );
 }
 
 function appendToNamespace(namespace, text) {
-  fs.appendFileSync("src/" + namespace.toLowerCase() + ".rs", text);
+  namespace = finalNamespaceName(namespace);
+  fs.appendFileSync("src/" + namespace + ".rs", text);
 }
 
 function processOperation(namespace, operation, isInterface) {
@@ -144,11 +156,11 @@ pub fn ` +
         .join(", ")}) ${
         hasReturn ? ` -> ${returnsString ? "String" : "i32"}` : ""
       } {\nunsafe{
-        ${returnsString ? "cstr_to_string(" : ""}
+        ${returnsString ? "to_string(" : ""}
         ${namespace.toLowerCase()}_${toSnake(operationName)}(${params
         .map(x =>
           x.originalType == "DOMString"
-            ? `cstr(${toSnake(x.name)})`
+            ? `to_cstring(${toSnake(x.name)})`
             : toSnake(x.name)
         )
         .join(", ")})
@@ -220,9 +232,9 @@ function processAttribute(interface, idl) {
 pub fn get_${toSnake(name)}(instance:i32) ${
       returnsString ? " -> String" : " -> i32"
     } {\nunsafe{
-  ${
-    returnsString ? "cstr_to_string(" : ""
-  } ${interface.toLowerCase()}_get_${toSnake(name)}(instance)
+  ${returnsString ? "to_string(" : ""} ${interface.toLowerCase()}_get_${toSnake(
+      name
+    )}(instance)
   ${returnsString ? ")" : ""}
   }\n}\n
 
@@ -230,7 +242,7 @@ pub fn get_${toSnake(name)}(instance:i32) ${
       returnsString ? "&str" : "i32"
     }){\nunsafe{
   ${interface.toLowerCase()}_set_${toSnake(name)}(instance,  ${
-      returnsString ? "cstr(" : ""
+      returnsString ? "to_cstring(" : ""
     }value${returnsString ? ")" : ""});
         }\n}\n`
   );
@@ -456,7 +468,7 @@ fs.writeFileSync(
 fs.writeFileSync(
   "src/lib.rs",
   `
-  ${namespaces.map(x => `pub mod ${x.toLowerCase()};`).join("\n")}
+  ${namespaces.map(x => `pub mod ${x};`).join("\n")}
   pub mod date;
   pub mod math;
   pub mod customelement;

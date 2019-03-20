@@ -6,12 +6,12 @@ extern "C" {
 }
 
 pub fn get_namespace_uri(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_namespace_uri(instance)) }
+    unsafe { to_string(element_get_namespace_uri(instance)) }
 }
 
 pub fn set_namespace_uri(instance: i32, value: &str) {
     unsafe {
-        element_set_namespace_uri(instance, cstr(value));
+        element_set_namespace_uri(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -20,12 +20,12 @@ extern "C" {
 }
 
 pub fn get_prefix(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_prefix(instance)) }
+    unsafe { to_string(element_get_prefix(instance)) }
 }
 
 pub fn set_prefix(instance: i32, value: &str) {
     unsafe {
-        element_set_prefix(instance, cstr(value));
+        element_set_prefix(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -34,12 +34,12 @@ extern "C" {
 }
 
 pub fn get_local_name(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_local_name(instance)) }
+    unsafe { to_string(element_get_local_name(instance)) }
 }
 
 pub fn set_local_name(instance: i32, value: &str) {
     unsafe {
-        element_set_local_name(instance, cstr(value));
+        element_set_local_name(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -48,12 +48,12 @@ extern "C" {
 }
 
 pub fn get_tag_name(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_tag_name(instance)) }
+    unsafe { to_string(element_get_tag_name(instance)) }
 }
 
 pub fn set_tag_name(instance: i32, value: &str) {
     unsafe {
-        element_set_tag_name(instance, cstr(value));
+        element_set_tag_name(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -62,12 +62,12 @@ extern "C" {
 }
 
 pub fn get_id(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_id(instance)) }
+    unsafe { to_string(element_get_id(instance)) }
 }
 
 pub fn set_id(instance: i32, value: &str) {
     unsafe {
-        element_set_id(instance, cstr(value));
+        element_set_id(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -76,12 +76,12 @@ extern "C" {
 }
 
 pub fn get_class_name(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_class_name(instance)) }
+    unsafe { to_string(element_get_class_name(instance)) }
 }
 
 pub fn set_class_name(instance: i32, value: &str) {
     unsafe {
-        element_set_class_name(instance, cstr(value));
+        element_set_class_name(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -124,7 +124,7 @@ extern "C" {
 }
 
 pub fn get_attribute(instance: i32, name: &str) -> String {
-    unsafe { cstr_to_string(element_get_attribute(instance, cstr(name))) }
+    unsafe { to_string(element_get_attribute(instance, to_cstring(name))) }
 }
 extern "C" {
     fn element_get_attribute_n_s(instance: i32, namespace: CString, local_name: CString)
@@ -133,10 +133,10 @@ extern "C" {
 
 pub fn get_attribute_n_s(instance: i32, namespace: &str, local_name: &str) -> String {
     unsafe {
-        cstr_to_string(element_get_attribute_n_s(
+        to_string(element_get_attribute_n_s(
             instance,
-            cstr(namespace),
-            cstr(local_name),
+            to_cstring(namespace),
+            to_cstring(local_name),
         ))
     }
 }
@@ -145,49 +145,56 @@ extern "C" {
 }
 
 pub fn toggle_attribute(instance: i32, name: &str, force: i32) -> i32 {
-    unsafe { element_toggle_attribute(instance, cstr(name), force) }
+    unsafe { element_toggle_attribute(instance, to_cstring(name), force) }
 }
 extern "C" {
     fn element_set_attribute(instance: i32, name: CString, value: CString);
 }
 
 pub fn set_attribute(instance: i32, name: &str, value: &str) {
-    unsafe { element_set_attribute(instance, cstr(name), cstr(value)) }
+    unsafe { element_set_attribute(instance, to_cstring(name), to_cstring(value)) }
 }
 extern "C" {
     fn element_set_attribute_n_s(instance: i32, namespace: CString, name: CString, value: CString);
 }
 
 pub fn set_attribute_n_s(instance: i32, namespace: &str, name: &str, value: &str) {
-    unsafe { element_set_attribute_n_s(instance, cstr(namespace), cstr(name), cstr(value)) }
+    unsafe {
+        element_set_attribute_n_s(
+            instance,
+            to_cstring(namespace),
+            to_cstring(name),
+            to_cstring(value),
+        )
+    }
 }
 extern "C" {
     fn element_remove_attribute(instance: i32, name: CString);
 }
 
 pub fn remove_attribute(instance: i32, name: &str) {
-    unsafe { element_remove_attribute(instance, cstr(name)) }
+    unsafe { element_remove_attribute(instance, to_cstring(name)) }
 }
 extern "C" {
     fn element_remove_attribute_n_s(instance: i32, namespace: CString, local_name: CString);
 }
 
 pub fn remove_attribute_n_s(instance: i32, namespace: &str, local_name: &str) {
-    unsafe { element_remove_attribute_n_s(instance, cstr(namespace), cstr(local_name)) }
+    unsafe { element_remove_attribute_n_s(instance, to_cstring(namespace), to_cstring(local_name)) }
 }
 extern "C" {
     fn element_has_attribute(instance: i32, name: CString) -> i32;
 }
 
 pub fn has_attribute(instance: i32, name: &str) -> i32 {
-    unsafe { element_has_attribute(instance, cstr(name)) }
+    unsafe { element_has_attribute(instance, to_cstring(name)) }
 }
 extern "C" {
     fn element_has_attribute_n_s(instance: i32, namespace: CString, local_name: CString) -> i32;
 }
 
 pub fn has_attribute_n_s(instance: i32, namespace: &str, local_name: &str) -> i32 {
-    unsafe { element_has_attribute_n_s(instance, cstr(namespace), cstr(local_name)) }
+    unsafe { element_has_attribute_n_s(instance, to_cstring(namespace), to_cstring(local_name)) }
 }
 extern "C" {
     fn element_has_attributes(instance: i32) -> i32;
@@ -201,21 +208,21 @@ extern "C" {
 }
 
 pub fn closest(instance: i32, selector: &str) -> i32 {
-    unsafe { element_closest(instance, cstr(selector)) }
+    unsafe { element_closest(instance, to_cstring(selector)) }
 }
 extern "C" {
     fn element_matches(instance: i32, selector: CString) -> i32;
 }
 
 pub fn matches(instance: i32, selector: &str) -> i32 {
-    unsafe { element_matches(instance, cstr(selector)) }
+    unsafe { element_matches(instance, to_cstring(selector)) }
 }
 extern "C" {
     fn element_webkit_matches_selector(instance: i32, selector: CString) -> i32;
 }
 
 pub fn webkit_matches_selector(instance: i32, selector: &str) -> i32 {
-    unsafe { element_webkit_matches_selector(instance, cstr(selector)) }
+    unsafe { element_webkit_matches_selector(instance, to_cstring(selector)) }
 }
 extern "C" {
     fn element_get_elements_with_grid(instance: i32) -> i32;
@@ -229,14 +236,14 @@ extern "C" {
 }
 
 pub fn insert_adjacent_element(instance: i32, location: &str, element: i32) -> i32 {
-    unsafe { element_insert_adjacent_element(instance, cstr(location), element) }
+    unsafe { element_insert_adjacent_element(instance, to_cstring(location), element) }
 }
 extern "C" {
     fn element_insert_adjacent_text(instance: i32, location: CString, data: CString);
 }
 
 pub fn insert_adjacent_text(instance: i32, location: &str, data: &str) {
-    unsafe { element_insert_adjacent_text(instance, cstr(location), cstr(data)) }
+    unsafe { element_insert_adjacent_text(instance, to_cstring(location), to_cstring(data)) }
 }
 extern "C" {
     fn element_get_font_size_inflation(instance: i32) -> i32;
@@ -299,7 +306,7 @@ extern "C" {
 }
 
 pub fn get_attribute_node(instance: i32, name: &str) -> i32 {
-    unsafe { element_get_attribute_node(instance, cstr(name)) }
+    unsafe { element_get_attribute_node(instance, to_cstring(name)) }
 }
 extern "C" {
     fn element_set_attribute_node(instance: i32, new_attr: i32) -> i32;
@@ -324,7 +331,9 @@ extern "C" {
 }
 
 pub fn get_attribute_node_n_s(instance: i32, namespace_uri: &str, local_name: &str) -> i32 {
-    unsafe { element_get_attribute_node_n_s(instance, cstr(namespace_uri), cstr(local_name)) }
+    unsafe {
+        element_get_attribute_node_n_s(instance, to_cstring(namespace_uri), to_cstring(local_name))
+    }
 }
 extern "C" {
     fn element_set_attribute_node_n_s(instance: i32, new_attr: i32) -> i32;
@@ -535,12 +544,12 @@ extern "C" {
 }
 
 pub fn get_inner_html(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_inner_html(instance)) }
+    unsafe { to_string(element_get_inner_html(instance)) }
 }
 
 pub fn set_inner_html(instance: i32, value: &str) {
     unsafe {
-        element_set_inner_html(instance, cstr(value));
+        element_set_inner_html(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -549,12 +558,12 @@ extern "C" {
 }
 
 pub fn get_outer_html(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_outer_html(instance)) }
+    unsafe { to_string(element_get_outer_html(instance)) }
 }
 
 pub fn set_outer_html(instance: i32, value: &str) {
     unsafe {
-        element_set_outer_html(instance, cstr(value));
+        element_set_outer_html(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -562,21 +571,21 @@ extern "C" {
 }
 
 pub fn insert_adjacent_html(instance: i32, position: &str, text: &str) {
-    unsafe { element_insert_adjacent_html(instance, cstr(position), cstr(text)) }
+    unsafe { element_insert_adjacent_html(instance, to_cstring(position), to_cstring(text)) }
 }
 extern "C" {
     fn element_query_selector(instance: i32, selectors: CString) -> i32;
 }
 
 pub fn query_selector(instance: i32, selectors: &str) -> i32 {
-    unsafe { element_query_selector(instance, cstr(selectors)) }
+    unsafe { element_query_selector(instance, to_cstring(selectors)) }
 }
 extern "C" {
     fn element_query_selector_all(instance: i32, selectors: CString) -> i32;
 }
 
 pub fn query_selector_all(instance: i32, selectors: &str) -> i32 {
-    unsafe { element_query_selector_all(instance, cstr(selectors)) }
+    unsafe { element_query_selector_all(instance, to_cstring(selectors)) }
 }
 extern "C" {
     fn element_get_shadow_root(instance: i32) -> i32;
@@ -626,12 +635,12 @@ extern "C" {
 }
 
 pub fn get_slot(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_slot(instance)) }
+    unsafe { to_string(element_get_slot(instance)) }
 }
 
 pub fn set_slot(instance: i32, value: &str) {
     unsafe {
-        element_set_slot(instance, cstr(value));
+        element_set_slot(instance, to_cstring(value));
     }
 }
 extern "C" {

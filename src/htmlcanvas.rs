@@ -33,7 +33,7 @@ extern "C" {
 }
 
 pub fn get_context(instance: i32, context_id: &str) -> i32 {
-    unsafe { htmlcanvaselement_get_context(instance, cstr(context_id)) }
+    unsafe { htmlcanvaselement_get_context(instance, to_cstring(context_id)) }
 }
 extern "C" {
     fn htmlcanvaselement_to_data_url(
@@ -45,9 +45,9 @@ extern "C" {
 
 pub fn to_data_url(instance: i32, data_type: &str, encoder_options: i32) -> String {
     unsafe {
-        cstr_to_string(htmlcanvaselement_to_data_url(
+        to_string(htmlcanvaselement_to_data_url(
             instance,
-            cstr(data_type),
+            to_cstring(data_type),
             encoder_options,
         ))
     }
@@ -62,7 +62,7 @@ extern "C" {
 }
 
 pub fn to_blob(instance: i32, callback: i32, blob_type: &str, encoder_options: i32) {
-    unsafe { htmlcanvaselement_to_blob(instance, callback, cstr(blob_type), encoder_options) }
+    unsafe { htmlcanvaselement_to_blob(instance, callback, to_cstring(blob_type), encoder_options) }
 }
 extern "C" {
     fn htmlcanvaselement_transfer_control_to_offscreen(instance: i32) -> i32;

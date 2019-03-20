@@ -38,7 +38,16 @@ pub fn draw_window(
     flags: i32,
 ) {
     unsafe {
-        canvasrenderingcontext2d_draw_window(instance, window, x, y, w, h, cstr(bg_color), flags)
+        canvasrenderingcontext2d_draw_window(
+            instance,
+            window,
+            x,
+            y,
+            w,
+            h,
+            to_cstring(bg_color),
+            flags,
+        )
     }
 }
 extern "C" {
@@ -141,7 +150,7 @@ extern "C" {
 
 pub fn get_global_composite_operation(instance: i32) -> String {
     unsafe {
-        cstr_to_string(canvasrenderingcontext2d_get_global_composite_operation(
+        to_string(canvasrenderingcontext2d_get_global_composite_operation(
             instance,
         ))
     }
@@ -149,7 +158,7 @@ pub fn get_global_composite_operation(instance: i32) -> String {
 
 pub fn set_global_composite_operation(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_global_composite_operation(instance, cstr(value));
+        canvasrenderingcontext2d_set_global_composite_operation(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -172,12 +181,12 @@ extern "C" {
 }
 
 pub fn get_stroke_style(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_stroke_style(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_stroke_style(instance)) }
 }
 
 pub fn set_stroke_style(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_stroke_style(instance, cstr(value));
+        canvasrenderingcontext2d_set_stroke_style(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -186,12 +195,12 @@ extern "C" {
 }
 
 pub fn get_fill_style(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_fill_style(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_fill_style(instance)) }
 }
 
 pub fn set_fill_style(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_fill_style(instance, cstr(value));
+        canvasrenderingcontext2d_set_fill_style(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -239,7 +248,7 @@ extern "C" {
 }
 
 pub fn create_pattern(instance: i32, image: i32, repetition: &str) -> i32 {
-    unsafe { canvasrenderingcontext2d_create_pattern(instance, image, cstr(repetition)) }
+    unsafe { canvasrenderingcontext2d_create_pattern(instance, image, to_cstring(repetition)) }
 }
 extern "C" {
     fn canvasrenderingcontext2d_get_shadow_offset_x(instance: i32) -> i32;
@@ -289,12 +298,12 @@ extern "C" {
 }
 
 pub fn get_shadow_color(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_shadow_color(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_shadow_color(instance)) }
 }
 
 pub fn set_shadow_color(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_shadow_color(instance, cstr(value));
+        canvasrenderingcontext2d_set_shadow_color(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -303,12 +312,12 @@ extern "C" {
 }
 
 pub fn get_filter(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_filter(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_filter(instance)) }
 }
 
 pub fn set_filter(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_filter(instance, cstr(value));
+        canvasrenderingcontext2d_set_filter(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -406,7 +415,7 @@ extern "C" {
 }
 
 pub fn fill_text(instance: i32, text: &str, x: i32, y: i32, max_width: i32) {
-    unsafe { canvasrenderingcontext2d_fill_text(instance, cstr(text), x, y, max_width) }
+    unsafe { canvasrenderingcontext2d_fill_text(instance, to_cstring(text), x, y, max_width) }
 }
 extern "C" {
     fn canvasrenderingcontext2d_stroke_text(
@@ -419,14 +428,14 @@ extern "C" {
 }
 
 pub fn stroke_text(instance: i32, text: &str, x: i32, y: i32, max_width: i32) {
-    unsafe { canvasrenderingcontext2d_stroke_text(instance, cstr(text), x, y, max_width) }
+    unsafe { canvasrenderingcontext2d_stroke_text(instance, to_cstring(text), x, y, max_width) }
 }
 extern "C" {
     fn canvasrenderingcontext2d_measure_text(instance: i32, text: CString) -> i32;
 }
 
 pub fn measure_text(instance: i32, text: &str) -> i32 {
-    unsafe { canvasrenderingcontext2d_measure_text(instance, cstr(text)) }
+    unsafe { canvasrenderingcontext2d_measure_text(instance, to_cstring(text)) }
 }
 extern "C" {
     fn canvasrenderingcontext2d_draw_image(
@@ -533,12 +542,12 @@ extern "C" {
 }
 
 pub fn get_line_cap(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_line_cap(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_line_cap(instance)) }
 }
 
 pub fn set_line_cap(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_line_cap(instance, cstr(value));
+        canvasrenderingcontext2d_set_line_cap(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -547,12 +556,12 @@ extern "C" {
 }
 
 pub fn get_line_join(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_line_join(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_line_join(instance)) }
 }
 
 pub fn set_line_join(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_line_join(instance, cstr(value));
+        canvasrenderingcontext2d_set_line_join(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -603,12 +612,12 @@ extern "C" {
 }
 
 pub fn get_font(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_font(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_font(instance)) }
 }
 
 pub fn set_font(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_font(instance, cstr(value));
+        canvasrenderingcontext2d_set_font(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -617,12 +626,12 @@ extern "C" {
 }
 
 pub fn get_text_align(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_text_align(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_text_align(instance)) }
 }
 
 pub fn set_text_align(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_text_align(instance, cstr(value));
+        canvasrenderingcontext2d_set_text_align(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -631,12 +640,12 @@ extern "C" {
 }
 
 pub fn get_text_baseline(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_text_baseline(instance)) }
+    unsafe { to_string(canvasrenderingcontext2d_get_text_baseline(instance)) }
 }
 
 pub fn set_text_baseline(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_text_baseline(instance, cstr(value));
+        canvasrenderingcontext2d_set_text_baseline(instance, to_cstring(value));
     }
 }
 extern "C" {
@@ -793,7 +802,7 @@ extern "C" {
 }
 
 pub fn remove_hit_region(instance: i32, id: &str) {
-    unsafe { canvasrenderingcontext2d_remove_hit_region(instance, cstr(id)) }
+    unsafe { canvasrenderingcontext2d_remove_hit_region(instance, to_cstring(id)) }
 }
 extern "C" {
     fn canvasrenderingcontext2d_clear_hit_regions(instance: i32);

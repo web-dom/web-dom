@@ -11,12 +11,12 @@ pub fn attach_shadow(element: Element) -> Element {
 
 pub fn define(tag: &str) {
     unsafe {
-        customelement_define(cstr(tag));
+        customelement_define(to_cstring(tag));
     }
 }
 
 pub fn define_with_attributes(tag: &str, attributes: &str) {
     unsafe {
-        customelement_define_with_attributes(cstr(tag), cstr(attributes));
+        customelement_define_with_attributes(to_cstring(tag), to_cstring(attributes));
     }
 }
