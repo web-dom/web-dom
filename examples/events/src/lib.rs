@@ -1,7 +1,7 @@
 use web_dom::*;
 
 #[no_mangle]
-pub fn callback(_listener:i32,_event:i32) -> () {
+pub fn callback(_listener:EventListener,_event:Event) -> () {
     let input = document::query_selector(document(),"input");
     let msg = htmlinputelement::get_value(input);
     window::alert(window(),&msg);

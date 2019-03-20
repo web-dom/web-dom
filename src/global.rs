@@ -3,6 +3,7 @@ use std::ffi::CStr;
 pub type CString = i32;
 pub type Element = i32;
 pub type EventListener = i32;
+pub type Event = i32;
 
 pub fn cstr(s: &str) -> CString {
     std::ffi::CString::new(s).unwrap().into_raw() as i32
