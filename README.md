@@ -9,6 +9,8 @@ DOM access for web assembly
 
 Documentation: https://docs.rs/web-dom/
 
+Want to create web components? Check out https://github.com/web-dom/webcomponent
+
 ```rust
 use web_dom::*;
 
