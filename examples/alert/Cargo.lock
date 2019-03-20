@@ -2,10 +2,10 @@
 name = "example"
 version = "0.0.0"
 dependencies = [
- "web-dom 0.0.1",
+ "web-dom 0.0.2",
 ]
 
 [[package]]
 name = "web-dom"
-version = "0.0.1"
+version = "0.0.2"
 

@@ -20,7 +20,7 @@ extern "C" {
     fn global_get_window() -> Element;
     fn global_release(handle: i32);
     fn global_create_event_listener() -> EventListener;
-    fn global_get_property(element: Element, property_name: CString) -> CString;
+    fn global_get_property(element: Element, property_name: CString) -> i32;
 }
 
 pub fn debugger() {
@@ -45,8 +45,8 @@ pub fn create_event_listener() -> EventListener {
     unsafe { global_create_event_listener() }
 }
 
-pub fn get_property(element: Element, property_name: &str) -> String {
-    unsafe { cstr_to_string(global_get_property(element, cstr(property_name))) }
+pub fn get_property(element: Element, property_name: &str) -> i32 {
+    unsafe { global_get_property(element, cstr(property_name)) }
 }
 
 #[no_mangle]
