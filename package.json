@@ -1,0 +1,33 @@
+{
+  "name": "web-dom",
+  "version": "0.0.0",
+  "description": "A web component for making web assembly modules that can interat with dom easily",
+  "main": "web-dom.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-dom/web-dom.git"
+  },
+  "keywords": [
+    "wasm",
+    "webidl"
+  ],
+  "author": "Richard Anaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/web-dom/web-dom/issues"
+  },
+  "homepage": "https://github.com/web-dom/web-dom#readme",
+  "devDependencies": {
+    "babel-minify": "^0.5.0",
+    "poetry-compiler": "^0.48.0",
+    "prettier": "^1.16.1",
+    "rollup": "^1.1.2",
+    "webidl2": "^17.0.1"
+  }
+}

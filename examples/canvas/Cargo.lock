@@ -1,0 +1,11 @@
+[[package]]
+name = "example"
+version = "0.0.0"
+dependencies = [
+ "web-dom 0.0.0",
+]
+
+[[package]]
+name = "web-dom"
+version = "0.0.0"
+
