@@ -7,6 +7,8 @@ DOM access for web assembly
 * api generated from webidl
 * technology agnostic
 
+Documentation: https://docs.rs/web-dom/
+
 ```toml
 [package]
 name = "helloworld"
