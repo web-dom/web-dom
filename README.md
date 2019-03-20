@@ -10,7 +10,7 @@ DOM access for web assembly
 ```toml
 [package]
 name = "helloworld"
-version = "0.0.0"
+version = "0.0.1"
 edition = "2018"
 
 [lib]
