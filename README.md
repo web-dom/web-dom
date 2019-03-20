@@ -17,7 +17,7 @@ edition = "2018"
 crate-type =["cdylib"]
 
 [dependencies]
-web-dom = "0.0.1"
+web-dom = "0.0.3"
 ```
 ```rust
 use web_dom::*;
