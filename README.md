@@ -4,7 +4,7 @@ DOM access for web assembly
 * no magic
 * no abstractions
 * no code generation
-* simple api generated from webidl
+* api generated from webidl
 * technology agnostic
 
 ```toml
