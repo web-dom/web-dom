@@ -8,7 +8,6 @@ examples:
 	cd examples/alert && make
 	cd examples/canvas && make
 	cd examples/events && make
-	#cd examples/x-clock && make
 setup:
 	npm install
 generate_webidl:

@@ -1,4 +1,5 @@
 use std::ffi::CStr;
+use std::os::raw::c_void;
 
 pub type CString = i32;
 pub type Element = i32;
@@ -49,6 +50,9 @@ pub fn get_property(element: Element, property_name: &str) -> String {
 }
 
 #[no_mangle]
-pub fn malloc(_len: i32) -> i32 {
-    return 0;
+pub fn malloc(size: i32) -> *mut c_void {
+    let mut buf = Vec::with_capacity(size as usize);
+    let ptr = buf.as_mut_ptr();
+    std::mem::forget(buf);
+    return ptr as *mut c_void;
 }
