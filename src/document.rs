@@ -15,31 +15,31 @@ pub fn set_implementation(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn document_get_u_r_l(instance: i32) -> CString;
-    fn document_set_u_r_l(instance: i32, value: i32);
+    fn document_get_url(instance: i32) -> CString;
+    fn document_set_url(instance: i32, value: i32);
 }
 
-pub fn get_u_r_l(instance: i32) -> String {
-    unsafe { cstr_to_string(document_get_u_r_l(instance)) }
+pub fn get_url(instance: i32) -> String {
+    unsafe { cstr_to_string(document_get_url(instance)) }
 }
 
-pub fn set_u_r_l(instance: i32, value: i32) {
+pub fn set_url(instance: i32, value: i32) {
     unsafe {
-        document_set_u_r_l(instance, value);
+        document_set_url(instance, value);
     }
 }
 extern "C" {
-    fn document_get_document_u_r_i(instance: i32) -> CString;
-    fn document_set_document_u_r_i(instance: i32, value: i32);
+    fn document_get_document_uri(instance: i32) -> CString;
+    fn document_set_document_uri(instance: i32, value: i32);
 }
 
-pub fn get_document_u_r_i(instance: i32) -> String {
-    unsafe { cstr_to_string(document_get_document_u_r_i(instance)) }
+pub fn get_document_uri(instance: i32) -> String {
+    unsafe { cstr_to_string(document_get_document_uri(instance)) }
 }
 
-pub fn set_document_u_r_i(instance: i32, value: i32) {
+pub fn set_document_uri(instance: i32, value: i32) {
     unsafe {
-        document_set_document_u_r_i(instance, value);
+        document_set_document_uri(instance, value);
     }
 }
 extern "C" {
@@ -596,17 +596,17 @@ pub fn release_capture(instance: i32) {
     unsafe { document_release_capture(instance) }
 }
 extern "C" {
-    fn document_get_document_u_r_i_object(instance: i32) -> i32;
-    fn document_set_document_u_r_i_object(instance: i32, value: i32);
+    fn document_get_document_uri_object(instance: i32) -> i32;
+    fn document_set_document_uri_object(instance: i32, value: i32);
 }
 
-pub fn get_document_u_r_i_object(instance: i32) -> i32 {
-    unsafe { document_get_document_u_r_i_object(instance) }
+pub fn get_document_uri_object(instance: i32) -> i32 {
+    unsafe { document_get_document_uri_object(instance) }
 }
 
-pub fn set_document_u_r_i_object(instance: i32, value: i32) {
+pub fn set_document_uri_object(instance: i32, value: i32) {
     unsafe {
-        document_set_document_u_r_i_object(instance, value);
+        document_set_document_uri_object(instance, value);
     }
 }
 extern "C" {

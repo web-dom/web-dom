@@ -10,6 +10,9 @@ function toInterfaceName(n) {
 }
 
 function toSnake(s) {
+  s = s.replace("HTML", "Html");
+  s = s.replace("URL", "Url");
+  s = s.replace("URI", "Uri");
   return s
     .replace(/(?:^|\.?)([A-Z])/g, function(x, y) {
       return "_" + y.toLowerCase();

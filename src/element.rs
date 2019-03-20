@@ -1,17 +1,17 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn element_get_namespace_u_r_i(instance: i32) -> CString;
-    fn element_set_namespace_u_r_i(instance: i32, value: i32);
+    fn element_get_namespace_uri(instance: i32) -> CString;
+    fn element_set_namespace_uri(instance: i32, value: i32);
 }
 
-pub fn get_namespace_u_r_i(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_namespace_u_r_i(instance)) }
+pub fn get_namespace_uri(instance: i32) -> String {
+    unsafe { cstr_to_string(element_get_namespace_uri(instance)) }
 }
 
-pub fn set_namespace_u_r_i(instance: i32, value: i32) {
+pub fn set_namespace_uri(instance: i32, value: i32) {
     unsafe {
-        element_set_namespace_u_r_i(instance, value);
+        element_set_namespace_uri(instance, value);
     }
 }
 extern "C" {
@@ -318,13 +318,13 @@ pub fn remove_attribute_node(instance: i32, old_attr: i32) -> i32 {
 extern "C" {
     fn element_get_attribute_node_n_s(
         instance: i32,
-        namespace_u_r_i: CString,
+        namespace_uri: CString,
         local_name: CString,
     ) -> i32;
 }
 
-pub fn get_attribute_node_n_s(instance: i32, namespace_u_r_i: &str, local_name: &str) -> i32 {
-    unsafe { element_get_attribute_node_n_s(instance, cstr(namespace_u_r_i), cstr(local_name)) }
+pub fn get_attribute_node_n_s(instance: i32, namespace_uri: &str, local_name: &str) -> i32 {
+    unsafe { element_get_attribute_node_n_s(instance, cstr(namespace_uri), cstr(local_name)) }
 }
 extern "C" {
     fn element_set_attribute_node_n_s(instance: i32, new_attr: i32) -> i32;
@@ -530,39 +530,39 @@ pub fn set_client_height(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn element_get_inner_h_t_m_l(instance: i32) -> CString;
-    fn element_set_inner_h_t_m_l(instance: i32, value: i32);
+    fn element_get_inner_html(instance: i32) -> CString;
+    fn element_set_inner_html(instance: i32, value: i32);
 }
 
-pub fn get_inner_h_t_m_l(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_inner_h_t_m_l(instance)) }
+pub fn get_inner_html(instance: i32) -> String {
+    unsafe { cstr_to_string(element_get_inner_html(instance)) }
 }
 
-pub fn set_inner_h_t_m_l(instance: i32, value: i32) {
+pub fn set_inner_html(instance: i32, value: i32) {
     unsafe {
-        element_set_inner_h_t_m_l(instance, value);
+        element_set_inner_html(instance, value);
     }
 }
 extern "C" {
-    fn element_get_outer_h_t_m_l(instance: i32) -> CString;
-    fn element_set_outer_h_t_m_l(instance: i32, value: i32);
+    fn element_get_outer_html(instance: i32) -> CString;
+    fn element_set_outer_html(instance: i32, value: i32);
 }
 
-pub fn get_outer_h_t_m_l(instance: i32) -> String {
-    unsafe { cstr_to_string(element_get_outer_h_t_m_l(instance)) }
+pub fn get_outer_html(instance: i32) -> String {
+    unsafe { cstr_to_string(element_get_outer_html(instance)) }
 }
 
-pub fn set_outer_h_t_m_l(instance: i32, value: i32) {
+pub fn set_outer_html(instance: i32, value: i32) {
     unsafe {
-        element_set_outer_h_t_m_l(instance, value);
+        element_set_outer_html(instance, value);
     }
 }
 extern "C" {
-    fn element_insert_adjacent_h_t_m_l(instance: i32, position: CString, text: CString);
+    fn element_insert_adjacent_html(instance: i32, position: CString, text: CString);
 }
 
-pub fn insert_adjacent_h_t_m_l(instance: i32, position: &str, text: &str) {
-    unsafe { element_insert_adjacent_h_t_m_l(instance, cstr(position), cstr(text)) }
+pub fn insert_adjacent_html(instance: i32, position: &str, text: &str) {
+    unsafe { element_insert_adjacent_html(instance, cstr(position), cstr(text)) }
 }
 extern "C" {
     fn element_query_selector(instance: i32, selectors: CString) -> i32;

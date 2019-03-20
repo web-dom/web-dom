@@ -15,6 +15,10 @@ pub fn cstr_to_string(c: CString) -> String {
     s.to_str().unwrap().to_owned()
 }
 
+pub fn to_string(p: i32) -> String {
+    cstr_to_string(p)
+}
+
 extern "C" {
     fn global_debugger();
     fn global_get_window() -> Element;

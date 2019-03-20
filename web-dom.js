@@ -1228,22 +1228,22 @@
         _instance.implementation = ALLOCATOR.g(handle);
       },
 
-      document_get_u_r_l: function(instance) {
+      document_get_url: function(instance) {
         let _instance = ALLOCATOR.g(instance);
         return this.ms(_instance.URL);
       },
 
-      document_set_u_r_l: function(instance, str) {
+      document_set_url: function(instance, str) {
         let _instance = ALLOCATOR.g(instance);
         _instance.URL = this.s(str);
       },
 
-      document_get_document_u_r_i: function(instance) {
+      document_get_document_uri: function(instance) {
         let _instance = ALLOCATOR.g(instance);
         return this.ms(_instance.documentURI);
       },
 
-      document_set_document_u_r_i: function(instance, str) {
+      document_set_document_uri: function(instance, str) {
         let _instance = ALLOCATOR.g(instance);
         _instance.documentURI = this.s(str);
       },
@@ -1684,12 +1684,12 @@
         _instance.releaseCapture();
       },
 
-      document_get_document_u_r_i_object: function(instance) {
+      document_get_document_uri_object: function(instance) {
         let _instance = ALLOCATOR.g(instance);
         return ALLOCATOR.a(_instance.documentURIObject);
       },
 
-      document_set_document_u_r_i_object: function(instance, handle) {
+      document_set_document_uri_object: function(instance, handle) {
         let _instance = ALLOCATOR.g(instance);
         _instance.documentURIObject = ALLOCATOR.g(handle);
       },
@@ -1986,12 +1986,12 @@
         _instance.documentFlashClassification = ALLOCATOR.g(handle);
       },
 
-      element_get_namespace_u_r_i: function(instance) {
+      element_get_namespace_uri: function(instance) {
         let _instance = ALLOCATOR.g(instance);
         return this.ms(_instance.namespaceURI);
       },
 
-      element_set_namespace_u_r_i: function(instance, str) {
+      element_set_namespace_uri: function(instance, str) {
         let _instance = ALLOCATOR.g(instance);
         _instance.namespaceURI = this.s(str);
       },
@@ -2239,14 +2239,14 @@
 
       element_get_attribute_node_n_s: function(
         instance,
-        namespace_u_r_i,
+        namespace_uri,
         local_name
       ) {
         let _instance = ALLOCATOR.g(instance);
-        let _namespace_u_r_i = this.s(namespace_u_r_i);
+        let _namespace_uri = this.s(namespace_uri);
         let _local_name = this.s(local_name);
         return ALLOCATOR.a(
-          _instance.getAttributeNodeNS(_namespace_u_r_i, _local_name)
+          _instance.getAttributeNodeNS(_namespace_uri, _local_name)
         );
       },
 
@@ -2406,27 +2406,27 @@
         _instance.clientHeight = val;
       },
 
-      element_get_inner_h_t_m_l: function(instance) {
+      element_get_inner_html: function(instance) {
         let _instance = ALLOCATOR.g(instance);
         return this.ms(_instance.innerHTML);
       },
 
-      element_set_inner_h_t_m_l: function(instance, str) {
+      element_set_inner_html: function(instance, str) {
         let _instance = ALLOCATOR.g(instance);
         _instance.innerHTML = this.s(str);
       },
 
-      element_get_outer_h_t_m_l: function(instance) {
+      element_get_outer_html: function(instance) {
         let _instance = ALLOCATOR.g(instance);
         return this.ms(_instance.outerHTML);
       },
 
-      element_set_outer_h_t_m_l: function(instance, str) {
+      element_set_outer_html: function(instance, str) {
         let _instance = ALLOCATOR.g(instance);
         _instance.outerHTML = this.s(str);
       },
 
-      element_insert_adjacent_h_t_m_l: function(instance, position, text) {
+      element_insert_adjacent_html: function(instance, position, text) {
         let _instance = ALLOCATOR.g(instance);
         let _position = this.s(position);
         let _text = this.s(text);
@@ -2545,7 +2545,7 @@
         return ALLOCATOR.a(_instance.getContext(_context_id));
       },
 
-      htmlcanvaselement_to_data_u_r_l: function(
+      htmlcanvaselement_to_data_url: function(
         instance,
         data_type,
         encoder_options

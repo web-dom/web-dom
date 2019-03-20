@@ -36,16 +36,16 @@ pub fn get_context(instance: i32, context_id: &str) -> i32 {
     unsafe { htmlcanvaselement_get_context(instance, cstr(context_id)) }
 }
 extern "C" {
-    fn htmlcanvaselement_to_data_u_r_l(
+    fn htmlcanvaselement_to_data_url(
         instance: i32,
         data_type: CString,
         encoder_options: i32,
     ) -> CString;
 }
 
-pub fn to_data_u_r_l(instance: i32, data_type: &str, encoder_options: i32) -> String {
+pub fn to_data_url(instance: i32, data_type: &str, encoder_options: i32) -> String {
     unsafe {
-        cstr_to_string(htmlcanvaselement_to_data_u_r_l(
+        cstr_to_string(htmlcanvaselement_to_data_url(
             instance,
             cstr(data_type),
             encoder_options,
