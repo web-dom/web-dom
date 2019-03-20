@@ -1,10 +1,10 @@
 # web-dom
 
 DOM access for web assembly
-* no magical
+* no magic
 * no abstractions
 * no code generation
-* simple api generated from webidl
+* api generated from webidl
 * technology agnostic
 
 ```toml
