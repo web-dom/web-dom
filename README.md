@@ -7,6 +7,10 @@ DOM access for web assembly
 * api generated from webidl
 * technology agnostic
 
+```toml
+webcomponent = "0.0.5"
+```
+
 Documentation: https://docs.rs/web-dom/
 
 Want to create web components? Check out https://github.com/web-dom/webcomponent
