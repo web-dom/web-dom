@@ -121,27 +121,27 @@ pub fn reset_transform(instance: i32) {
     unsafe { canvasrenderingcontext2d_reset_transform(instance) }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_globalAlpha(instance: i32) -> i32;
-    fn canvasrenderingcontext2d_set_globalAlpha(instance: i32, value: i32);
+    fn canvasrenderingcontext2d_get_global_alpha(instance: i32) -> i32;
+    fn canvasrenderingcontext2d_set_global_alpha(instance: i32, value: i32);
 }
 
 pub fn get_global_alpha(instance: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_get_globalAlpha(instance) }
+    unsafe { canvasrenderingcontext2d_get_global_alpha(instance) }
 }
 
 pub fn set_global_alpha(instance: i32, value: i32) {
     unsafe {
-        canvasrenderingcontext2d_set_globalAlpha(instance, value);
+        canvasrenderingcontext2d_set_global_alpha(instance, value);
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_globalCompositeOperation(instance: i32) -> CString;
-    fn canvasrenderingcontext2d_set_globalCompositeOperation(instance: i32, value: CString);
+    fn canvasrenderingcontext2d_get_global_composite_operation(instance: i32) -> CString;
+    fn canvasrenderingcontext2d_set_global_composite_operation(instance: i32, value: CString);
 }
 
 pub fn get_global_composite_operation(instance: i32) -> String {
     unsafe {
-        cstr_to_string(canvasrenderingcontext2d_get_globalCompositeOperation(
+        cstr_to_string(canvasrenderingcontext2d_get_global_composite_operation(
             instance,
         ))
     }
@@ -149,49 +149,49 @@ pub fn get_global_composite_operation(instance: i32) -> String {
 
 pub fn set_global_composite_operation(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_globalCompositeOperation(instance, cstr(value));
+        canvasrenderingcontext2d_set_global_composite_operation(instance, cstr(value));
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_imageSmoothingEnabled(instance: i32) -> i32;
-    fn canvasrenderingcontext2d_set_imageSmoothingEnabled(instance: i32, value: i32);
+    fn canvasrenderingcontext2d_get_image_smoothing_enabled(instance: i32) -> i32;
+    fn canvasrenderingcontext2d_set_image_smoothing_enabled(instance: i32, value: i32);
 }
 
 pub fn get_image_smoothing_enabled(instance: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_get_imageSmoothingEnabled(instance) }
+    unsafe { canvasrenderingcontext2d_get_image_smoothing_enabled(instance) }
 }
 
 pub fn set_image_smoothing_enabled(instance: i32, value: i32) {
     unsafe {
-        canvasrenderingcontext2d_set_imageSmoothingEnabled(instance, value);
+        canvasrenderingcontext2d_set_image_smoothing_enabled(instance, value);
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_strokeStyle(instance: i32) -> CString;
-    fn canvasrenderingcontext2d_set_strokeStyle(instance: i32, value: CString);
+    fn canvasrenderingcontext2d_get_stroke_style(instance: i32) -> CString;
+    fn canvasrenderingcontext2d_set_stroke_style(instance: i32, value: CString);
 }
 
 pub fn get_stroke_style(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_strokeStyle(instance)) }
+    unsafe { cstr_to_string(canvasrenderingcontext2d_get_stroke_style(instance)) }
 }
 
 pub fn set_stroke_style(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_strokeStyle(instance, cstr(value));
+        canvasrenderingcontext2d_set_stroke_style(instance, cstr(value));
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_fillStyle(instance: i32) -> CString;
-    fn canvasrenderingcontext2d_set_fillStyle(instance: i32, value: CString);
+    fn canvasrenderingcontext2d_get_fill_style(instance: i32) -> CString;
+    fn canvasrenderingcontext2d_set_fill_style(instance: i32, value: CString);
 }
 
 pub fn get_fill_style(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_fillStyle(instance)) }
+    unsafe { cstr_to_string(canvasrenderingcontext2d_get_fill_style(instance)) }
 }
 
 pub fn set_fill_style(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_fillStyle(instance, cstr(value));
+        canvasrenderingcontext2d_set_fill_style(instance, cstr(value));
     }
 }
 extern "C" {
@@ -242,59 +242,59 @@ pub fn create_pattern(instance: i32, image: i32, repetition: &str) -> i32 {
     unsafe { canvasrenderingcontext2d_create_pattern(instance, image, cstr(repetition)) }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_shadowOffsetX(instance: i32) -> i32;
-    fn canvasrenderingcontext2d_set_shadowOffsetX(instance: i32, value: i32);
+    fn canvasrenderingcontext2d_get_shadow_offset_x(instance: i32) -> i32;
+    fn canvasrenderingcontext2d_set_shadow_offset_x(instance: i32, value: i32);
 }
 
 pub fn get_shadow_offset_x(instance: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_get_shadowOffsetX(instance) }
+    unsafe { canvasrenderingcontext2d_get_shadow_offset_x(instance) }
 }
 
 pub fn set_shadow_offset_x(instance: i32, value: i32) {
     unsafe {
-        canvasrenderingcontext2d_set_shadowOffsetX(instance, value);
+        canvasrenderingcontext2d_set_shadow_offset_x(instance, value);
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_shadowOffsetY(instance: i32) -> i32;
-    fn canvasrenderingcontext2d_set_shadowOffsetY(instance: i32, value: i32);
+    fn canvasrenderingcontext2d_get_shadow_offset_y(instance: i32) -> i32;
+    fn canvasrenderingcontext2d_set_shadow_offset_y(instance: i32, value: i32);
 }
 
 pub fn get_shadow_offset_y(instance: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_get_shadowOffsetY(instance) }
+    unsafe { canvasrenderingcontext2d_get_shadow_offset_y(instance) }
 }
 
 pub fn set_shadow_offset_y(instance: i32, value: i32) {
     unsafe {
-        canvasrenderingcontext2d_set_shadowOffsetY(instance, value);
+        canvasrenderingcontext2d_set_shadow_offset_y(instance, value);
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_shadowBlur(instance: i32) -> i32;
-    fn canvasrenderingcontext2d_set_shadowBlur(instance: i32, value: i32);
+    fn canvasrenderingcontext2d_get_shadow_blur(instance: i32) -> i32;
+    fn canvasrenderingcontext2d_set_shadow_blur(instance: i32, value: i32);
 }
 
 pub fn get_shadow_blur(instance: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_get_shadowBlur(instance) }
+    unsafe { canvasrenderingcontext2d_get_shadow_blur(instance) }
 }
 
 pub fn set_shadow_blur(instance: i32, value: i32) {
     unsafe {
-        canvasrenderingcontext2d_set_shadowBlur(instance, value);
+        canvasrenderingcontext2d_set_shadow_blur(instance, value);
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_shadowColor(instance: i32) -> CString;
-    fn canvasrenderingcontext2d_set_shadowColor(instance: i32, value: CString);
+    fn canvasrenderingcontext2d_get_shadow_color(instance: i32) -> CString;
+    fn canvasrenderingcontext2d_set_shadow_color(instance: i32, value: CString);
 }
 
 pub fn get_shadow_color(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_shadowColor(instance)) }
+    unsafe { cstr_to_string(canvasrenderingcontext2d_get_shadow_color(instance)) }
 }
 
 pub fn set_shadow_color(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_shadowColor(instance, cstr(value));
+        canvasrenderingcontext2d_set_shadow_color(instance, cstr(value));
     }
 }
 extern "C" {
@@ -514,59 +514,59 @@ pub fn put_image_data(
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_lineWidth(instance: i32) -> i32;
-    fn canvasrenderingcontext2d_set_lineWidth(instance: i32, value: i32);
+    fn canvasrenderingcontext2d_get_line_width(instance: i32) -> i32;
+    fn canvasrenderingcontext2d_set_line_width(instance: i32, value: i32);
 }
 
 pub fn get_line_width(instance: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_get_lineWidth(instance) }
+    unsafe { canvasrenderingcontext2d_get_line_width(instance) }
 }
 
 pub fn set_line_width(instance: i32, value: i32) {
     unsafe {
-        canvasrenderingcontext2d_set_lineWidth(instance, value);
+        canvasrenderingcontext2d_set_line_width(instance, value);
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_lineCap(instance: i32) -> CString;
-    fn canvasrenderingcontext2d_set_lineCap(instance: i32, value: CString);
+    fn canvasrenderingcontext2d_get_line_cap(instance: i32) -> CString;
+    fn canvasrenderingcontext2d_set_line_cap(instance: i32, value: CString);
 }
 
 pub fn get_line_cap(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_lineCap(instance)) }
+    unsafe { cstr_to_string(canvasrenderingcontext2d_get_line_cap(instance)) }
 }
 
 pub fn set_line_cap(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_lineCap(instance, cstr(value));
+        canvasrenderingcontext2d_set_line_cap(instance, cstr(value));
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_lineJoin(instance: i32) -> CString;
-    fn canvasrenderingcontext2d_set_lineJoin(instance: i32, value: CString);
+    fn canvasrenderingcontext2d_get_line_join(instance: i32) -> CString;
+    fn canvasrenderingcontext2d_set_line_join(instance: i32, value: CString);
 }
 
 pub fn get_line_join(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_lineJoin(instance)) }
+    unsafe { cstr_to_string(canvasrenderingcontext2d_get_line_join(instance)) }
 }
 
 pub fn set_line_join(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_lineJoin(instance, cstr(value));
+        canvasrenderingcontext2d_set_line_join(instance, cstr(value));
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_miterLimit(instance: i32) -> i32;
-    fn canvasrenderingcontext2d_set_miterLimit(instance: i32, value: i32);
+    fn canvasrenderingcontext2d_get_miter_limit(instance: i32) -> i32;
+    fn canvasrenderingcontext2d_set_miter_limit(instance: i32, value: i32);
 }
 
 pub fn get_miter_limit(instance: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_get_miterLimit(instance) }
+    unsafe { canvasrenderingcontext2d_get_miter_limit(instance) }
 }
 
 pub fn set_miter_limit(instance: i32, value: i32) {
     unsafe {
-        canvasrenderingcontext2d_set_miterLimit(instance, value);
+        canvasrenderingcontext2d_set_miter_limit(instance, value);
     }
 }
 extern "C" {
@@ -584,17 +584,17 @@ pub fn get_line_dash(instance: i32) -> i32 {
     unsafe { canvasrenderingcontext2d_get_line_dash(instance) }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_lineDashOffset(instance: i32) -> i32;
-    fn canvasrenderingcontext2d_set_lineDashOffset(instance: i32, value: i32);
+    fn canvasrenderingcontext2d_get_line_dash_offset(instance: i32) -> i32;
+    fn canvasrenderingcontext2d_set_line_dash_offset(instance: i32, value: i32);
 }
 
 pub fn get_line_dash_offset(instance: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_get_lineDashOffset(instance) }
+    unsafe { canvasrenderingcontext2d_get_line_dash_offset(instance) }
 }
 
 pub fn set_line_dash_offset(instance: i32, value: i32) {
     unsafe {
-        canvasrenderingcontext2d_set_lineDashOffset(instance, value);
+        canvasrenderingcontext2d_set_line_dash_offset(instance, value);
     }
 }
 extern "C" {
@@ -612,31 +612,31 @@ pub fn set_font(instance: i32, value: &str) {
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_textAlign(instance: i32) -> CString;
-    fn canvasrenderingcontext2d_set_textAlign(instance: i32, value: CString);
+    fn canvasrenderingcontext2d_get_text_align(instance: i32) -> CString;
+    fn canvasrenderingcontext2d_set_text_align(instance: i32, value: CString);
 }
 
 pub fn get_text_align(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_textAlign(instance)) }
+    unsafe { cstr_to_string(canvasrenderingcontext2d_get_text_align(instance)) }
 }
 
 pub fn set_text_align(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_textAlign(instance, cstr(value));
+        canvasrenderingcontext2d_set_text_align(instance, cstr(value));
     }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_get_textBaseline(instance: i32) -> CString;
-    fn canvasrenderingcontext2d_set_textBaseline(instance: i32, value: CString);
+    fn canvasrenderingcontext2d_get_text_baseline(instance: i32) -> CString;
+    fn canvasrenderingcontext2d_set_text_baseline(instance: i32, value: CString);
 }
 
 pub fn get_text_baseline(instance: i32) -> String {
-    unsafe { cstr_to_string(canvasrenderingcontext2d_get_textBaseline(instance)) }
+    unsafe { cstr_to_string(canvasrenderingcontext2d_get_text_baseline(instance)) }
 }
 
 pub fn set_text_baseline(instance: i32, value: &str) {
     unsafe {
-        canvasrenderingcontext2d_set_textBaseline(instance, cstr(value));
+        canvasrenderingcontext2d_set_text_baseline(instance, cstr(value));
     }
 }
 extern "C" {

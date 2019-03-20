@@ -46,7 +46,7 @@ function createWebIDLContext() {
     math_random_n: function(n) {
       return Math.floor(Math.random() * n);
     },
-    element_attach_shadow: function(instance) {
+    customelement_attach_shadow: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.attachShadow({ mode: "open" }));
     },

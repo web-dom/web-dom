@@ -1,87 +1,87 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn keyboardevent_get_charCode(instance: i32) -> i32;
-    fn keyboardevent_set_charCode(instance: i32, value: i32);
+    fn keyboardevent_get_char_code(instance: i32) -> i32;
+    fn keyboardevent_set_char_code(instance: i32, value: i32);
 }
 
 pub fn get_char_code(instance: i32) -> i32 {
-    unsafe { keyboardevent_get_charCode(instance) }
+    unsafe { keyboardevent_get_char_code(instance) }
 }
 
 pub fn set_char_code(instance: i32, value: i32) {
     unsafe {
-        keyboardevent_set_charCode(instance, value);
+        keyboardevent_set_char_code(instance, value);
     }
 }
 extern "C" {
-    fn keyboardevent_get_keyCode(instance: i32) -> i32;
-    fn keyboardevent_set_keyCode(instance: i32, value: i32);
+    fn keyboardevent_get_key_code(instance: i32) -> i32;
+    fn keyboardevent_set_key_code(instance: i32, value: i32);
 }
 
 pub fn get_key_code(instance: i32) -> i32 {
-    unsafe { keyboardevent_get_keyCode(instance) }
+    unsafe { keyboardevent_get_key_code(instance) }
 }
 
 pub fn set_key_code(instance: i32, value: i32) {
     unsafe {
-        keyboardevent_set_keyCode(instance, value);
+        keyboardevent_set_key_code(instance, value);
     }
 }
 extern "C" {
-    fn keyboardevent_get_altKey(instance: i32) -> i32;
-    fn keyboardevent_set_altKey(instance: i32, value: i32);
+    fn keyboardevent_get_alt_key(instance: i32) -> i32;
+    fn keyboardevent_set_alt_key(instance: i32, value: i32);
 }
 
 pub fn get_alt_key(instance: i32) -> i32 {
-    unsafe { keyboardevent_get_altKey(instance) }
+    unsafe { keyboardevent_get_alt_key(instance) }
 }
 
 pub fn set_alt_key(instance: i32, value: i32) {
     unsafe {
-        keyboardevent_set_altKey(instance, value);
+        keyboardevent_set_alt_key(instance, value);
     }
 }
 extern "C" {
-    fn keyboardevent_get_ctrlKey(instance: i32) -> i32;
-    fn keyboardevent_set_ctrlKey(instance: i32, value: i32);
+    fn keyboardevent_get_ctrl_key(instance: i32) -> i32;
+    fn keyboardevent_set_ctrl_key(instance: i32, value: i32);
 }
 
 pub fn get_ctrl_key(instance: i32) -> i32 {
-    unsafe { keyboardevent_get_ctrlKey(instance) }
+    unsafe { keyboardevent_get_ctrl_key(instance) }
 }
 
 pub fn set_ctrl_key(instance: i32, value: i32) {
     unsafe {
-        keyboardevent_set_ctrlKey(instance, value);
+        keyboardevent_set_ctrl_key(instance, value);
     }
 }
 extern "C" {
-    fn keyboardevent_get_shiftKey(instance: i32) -> i32;
-    fn keyboardevent_set_shiftKey(instance: i32, value: i32);
+    fn keyboardevent_get_shift_key(instance: i32) -> i32;
+    fn keyboardevent_set_shift_key(instance: i32, value: i32);
 }
 
 pub fn get_shift_key(instance: i32) -> i32 {
-    unsafe { keyboardevent_get_shiftKey(instance) }
+    unsafe { keyboardevent_get_shift_key(instance) }
 }
 
 pub fn set_shift_key(instance: i32, value: i32) {
     unsafe {
-        keyboardevent_set_shiftKey(instance, value);
+        keyboardevent_set_shift_key(instance, value);
     }
 }
 extern "C" {
-    fn keyboardevent_get_metaKey(instance: i32) -> i32;
-    fn keyboardevent_set_metaKey(instance: i32, value: i32);
+    fn keyboardevent_get_meta_key(instance: i32) -> i32;
+    fn keyboardevent_set_meta_key(instance: i32, value: i32);
 }
 
 pub fn get_meta_key(instance: i32) -> i32 {
-    unsafe { keyboardevent_get_metaKey(instance) }
+    unsafe { keyboardevent_get_meta_key(instance) }
 }
 
 pub fn set_meta_key(instance: i32, value: i32) {
     unsafe {
-        keyboardevent_set_metaKey(instance, value);
+        keyboardevent_set_meta_key(instance, value);
     }
 }
 extern "C" {
@@ -120,17 +120,17 @@ pub fn set_repeat(instance: i32, value: i32) {
     }
 }
 extern "C" {
-    fn keyboardevent_get_isComposing(instance: i32) -> i32;
-    fn keyboardevent_set_isComposing(instance: i32, value: i32);
+    fn keyboardevent_get_is_composing(instance: i32) -> i32;
+    fn keyboardevent_set_is_composing(instance: i32, value: i32);
 }
 
 pub fn get_is_composing(instance: i32) -> i32 {
-    unsafe { keyboardevent_get_isComposing(instance) }
+    unsafe { keyboardevent_get_is_composing(instance) }
 }
 
 pub fn set_is_composing(instance: i32, value: i32) {
     unsafe {
-        keyboardevent_set_isComposing(instance, value);
+        keyboardevent_set_is_composing(instance, value);
     }
 }
 extern "C" {
@@ -207,16 +207,16 @@ pub fn init_keyboard_event(
     }
 }
 extern "C" {
-    fn keyboardevent_get_initDict(instance: i32) -> i32;
-    fn keyboardevent_set_initDict(instance: i32, value: i32);
+    fn keyboardevent_get_init_dict(instance: i32) -> i32;
+    fn keyboardevent_set_init_dict(instance: i32, value: i32);
 }
 
 pub fn get_init_dict(instance: i32) -> i32 {
-    unsafe { keyboardevent_get_initDict(instance) }
+    unsafe { keyboardevent_get_init_dict(instance) }
 }
 
 pub fn set_init_dict(instance: i32, value: i32) {
     unsafe {
-        keyboardevent_set_initDict(instance, value);
+        keyboardevent_set_init_dict(instance, value);
     }
 }
