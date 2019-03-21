@@ -2,5 +2,5 @@
 # It is not intended for manual editing.
 [[package]]
 name = "web-dom"
-version = "0.0.5"
+version = "0.0.6"
 
