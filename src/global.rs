@@ -1,6 +1,7 @@
 use std::ffi::CStr;
 use std::os::raw::c_void;
 
+pub type DOMReference = i32;
 pub type CString = i32;
 pub type Element = i32;
 pub type EventListener = i32;
