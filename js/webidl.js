@@ -175,17 +175,17 @@ function createWebIDLContext() {
     //TODO: get rid of one day when this isn't required by tinygo
     resource_write: function() {},
 
-    canvasrenderingcontext2d_get_canvas: function(instance) {
+    drawing_get_canvas: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.canvas);
     },
 
-    canvasrenderingcontext2d_set_canvas: function(instance, handle) {
+    drawing_set_canvas: function(instance, handle) {
       let _instance = ALLOCATOR.g(instance);
       _instance.canvas = ALLOCATOR.g(handle);
     },
 
-    canvasrenderingcontext2d_draw_window: function(
+    drawing_draw_window: function(
       instance,
       window,
       x,
@@ -206,42 +206,42 @@ function createWebIDLContext() {
       _instance.drawWindow(_window, _x, _y, _w, _h, _bg_color, _flags);
     },
 
-    canvasrenderingcontext2d_demote: function(instance) {
+    drawing_demote: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.demote();
     },
 
-    canvasrenderingcontext2d_save: function(instance) {
+    drawing_save: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.save();
     },
 
-    canvasrenderingcontext2d_restore: function(instance) {
+    drawing_restore: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.restore();
     },
 
-    canvasrenderingcontext2d_scale: function(instance, x, y) {
+    drawing_scale: function(instance, x, y) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
       _instance.scale(_x, _y);
     },
 
-    canvasrenderingcontext2d_rotate: function(instance, angle) {
+    drawing_rotate: function(instance, angle) {
       let _instance = ALLOCATOR.g(instance);
       let _angle = angle;
       _instance.rotate(_angle);
     },
 
-    canvasrenderingcontext2d_translate: function(instance, x, y) {
+    drawing_translate: function(instance, x, y) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
       _instance.translate(_x, _y);
     },
 
-    canvasrenderingcontext2d_transform: function(instance, a, b, c, d, e, f) {
+    drawing_transform: function(instance, a, b, c, d, e, f) {
       let _instance = ALLOCATOR.g(instance);
       let _a = a;
       let _b = b;
@@ -252,15 +252,7 @@ function createWebIDLContext() {
       _instance.transform(_a, _b, _c, _d, _e, _f);
     },
 
-    canvasrenderingcontext2d_set_transform: function(
-      instance,
-      a,
-      b,
-      c,
-      d,
-      e,
-      f
-    ) {
+    drawing_set_transform: function(instance, a, b, c, d, e, f) {
       let _instance = ALLOCATOR.g(instance);
       let _a = a;
       let _b = b;
@@ -271,76 +263,62 @@ function createWebIDLContext() {
       _instance.setTransform(_a, _b, _c, _d, _e, _f);
     },
 
-    canvasrenderingcontext2d_reset_transform: function(instance) {
+    drawing_reset_transform: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.resetTransform();
     },
 
-    canvasrenderingcontext2d_get_global_alpha: function(instance) {
+    drawing_get_global_alpha: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.globalAlpha;
     },
 
-    canvasrenderingcontext2d_set_global_alpha: function(instance, val) {
+    drawing_set_global_alpha: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.globalAlpha = val;
     },
 
-    canvasrenderingcontext2d_get_global_composite_operation: function(
-      instance
-    ) {
+    drawing_get_global_composite_operation: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.globalCompositeOperation);
     },
 
-    canvasrenderingcontext2d_set_global_composite_operation: function(
-      instance,
-      str
-    ) {
+    drawing_set_global_composite_operation: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.globalCompositeOperation = this.s(str);
     },
 
-    canvasrenderingcontext2d_get_image_smoothing_enabled: function(instance) {
+    drawing_get_image_smoothing_enabled: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.imageSmoothingEnabled;
     },
 
-    canvasrenderingcontext2d_set_image_smoothing_enabled: function(
-      instance,
-      val
-    ) {
+    drawing_set_image_smoothing_enabled: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.imageSmoothingEnabled = val;
     },
 
-    canvasrenderingcontext2d_get_stroke_style: function(instance) {
+    drawing_get_stroke_style: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.strokeStyle);
     },
 
-    canvasrenderingcontext2d_set_stroke_style: function(instance, str) {
+    drawing_set_stroke_style: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.strokeStyle = this.s(str);
     },
 
-    canvasrenderingcontext2d_get_fill_style: function(instance) {
+    drawing_get_fill_style: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.fillStyle);
     },
 
-    canvasrenderingcontext2d_set_fill_style: function(instance, str) {
+    drawing_set_fill_style: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.fillStyle = this.s(str);
     },
 
-    canvasrenderingcontext2d_create_linear_gradient: function(
-      instance,
-      x0,
-      y0,
-      x1,
-      y1
-    ) {
+    drawing_create_linear_gradient: function(instance, x0, y0, x1, y1) {
       let _instance = ALLOCATOR.g(instance);
       let _x0 = x0;
       let _y0 = y0;
@@ -349,15 +327,7 @@ function createWebIDLContext() {
       return ALLOCATOR.a(_instance.createLinearGradient(_x0, _y0, _x1, _y1));
     },
 
-    canvasrenderingcontext2d_create_radial_gradient: function(
-      instance,
-      x0,
-      y0,
-      r0,
-      x1,
-      y1,
-      r1
-    ) {
+    drawing_create_radial_gradient: function(instance, x0, y0, r0, x1, y1, r1) {
       let _instance = ALLOCATOR.g(instance);
       let _x0 = x0;
       let _y0 = y0;
@@ -370,68 +340,64 @@ function createWebIDLContext() {
       );
     },
 
-    canvasrenderingcontext2d_create_pattern: function(
-      instance,
-      image,
-      repetition
-    ) {
+    drawing_create_pattern: function(instance, image, repetition) {
       let _instance = ALLOCATOR.g(instance);
       let _image = ALLOCATOR.g(image);
       let _repetition = this.s(repetition);
       return ALLOCATOR.a(_instance.createPattern(_image, _repetition));
     },
 
-    canvasrenderingcontext2d_get_shadow_offset_x: function(instance) {
+    drawing_get_shadow_offset_x: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.shadowOffsetX;
     },
 
-    canvasrenderingcontext2d_set_shadow_offset_x: function(instance, val) {
+    drawing_set_shadow_offset_x: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.shadowOffsetX = val;
     },
 
-    canvasrenderingcontext2d_get_shadow_offset_y: function(instance) {
+    drawing_get_shadow_offset_y: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.shadowOffsetY;
     },
 
-    canvasrenderingcontext2d_set_shadow_offset_y: function(instance, val) {
+    drawing_set_shadow_offset_y: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.shadowOffsetY = val;
     },
 
-    canvasrenderingcontext2d_get_shadow_blur: function(instance) {
+    drawing_get_shadow_blur: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.shadowBlur;
     },
 
-    canvasrenderingcontext2d_set_shadow_blur: function(instance, val) {
+    drawing_set_shadow_blur: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.shadowBlur = val;
     },
 
-    canvasrenderingcontext2d_get_shadow_color: function(instance) {
+    drawing_get_shadow_color: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.shadowColor);
     },
 
-    canvasrenderingcontext2d_set_shadow_color: function(instance, str) {
+    drawing_set_shadow_color: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.shadowColor = this.s(str);
     },
 
-    canvasrenderingcontext2d_get_filter: function(instance) {
+    drawing_get_filter: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.filter);
     },
 
-    canvasrenderingcontext2d_set_filter: function(instance, str) {
+    drawing_set_filter: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.filter = this.s(str);
     },
 
-    canvasrenderingcontext2d_clear_rect: function(instance, x, y, w, h) {
+    drawing_clear_rect: function(instance, x, y, w, h) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
@@ -440,7 +406,7 @@ function createWebIDLContext() {
       _instance.clearRect(_x, _y, _w, _h);
     },
 
-    canvasrenderingcontext2d_fill_rect: function(instance, x, y, w, h) {
+    drawing_fill_rect: function(instance, x, y, w, h) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
@@ -449,7 +415,7 @@ function createWebIDLContext() {
       _instance.fillRect(_x, _y, _w, _h);
     },
 
-    canvasrenderingcontext2d_stroke_rect: function(instance, x, y, w, h) {
+    drawing_stroke_rect: function(instance, x, y, w, h) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
@@ -458,32 +424,27 @@ function createWebIDLContext() {
       _instance.strokeRect(_x, _y, _w, _h);
     },
 
-    canvasrenderingcontext2d_begin_path: function(instance) {
+    drawing_begin_path: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.beginPath();
     },
 
-    canvasrenderingcontext2d_fill: function(instance) {
+    drawing_fill: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.fill();
     },
 
-    canvasrenderingcontext2d_stroke: function(instance) {
+    drawing_stroke: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.stroke();
     },
 
-    canvasrenderingcontext2d_clip: function(instance) {
+    drawing_clip: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.clip();
     },
 
-    canvasrenderingcontext2d_is_point_in_path: function(
-      instance,
-      x,
-      y,
-      winding
-    ) {
+    drawing_is_point_in_path: function(instance, x, y, winding) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
@@ -491,35 +452,26 @@ function createWebIDLContext() {
       return ALLOCATOR.a(_instance.isPointInPath(_x, _y, _winding));
     },
 
-    canvasrenderingcontext2d_is_point_in_stroke: function(instance, x, y) {
+    drawing_is_point_in_stroke: function(instance, x, y) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
       return ALLOCATOR.a(_instance.isPointInStroke(_x, _y));
     },
 
-    canvasrenderingcontext2d_draw_focus_if_needed: function(instance, element) {
+    drawing_draw_focus_if_needed: function(instance, element) {
       let _instance = ALLOCATOR.g(instance);
       let _element = ALLOCATOR.g(element);
       _instance.drawFocusIfNeeded(_element);
     },
 
-    canvasrenderingcontext2d_draw_custom_focus_ring: function(
-      instance,
-      element
-    ) {
+    drawing_draw_custom_focus_ring: function(instance, element) {
       let _instance = ALLOCATOR.g(instance);
       let _element = ALLOCATOR.g(element);
       return ALLOCATOR.a(_instance.drawCustomFocusRing(_element));
     },
 
-    canvasrenderingcontext2d_fill_text: function(
-      instance,
-      text,
-      x,
-      y,
-      max_width
-    ) {
+    drawing_fill_text: function(instance, text, x, y, max_width) {
       let _instance = ALLOCATOR.g(instance);
       let _text = this.s(text);
       let _x = x;
@@ -528,13 +480,7 @@ function createWebIDLContext() {
       _instance.fillText(_text, _x, _y, _max_width);
     },
 
-    canvasrenderingcontext2d_stroke_text: function(
-      instance,
-      text,
-      x,
-      y,
-      max_width
-    ) {
+    drawing_stroke_text: function(instance, text, x, y, max_width) {
       let _instance = ALLOCATOR.g(instance);
       let _text = this.s(text);
       let _x = x;
@@ -543,13 +489,13 @@ function createWebIDLContext() {
       _instance.strokeText(_text, _x, _y, _max_width);
     },
 
-    canvasrenderingcontext2d_measure_text: function(instance, text) {
+    drawing_measure_text: function(instance, text) {
       let _instance = ALLOCATOR.g(instance);
       let _text = this.s(text);
       return ALLOCATOR.a(_instance.measureText(_text));
     },
 
-    canvasrenderingcontext2d_draw_image: function(
+    drawing_draw_image: function(
       instance,
       image,
       sx,
@@ -574,20 +520,14 @@ function createWebIDLContext() {
       _instance.drawImage(_image, _sx, _sy, _sw, _sh, _dx, _dy, _dw, _dh);
     },
 
-    canvasrenderingcontext2d_create_image_data: function(instance, sw, sh) {
+    drawing_create_image_data: function(instance, sw, sh) {
       let _instance = ALLOCATOR.g(instance);
       let _sw = sw;
       let _sh = sh;
       return ALLOCATOR.a(_instance.createImageData(_sw, _sh));
     },
 
-    canvasrenderingcontext2d_get_image_data: function(
-      instance,
-      sx,
-      sy,
-      sw,
-      sh
-    ) {
+    drawing_get_image_data: function(instance, sx, sy, sw, sh) {
       let _instance = ALLOCATOR.g(instance);
       let _sx = sx;
       let _sy = sy;
@@ -596,7 +536,7 @@ function createWebIDLContext() {
       return ALLOCATOR.a(_instance.getImageData(_sx, _sy, _sw, _sh));
     },
 
-    canvasrenderingcontext2d_put_image_data: function(
+    drawing_put_image_data: function(
       instance,
       imagedata,
       dx,
@@ -625,123 +565,117 @@ function createWebIDLContext() {
       );
     },
 
-    canvasrenderingcontext2d_get_line_width: function(instance) {
+    drawing_get_line_width: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.lineWidth;
     },
 
-    canvasrenderingcontext2d_set_line_width: function(instance, val) {
+    drawing_set_line_width: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.lineWidth = val;
     },
 
-    canvasrenderingcontext2d_get_line_cap: function(instance) {
+    drawing_get_line_cap: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.lineCap);
     },
 
-    canvasrenderingcontext2d_set_line_cap: function(instance, str) {
+    drawing_set_line_cap: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.lineCap = this.s(str);
     },
 
-    canvasrenderingcontext2d_get_line_join: function(instance) {
+    drawing_get_line_join: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.lineJoin);
     },
 
-    canvasrenderingcontext2d_set_line_join: function(instance, str) {
+    drawing_set_line_join: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.lineJoin = this.s(str);
     },
 
-    canvasrenderingcontext2d_get_miter_limit: function(instance) {
+    drawing_get_miter_limit: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.miterLimit;
     },
 
-    canvasrenderingcontext2d_set_miter_limit: function(instance, val) {
+    drawing_set_miter_limit: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.miterLimit = val;
     },
 
-    canvasrenderingcontext2d_set_line_dash: function(instance, segments) {
+    drawing_set_line_dash: function(instance, segments) {
       let _instance = ALLOCATOR.g(instance);
       let _segments = ALLOCATOR.g(segments);
       _instance.setLineDash(_segments);
     },
 
-    canvasrenderingcontext2d_get_line_dash: function(instance) {
+    drawing_get_line_dash: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.getLineDash());
     },
 
-    canvasrenderingcontext2d_get_line_dash_offset: function(instance) {
+    drawing_get_line_dash_offset: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.lineDashOffset;
     },
 
-    canvasrenderingcontext2d_set_line_dash_offset: function(instance, val) {
+    drawing_set_line_dash_offset: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.lineDashOffset = val;
     },
 
-    canvasrenderingcontext2d_get_font: function(instance) {
+    drawing_get_font: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.font);
     },
 
-    canvasrenderingcontext2d_set_font: function(instance, str) {
+    drawing_set_font: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.font = this.s(str);
     },
 
-    canvasrenderingcontext2d_get_text_align: function(instance) {
+    drawing_get_text_align: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.textAlign);
     },
 
-    canvasrenderingcontext2d_set_text_align: function(instance, str) {
+    drawing_set_text_align: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.textAlign = this.s(str);
     },
 
-    canvasrenderingcontext2d_get_text_baseline: function(instance) {
+    drawing_get_text_baseline: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.textBaseline);
     },
 
-    canvasrenderingcontext2d_set_text_baseline: function(instance, str) {
+    drawing_set_text_baseline: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.textBaseline = this.s(str);
     },
 
-    canvasrenderingcontext2d_close_path: function(instance) {
+    drawing_close_path: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.closePath();
     },
 
-    canvasrenderingcontext2d_move_to: function(instance, x, y) {
+    drawing_move_to: function(instance, x, y) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
       _instance.moveTo(_x, _y);
     },
 
-    canvasrenderingcontext2d_line_to: function(instance, x, y) {
+    drawing_line_to: function(instance, x, y) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
       _instance.lineTo(_x, _y);
     },
 
-    canvasrenderingcontext2d_quadratic_curve_to: function(
-      instance,
-      cpx,
-      cpy,
-      x,
-      y
-    ) {
+    drawing_quadratic_curve_to: function(instance, cpx, cpy, x, y) {
       let _instance = ALLOCATOR.g(instance);
       let _cpx = cpx;
       let _cpy = cpy;
@@ -750,15 +684,7 @@ function createWebIDLContext() {
       _instance.quadraticCurveTo(_cpx, _cpy, _x, _y);
     },
 
-    canvasrenderingcontext2d_bezier_curve_to: function(
-      instance,
-      cp1x,
-      cp1y,
-      cp2x,
-      cp2y,
-      x,
-      y
-    ) {
+    drawing_bezier_curve_to: function(instance, cp1x, cp1y, cp2x, cp2y, x, y) {
       let _instance = ALLOCATOR.g(instance);
       let _cp1x = cp1x;
       let _cp1y = cp1y;
@@ -769,14 +695,7 @@ function createWebIDLContext() {
       _instance.bezierCurveTo(_cp1x, _cp1y, _cp2x, _cp2y, _x, _y);
     },
 
-    canvasrenderingcontext2d_arc_to: function(
-      instance,
-      x1,
-      y1,
-      x2,
-      y2,
-      radius
-    ) {
+    drawing_arc_to: function(instance, x1, y1, x2, y2, radius) {
       let _instance = ALLOCATOR.g(instance);
       let _x1 = x1;
       let _y1 = y1;
@@ -786,7 +705,7 @@ function createWebIDLContext() {
       _instance.arcTo(_x1, _y1, _x2, _y2, _radius);
     },
 
-    canvasrenderingcontext2d_rect: function(instance, x, y, w, h) {
+    drawing_rect: function(instance, x, y, w, h) {
       let _instance = ALLOCATOR.g(instance);
       let _x = x;
       let _y = y;
@@ -795,7 +714,7 @@ function createWebIDLContext() {
       _instance.rect(_x, _y, _w, _h);
     },
 
-    canvasrenderingcontext2d_arc: function(
+    drawing_arc: function(
       instance,
       x,
       y,
@@ -814,7 +733,7 @@ function createWebIDLContext() {
       _instance.arc(_x, _y, _radius, _start_angle, _end_angle, _anticlockwise);
     },
 
-    canvasrenderingcontext2d_ellipse: function(
+    drawing_ellipse: function(
       instance,
       x,
       y,
@@ -846,19 +765,19 @@ function createWebIDLContext() {
       );
     },
 
-    canvasrenderingcontext2d_add_hit_region: function(instance, options) {
+    drawing_add_hit_region: function(instance, options) {
       let _instance = ALLOCATOR.g(instance);
       let _options = ALLOCATOR.g(options);
       _instance.addHitRegion(_options);
     },
 
-    canvasrenderingcontext2d_remove_hit_region: function(instance, id) {
+    drawing_remove_hit_region: function(instance, id) {
       let _instance = ALLOCATOR.g(instance);
       let _id = this.s(id);
       _instance.removeHitRegion(_id);
     },
 
-    canvasrenderingcontext2d_clear_hit_regions: function(instance) {
+    drawing_clear_hit_regions: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.clearHitRegions();
     },
@@ -2473,44 +2392,40 @@ function createWebIDLContext() {
       return ALLOCATOR.a(_instance.dispatchEvent(_event));
     },
 
-    htmlcanvaselement_get_width: function(instance) {
+    htmlcanvas_get_width: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.width;
     },
 
-    htmlcanvaselement_set_width: function(instance, val) {
+    htmlcanvas_set_width: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.width = val;
     },
 
-    htmlcanvaselement_get_height: function(instance) {
+    htmlcanvas_get_height: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.height;
     },
 
-    htmlcanvaselement_set_height: function(instance, val) {
+    htmlcanvas_set_height: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.height = val;
     },
 
-    htmlcanvaselement_get_context: function(instance, context_id) {
+    htmlcanvas_get_context: function(instance, context_id) {
       let _instance = ALLOCATOR.g(instance);
       let _context_id = this.s(context_id);
       return ALLOCATOR.a(_instance.getContext(_context_id));
     },
 
-    htmlcanvaselement_to_data_url: function(
-      instance,
-      data_type,
-      encoder_options
-    ) {
+    htmlcanvas_to_data_url: function(instance, data_type, encoder_options) {
       let _instance = ALLOCATOR.g(instance);
       let _data_type = this.s(data_type);
       let _encoder_options = encoder_options;
       return this.ms(_instance.toDataURL(_data_type, _encoder_options));
     },
 
-    htmlcanvaselement_to_blob: function(
+    htmlcanvas_to_blob: function(
       instance,
       callback,
       blob_type,
@@ -2523,453 +2438,453 @@ function createWebIDLContext() {
       _instance.toBlob(_callback, _blob_type, _encoder_options);
     },
 
-    htmlcanvaselement_transfer_control_to_offscreen: function(instance) {
+    htmlcanvas_transfer_control_to_offscreen: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.transferControlToOffscreen());
     },
 
-    htmlinputelement_get_accept: function(instance) {
+    htmlinput_get_accept: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.accept);
     },
 
-    htmlinputelement_set_accept: function(instance, str) {
+    htmlinput_set_accept: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.accept = this.s(str);
     },
 
-    htmlinputelement_get_alt: function(instance) {
+    htmlinput_get_alt: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.alt);
     },
 
-    htmlinputelement_set_alt: function(instance, str) {
+    htmlinput_set_alt: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.alt = this.s(str);
     },
 
-    htmlinputelement_get_autocomplete: function(instance) {
+    htmlinput_get_autocomplete: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.autocomplete);
     },
 
-    htmlinputelement_set_autocomplete: function(instance, str) {
+    htmlinput_set_autocomplete: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.autocomplete = this.s(str);
     },
 
-    htmlinputelement_get_autofocus: function(instance) {
+    htmlinput_get_autofocus: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.autofocus;
     },
 
-    htmlinputelement_set_autofocus: function(instance, val) {
+    htmlinput_set_autofocus: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.autofocus = val;
     },
 
-    htmlinputelement_get_default_checked: function(instance) {
+    htmlinput_get_default_checked: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.defaultChecked;
     },
 
-    htmlinputelement_set_default_checked: function(instance, val) {
+    htmlinput_set_default_checked: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.defaultChecked = val;
     },
 
-    htmlinputelement_get_checked: function(instance) {
+    htmlinput_get_checked: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.checked;
     },
 
-    htmlinputelement_set_checked: function(instance, val) {
+    htmlinput_set_checked: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.checked = val;
     },
 
-    htmlinputelement_get_disabled: function(instance) {
+    htmlinput_get_disabled: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.disabled;
     },
 
-    htmlinputelement_set_disabled: function(instance, val) {
+    htmlinput_set_disabled: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.disabled = val;
     },
 
-    htmlinputelement_get_form: function(instance) {
+    htmlinput_get_form: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.form);
     },
 
-    htmlinputelement_set_form: function(instance, handle) {
+    htmlinput_set_form: function(instance, handle) {
       let _instance = ALLOCATOR.g(instance);
       _instance.form = ALLOCATOR.g(handle);
     },
 
-    htmlinputelement_get_files: function(instance) {
+    htmlinput_get_files: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.files);
     },
 
-    htmlinputelement_set_files: function(instance, handle) {
+    htmlinput_set_files: function(instance, handle) {
       let _instance = ALLOCATOR.g(instance);
       _instance.files = ALLOCATOR.g(handle);
     },
 
-    htmlinputelement_get_form_action: function(instance) {
+    htmlinput_get_form_action: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.formAction);
     },
 
-    htmlinputelement_set_form_action: function(instance, str) {
+    htmlinput_set_form_action: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.formAction = this.s(str);
     },
 
-    htmlinputelement_get_form_enctype: function(instance) {
+    htmlinput_get_form_enctype: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.formEnctype);
     },
 
-    htmlinputelement_set_form_enctype: function(instance, str) {
+    htmlinput_set_form_enctype: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.formEnctype = this.s(str);
     },
 
-    htmlinputelement_get_form_method: function(instance) {
+    htmlinput_get_form_method: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.formMethod);
     },
 
-    htmlinputelement_set_form_method: function(instance, str) {
+    htmlinput_set_form_method: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.formMethod = this.s(str);
     },
 
-    htmlinputelement_get_form_no_validate: function(instance) {
+    htmlinput_get_form_no_validate: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.formNoValidate;
     },
 
-    htmlinputelement_set_form_no_validate: function(instance, val) {
+    htmlinput_set_form_no_validate: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.formNoValidate = val;
     },
 
-    htmlinputelement_get_form_target: function(instance) {
+    htmlinput_get_form_target: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.formTarget);
     },
 
-    htmlinputelement_set_form_target: function(instance, str) {
+    htmlinput_set_form_target: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.formTarget = this.s(str);
     },
 
-    htmlinputelement_get_height: function(instance) {
+    htmlinput_get_height: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.height;
     },
 
-    htmlinputelement_set_height: function(instance, val) {
+    htmlinput_set_height: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.height = val;
     },
 
-    htmlinputelement_get_indeterminate: function(instance) {
+    htmlinput_get_indeterminate: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.indeterminate;
     },
 
-    htmlinputelement_set_indeterminate: function(instance, val) {
+    htmlinput_set_indeterminate: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.indeterminate = val;
     },
 
-    htmlinputelement_get_input_mode: function(instance) {
+    htmlinput_get_input_mode: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.inputMode);
     },
 
-    htmlinputelement_set_input_mode: function(instance, str) {
+    htmlinput_set_input_mode: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.inputMode = this.s(str);
     },
 
-    htmlinputelement_get_list: function(instance) {
+    htmlinput_get_list: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.list);
     },
 
-    htmlinputelement_set_list: function(instance, handle) {
+    htmlinput_set_list: function(instance, handle) {
       let _instance = ALLOCATOR.g(instance);
       _instance.list = ALLOCATOR.g(handle);
     },
 
-    htmlinputelement_get_max: function(instance) {
+    htmlinput_get_max: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.max);
     },
 
-    htmlinputelement_set_max: function(instance, str) {
+    htmlinput_set_max: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.max = this.s(str);
     },
 
-    htmlinputelement_get_max_length: function(instance) {
+    htmlinput_get_max_length: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.maxLength;
     },
 
-    htmlinputelement_set_max_length: function(instance, val) {
+    htmlinput_set_max_length: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.maxLength = val;
     },
 
-    htmlinputelement_get_min: function(instance) {
+    htmlinput_get_min: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.min);
     },
 
-    htmlinputelement_set_min: function(instance, str) {
+    htmlinput_set_min: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.min = this.s(str);
     },
 
-    htmlinputelement_get_min_length: function(instance) {
+    htmlinput_get_min_length: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.minLength;
     },
 
-    htmlinputelement_set_min_length: function(instance, val) {
+    htmlinput_set_min_length: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.minLength = val;
     },
 
-    htmlinputelement_get_multiple: function(instance) {
+    htmlinput_get_multiple: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.multiple;
     },
 
-    htmlinputelement_set_multiple: function(instance, val) {
+    htmlinput_set_multiple: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.multiple = val;
     },
 
-    htmlinputelement_get_name: function(instance) {
+    htmlinput_get_name: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.name);
     },
 
-    htmlinputelement_set_name: function(instance, str) {
+    htmlinput_set_name: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.name = this.s(str);
     },
 
-    htmlinputelement_get_pattern: function(instance) {
+    htmlinput_get_pattern: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.pattern);
     },
 
-    htmlinputelement_set_pattern: function(instance, str) {
+    htmlinput_set_pattern: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.pattern = this.s(str);
     },
 
-    htmlinputelement_get_placeholder: function(instance) {
+    htmlinput_get_placeholder: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.placeholder);
     },
 
-    htmlinputelement_set_placeholder: function(instance, str) {
+    htmlinput_set_placeholder: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.placeholder = this.s(str);
     },
 
-    htmlinputelement_get_read_only: function(instance) {
+    htmlinput_get_read_only: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.readOnly;
     },
 
-    htmlinputelement_set_read_only: function(instance, val) {
+    htmlinput_set_read_only: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.readOnly = val;
     },
 
-    htmlinputelement_get_required: function(instance) {
+    htmlinput_get_required: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.required;
     },
 
-    htmlinputelement_set_required: function(instance, val) {
+    htmlinput_set_required: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.required = val;
     },
 
-    htmlinputelement_get_size: function(instance) {
+    htmlinput_get_size: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.size;
     },
 
-    htmlinputelement_set_size: function(instance, val) {
+    htmlinput_set_size: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.size = val;
     },
 
-    htmlinputelement_get_src: function(instance) {
+    htmlinput_get_src: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.src);
     },
 
-    htmlinputelement_set_src: function(instance, str) {
+    htmlinput_set_src: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.src = this.s(str);
     },
 
-    htmlinputelement_get_step: function(instance) {
+    htmlinput_get_step: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.step);
     },
 
-    htmlinputelement_set_step: function(instance, str) {
+    htmlinput_set_step: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.step = this.s(str);
     },
 
-    htmlinputelement_get_type: function(instance) {
+    htmlinput_get_type: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.type);
     },
 
-    htmlinputelement_set_type: function(instance, str) {
+    htmlinput_set_type: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.type = this.s(str);
     },
 
-    htmlinputelement_get_default_value: function(instance) {
+    htmlinput_get_default_value: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.defaultValue);
     },
 
-    htmlinputelement_set_default_value: function(instance, str) {
+    htmlinput_set_default_value: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.defaultValue = this.s(str);
     },
 
-    htmlinputelement_get_value: function(instance) {
+    htmlinput_get_value: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.value);
     },
 
-    htmlinputelement_set_value: function(instance, str) {
+    htmlinput_set_value: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.value = this.s(str);
     },
 
-    htmlinputelement_get_value_as_date: function(instance) {
+    htmlinput_get_value_as_date: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.valueAsDate);
     },
 
-    htmlinputelement_set_value_as_date: function(instance, handle) {
+    htmlinput_set_value_as_date: function(instance, handle) {
       let _instance = ALLOCATOR.g(instance);
       _instance.valueAsDate = ALLOCATOR.g(handle);
     },
 
-    htmlinputelement_get_value_as_number: function(instance) {
+    htmlinput_get_value_as_number: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.valueAsNumber;
     },
 
-    htmlinputelement_set_value_as_number: function(instance, val) {
+    htmlinput_set_value_as_number: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.valueAsNumber = val;
     },
 
-    htmlinputelement_get_width: function(instance) {
+    htmlinput_get_width: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.width;
     },
 
-    htmlinputelement_set_width: function(instance, val) {
+    htmlinput_set_width: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.width = val;
     },
 
-    htmlinputelement_get_will_validate: function(instance) {
+    htmlinput_get_will_validate: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return _instance.willValidate;
     },
 
-    htmlinputelement_set_will_validate: function(instance, val) {
+    htmlinput_set_will_validate: function(instance, val) {
       let _instance = ALLOCATOR.g(instance);
       _instance.willValidate = val;
     },
 
-    htmlinputelement_get_validity: function(instance) {
+    htmlinput_get_validity: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.validity);
     },
 
-    htmlinputelement_set_validity: function(instance, handle) {
+    htmlinput_set_validity: function(instance, handle) {
       let _instance = ALLOCATOR.g(instance);
       _instance.validity = ALLOCATOR.g(handle);
     },
 
-    htmlinputelement_get_validation_message: function(instance) {
+    htmlinput_get_validation_message: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.validationMessage);
     },
 
-    htmlinputelement_set_validation_message: function(instance, str) {
+    htmlinput_set_validation_message: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.validationMessage = this.s(str);
     },
 
-    htmlinputelement_check_validity: function(instance) {
+    htmlinput_check_validity: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.checkValidity());
     },
 
-    htmlinputelement_report_validity: function(instance) {
+    htmlinput_report_validity: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.reportValidity());
     },
 
-    htmlinputelement_set_custom_validity: function(instance, error) {
+    htmlinput_set_custom_validity: function(instance, error) {
       let _instance = ALLOCATOR.g(instance);
       let _error = this.s(error);
       _instance.setCustomValidity(_error);
     },
 
-    htmlinputelement_get_labels: function(instance) {
+    htmlinput_get_labels: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.labels);
     },
 
-    htmlinputelement_set_labels: function(instance, handle) {
+    htmlinput_set_labels: function(instance, handle) {
       let _instance = ALLOCATOR.g(instance);
       _instance.labels = ALLOCATOR.g(handle);
     },
 
-    htmlinputelement_select: function(instance) {
+    htmlinput_select: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       _instance.select();
     },
 
-    htmlinputelement_get_selection_direction: function(instance) {
+    htmlinput_get_selection_direction: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.selectionDirection);
     },
 
-    htmlinputelement_set_selection_direction: function(instance, str) {
+    htmlinput_set_selection_direction: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.selectionDirection = this.s(str);
     },
 
-    htmlinputelement_set_range_text: function(
+    htmlinput_set_range_text: function(
       instance,
       replacement,
       start,
@@ -2984,12 +2899,7 @@ function createWebIDLContext() {
       _instance.setRangeText(_replacement, _start, _end, _selection_mode);
     },
 
-    htmlinputelement_set_selection_range: function(
-      instance,
-      start,
-      end,
-      direction
-    ) {
+    htmlinput_set_selection_range: function(instance, start, end, direction) {
       let _instance = ALLOCATOR.g(instance);
       let _start = start;
       let _end = end;
@@ -2997,59 +2907,59 @@ function createWebIDLContext() {
       _instance.setSelectionRange(_start, _end, _direction);
     },
 
-    htmlinputelement_get_align: function(instance) {
+    htmlinput_get_align: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.align);
     },
 
-    htmlinputelement_set_align: function(instance, str) {
+    htmlinput_set_align: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.align = this.s(str);
     },
 
-    htmlinputelement_get_use_map: function(instance) {
+    htmlinput_get_use_map: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.useMap);
     },
 
-    htmlinputelement_set_use_map: function(instance, str) {
+    htmlinput_set_use_map: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.useMap = this.s(str);
     },
 
-    htmlinputelement_get_date_time_input_box_value: function(instance) {
+    htmlinput_get_date_time_input_box_value: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.getDateTimeInputBoxValue());
     },
 
-    htmlinputelement_update_date_time_input_box: function(instance, value) {
+    htmlinput_update_date_time_input_box: function(instance, value) {
       let _instance = ALLOCATOR.g(instance);
       let _value = ALLOCATOR.g(value);
       _instance.updateDateTimeInputBox(_value);
     },
 
-    htmlinputelement_set_date_time_picker_state: function(instance, open) {
+    htmlinput_set_date_time_picker_state: function(instance, open) {
       let _instance = ALLOCATOR.g(instance);
       let _open = open;
       _instance.setDateTimePickerState(_open);
     },
 
-    htmlinputelement_get_minimum: function(instance) {
+    htmlinput_get_minimum: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.getMinimum());
     },
 
-    htmlinputelement_get_maximum: function(instance) {
+    htmlinput_get_maximum: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return ALLOCATOR.a(_instance.getMaximum());
     },
 
-    htmlinputelement_get_preview_value: function(instance) {
+    htmlinput_get_preview_value: function(instance) {
       let _instance = ALLOCATOR.g(instance);
       return this.ms(_instance.previewValue);
     },
 
-    htmlinputelement_set_preview_value: function(instance, str) {
+    htmlinput_set_preview_value: function(instance, str) {
       let _instance = ALLOCATOR.g(instance);
       _instance.previewValue = this.s(str);
     },

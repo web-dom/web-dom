@@ -118,7 +118,7 @@ function processOperation(namespace, operation, isInterface) {
     args.push({ name, type });
   }
   FUNCTIONS.push(`
-      ${namespace.toLowerCase()}_${toSnake(
+      ${finalNamespaceName(namespace)}_${toSnake(
     operationName
   )}: function(${params.map(x => x.name).join(", ")}){
           ${extractors.join("\n")}
@@ -136,7 +136,7 @@ function processOperation(namespace, operation, isInterface) {
   appendToNamespace(
     namespace,
     `extern \"C\" {
-    fn ${namespace.toLowerCase()}_${toSnake(operationName)}(${params
+    fn ${finalNamespaceName(namespace)}_${toSnake(operationName)}(${params
       .map(
         x =>
           toSnake(x.name) +
@@ -174,7 +174,7 @@ pub fn ` +
           : ""
       } {\nunsafe{
         ${returnsString ? "to_string(" : ""}
-        ${namespace.toLowerCase()}_${toSnake(operationName)}(${params
+        ${finalNamespaceName(namespace)}_${toSnake(operationName)}(${params
         .map(x =>
           x.originalType == "DOMString"
             ? `to_cstring(${toSnake(x.name)})`
@@ -197,12 +197,14 @@ function processAttribute(interface, idl) {
   if (primitive) {
     if (idl.idlType.idlType == "DOMString") {
       FUNCTIONS.push(`
-        ${interface.toLowerCase()}_get_${toSnake(name)}: function(instance) {
+        ${finalNamespaceName(interface)}_get_${toSnake(
+        name
+      )}: function(instance) {
           let _instance = ALLOCATOR.g(instance);
           return this.ms(_instance.${name});
         }`);
       FUNCTIONS.push(`
-        ${interface.toLowerCase()}_set_${toSnake(
+        ${finalNamespaceName(interface)}_set_${toSnake(
         name
       )}: function(instance,str) {
           let _instance = ALLOCATOR.g(instance);
@@ -210,12 +212,14 @@ function processAttribute(interface, idl) {
         }`);
     } else {
       FUNCTIONS.push(`
-        ${interface.toLowerCase()}_get_${toSnake(name)}: function(instance) {
+        ${finalNamespaceName(interface)}_get_${toSnake(
+        name
+      )}: function(instance) {
           let _instance = ALLOCATOR.g(instance);
           return _instance.${name};
         }`);
       FUNCTIONS.push(`
-        ${interface.toLowerCase()}_set_${toSnake(
+        ${finalNamespaceName(interface)}_set_${toSnake(
         name
       )}: function(instance,val) {
           let _instance = ALLOCATOR.g(instance);
@@ -224,12 +228,14 @@ function processAttribute(interface, idl) {
     }
   } else {
     FUNCTIONS.push(`
-      ${interface.toLowerCase()}_get_${toSnake(name)}: function(instance) {
+      ${finalNamespaceName(interface)}_get_${toSnake(
+      name
+    )}: function(instance) {
         let _instance = ALLOCATOR.g(instance);
         return ALLOCATOR.a(_instance.${name});
       }`);
     FUNCTIONS.push(`
-      ${interface.toLowerCase()}_set_${toSnake(
+      ${finalNamespaceName(interface)}_set_${toSnake(
       name
     )}: function(instance,handle) {
         let _instance = ALLOCATOR.g(instance);
@@ -239,26 +245,26 @@ function processAttribute(interface, idl) {
   appendToNamespace(
     interface,
     `extern \"C\" {
-    fn ${interface.toLowerCase()}_get_${toSnake(name)}(instance:DOMReference) ${
-      returnsString ? " -> CString" : " -> i32"
-    };
-    fn ${interface.toLowerCase()}_set_${toSnake(
+    fn ${finalNamespaceName(interface)}_get_${toSnake(
+      name
+    )}(instance:DOMReference) ${returnsString ? " -> CString" : " -> i32"};
+    fn ${finalNamespaceName(interface)}_set_${toSnake(
       name
     )}(instance:DOMReference,value:${returnsString ? "CString" : "i32"});
 }\n
 pub fn get_${toSnake(name)}(instance:DOMReference) ${
       returnsString ? " -> String" : " -> i32"
     } {\nunsafe{
-  ${returnsString ? "to_string(" : ""} ${interface.toLowerCase()}_get_${toSnake(
-      name
-    )}(instance)
+  ${returnsString ? "to_string(" : ""} ${finalNamespaceName(
+      interface
+    )}_get_${toSnake(name)}(instance)
   ${returnsString ? ")" : ""}
   }\n}\n
 
   pub fn set_${toSnake(name)}(instance:DOMReference,value:${
       returnsString ? "&str" : "i32"
     }){\nunsafe{
-  ${interface.toLowerCase()}_set_${toSnake(name)}(instance,  ${
+  ${finalNamespaceName(interface)}_set_${toSnake(name)}(instance,  ${
       returnsString ? "to_cstring(" : ""
     }value${returnsString ? ")" : ""});
         }\n}\n`
