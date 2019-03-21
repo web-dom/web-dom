@@ -7,8 +7,26 @@ DOM access for web assembly
 * api generated from webidl
 * technology agnostic
 
+```toml
+web-dom = "0.0.5"
+```
+
 Documentation: https://docs.rs/web-dom/
 
+Want to create web components? Check out https://github.com/web-dom/webcomponent
+
+```rust
+use web_dom::*;
+
+#[no_mangle]
+pub fn main() -> () {
+    console::log("hello world")
+}
+```
+```html
+<script src="http://unpkg.com/web-dom@latest/web-dom.js"></script>
+<web-dom module="helloworld.wasm"></web-dom>
+```
 ```toml
 [package]
 name = "helloworld"
@@ -19,22 +37,10 @@ edition = "2018"
 crate-type =["cdylib"]
 
 [dependencies]
-web-dom = "0.0.4"
-```
-```rust
-use web_dom::*;
-
-#[no_mangle]
-pub fn main() -> () {
-    console::log("hello world")
-}
+web-dom = "0.0.5"
 ```
 ```console
 cargo build --target wasm32-unknown-unknown --release
-```
-```html
-<script src="http://unpkg.com/web-dom@latest/web-dom.js"></script>
-<web-dom module="helloworld.wasm"></web-dom>
 ```
 
 See it working [here](https://web-dom.github.io/web-dom/examples/helloworld/)
