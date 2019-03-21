@@ -8,7 +8,7 @@ DOM access for web assembly
 * technology agnostic
 
 ```toml
-web-dom = "0.0.8"
+web-dom = "0.0.9"
 ```
 
 Documentation: https://docs.rs/web-dom/
