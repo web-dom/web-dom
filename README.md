@@ -24,7 +24,7 @@ pub fn main() -> () {
 }
 ```
 ```html
-<script src="http://unpkg.com/web-dom@latest/web-dom.js"></script>
+<script src="http://unpkg.com/web-dom@latest/web-dom.min.js"></script>
 <web-dom module="helloworld.wasm"></web-dom>
 ```
 ```toml
@@ -99,3 +99,6 @@ See it working [here](https://web-dom.github.io/web-dom/examples/events/)
 # Pong
 
 https://github.com/richardanaya/pong/
+
+
+See it working [here](https://richardanaya.github.io/pong/)
