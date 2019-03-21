@@ -1,29 +1,29 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn htmlcanvaselement_get_width(instance: i32) -> i32;
-    fn htmlcanvaselement_set_width(instance: i32, value: i32);
+    fn htmlcanvaselement_get_width(instance: DOMReference) -> i32;
+    fn htmlcanvaselement_set_width(instance: DOMReference, value: i32);
 }
 
-pub fn get_width(instance: i32) -> i32 {
+pub fn get_width(instance: DOMReference) -> i32 {
     unsafe { htmlcanvaselement_get_width(instance) }
 }
 
-pub fn set_width(instance: i32, value: i32) {
+pub fn set_width(instance: DOMReference, value: i32) {
     unsafe {
         htmlcanvaselement_set_width(instance, value);
     }
 }
 extern "C" {
-    fn htmlcanvaselement_get_height(instance: i32) -> i32;
-    fn htmlcanvaselement_set_height(instance: i32, value: i32);
+    fn htmlcanvaselement_get_height(instance: DOMReference) -> i32;
+    fn htmlcanvaselement_set_height(instance: DOMReference, value: i32);
 }
 
-pub fn get_height(instance: i32) -> i32 {
+pub fn get_height(instance: DOMReference) -> i32 {
     unsafe { htmlcanvaselement_get_height(instance) }
 }
 
-pub fn set_height(instance: i32, value: i32) {
+pub fn set_height(instance: DOMReference, value: i32) {
     unsafe {
         htmlcanvaselement_set_height(instance, value);
     }

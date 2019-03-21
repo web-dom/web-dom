@@ -1,113 +1,113 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn element_get_namespace_uri(instance: i32) -> CString;
-    fn element_set_namespace_uri(instance: i32, value: CString);
+    fn element_get_namespace_uri(instance: DOMReference) -> CString;
+    fn element_set_namespace_uri(instance: DOMReference, value: CString);
 }
 
-pub fn get_namespace_uri(instance: i32) -> String {
+pub fn get_namespace_uri(instance: DOMReference) -> String {
     unsafe { to_string(element_get_namespace_uri(instance)) }
 }
 
-pub fn set_namespace_uri(instance: i32, value: &str) {
+pub fn set_namespace_uri(instance: DOMReference, value: &str) {
     unsafe {
         element_set_namespace_uri(instance, to_cstring(value));
     }
 }
 extern "C" {
-    fn element_get_prefix(instance: i32) -> CString;
-    fn element_set_prefix(instance: i32, value: CString);
+    fn element_get_prefix(instance: DOMReference) -> CString;
+    fn element_set_prefix(instance: DOMReference, value: CString);
 }
 
-pub fn get_prefix(instance: i32) -> String {
+pub fn get_prefix(instance: DOMReference) -> String {
     unsafe { to_string(element_get_prefix(instance)) }
 }
 
-pub fn set_prefix(instance: i32, value: &str) {
+pub fn set_prefix(instance: DOMReference, value: &str) {
     unsafe {
         element_set_prefix(instance, to_cstring(value));
     }
 }
 extern "C" {
-    fn element_get_local_name(instance: i32) -> CString;
-    fn element_set_local_name(instance: i32, value: CString);
+    fn element_get_local_name(instance: DOMReference) -> CString;
+    fn element_set_local_name(instance: DOMReference, value: CString);
 }
 
-pub fn get_local_name(instance: i32) -> String {
+pub fn get_local_name(instance: DOMReference) -> String {
     unsafe { to_string(element_get_local_name(instance)) }
 }
 
-pub fn set_local_name(instance: i32, value: &str) {
+pub fn set_local_name(instance: DOMReference, value: &str) {
     unsafe {
         element_set_local_name(instance, to_cstring(value));
     }
 }
 extern "C" {
-    fn element_get_tag_name(instance: i32) -> CString;
-    fn element_set_tag_name(instance: i32, value: CString);
+    fn element_get_tag_name(instance: DOMReference) -> CString;
+    fn element_set_tag_name(instance: DOMReference, value: CString);
 }
 
-pub fn get_tag_name(instance: i32) -> String {
+pub fn get_tag_name(instance: DOMReference) -> String {
     unsafe { to_string(element_get_tag_name(instance)) }
 }
 
-pub fn set_tag_name(instance: i32, value: &str) {
+pub fn set_tag_name(instance: DOMReference, value: &str) {
     unsafe {
         element_set_tag_name(instance, to_cstring(value));
     }
 }
 extern "C" {
-    fn element_get_id(instance: i32) -> CString;
-    fn element_set_id(instance: i32, value: CString);
+    fn element_get_id(instance: DOMReference) -> CString;
+    fn element_set_id(instance: DOMReference, value: CString);
 }
 
-pub fn get_id(instance: i32) -> String {
+pub fn get_id(instance: DOMReference) -> String {
     unsafe { to_string(element_get_id(instance)) }
 }
 
-pub fn set_id(instance: i32, value: &str) {
+pub fn set_id(instance: DOMReference, value: &str) {
     unsafe {
         element_set_id(instance, to_cstring(value));
     }
 }
 extern "C" {
-    fn element_get_class_name(instance: i32) -> CString;
-    fn element_set_class_name(instance: i32, value: CString);
+    fn element_get_class_name(instance: DOMReference) -> CString;
+    fn element_set_class_name(instance: DOMReference, value: CString);
 }
 
-pub fn get_class_name(instance: i32) -> String {
+pub fn get_class_name(instance: DOMReference) -> String {
     unsafe { to_string(element_get_class_name(instance)) }
 }
 
-pub fn set_class_name(instance: i32, value: &str) {
+pub fn set_class_name(instance: DOMReference, value: &str) {
     unsafe {
         element_set_class_name(instance, to_cstring(value));
     }
 }
 extern "C" {
-    fn element_get_class_list(instance: i32) -> i32;
-    fn element_set_class_list(instance: i32, value: i32);
+    fn element_get_class_list(instance: DOMReference) -> i32;
+    fn element_set_class_list(instance: DOMReference, value: i32);
 }
 
-pub fn get_class_list(instance: i32) -> i32 {
+pub fn get_class_list(instance: DOMReference) -> i32 {
     unsafe { element_get_class_list(instance) }
 }
 
-pub fn set_class_list(instance: i32, value: i32) {
+pub fn set_class_list(instance: DOMReference, value: i32) {
     unsafe {
         element_set_class_list(instance, value);
     }
 }
 extern "C" {
-    fn element_get_attributes(instance: i32) -> i32;
-    fn element_set_attributes(instance: i32, value: i32);
+    fn element_get_attributes(instance: DOMReference) -> i32;
+    fn element_set_attributes(instance: DOMReference, value: i32);
 }
 
-pub fn get_attributes(instance: i32) -> i32 {
+pub fn get_attributes(instance: DOMReference) -> i32 {
     unsafe { element_get_attributes(instance) }
 }
 
-pub fn set_attributes(instance: i32, value: i32) {
+pub fn set_attributes(instance: DOMReference, value: i32) {
     unsafe {
         element_set_attributes(instance, value);
     }
@@ -246,15 +246,15 @@ pub fn insert_adjacent_text(instance: i32, location: &str, data: &str) {
     unsafe { element_insert_adjacent_text(instance, to_cstring(location), to_cstring(data)) }
 }
 extern "C" {
-    fn element_get_font_size_inflation(instance: i32) -> i32;
-    fn element_set_font_size_inflation(instance: i32, value: i32);
+    fn element_get_font_size_inflation(instance: DOMReference) -> i32;
+    fn element_set_font_size_inflation(instance: DOMReference, value: i32);
 }
 
-pub fn get_font_size_inflation(instance: i32) -> i32 {
+pub fn get_font_size_inflation(instance: DOMReference) -> i32 {
     unsafe { element_get_font_size_inflation(instance) }
 }
 
-pub fn set_font_size_inflation(instance: i32, value: i32) {
+pub fn set_font_size_inflation(instance: DOMReference, value: i32) {
     unsafe {
         element_set_font_size_inflation(instance, value);
     }
@@ -406,57 +406,57 @@ pub fn scroll_into_view(instance: i32, arg: i32) {
     unsafe { element_scroll_into_view(instance, arg) }
 }
 extern "C" {
-    fn element_get_scroll_top(instance: i32) -> i32;
-    fn element_set_scroll_top(instance: i32, value: i32);
+    fn element_get_scroll_top(instance: DOMReference) -> i32;
+    fn element_set_scroll_top(instance: DOMReference, value: i32);
 }
 
-pub fn get_scroll_top(instance: i32) -> i32 {
+pub fn get_scroll_top(instance: DOMReference) -> i32 {
     unsafe { element_get_scroll_top(instance) }
 }
 
-pub fn set_scroll_top(instance: i32, value: i32) {
+pub fn set_scroll_top(instance: DOMReference, value: i32) {
     unsafe {
         element_set_scroll_top(instance, value);
     }
 }
 extern "C" {
-    fn element_get_scroll_left(instance: i32) -> i32;
-    fn element_set_scroll_left(instance: i32, value: i32);
+    fn element_get_scroll_left(instance: DOMReference) -> i32;
+    fn element_set_scroll_left(instance: DOMReference, value: i32);
 }
 
-pub fn get_scroll_left(instance: i32) -> i32 {
+pub fn get_scroll_left(instance: DOMReference) -> i32 {
     unsafe { element_get_scroll_left(instance) }
 }
 
-pub fn set_scroll_left(instance: i32, value: i32) {
+pub fn set_scroll_left(instance: DOMReference, value: i32) {
     unsafe {
         element_set_scroll_left(instance, value);
     }
 }
 extern "C" {
-    fn element_get_scroll_width(instance: i32) -> i32;
-    fn element_set_scroll_width(instance: i32, value: i32);
+    fn element_get_scroll_width(instance: DOMReference) -> i32;
+    fn element_set_scroll_width(instance: DOMReference, value: i32);
 }
 
-pub fn get_scroll_width(instance: i32) -> i32 {
+pub fn get_scroll_width(instance: DOMReference) -> i32 {
     unsafe { element_get_scroll_width(instance) }
 }
 
-pub fn set_scroll_width(instance: i32, value: i32) {
+pub fn set_scroll_width(instance: DOMReference, value: i32) {
     unsafe {
         element_set_scroll_width(instance, value);
     }
 }
 extern "C" {
-    fn element_get_scroll_height(instance: i32) -> i32;
-    fn element_set_scroll_height(instance: i32, value: i32);
+    fn element_get_scroll_height(instance: DOMReference) -> i32;
+    fn element_set_scroll_height(instance: DOMReference, value: i32);
 }
 
-pub fn get_scroll_height(instance: i32) -> i32 {
+pub fn get_scroll_height(instance: DOMReference) -> i32 {
     unsafe { element_get_scroll_height(instance) }
 }
 
-pub fn set_scroll_height(instance: i32, value: i32) {
+pub fn set_scroll_height(instance: DOMReference, value: i32) {
     unsafe {
         element_set_scroll_height(instance, value);
     }
@@ -483,85 +483,85 @@ pub fn scroll_by(instance: i32, x: i32, y: i32) {
     unsafe { element_scroll_by(instance, x, y) }
 }
 extern "C" {
-    fn element_get_client_top(instance: i32) -> i32;
-    fn element_set_client_top(instance: i32, value: i32);
+    fn element_get_client_top(instance: DOMReference) -> i32;
+    fn element_set_client_top(instance: DOMReference, value: i32);
 }
 
-pub fn get_client_top(instance: i32) -> i32 {
+pub fn get_client_top(instance: DOMReference) -> i32 {
     unsafe { element_get_client_top(instance) }
 }
 
-pub fn set_client_top(instance: i32, value: i32) {
+pub fn set_client_top(instance: DOMReference, value: i32) {
     unsafe {
         element_set_client_top(instance, value);
     }
 }
 extern "C" {
-    fn element_get_client_left(instance: i32) -> i32;
-    fn element_set_client_left(instance: i32, value: i32);
+    fn element_get_client_left(instance: DOMReference) -> i32;
+    fn element_set_client_left(instance: DOMReference, value: i32);
 }
 
-pub fn get_client_left(instance: i32) -> i32 {
+pub fn get_client_left(instance: DOMReference) -> i32 {
     unsafe { element_get_client_left(instance) }
 }
 
-pub fn set_client_left(instance: i32, value: i32) {
+pub fn set_client_left(instance: DOMReference, value: i32) {
     unsafe {
         element_set_client_left(instance, value);
     }
 }
 extern "C" {
-    fn element_get_client_width(instance: i32) -> i32;
-    fn element_set_client_width(instance: i32, value: i32);
+    fn element_get_client_width(instance: DOMReference) -> i32;
+    fn element_set_client_width(instance: DOMReference, value: i32);
 }
 
-pub fn get_client_width(instance: i32) -> i32 {
+pub fn get_client_width(instance: DOMReference) -> i32 {
     unsafe { element_get_client_width(instance) }
 }
 
-pub fn set_client_width(instance: i32, value: i32) {
+pub fn set_client_width(instance: DOMReference, value: i32) {
     unsafe {
         element_set_client_width(instance, value);
     }
 }
 extern "C" {
-    fn element_get_client_height(instance: i32) -> i32;
-    fn element_set_client_height(instance: i32, value: i32);
+    fn element_get_client_height(instance: DOMReference) -> i32;
+    fn element_set_client_height(instance: DOMReference, value: i32);
 }
 
-pub fn get_client_height(instance: i32) -> i32 {
+pub fn get_client_height(instance: DOMReference) -> i32 {
     unsafe { element_get_client_height(instance) }
 }
 
-pub fn set_client_height(instance: i32, value: i32) {
+pub fn set_client_height(instance: DOMReference, value: i32) {
     unsafe {
         element_set_client_height(instance, value);
     }
 }
 extern "C" {
-    fn element_get_inner_html(instance: i32) -> CString;
-    fn element_set_inner_html(instance: i32, value: CString);
+    fn element_get_inner_html(instance: DOMReference) -> CString;
+    fn element_set_inner_html(instance: DOMReference, value: CString);
 }
 
-pub fn get_inner_html(instance: i32) -> String {
+pub fn get_inner_html(instance: DOMReference) -> String {
     unsafe { to_string(element_get_inner_html(instance)) }
 }
 
-pub fn set_inner_html(instance: i32, value: &str) {
+pub fn set_inner_html(instance: DOMReference, value: &str) {
     unsafe {
         element_set_inner_html(instance, to_cstring(value));
     }
 }
 extern "C" {
-    fn element_get_outer_html(instance: i32) -> CString;
-    fn element_set_outer_html(instance: i32, value: CString);
+    fn element_get_outer_html(instance: DOMReference) -> CString;
+    fn element_set_outer_html(instance: DOMReference, value: CString);
 }
 
-pub fn get_outer_html(instance: i32) -> String {
+pub fn get_outer_html(instance: DOMReference) -> String {
     unsafe { to_string(element_get_outer_html(instance)) }
 }
 
-pub fn set_outer_html(instance: i32, value: &str) {
+pub fn set_outer_html(instance: DOMReference, value: &str) {
     unsafe {
         element_set_outer_html(instance, to_cstring(value));
     }
@@ -588,57 +588,57 @@ pub fn query_selector_all(instance: i32, selectors: &str) -> i32 {
     unsafe { element_query_selector_all(instance, to_cstring(selectors)) }
 }
 extern "C" {
-    fn element_get_shadow_root(instance: i32) -> i32;
-    fn element_set_shadow_root(instance: i32, value: i32);
+    fn element_get_shadow_root(instance: DOMReference) -> i32;
+    fn element_set_shadow_root(instance: DOMReference, value: i32);
 }
 
-pub fn get_shadow_root(instance: i32) -> i32 {
+pub fn get_shadow_root(instance: DOMReference) -> i32 {
     unsafe { element_get_shadow_root(instance) }
 }
 
-pub fn set_shadow_root(instance: i32, value: i32) {
+pub fn set_shadow_root(instance: DOMReference, value: i32) {
     unsafe {
         element_set_shadow_root(instance, value);
     }
 }
 extern "C" {
-    fn element_get_open_or_closed_shadow_root(instance: i32) -> i32;
-    fn element_set_open_or_closed_shadow_root(instance: i32, value: i32);
+    fn element_get_open_or_closed_shadow_root(instance: DOMReference) -> i32;
+    fn element_set_open_or_closed_shadow_root(instance: DOMReference, value: i32);
 }
 
-pub fn get_open_or_closed_shadow_root(instance: i32) -> i32 {
+pub fn get_open_or_closed_shadow_root(instance: DOMReference) -> i32 {
     unsafe { element_get_open_or_closed_shadow_root(instance) }
 }
 
-pub fn set_open_or_closed_shadow_root(instance: i32, value: i32) {
+pub fn set_open_or_closed_shadow_root(instance: DOMReference, value: i32) {
     unsafe {
         element_set_open_or_closed_shadow_root(instance, value);
     }
 }
 extern "C" {
-    fn element_get_assigned_slot(instance: i32) -> i32;
-    fn element_set_assigned_slot(instance: i32, value: i32);
+    fn element_get_assigned_slot(instance: DOMReference) -> i32;
+    fn element_set_assigned_slot(instance: DOMReference, value: i32);
 }
 
-pub fn get_assigned_slot(instance: i32) -> i32 {
+pub fn get_assigned_slot(instance: DOMReference) -> i32 {
     unsafe { element_get_assigned_slot(instance) }
 }
 
-pub fn set_assigned_slot(instance: i32, value: i32) {
+pub fn set_assigned_slot(instance: DOMReference, value: i32) {
     unsafe {
         element_set_assigned_slot(instance, value);
     }
 }
 extern "C" {
-    fn element_get_slot(instance: i32) -> CString;
-    fn element_set_slot(instance: i32, value: CString);
+    fn element_get_slot(instance: DOMReference) -> CString;
+    fn element_set_slot(instance: DOMReference, value: CString);
 }
 
-pub fn get_slot(instance: i32) -> String {
+pub fn get_slot(instance: DOMReference) -> String {
     unsafe { to_string(element_get_slot(instance)) }
 }
 
-pub fn set_slot(instance: i32, value: &str) {
+pub fn set_slot(instance: DOMReference, value: &str) {
     unsafe {
         element_set_slot(instance, to_cstring(value));
     }

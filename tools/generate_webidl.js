@@ -140,10 +140,18 @@ function processOperation(namespace, operation, isInterface) {
       .map(
         x =>
           toSnake(x.name) +
-          (x.originalType == "DOMString" ? ":CString" : ":i32")
+          (x.originalType == "DOMString"
+            ? ":CString"
+            : x.originalType == "double"
+            ? ":f32"
+            : ":i32")
       )
       .join(", ")}) ${
-      hasReturn ? ` -> ${returnsString ? "CString" : "i32"}` : ""
+      hasReturn
+        ? ` -> ${
+            returnsString ? "CString" : returnType == "double" ? "f32" : "i32"
+          }`
+        : ""
     };
 }\n
 pub fn ` +
@@ -151,10 +159,19 @@ pub fn ` +
       `(${params
         .map(
           x =>
-            toSnake(x.name) + (x.originalType == "DOMString" ? ":&str" : ":i32")
+            toSnake(x.name) +
+            (x.originalType == "DOMString"
+              ? ":&str"
+              : x.originalType == "double"
+              ? ":f32"
+              : ":i32")
         )
         .join(", ")}) ${
-        hasReturn ? ` -> ${returnsString ? "String" : "i32"}` : ""
+        hasReturn
+          ? ` -> ${
+              returnsString ? "String" : returnType == "double" ? "f32" : "i32"
+            }`
+          : ""
       } {\nunsafe{
         ${returnsString ? "to_string(" : ""}
         ${namespace.toLowerCase()}_${toSnake(operationName)}(${params
@@ -222,14 +239,14 @@ function processAttribute(interface, idl) {
   appendToNamespace(
     interface,
     `extern \"C\" {
-    fn ${interface.toLowerCase()}_get_${toSnake(name)}(instance:i32) ${
+    fn ${interface.toLowerCase()}_get_${toSnake(name)}(instance:DOMReference) ${
       returnsString ? " -> CString" : " -> i32"
     };
-    fn ${interface.toLowerCase()}_set_${toSnake(name)}(instance:i32,value:${
-      returnsString ? "CString" : "i32"
-    });
+    fn ${interface.toLowerCase()}_set_${toSnake(
+      name
+    )}(instance:DOMReference,value:${returnsString ? "CString" : "i32"});
 }\n
-pub fn get_${toSnake(name)}(instance:i32) ${
+pub fn get_${toSnake(name)}(instance:DOMReference) ${
       returnsString ? " -> String" : " -> i32"
     } {\nunsafe{
   ${returnsString ? "to_string(" : ""} ${interface.toLowerCase()}_get_${toSnake(
@@ -238,7 +255,7 @@ pub fn get_${toSnake(name)}(instance:i32) ${
   ${returnsString ? ")" : ""}
   }\n}\n
 
-  pub fn set_${toSnake(name)}(instance:i32,value:${
+  pub fn set_${toSnake(name)}(instance:DOMReference,value:${
       returnsString ? "&str" : "i32"
     }){\nunsafe{
   ${interface.toLowerCase()}_set_${toSnake(name)}(instance,  ${

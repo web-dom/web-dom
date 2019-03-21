@@ -23,6 +23,9 @@
       },
       //get
       g(handle){
+        if(handle < 0){
+          return undefined;
+        }
         let ret =  allocations[handle];
         if(!ret){
           console.error(`Asked for ${handle} after it was released.`);

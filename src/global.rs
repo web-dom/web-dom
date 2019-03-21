@@ -7,6 +7,8 @@ pub type Element = i32;
 pub type EventListener = i32;
 pub type Event = i32;
 
+pub const UNDEFINED: i32 = -1;
+
 pub fn to_cstring(s: &str) -> CString {
     std::ffi::CString::new(s).unwrap().into_raw() as i32
 }
