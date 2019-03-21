@@ -352,46 +352,44 @@ pub fn begin_path(instance: i32) {
     unsafe { canvasrenderingcontext2d_begin_path(instance) }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_fill(instance: i32, path: i32, winding: i32);
+    fn canvasrenderingcontext2d_fill(instance: i32);
 }
 
-pub fn fill(instance: i32, path: i32, winding: i32) {
-    unsafe { canvasrenderingcontext2d_fill(instance, path, winding) }
+pub fn fill(instance: i32) {
+    unsafe { canvasrenderingcontext2d_fill(instance) }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_stroke(instance: i32, path: i32);
+    fn canvasrenderingcontext2d_stroke(instance: i32);
 }
 
-pub fn stroke(instance: i32, path: i32) {
-    unsafe { canvasrenderingcontext2d_stroke(instance, path) }
+pub fn stroke(instance: i32) {
+    unsafe { canvasrenderingcontext2d_stroke(instance) }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_clip(instance: i32, path: i32, winding: i32);
+    fn canvasrenderingcontext2d_clip(instance: i32);
 }
 
-pub fn clip(instance: i32, path: i32, winding: i32) {
-    unsafe { canvasrenderingcontext2d_clip(instance, path, winding) }
+pub fn clip(instance: i32) {
+    unsafe { canvasrenderingcontext2d_clip(instance) }
 }
 extern "C" {
     fn canvasrenderingcontext2d_is_point_in_path(
         instance: i32,
-        path: i32,
         x: i32,
         y: i32,
         winding: i32,
     ) -> i32;
 }
 
-pub fn is_point_in_path(instance: i32, path: i32, x: i32, y: i32, winding: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_is_point_in_path(instance, path, x, y, winding) }
+pub fn is_point_in_path(instance: i32, x: i32, y: i32, winding: i32) -> i32 {
+    unsafe { canvasrenderingcontext2d_is_point_in_path(instance, x, y, winding) }
 }
 extern "C" {
-    fn canvasrenderingcontext2d_is_point_in_stroke(instance: i32, path: i32, x: i32, y: i32)
-        -> i32;
+    fn canvasrenderingcontext2d_is_point_in_stroke(instance: i32, x: f32, y: f32) -> i32;
 }
 
-pub fn is_point_in_stroke(instance: i32, path: i32, x: i32, y: i32) -> i32 {
-    unsafe { canvasrenderingcontext2d_is_point_in_stroke(instance, path, x, y) }
+pub fn is_point_in_stroke(instance: i32, x: f32, y: f32) -> i32 {
+    unsafe { canvasrenderingcontext2d_is_point_in_stroke(instance, x, y) }
 }
 extern "C" {
     fn canvasrenderingcontext2d_draw_focus_if_needed(instance: i32, element: i32);

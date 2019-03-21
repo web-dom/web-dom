@@ -499,52 +499,39 @@
         _instance.beginPath();
       },
 
-      canvasrenderingcontext2d_fill: function(instance, path, winding) {
+      canvasrenderingcontext2d_fill: function(instance) {
         let _instance = ALLOCATOR.g(instance);
-        let _path = ALLOCATOR.g(path);
-        let _winding = ALLOCATOR.g(winding);
-        _instance.fill(_path, _winding);
+        _instance.fill();
       },
 
-      canvasrenderingcontext2d_stroke: function(instance, path) {
+      canvasrenderingcontext2d_stroke: function(instance) {
         let _instance = ALLOCATOR.g(instance);
-        let _path = ALLOCATOR.g(path);
-        _instance.stroke(_path);
+        _instance.stroke();
       },
 
-      canvasrenderingcontext2d_clip: function(instance, path, winding) {
+      canvasrenderingcontext2d_clip: function(instance) {
         let _instance = ALLOCATOR.g(instance);
-        let _path = ALLOCATOR.g(path);
-        let _winding = ALLOCATOR.g(winding);
-        _instance.clip(_path, _winding);
+        _instance.clip();
       },
 
       canvasrenderingcontext2d_is_point_in_path: function(
         instance,
-        path,
         x,
         y,
         winding
       ) {
         let _instance = ALLOCATOR.g(instance);
-        let _path = ALLOCATOR.g(path);
         let _x = x;
         let _y = y;
         let _winding = ALLOCATOR.g(winding);
-        return ALLOCATOR.a(_instance.isPointInPath(_path, _x, _y, _winding));
+        return ALLOCATOR.a(_instance.isPointInPath(_x, _y, _winding));
       },
 
-      canvasrenderingcontext2d_is_point_in_stroke: function(
-        instance,
-        path,
-        x,
-        y
-      ) {
+      canvasrenderingcontext2d_is_point_in_stroke: function(instance, x, y) {
         let _instance = ALLOCATOR.g(instance);
-        let _path = ALLOCATOR.g(path);
         let _x = x;
         let _y = y;
-        return ALLOCATOR.a(_instance.isPointInStroke(_path, _x, _y));
+        return ALLOCATOR.a(_instance.isPointInStroke(_x, _y));
       },
 
       canvasrenderingcontext2d_draw_focus_if_needed: function(instance, element) {

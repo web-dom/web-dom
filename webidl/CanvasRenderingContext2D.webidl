@@ -154,20 +154,20 @@ interface CanvasRenderingContext2D {
   // path API (see also CanvasPathMethods)
   void beginPath();
   //void fill(optional CanvasWindingRule winding = "nonzero");
-  void fill(Path2D path, optional CanvasWindingRule winding = "nonzero");
-  //void stroke();
-  void stroke(Path2D path);
+  void fill();//Path2D path, optional CanvasWindingRule winding = "nonzero");
+  void stroke();
+  //void stroke(Path2D path);
   //void clip(optional CanvasWindingRule winding = "nonzero");
-  void clip(Path2D path, optional CanvasWindingRule winding = "nonzero");
+  void clip();//Path2D path, optional CanvasWindingRule winding = "nonzero");
 // NOT IMPLEMENTED  void resetClip();
-  //[NeedsSubjectPrincipal]
-  //boolean isPointInPath(unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
-  [NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
-  boolean isPointInPath(Path2D path, unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
-  //[NeedsSubjectPrincipal]
-  //boolean isPointInStroke(double x, double y);
-  [NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
-  boolean isPointInStroke(Path2D path, unrestricted double x, unrestricted double y);
+  [NeedsSubjectPrincipal]
+  boolean isPointInPath(unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
+  //[NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
+  //boolean isPointInPath(Path2D path, unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
+  [NeedsSubjectPrincipal]
+  boolean isPointInStroke(double x, double y);
+  //[NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
+  //boolean isPointInStroke(Path2D path, unrestricted double x, unrestricted double y);
   [Pref="canvas.focusring.enabled", Throws] void drawFocusIfNeeded(Element element);
 // NOT IMPLEMENTED  void drawSystemFocusRing(Path path, HTMLElement element);
   [Pref="canvas.customfocusring.enabled"] boolean drawCustomFocusRing(Element element);
