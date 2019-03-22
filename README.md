@@ -8,7 +8,7 @@ DOM access for web assembly
 * technology agnostic
 
 ```toml
-web-dom = "0.0.9"
+web-dom = "0.0"
 ```
 
 Documentation: https://docs.rs/web-dom/
@@ -37,7 +37,7 @@ edition = "2018"
 crate-type =["cdylib"]
 
 [dependencies]
-web-dom = "0.0.7"
+web-dom = "0.0"
 ```
 ```console
 cargo build --target wasm32-unknown-unknown --release
