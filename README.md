@@ -102,3 +102,16 @@ https://github.com/richardanaya/pong/
 
 
 See it working [here](https://richardanaya.github.io/pong/)
+
+# Don't like Rust?
+
+web-dom can be used with any language that compiles to web assemply
+
+```C
+extern int global_window();
+extern void window_alert(char*);
+
+int main(void) {
+  window_alert(global_window(),"hello world!");
+}
+```
