@@ -4209,6 +4209,7 @@
 
   function run(wasmSrc, funcs) {
     let w = new WebDOMExecutor(wasmSrc, funcs);
+    return w;
   }
 
   class WebIDLLoader extends HTMLElement {

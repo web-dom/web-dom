@@ -31,13 +31,18 @@ extern "C" {
         param_b: i32,
         param_c: i32,
         param_d: i32,
-    );
+    ) -> i32;
 }
 
-pub fn sys_call(op: i32, sub_op: i32, param_a: i32, param_b: i32, param_c: i32, param_d: i32) {
-    unsafe {
-        global_sys_call(op, sub_op, param_a, param_b, param_c, param_d);
-    }
+pub fn sys_call(
+    op: i32,
+    sub_op: i32,
+    param_a: i32,
+    param_b: i32,
+    param_c: i32,
+    param_d: i32,
+) -> i32 {
+    unsafe { global_sys_call(op, sub_op, param_a, param_b, param_c, param_d) }
 }
 
 pub fn debugger() {

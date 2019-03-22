@@ -99,6 +99,7 @@ class WebDOMExecutor {
 
 export function run(wasmSrc, funcs) {
   let w = new WebDOMExecutor(wasmSrc, funcs);
+  return w;
 }
 
 const memories = {};
