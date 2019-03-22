@@ -1,7 +1,8 @@
-(function (factory) {
-  typeof define === 'function' && define.amd ? define(factory) :
-  factory();
-}(function () { 'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.WebDOM = {}));
+}(this, function (exports) { 'use strict';
 
   function allocator() {
     let allocations = [];
@@ -40,6 +41,7 @@
   function createWebIDLContext() {
     let ALLOCATOR = allocator();
     const webidl = {
+      global_sys_call: function(id, a, b, c) {},
       global_debugger: function() {
         debugger;
       },
@@ -4105,6 +4107,104 @@
     return webidl;
   }
 
+  class WebDOMExecutor {
+    constructor(wasmSrc, funcs) {
+      fetch(wasmSrc)
+        .then(response => response.arrayBuffer())
+        .then(bytes => {
+          let webidlContext = createWebIDLContext();
+          let env = {};
+          let i;
+          for (i in webidlContext) {
+            env[i] = webidlContext[i].bind(this);
+          }
+          for (i in funcs) {
+            env[i] = funcs[i].bind(this);
+          }
+          return WebAssembly.instantiate(bytes, { env });
+        })
+        .then(results => {
+          this.memory = results.instance.exports.memory;
+          this.exports = results.instance.exports;
+          results.instance.exports.main();
+          this.loaded = true;
+        })
+        .catch(e => {
+          console.error(e);
+        });
+    }
+
+    executeCallback(handle, ev, allocator) {
+      let h = this.exports[this.callbackHandler];
+      if (h) {
+        if (ev) {
+          // give the opportunity for event handler to grab what it needs
+          let eventHandle = allocator.a(ev);
+          h(handle, eventHandle);
+          // then release event
+          allocator.r(eventHandle);
+        } else {
+          h(handle, -1);
+        }
+      } else {
+        throw new Error(
+          "cannot call back without implementation of callback(source:i32,callback:i32)"
+        );
+      }
+    }
+
+    readStringFromMemory(start) {
+      this.s(start);
+    }
+
+    s(start) {
+      const data = new Uint8Array(this.memory.buffer);
+      const str = [];
+      let i = start;
+      while (data[i] !== 0) {
+        str.push(data[i]);
+        i++;
+      }
+      return this.utf8dec.decode(new Uint8Array(str));
+    }
+
+    makeString(str) {
+      this.ms(str);
+    }
+
+    ms(str) {
+      if (!this.exports.malloc) {
+        throw new Error(
+          "Cannot return string to wasm with an implementation of malloc(size:i32)->i32 exposed on exports"
+        );
+      }
+      let bytes = this.utf8enc.encode(str + String.fromCharCode(0));
+      let len = bytes.length;
+      let start = this.exports.malloc(len);
+      const memory = new Uint8Array(this.memory.buffer);
+      memory.set(bytes, start);
+      return start;
+    }
+
+    malloc(len) {
+      this.m(len);
+    }
+
+    m(len) {
+      if (!this.exports.malloc) {
+        throw new Error(
+          "Cannot call malloc to wasm with an implementation of malloc(size:i32)->i32 exposed on exports"
+        );
+      }
+      let start = this.exports.malloc(len);
+      return start;
+    }
+  }
+
+  function run(wasmSrc, funcs) {
+    let w = new WebDOMExecutor(wasmSrc, funcs);
+  }
+
   class WebIDLLoader extends HTMLElement {
     connectedCallback() {
       this.utf8dec = new TextDecoder("utf-8");
@@ -4311,5 +4411,9 @@
     }
   }
   window.customElements.define("web-dom", WebIDLLoader);
+
+  exports.run = run;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 }));

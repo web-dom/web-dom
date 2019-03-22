@@ -1,6 +1,6 @@
 everything: setup generate_webidl lint build minify examples
 build:
-	./node_modules/.bin/rollup js/web-dom.js --file web-dom.js --format umd --name webidlLoader
+	./node_modules/.bin/rollup js/web-dom.js --file web-dom.js --format umd --name WebDOM
 	cargo fmt
 .PHONY: examples
 examples:
