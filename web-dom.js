@@ -4112,6 +4112,8 @@
 
   class WebDOMExecutor {
     constructor(wasmSrc, funcs) {
+      this.utf8dec = new TextDecoder("utf-8");
+      this.utf8enc = new TextEncoder("utf-8");
       fetch(wasmSrc)
         .then(response => response.arrayBuffer())
         .then(bytes => {
