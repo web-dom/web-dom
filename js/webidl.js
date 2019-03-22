@@ -4,6 +4,9 @@ import allocator from "./allocator";
 function createWebIDLContext() {
   let ALLOCATOR = allocator();
   const webidl = {
+    allocator: function() {
+      return ALLOCATOR;
+    },
     global_sys_call: function(id, a, b, c) {},
     global_debugger: function() {
       debugger;

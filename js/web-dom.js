@@ -14,6 +14,7 @@ class WebDOMExecutor {
         for (i in funcs) {
           env[i] = funcs[i].bind(this);
         }
+        this.env = env;
         return WebAssembly.instantiate(bytes, { env });
       })
       .then(results => {
