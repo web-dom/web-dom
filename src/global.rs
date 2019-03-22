@@ -24,12 +24,19 @@ extern "C" {
     fn global_release(handle: i32);
     fn global_create_event_listener() -> EventListener;
     fn global_get_property(element: Element, property_name: CString) -> i32;
-    fn global_sys_call(id: i32, param_a: i32, param_b: i32, param_c: i32);
+    fn global_sys_call(
+        op: i32,
+        sub_op: i32,
+        param_a: i32,
+        param_b: i32,
+        param_c: i32,
+        param_d: i32,
+    );
 }
 
-pub fn sys_call(id: i32, param_a: i32, param_b: i32, param_c: i32) {
+pub fn sys_call(op: i32, sub_op: i32, param_a: i32, param_b: i32, param_c: i32, param_d: i32) {
     unsafe {
-        global_sys_call(id, param_a, param_b, param_c);
+        global_sys_call(op, sub_op, param_a, param_b, param_c, param_d);
     }
 }
 

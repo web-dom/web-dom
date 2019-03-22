@@ -1,6 +1,6 @@
 [package]
 name = "web-dom"
-version = "0.0.10"
+version = "0.0.12"
 authors = ["Richard Anaya"]
 edition = "2018"
 description = "Simple bindings to the DOM using wasm-module"
