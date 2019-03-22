@@ -8,7 +8,7 @@ DOM access for web assembly
 * technology agnostic
 
 ```toml
-web-dom = "0.0.9"
+web-dom = "0.0"
 ```
 
 Documentation: https://docs.rs/web-dom/
@@ -37,7 +37,7 @@ edition = "2018"
 crate-type =["cdylib"]
 
 [dependencies]
-web-dom = "0.0.7"
+web-dom = "0.0"
 ```
 ```console
 cargo build --target wasm32-unknown-unknown --release
@@ -102,3 +102,38 @@ https://github.com/richardanaya/pong/
 
 
 See it working [here](https://richardanaya.github.io/pong/)
+
+# Don't like Rust?
+
+web-dom can be used with any language that compiles to web assembly
+
+```C
+extern int global_window();
+extern void window_alert(char*);
+
+int main(void) {
+  window_alert(global_window(),"hello world!");
+}
+```
+
+```clojure
+(extern global_get_window [])
+(extern window_get_document [window])
+(extern document_query_selector [document query])
+(extern htmlcanvas_get_context [element context])
+(extern drawing_set_fill_style [canvas color])
+(extern drawing_fill_rect [canvas x y w h])
+
+(def colors ("black" "grey" "red"))
+
+(pub defn main []
+  (let [window (global_get_window)
+        document (window_get_document window)
+        canvas (document_query_selector document "#screen")
+        ctx (htmlcanvas_get_context canvas "2d")]
+        (loop [x 0]
+               (if (< x 3)
+                   (do (drawing_set_fill_style ctx (mem32 (+ colors (* 4 x))))
+                       (drawing_fill_rect ctx (* x 10) (* x 10) 50 50 )
+                       (recur [x (+ x 1)]))))))
+```
