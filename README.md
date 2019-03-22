@@ -117,7 +117,6 @@ int main(void) {
 ```
 
 ```clojure
-```clojure
 (extern global_get_window [])
 (extern window_get_document [window])
 (extern document_query_selector [document query])
