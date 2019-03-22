@@ -4160,7 +4160,7 @@
     }
 
     readStringFromMemory(start) {
-      this.s(start);
+      return this.s(start);
     }
 
     s(start) {
@@ -4175,7 +4175,7 @@
     }
 
     makeString(str) {
-      this.ms(str);
+      return this.ms(str);
     }
 
     ms(str) {
@@ -4193,7 +4193,7 @@
     }
 
     malloc(len) {
-      this.m(len);
+      return this.m(len);
     }
 
     m(len) {

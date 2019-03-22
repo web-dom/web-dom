@@ -50,7 +50,7 @@ class WebDOMExecutor {
   }
 
   readStringFromMemory(start) {
-    this.s(start);
+    return this.s(start);
   }
 
   s(start) {
@@ -65,7 +65,7 @@ class WebDOMExecutor {
   }
 
   makeString(str) {
-    this.ms(str);
+    return this.ms(str);
   }
 
   ms(str) {
@@ -83,7 +83,7 @@ class WebDOMExecutor {
   }
 
   malloc(len) {
-    this.m(len);
+    return this.m(len);
   }
 
   m(len) {
