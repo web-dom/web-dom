@@ -266,6 +266,7 @@ partial interface Element {
   void requestPointerLock();
 };
 
+// I added this from mixin
 partial interface Element {
   [Constant]
   readonly attribute HTMLCollection children;
@@ -280,4 +281,17 @@ partial interface Element {
   void prepend((Node or DOMString)... nodes);
   [CEReactions, Throws, Unscopable]
   void append((Node or DOMString)... nodes);
+
+  [CEReactions, Throws, Unscopable]
+  void before((Node or DOMString)... nodes);
+  [CEReactions, Throws, Unscopable]
+  void after((Node or DOMString)... nodes);
+  [CEReactions, Throws, Unscopable]
+  void replaceWith((Node or DOMString)... nodes);
+  [CEReactions, Unscopable]
+  void remove();
+  [Pure]
+  readonly attribute Element? previousElementSibling;
+  [Pure]
+  readonly attribute Element? nextElementSibling;
 };

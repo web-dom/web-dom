@@ -2461,6 +2461,49 @@
         _instance.append(_nodes);
       },
 
+      element_before: function(instance, nodes) {
+        let _instance = ALLOCATOR.g(instance);
+        let _nodes = ALLOCATOR.g(nodes);
+        _instance.before(_nodes);
+      },
+
+      element_after: function(instance, nodes) {
+        let _instance = ALLOCATOR.g(instance);
+        let _nodes = ALLOCATOR.g(nodes);
+        _instance.after(_nodes);
+      },
+
+      element_replace_with: function(instance, nodes) {
+        let _instance = ALLOCATOR.g(instance);
+        let _nodes = ALLOCATOR.g(nodes);
+        _instance.replaceWith(_nodes);
+      },
+
+      element_remove: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.remove();
+      },
+
+      element_get_previous_element_sibling: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.previousElementSibling);
+      },
+
+      element_set_previous_element_sibling: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.previousElementSibling = ALLOCATOR.g(handle);
+      },
+
+      element_get_next_element_sibling: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.nextElementSibling);
+      },
+
+      element_set_next_element_sibling: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.nextElementSibling = ALLOCATOR.g(handle);
+      },
+
       eventtarget_add_event_listener: function(instance, event_type, listener) {
         let _instance = ALLOCATOR.g(instance);
         let _event_type = this.s(event_type);

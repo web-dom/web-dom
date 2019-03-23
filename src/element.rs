@@ -727,3 +727,59 @@ extern "C" {
 pub fn append(instance: i32, nodes: i32) {
     unsafe { element_append(instance, nodes) }
 }
+extern "C" {
+    fn element_before(instance: i32, nodes: i32);
+}
+
+pub fn before(instance: i32, nodes: i32) {
+    unsafe { element_before(instance, nodes) }
+}
+extern "C" {
+    fn element_after(instance: i32, nodes: i32);
+}
+
+pub fn after(instance: i32, nodes: i32) {
+    unsafe { element_after(instance, nodes) }
+}
+extern "C" {
+    fn element_replace_with(instance: i32, nodes: i32);
+}
+
+pub fn replace_with(instance: i32, nodes: i32) {
+    unsafe { element_replace_with(instance, nodes) }
+}
+extern "C" {
+    fn element_remove(instance: i32);
+}
+
+pub fn remove(instance: i32) {
+    unsafe { element_remove(instance) }
+}
+extern "C" {
+    fn element_get_previous_element_sibling(instance: DOMReference) -> i32;
+    fn element_set_previous_element_sibling(instance: DOMReference, value: i32);
+}
+
+pub fn get_previous_element_sibling(instance: DOMReference) -> i32 {
+    unsafe { element_get_previous_element_sibling(instance) }
+}
+
+pub fn set_previous_element_sibling(instance: DOMReference, value: i32) {
+    unsafe {
+        element_set_previous_element_sibling(instance, value);
+    }
+}
+extern "C" {
+    fn element_get_next_element_sibling(instance: DOMReference) -> i32;
+    fn element_set_next_element_sibling(instance: DOMReference, value: i32);
+}
+
+pub fn get_next_element_sibling(instance: DOMReference) -> i32 {
+    unsafe { element_get_next_element_sibling(instance) }
+}
+
+pub fn set_next_element_sibling(instance: DOMReference, value: i32) {
+    unsafe {
+        element_set_next_element_sibling(instance, value);
+    }
+}
