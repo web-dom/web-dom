@@ -3408,6 +3408,236 @@
         return ALLOCATOR.a(_instance.getModifierState(_key_arg));
       },
 
+      node_get_node_type: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return _instance.nodeType;
+      },
+
+      node_set_node_type: function(instance, val) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.nodeType = val;
+      },
+
+      node_get_node_name: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return this.ms(_instance.nodeName);
+      },
+
+      node_set_node_name: function(instance, str) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.nodeName = this.s(str);
+      },
+
+      node_get_base_uri: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return this.ms(_instance.baseURI);
+      },
+
+      node_set_base_uri: function(instance, str) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.baseURI = this.s(str);
+      },
+
+      node_get_is_connected: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return _instance.isConnected;
+      },
+
+      node_set_is_connected: function(instance, val) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.isConnected = val;
+      },
+
+      node_get_owner_document: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.ownerDocument);
+      },
+
+      node_set_owner_document: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.ownerDocument = ALLOCATOR.g(handle);
+      },
+
+      node_get_root_node: function(instance, options) {
+        let _instance = ALLOCATOR.g(instance);
+        let _options = ALLOCATOR.g(options);
+        return ALLOCATOR.a(_instance.getRootNode(_options));
+      },
+
+      node_get_parent_node: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.parentNode);
+      },
+
+      node_set_parent_node: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.parentNode = ALLOCATOR.g(handle);
+      },
+
+      node_get_parent_element: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.parentElement);
+      },
+
+      node_set_parent_element: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.parentElement = ALLOCATOR.g(handle);
+      },
+
+      node_has_child_nodes: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.hasChildNodes());
+      },
+
+      node_get_child_nodes: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.childNodes);
+      },
+
+      node_set_child_nodes: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.childNodes = ALLOCATOR.g(handle);
+      },
+
+      node_get_first_child: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.firstChild);
+      },
+
+      node_set_first_child: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.firstChild = ALLOCATOR.g(handle);
+      },
+
+      node_get_last_child: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.lastChild);
+      },
+
+      node_set_last_child: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.lastChild = ALLOCATOR.g(handle);
+      },
+
+      node_get_previous_sibling: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.previousSibling);
+      },
+
+      node_set_previous_sibling: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.previousSibling = ALLOCATOR.g(handle);
+      },
+
+      node_get_next_sibling: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.nextSibling);
+      },
+
+      node_set_next_sibling: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.nextSibling = ALLOCATOR.g(handle);
+      },
+
+      node_get_node_value: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return this.ms(_instance.nodeValue);
+      },
+
+      node_set_node_value: function(instance, str) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.nodeValue = this.s(str);
+      },
+
+      node_get_text_content: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return this.ms(_instance.textContent);
+      },
+
+      node_set_text_content: function(instance, str) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.textContent = this.s(str);
+      },
+
+      node_insert_before: function(instance, node, child) {
+        let _instance = ALLOCATOR.g(instance);
+        let _node = ALLOCATOR.g(node);
+        let _child = ALLOCATOR.g(child);
+        return ALLOCATOR.a(_instance.insertBefore(_node, _child));
+      },
+
+      node_append_child: function(instance, node) {
+        let _instance = ALLOCATOR.g(instance);
+        let _node = ALLOCATOR.g(node);
+        return ALLOCATOR.a(_instance.appendChild(_node));
+      },
+
+      node_replace_child: function(instance, node, child) {
+        let _instance = ALLOCATOR.g(instance);
+        let _node = ALLOCATOR.g(node);
+        let _child = ALLOCATOR.g(child);
+        return ALLOCATOR.a(_instance.replaceChild(_node, _child));
+      },
+
+      node_remove_child: function(instance, child) {
+        let _instance = ALLOCATOR.g(instance);
+        let _child = ALLOCATOR.g(child);
+        return ALLOCATOR.a(_instance.removeChild(_child));
+      },
+
+      node_normalize: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.normalize();
+      },
+
+      node_clone_node: function(instance, deep) {
+        let _instance = ALLOCATOR.g(instance);
+        let _deep = deep;
+        return ALLOCATOR.a(_instance.cloneNode(_deep));
+      },
+
+      node_is_same_node: function(instance, node) {
+        let _instance = ALLOCATOR.g(instance);
+        let _node = ALLOCATOR.g(node);
+        return ALLOCATOR.a(_instance.isSameNode(_node));
+      },
+
+      node_is_equal_node: function(instance, node) {
+        let _instance = ALLOCATOR.g(instance);
+        let _node = ALLOCATOR.g(node);
+        return ALLOCATOR.a(_instance.isEqualNode(_node));
+      },
+
+      node_compare_document_position: function(instance, other) {
+        let _instance = ALLOCATOR.g(instance);
+        let _other = ALLOCATOR.g(other);
+        return ALLOCATOR.a(_instance.compareDocumentPosition(_other));
+      },
+
+      node_contains: function(instance, other) {
+        let _instance = ALLOCATOR.g(instance);
+        let _other = ALLOCATOR.g(other);
+        return ALLOCATOR.a(_instance.contains(_other));
+      },
+
+      node_lookup_prefix: function(instance, namespace) {
+        let _instance = ALLOCATOR.g(instance);
+        let _namespace = this.s(namespace);
+        return this.ms(_instance.lookupPrefix(_namespace));
+      },
+
+      node_lookup_namespace_uri: function(instance, prefix) {
+        let _instance = ALLOCATOR.g(instance);
+        let _prefix = this.s(prefix);
+        return this.ms(_instance.lookupNamespaceURI(_prefix));
+      },
+
+      node_is_default_namespace: function(instance, namespace) {
+        let _instance = ALLOCATOR.g(instance);
+        let _namespace = this.s(namespace);
+        return ALLOCATOR.a(_instance.isDefaultNamespace(_namespace));
+      },
+
       window_get_window: function(instance) {
         let _instance = ALLOCATOR.g(instance);
         return ALLOCATOR.a(_instance.window);

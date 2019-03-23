@@ -15,6 +15,7 @@ pub mod htmlinput;
 pub mod keyboardevent;
 pub mod math;
 pub mod mouseevent;
+pub mod node;
 pub mod path2d;
 pub mod textmetrics;
 pub mod window;

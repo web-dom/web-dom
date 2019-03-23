@@ -11,7 +11,7 @@ examples:
 setup:
 	npm install
 generate_webidl:
-	node tools/generate_webidl.js Console.webidl Window.webidl Document.webidl HTMLCanvasElement.webidl CanvasRenderingContext2D.webidl EventTarget.webidl KeyboardEvent.webidl MouseEvent.webidl Element.webidl HTMLInputElement.webidl WindowOrWorkerGlobalScope.webidl
+	node tools/generate_webidl.js Console.webidl Window.webidl Document.webidl HTMLCanvasElement.webidl CanvasRenderingContext2D.webidl EventTarget.webidl KeyboardEvent.webidl MouseEvent.webidl Element.webidl HTMLInputElement.webidl WindowOrWorkerGlobalScope.webidl Node.webidl
 lint:
 	./node_modules/.bin/prettier --write js/web-dom.js js/webidl.js tools/generate_webidl.js
 minify:
