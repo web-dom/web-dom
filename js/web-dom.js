@@ -31,7 +31,7 @@ class WebDOMExecutor {
   }
 
   executeCallback(handle, ev, allocator) {
-    let h = this.exports[this.callbackHandler];
+    let h = this.exports.callback;
     if (h) {
       if (ev) {
         // give the opportunity for event handler to grab what it needs
