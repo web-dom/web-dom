@@ -265,3 +265,19 @@ partial interface Element {
   [NeedsCallerType]
   void requestPointerLock();
 };
+
+partial interface Element {
+  [Constant]
+  readonly attribute HTMLCollection children;
+  [Pure]
+  readonly attribute Element? firstElementChild;
+  [Pure]
+  readonly attribute Element? lastElementChild;
+  [Pure]
+  readonly attribute unsigned long childElementCount;
+
+  [CEReactions, Throws, Unscopable]
+  void prepend((Node or DOMString)... nodes);
+  [CEReactions, Throws, Unscopable]
+  void append((Node or DOMString)... nodes);
+};

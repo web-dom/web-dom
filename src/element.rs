@@ -657,3 +657,73 @@ extern "C" {
 pub fn request_pointer_lock(instance: i32) {
     unsafe { element_request_pointer_lock(instance) }
 }
+extern "C" {
+    fn element_get_children(instance: DOMReference) -> i32;
+    fn element_set_children(instance: DOMReference, value: i32);
+}
+
+pub fn get_children(instance: DOMReference) -> i32 {
+    unsafe { element_get_children(instance) }
+}
+
+pub fn set_children(instance: DOMReference, value: i32) {
+    unsafe {
+        element_set_children(instance, value);
+    }
+}
+extern "C" {
+    fn element_get_first_element_child(instance: DOMReference) -> i32;
+    fn element_set_first_element_child(instance: DOMReference, value: i32);
+}
+
+pub fn get_first_element_child(instance: DOMReference) -> i32 {
+    unsafe { element_get_first_element_child(instance) }
+}
+
+pub fn set_first_element_child(instance: DOMReference, value: i32) {
+    unsafe {
+        element_set_first_element_child(instance, value);
+    }
+}
+extern "C" {
+    fn element_get_last_element_child(instance: DOMReference) -> i32;
+    fn element_set_last_element_child(instance: DOMReference, value: i32);
+}
+
+pub fn get_last_element_child(instance: DOMReference) -> i32 {
+    unsafe { element_get_last_element_child(instance) }
+}
+
+pub fn set_last_element_child(instance: DOMReference, value: i32) {
+    unsafe {
+        element_set_last_element_child(instance, value);
+    }
+}
+extern "C" {
+    fn element_get_child_element_count(instance: DOMReference) -> i32;
+    fn element_set_child_element_count(instance: DOMReference, value: i32);
+}
+
+pub fn get_child_element_count(instance: DOMReference) -> i32 {
+    unsafe { element_get_child_element_count(instance) }
+}
+
+pub fn set_child_element_count(instance: DOMReference, value: i32) {
+    unsafe {
+        element_set_child_element_count(instance, value);
+    }
+}
+extern "C" {
+    fn element_prepend(instance: i32, nodes: i32);
+}
+
+pub fn prepend(instance: i32, nodes: i32) {
+    unsafe { element_prepend(instance, nodes) }
+}
+extern "C" {
+    fn element_append(instance: i32, nodes: i32);
+}
+
+pub fn append(instance: i32, nodes: i32) {
+    unsafe { element_append(instance, nodes) }
+}

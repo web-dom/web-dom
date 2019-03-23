@@ -2409,6 +2409,58 @@
         _instance.requestPointerLock();
       },
 
+      element_get_children: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.children);
+      },
+
+      element_set_children: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.children = ALLOCATOR.g(handle);
+      },
+
+      element_get_first_element_child: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.firstElementChild);
+      },
+
+      element_set_first_element_child: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.firstElementChild = ALLOCATOR.g(handle);
+      },
+
+      element_get_last_element_child: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return ALLOCATOR.a(_instance.lastElementChild);
+      },
+
+      element_set_last_element_child: function(instance, handle) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.lastElementChild = ALLOCATOR.g(handle);
+      },
+
+      element_get_child_element_count: function(instance) {
+        let _instance = ALLOCATOR.g(instance);
+        return _instance.childElementCount;
+      },
+
+      element_set_child_element_count: function(instance, val) {
+        let _instance = ALLOCATOR.g(instance);
+        _instance.childElementCount = val;
+      },
+
+      element_prepend: function(instance, nodes) {
+        let _instance = ALLOCATOR.g(instance);
+        let _nodes = ALLOCATOR.g(nodes);
+        _instance.prepend(_nodes);
+      },
+
+      element_append: function(instance, nodes) {
+        let _instance = ALLOCATOR.g(instance);
+        let _nodes = ALLOCATOR.g(nodes);
+        _instance.append(_nodes);
+      },
+
       eventtarget_add_event_listener: function(instance, event_type, listener) {
         let _instance = ALLOCATOR.g(instance);
         let _event_type = this.s(event_type);
