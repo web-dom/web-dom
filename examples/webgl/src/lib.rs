@@ -4,120 +4,42 @@ pub fn main() -> () {
     let doc = window::get_document(window());
     let canvas = document::query_selector(doc, "#screen");
     let ctx = htmlcanvas::get_context(canvas, "webgl");
+    let vertices: Vec<f32> = vec![-0.5, 0.5, 0.0, -0.5, -0.5, 0.0, 0.5, -0.5, 0.0];
+    let indices: Vec<u16> = vec![0, 1, 2];
+    let vertices = create_uint8array(&vertices.into_bytes());
+    let indices = create_uint8array(&indices.into_bytes());
     let vertex_buffer = webgl::create_buffer(ctx);
-    /*     var vertices = [
-            -0.5,0.5,0.0,
-            -0.5,-0.5,0.0,
-            0.5,-0.5,0.0,
-         ];
+    webgl::bind_buffer(ctx,webgl::ARRAY_BUFFER,vertex_buffer);
+    webgl::buffer_data(ctx,webgl::ARRAY_BUFFER,vertices,webgl::STATIC_DRAW);
+    webgl::bind_buffer(ctx,webgl::ARRAY_BUFFER,NULL);
+    let index_buffer = webgl::create_buffer(ctx);
+    webgl::bind_buffer(ctx,webgl::ELEMENT_ARRAY_BUFFER,index_buffer);
+    webgl::buffer_data(ctx,webgl::ELEMENT_ARRAY_BUFFER,indices,webgl::STATIC_DRAW);
+    webgl::bind_buffer(ctx,webgl::ELEMENT_ARRAY_BUFFER,NULL);
+    let vertex_shader = webgl::create_shader(ctx,webgl::VERTEX_SHADER);
+    webgl::shader_source(ctx,vertex_shader,include_str!("vert.glsl"));
+    webgl::compile_shader(ctx,vertex_shader);
+    console::log(&webgl::get_shader_info_log(ctx,vertex_shader));
+    let fragment_shader = webgl::create_shader(ctx,webgl::FRAGMENT_SHADER);
+    webgl::shader_source(ctx,fragment_shader,include_str!("frag.glsl"));
+    webgl::compile_shader(ctx,fragment_shader);
+    console::log(&webgl::get_shader_info_log(ctx,fragment_shader));
+    let program = webgl::create_program(ctx);
+    webgl::attach_shader(ctx,program,vertex_shader);
+    webgl::attach_shader(ctx,program,fragment_shader);
+    webgl::link_program(ctx,program);
+    webgl::use_program(ctx,program);
+    webgl::bind_buffer(ctx,webgl::ARRAY_BUFFER,vertex_buffer);
+    webgl::bind_buffer(ctx,webgl::ELEMENT_ARRAY_BUFFER,index_buffer);
+    let coord = webgl::get_attrib_location(ctx,program, "coordinates");
+    webgl::vertex_attrib_pointer(ctx,coord,3.0,webgl::FLOAT,false,0.0,0.0);
+    webgl::enable_vertex_attrib_array(ctx,coord);
+    webgl::clear_color(ctx,0.0,0.0,0.0,1.0);
+    webgl::enable(ctx,webgl::DEPTH_TEST);
 
-         indices = [0,1,2];
 
-         // Create an empty buffer object to store vertex buffer
-         var vertex_buffer = gl.createBuffer();
-
-         // Bind appropriate array buffer to it
-         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
-
-         // Pass the vertex data to the buffer
-         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-
-         // Unbind the buffer
-         gl.bindBuffer(gl.ARRAY_BUFFER, null);
-
-         // Create an empty buffer object to store Index buffer
-         var Index_Buffer = gl.createBuffer();
-
-         // Bind appropriate array buffer to it
-         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, Index_Buffer);
-
-         // Pass the vertex data to the buffer
-         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
-
-         // Unbind the buffer
-         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
-
-         /*================ Shaders ====================*/
-
-         // Vertex shader source code
-         var vertCode =
-            'attribute vec3 coordinates;' +
-
-            'void main(void) {' +
-               ' gl_Position = vec4(coordinates, 1.0);' +
-            '}';
-
-         // Create a vertex shader object
-         var vertShader = gl.createShader(gl.VERTEX_SHADER);
-
-         // Attach vertex shader source code
-         gl.shaderSource(vertShader, vertCode);
-
-         // Compile the vertex shader
-         gl.compileShader(vertShader);
-
-         //fragment shader source code
-         var fragCode =
-            'void main(void) {' +
-               ' gl_FragColor = vec4(0.0, 0.0, 0.0, 0.1);' +
-            '}';
-
-         // Create fragment shader object
-         var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
-
-         // Attach fragment shader source code
-         gl.shaderSource(fragShader, fragCode);
-
-         // Compile the fragmentt shader
-         gl.compileShader(fragShader);
-
-         // Create a shader program object to store
-         // the combined shader program
-         var shaderProgram = gl.createProgram();
-
-         // Attach a vertex shader
-         gl.attachShader(shaderProgram, vertShader);
-
-         // Attach a fragment shader
-         gl.attachShader(shaderProgram, fragShader);
-
-         // Link both the programs
-         gl.linkProgram(shaderProgram);
-
-         // Use the combined shader program object
-         gl.useProgram(shaderProgram);
-
-         /*======= Associating shaders to buffer objects =======*/
-
-         // Bind vertex buffer object
-         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
-
-         // Bind index buffer object
-         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, Index_Buffer);
-
-         // Get the attribute location
-         var coord = gl.getAttribLocation(shaderProgram, "coordinates");
-
-         // Point an attribute to the currently bound VBO
-         gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);
-
-         // Enable the attribute
-         gl.enableVertexAttribArray(coord);
-
-         /*=========Drawing the triangle===========*/
-
-         // Clear the canvas
-         gl.clearColor(0.5, 0.5, 0.5, 0.9);
-
-         // Enable the depth test
-         gl.enable(gl.DEPTH_TEST);
-
-         // Clear the color buffer bit
-         gl.clear(gl.COLOR_BUFFER_BIT);
-
-         // Set the view port
-         gl.viewport(0,0,canvas.width,canvas.height);
-
-         // Draw the triangle
-         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT,0);*/
+    webgl::clear(ctx,webgl::COLOR_BUFFER_BIT);
+    webgl::clear(ctx,webgl::DEPTH_BUFFER_BIT);
+    webgl::viewport(ctx,0.0,0.0,1.0,1.0);
+    webgl::draw_elements(ctx,webgl::TRIANGLES,3.0,webgl::UNSIGNED_SHORT,0.0);
 }

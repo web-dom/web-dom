@@ -1,6 +1,6 @@
 #[allow(unused_imports)]
 use crate::*;
-pub const VERTEX_ARRAY_BINDING_OES: i32 = 0x85B5;
+pub const VERTEX_ARRAY_BINDING_OES: f32 = 0x85B5 as f32;
 extern "C" {
     fn oesvertexarrayobject_create_vertex_array_o_e_s(instance: DOMReference) -> DOMReference;
 }
@@ -22,11 +22,11 @@ extern "C" {
     fn oesvertexarrayobject_is_vertex_array_o_e_s(
         instance: DOMReference,
         is_vertex_array_o_e_s: DOMReference,
-    ) -> DOMReference;
+    ) -> i32;
 }
 
-pub fn is_vertex_array_o_e_s(instance: DOMReference, array_object: DOMReference) -> DOMReference {
-    unsafe { oesvertexarrayobject_is_vertex_array_o_e_s(instance, array_object) }
+pub fn is_vertex_array_o_e_s(instance: DOMReference, array_object: DOMReference) -> bool {
+    unsafe { 0 != oesvertexarrayobject_is_vertex_array_o_e_s(instance, array_object) }
 }
 extern "C" {
     fn oesvertexarrayobject_bind_vertex_array_o_e_s(

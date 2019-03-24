@@ -1,29 +1,29 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn webglactiveinfo_get_size(instance: DOMReference) -> DOMReference;
-    fn webglactiveinfo_set_size(instance: DOMReference, value: DOMReference);
+    fn webglactiveinfo_get_size(instance: DOMReference) -> f32;
+    fn webglactiveinfo_set_size(instance: DOMReference, value: f32);
 }
 
-pub fn get_size(instance: DOMReference) -> DOMReference {
+pub fn get_size(instance: DOMReference) -> f32 {
     unsafe { webglactiveinfo_get_size(instance) }
 }
 
-pub fn set_size(instance: DOMReference, value: DOMReference) {
+pub fn set_size(instance: DOMReference, value: f32) {
     unsafe {
         webglactiveinfo_set_size(instance, value);
     }
 }
 extern "C" {
-    fn webglactiveinfo_get_type(instance: DOMReference) -> DOMReference;
-    fn webglactiveinfo_set_type(instance: DOMReference, value: DOMReference);
+    fn webglactiveinfo_get_type(instance: DOMReference) -> f32;
+    fn webglactiveinfo_set_type(instance: DOMReference, value: f32);
 }
 
-pub fn get_type(instance: DOMReference) -> DOMReference {
+pub fn get_type(instance: DOMReference) -> f32 {
     unsafe { webglactiveinfo_get_type(instance) }
 }
 
-pub fn set_type(instance: DOMReference, value: DOMReference) {
+pub fn set_type(instance: DOMReference, value: f32) {
     unsafe {
         webglactiveinfo_set_type(instance, value);
     }

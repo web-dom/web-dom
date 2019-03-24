@@ -1,17 +1,17 @@
 #[allow(unused_imports)]
 use crate::*;
-pub const ELEMENT_NODE: i32 = 1;
-pub const ATTRIBUTE_NODE: i32 = 2;
-pub const TEXT_NODE: i32 = 3;
-pub const CDATA_SECTION_NODE: i32 = 4;
-pub const ENTITY_REFERENCE_NODE: i32 = 5;
-pub const ENTITY_NODE: i32 = 6;
-pub const PROCESSING_INSTRUCTION_NODE: i32 = 7;
-pub const COMMENT_NODE: i32 = 8;
-pub const DOCUMENT_NODE: i32 = 9;
-pub const DOCUMENT_TYPE_NODE: i32 = 10;
-pub const DOCUMENT_FRAGMENT_NODE: i32 = 11;
-pub const NOTATION_NODE: i32 = 12;
+pub const ELEMENT_NODE: f32 = 1 as f32;
+pub const ATTRIBUTE_NODE: f32 = 2 as f32;
+pub const TEXT_NODE: f32 = 3 as f32;
+pub const CDATA_SECTION_NODE: f32 = 4 as f32;
+pub const ENTITY_REFERENCE_NODE: f32 = 5 as f32;
+pub const ENTITY_NODE: f32 = 6 as f32;
+pub const PROCESSING_INSTRUCTION_NODE: f32 = 7 as f32;
+pub const COMMENT_NODE: f32 = 8 as f32;
+pub const DOCUMENT_NODE: f32 = 9 as f32;
+pub const DOCUMENT_TYPE_NODE: f32 = 10 as f32;
+pub const DOCUMENT_FRAGMENT_NODE: f32 = 11 as f32;
+pub const NOTATION_NODE: f32 = 12 as f32;
 extern "C" {
     fn node_get_node_type(instance: DOMReference) -> f32;
     fn node_set_node_type(instance: DOMReference, value: f32);
@@ -294,12 +294,12 @@ extern "C" {
 pub fn is_equal_node(instance: DOMReference, node: DOMReference) -> bool {
     unsafe { 0 != node_is_equal_node(instance, node) }
 }
-pub const DOCUMENT_POSITION_DISCONNECTED: i32 = 0x01;
-pub const DOCUMENT_POSITION_PRECEDING: i32 = 0x02;
-pub const DOCUMENT_POSITION_FOLLOWING: i32 = 0x04;
-pub const DOCUMENT_POSITION_CONTAINS: i32 = 0x08;
-pub const DOCUMENT_POSITION_CONTAINED_BY: i32 = 0x10;
-pub const DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: i32 = 0x20;
+pub const DOCUMENT_POSITION_DISCONNECTED: f32 = 0x01 as f32;
+pub const DOCUMENT_POSITION_PRECEDING: f32 = 0x02 as f32;
+pub const DOCUMENT_POSITION_FOLLOWING: f32 = 0x04 as f32;
+pub const DOCUMENT_POSITION_CONTAINS: f32 = 0x08 as f32;
+pub const DOCUMENT_POSITION_CONTAINED_BY: f32 = 0x10 as f32;
+pub const DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: f32 = 0x20 as f32;
 extern "C" {
     fn node_compare_document_position(
         instance: DOMReference,
@@ -318,21 +318,18 @@ pub fn contains(instance: DOMReference, other: DOMReference) -> bool {
     unsafe { 0 != node_contains(instance, other) }
 }
 extern "C" {
-    fn node_lookup_prefix(instance: DOMReference, lookup_prefix: CString) -> DOMReference;
+    fn node_lookup_prefix(instance: DOMReference, lookup_prefix: CString) -> CString;
 }
 
-pub fn lookup_prefix(instance: DOMReference, namespace: &str) -> DOMReference {
-    unsafe { node_lookup_prefix(instance, to_cstring(namespace)) }
+pub fn lookup_prefix(instance: DOMReference, namespace: &str) -> String {
+    unsafe { to_string(node_lookup_prefix(instance, to_cstring(namespace))) }
 }
 extern "C" {
-    fn node_lookup_namespace_uri(
-        instance: DOMReference,
-        lookup_namespace_uri: CString,
-    ) -> DOMReference;
+    fn node_lookup_namespace_uri(instance: DOMReference, lookup_namespace_uri: CString) -> CString;
 }
 
-pub fn lookup_namespace_uri(instance: DOMReference, prefix: &str) -> DOMReference {
-    unsafe { node_lookup_namespace_uri(instance, to_cstring(prefix)) }
+pub fn lookup_namespace_uri(instance: DOMReference, prefix: &str) -> String {
+    unsafe { to_string(node_lookup_namespace_uri(instance, to_cstring(prefix))) }
 }
 extern "C" {
     fn node_is_default_namespace(instance: DOMReference, is_default_namespace: CString) -> i32;

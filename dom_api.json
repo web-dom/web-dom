@@ -299,8 +299,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "property",
@@ -1934,8 +1933,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2372,8 +2370,7 @@
           "type": "number"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "property",
@@ -2389,8 +2386,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2454,8 +2450,7 @@
       "type": "function",
       "name": "getSelection",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "property",
@@ -2529,8 +2524,7 @@
           "type": "string"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -2545,8 +2539,7 @@
           "type": "string"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -2660,8 +2653,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2704,8 +2696,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2791,8 +2782,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2803,8 +2793,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2815,8 +2804,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2831,8 +2819,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2843,8 +2830,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -2865,8 +2851,7 @@
       "type": "function",
       "name": "getAsFlexContainer",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -3034,8 +3019,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -3225,8 +3209,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -4229,8 +4212,7 @@
           "type": "string"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -4241,8 +4223,7 @@
           "type": "string"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -4271,8 +4252,7 @@
           "type": "number"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -4283,8 +4263,7 @@
           "type": "string"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -4325,12 +4304,12 @@
     {
       "type": "property",
       "name": "size",
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "property",
       "name": "type",
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "property",
@@ -4342,17 +4321,17 @@
     {
       "type": "property",
       "name": "rangeMin",
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "property",
       "name": "rangeMax",
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "property",
       "name": "precision",
-      "return_type": "object"
+      "return_type": "number"
     }
   ],
   "WebGLRenderingContext": [
@@ -6140,19 +6119,18 @@
     {
       "type": "property",
       "name": "drawingBufferWidth",
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "property",
       "name": "drawingBufferHeight",
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "function",
       "name": "getContextAttributes",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -6164,8 +6142,7 @@
       "type": "function",
       "name": "getSupportedExtensions",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -6176,8 +6153,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -6185,7 +6161,7 @@
       "params": [
         {
           "name": "texture",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6213,7 +6189,7 @@
         },
         {
           "name": "index",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "name",
@@ -6227,7 +6203,7 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "buffer",
@@ -6241,7 +6217,7 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "framebuffer",
@@ -6255,7 +6231,7 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "renderbuffer",
@@ -6269,7 +6245,7 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "texture",
@@ -6283,19 +6259,19 @@
       "params": [
         {
           "name": "red",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "green",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "blue",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "alpha",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6305,7 +6281,7 @@
       "params": [
         {
           "name": "mode",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6315,11 +6291,11 @@
       "params": [
         {
           "name": "modeRGB",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "modeAlpha",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6329,11 +6305,11 @@
       "params": [
         {
           "name": "sfactor",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "dfactor",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6343,19 +6319,19 @@
       "params": [
         {
           "name": "srcRGB",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "dstRGB",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "srcAlpha",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "dstAlpha",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6365,10 +6341,10 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "function",
@@ -6376,7 +6352,7 @@
       "params": [
         {
           "name": "mask",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6386,19 +6362,19 @@
       "params": [
         {
           "name": "red",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "green",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "blue",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "alpha",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6408,7 +6384,7 @@
       "params": [
         {
           "name": "depth",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6418,7 +6394,7 @@
       "params": [
         {
           "name": "s",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6428,19 +6404,19 @@
       "params": [
         {
           "name": "red",
-          "type": "object"
+          "type": "boolean"
         },
         {
           "name": "green",
-          "type": "object"
+          "type": "boolean"
         },
         {
           "name": "blue",
-          "type": "object"
+          "type": "boolean"
         },
         {
           "name": "alpha",
-          "type": "object"
+          "type": "boolean"
         }
       ]
     },
@@ -6460,35 +6436,35 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "border",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6498,35 +6474,35 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "xoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "yoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6534,29 +6510,25 @@
       "type": "function",
       "name": "createBuffer",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
       "name": "createFramebuffer",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
       "name": "createProgram",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
       "name": "createRenderbuffer",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -6564,18 +6536,16 @@
       "params": [
         {
           "name": "shaderType",
-          "type": "object"
+          "type": "number"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
       "name": "createTexture",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -6583,7 +6553,7 @@
       "params": [
         {
           "name": "mode",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6653,7 +6623,7 @@
       "params": [
         {
           "name": "func",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6663,7 +6633,7 @@
       "params": [
         {
           "name": "flag",
-          "type": "object"
+          "type": "boolean"
         }
       ]
     },
@@ -6673,11 +6643,11 @@
       "params": [
         {
           "name": "zNear",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "zFar",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6701,7 +6671,7 @@
       "params": [
         {
           "name": "cap",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6711,7 +6681,7 @@
       "params": [
         {
           "name": "index",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6721,15 +6691,15 @@
       "params": [
         {
           "name": "mode",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "first",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "count",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6739,19 +6709,19 @@
       "params": [
         {
           "name": "mode",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "count",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "elementType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "offset",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6761,7 +6731,7 @@
       "params": [
         {
           "name": "cap",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6771,7 +6741,7 @@
       "params": [
         {
           "name": "index",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6791,15 +6761,15 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "attachment",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "renderbuffertarget",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "renderbuffer",
@@ -6813,15 +6783,15 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "attachment",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "textarget",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "texture",
@@ -6829,7 +6799,7 @@
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6839,7 +6809,7 @@
       "params": [
         {
           "name": "mode",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6849,7 +6819,7 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -6863,11 +6833,10 @@
         },
         {
           "name": "index",
-          "type": "object"
+          "type": "number"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -6879,11 +6848,10 @@
         },
         {
           "name": "index",
-          "type": "object"
+          "type": "number"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -6894,8 +6862,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -6910,7 +6877,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "function",
@@ -6918,11 +6885,11 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -6933,7 +6900,7 @@
       "params": [
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -6942,7 +6909,7 @@
       "type": "function",
       "name": "getError",
       "params": [],
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "function",
@@ -6950,15 +6917,15 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "attachment",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -6973,7 +6940,7 @@
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -6987,8 +6954,7 @@
           "type": "object"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -6996,11 +6962,11 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -7015,7 +6981,7 @@
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -7026,15 +6992,14 @@
       "params": [
         {
           "name": "shadertype",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "precisiontype",
-          "type": "object"
+          "type": "number"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -7045,8 +7010,7 @@
           "type": "object"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -7057,8 +7021,7 @@
           "type": "object"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -7066,11 +7029,11 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -7103,8 +7066,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -7112,11 +7074,11 @@
       "params": [
         {
           "name": "index",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -7127,14 +7089,14 @@
       "params": [
         {
           "name": "index",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "number"
     },
     {
       "type": "function",
@@ -7142,11 +7104,11 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "mode",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7159,7 +7121,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -7167,10 +7129,10 @@
       "params": [
         {
           "name": "cap",
-          "type": "object"
+          "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -7181,7 +7143,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -7192,7 +7154,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -7203,7 +7165,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -7214,7 +7176,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -7225,7 +7187,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -7233,7 +7195,7 @@
       "params": [
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7253,11 +7215,11 @@
       "params": [
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "param",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7267,11 +7229,11 @@
       "params": [
         {
           "name": "factor",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "units",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7281,19 +7243,19 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7303,11 +7265,11 @@
       "params": [
         {
           "name": "value",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "invert",
-          "type": "object"
+          "type": "boolean"
         }
       ]
     },
@@ -7317,19 +7279,19 @@
       "params": [
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7353,15 +7315,15 @@
       "params": [
         {
           "name": "func",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "setencelRef",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "mask",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7371,19 +7333,19 @@
       "params": [
         {
           "name": "face",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "func",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "setencelRef",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "mask",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7393,7 +7355,7 @@
       "params": [
         {
           "name": "mask",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7403,11 +7365,11 @@
       "params": [
         {
           "name": "face",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "mask",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7417,15 +7379,15 @@
       "params": [
         {
           "name": "fail",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "zfail",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "zpass",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7435,19 +7397,19 @@
       "params": [
         {
           "name": "face",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "fail",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "zfail",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "zpass",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7457,15 +7419,15 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "param",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7475,15 +7437,15 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "param",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7497,7 +7459,7 @@
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7511,11 +7473,11 @@
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7529,15 +7491,15 @@
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "z",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7551,19 +7513,19 @@
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "z",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "w",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7577,7 +7539,7 @@
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7591,11 +7553,11 @@
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7609,15 +7571,15 @@
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "z",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7631,19 +7593,19 @@
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "z",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "w",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7673,11 +7635,11 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7687,7 +7649,7 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "values",
@@ -7701,15 +7663,15 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7719,7 +7681,7 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "values",
@@ -7733,19 +7695,19 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "z",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7755,7 +7717,7 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "values",
@@ -7769,23 +7731,23 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "z",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "w",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7795,7 +7757,7 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "values",
@@ -7809,27 +7771,27 @@
       "params": [
         {
           "name": "indx",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "size",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pointerType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "normalized",
-          "type": "object"
+          "type": "boolean"
         },
         {
           "name": "stride",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "offset",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7839,19 +7801,19 @@
       "params": [
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7861,7 +7823,25 @@
       "params": [
         {
           "name": "target",
+          "type": "number"
+        },
+        {
+          "name": "data",
           "type": "object"
+        },
+        {
+          "name": "usage",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "target",
+          "type": "number"
         },
         {
           "name": "size",
@@ -7869,7 +7849,7 @@
         },
         {
           "name": "usage",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7879,7 +7859,7 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "data",
@@ -7887,25 +7867,7 @@
         },
         {
           "name": "usage",
-          "type": "object"
-        }
-      ]
-    },
-    {
-      "type": "function",
-      "name": "bufferData",
-      "params": [
-        {
-          "name": "target",
-          "type": "object"
-        },
-        {
-          "name": "data",
-          "type": "object"
-        },
-        {
-          "name": "usage",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -7915,11 +7877,11 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "offset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "data",
@@ -7933,11 +7895,11 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "offset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "data",
@@ -7951,27 +7913,27 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "border",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "data",
@@ -7985,31 +7947,31 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "xoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "yoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "data",
@@ -8023,27 +7985,27 @@
       "params": [
         {
           "name": "x",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "y",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pixelType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pixels",
@@ -8057,35 +8019,35 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "border",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pixels",
@@ -8099,23 +8061,23 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pixels",
@@ -8129,23 +8091,23 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pixels",
@@ -8159,23 +8121,23 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "image",
@@ -8189,23 +8151,23 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "canvas",
@@ -8219,23 +8181,23 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "internalformat",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "video",
@@ -8249,35 +8211,35 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "xoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "yoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "width",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "height",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pixels",
@@ -8291,27 +8253,27 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "xoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "yoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pixels",
@@ -8325,27 +8287,27 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "xoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "yoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pixels",
@@ -8359,27 +8321,27 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "xoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "yoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "image",
@@ -8393,27 +8355,27 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "xoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "yoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "canvas",
@@ -8427,27 +8389,27 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "level",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "xoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "yoffset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "format",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "imageType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "video",
@@ -8577,7 +8539,7 @@
         },
         {
           "name": "transpose",
-          "type": "object"
+          "type": "boolean"
         },
         {
           "name": "data",
@@ -8595,7 +8557,7 @@
         },
         {
           "name": "transpose",
-          "type": "object"
+          "type": "boolean"
         },
         {
           "name": "data",
@@ -8613,7 +8575,7 @@
         },
         {
           "name": "transpose",
-          "type": "object"
+          "type": "boolean"
         },
         {
           "name": "data",
@@ -8852,8 +8814,7 @@
       "type": "function",
       "name": "getSupportedProfiles",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     }
   ],
   "WEBGL_compressed_texture_atc": [
@@ -9354,8 +9315,7 @@
       "type": "function",
       "name": "createVertexArrayOES",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -9376,7 +9336,7 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -9402,19 +9362,19 @@
       "params": [
         {
           "name": "mode",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "first",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "count",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "primcount",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -9424,23 +9384,23 @@
       "params": [
         {
           "name": "mode",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "count",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "elementType",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "offset",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "primcount",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -9450,11 +9410,11 @@
       "params": [
         {
           "name": "index",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "divisor",
-          "type": "object"
+          "type": "number"
         }
       ]
     }
@@ -9520,8 +9480,7 @@
       "type": "function",
       "name": "createQueryEXT",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -9550,7 +9509,7 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "query",
@@ -9564,7 +9523,7 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -9578,7 +9537,7 @@
         },
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         }
       ]
     },
@@ -9588,11 +9547,11 @@
       "params": [
         {
           "name": "target",
-          "type": "object"
+          "type": "number"
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -9607,7 +9566,7 @@
         },
         {
           "name": "pname",
-          "type": "object"
+          "type": "number"
         }
       ],
       "return_type": "object"
@@ -9761,8 +9720,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "property",
@@ -9813,8 +9771,7 @@
           "type": "string"
         }
       ],
-      "return_type": "string",
-      "return_nullable": true
+      "return_type": "string"
     },
     {
       "type": "function",
@@ -9868,8 +9825,7 @@
       "type": "function",
       "name": "getSelection",
       "params": [],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -9884,8 +9840,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -9896,8 +9851,7 @@
           "type": "string"
         }
       ],
-      "return_type": "object",
-      "return_nullable": true
+      "return_type": "object"
     },
     {
       "type": "property",

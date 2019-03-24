@@ -1,13 +1,28 @@
 use std::ffi::CStr;
 use std::os::raw::c_void;
 
+pub const NULL: i32 = 0;
 pub type DOMReference = i32;
 pub type CString = i32;
 pub type Element = i32;
 pub type EventListener = i32;
 pub type Event = i32;
 
-pub const UNDEFINED: i32 = -1;
+use std::mem::size_of;
+
+pub trait IntoBytes {
+    fn into_bytes(self) -> Vec<u8>;
+}
+
+impl<T> IntoBytes for Vec<T> {
+    fn into_bytes(self) -> Vec<u8> {
+        let length = size_of::<T>() * self.len();
+        unsafe {
+            let slice = self.into_boxed_slice();
+            Vec::<u8>::from_raw_parts(Box::into_raw(slice) as _, length, length)
+        }
+    }
+}
 
 pub fn to_cstring(s: &str) -> CString {
     std::ffi::CString::new(s).unwrap().into_raw() as i32
@@ -19,7 +34,8 @@ pub fn to_string(c: CString) -> String {
 }
 
 extern "C" {
-    fn convert_ref_to_string(instance: i32) -> CString;
+    fn global_convert_ref_to_string(instance: i32) -> CString;
+    fn global_create_uint8array(start: i32, len: i32) -> i32;
     fn global_is_null() -> i32;
     fn global_debugger();
     fn global_get_window() -> Element;
@@ -28,8 +44,12 @@ extern "C" {
     fn global_get_property(element: Element, property_name: CString) -> i32;
 }
 
+pub fn create_uint8array(bytes: &[u8]) -> DOMReference {
+    unsafe { global_create_uint8array(bytes.as_ptr() as _, bytes.len() as _) }
+}
+
 pub fn ref_to_string(instance: DOMReference) -> String {
-    unsafe { to_string(convert_ref_to_string(instance)) }
+    unsafe { to_string(global_convert_ref_to_string(instance)) }
 }
 
 pub fn is_null() -> bool {

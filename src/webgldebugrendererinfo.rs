@@ -1,4 +1,4 @@
 #[allow(unused_imports)]
 use crate::*;
-pub const UNMASKED_VENDOR_WEBGL: i32 = 0x9245;
-pub const UNMASKED_RENDERER_WEBGL: i32 = 0x9246;
+pub const UNMASKED_VENDOR_WEBGL: f32 = 0x9245 as f32;
+pub const UNMASKED_RENDERER_WEBGL: f32 = 0x9246 as f32;

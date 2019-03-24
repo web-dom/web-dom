@@ -714,9 +714,9 @@ partial interface  WebGLRenderingContext {
  Func="mozilla::dom::OffscreenCanvas::PrefEnabledOnWorkerThread"]
 interface WebGLRenderingContext {
     // bufferData has WebGL2 overloads.
+    void bufferData(GLenum target, ArrayBufferView data, GLenum usage);
     void bufferData(GLenum target, GLsizeiptr size, GLenum usage);
     void bufferData(GLenum target, ArrayBuffer? data, GLenum usage);
-    void bufferData(GLenum target, ArrayBufferView data, GLenum usage);
     // bufferSubData has WebGL2 overloads.
     void bufferSubData(GLenum target, GLintptr offset, ArrayBuffer data);
     void bufferSubData(GLenum target, GLintptr offset, ArrayBufferView data);

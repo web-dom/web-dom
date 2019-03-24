@@ -10,7 +10,7 @@ function toInterfaceName(n) {
 let dom_api = {}
 
 function isPrimitive(n) {
-  if (n == "DOMString" || n == "long" || n == "double" || n == "short" || n == "unrestricted double" || n == "boolean" || n == "unsigned long" || n == "unsigned short" || n == "float") {
+  if (n == "DOMString" || n == "long" || n == "double" || n == "short" || n == "unrestricted double" || n == "boolean" || n == "unsigned long" || n == "unsigned short" || n == "float" || n == "GLenum" || n == "GLfloat" || n == "GLint" || n == "GLboolean" || n == "GLsizei" || n == "GLintptr" || n == "GLuint" || n == "GLbitfield" || n == "GLclampf") {
     return true;
   }
   if (Array.isArray(n)) {
@@ -40,7 +40,7 @@ function toType(type){
   } else if (!isPrimitive(type)) {
     return "object"
   } else {
-    if(type == "boolean"){
+    if(type == "boolean" || type == "GLboolean"){
       return "boolean"
     }
     else {
@@ -79,7 +79,7 @@ function processOperation(namespace, operation, isInterface) {
   if(hasReturn){
     f.return_type = toType(returnType);
     if(returnsNullable){
-      f.return_nullable = returnsNullable;
+      //f.return_nullable = returnsNullable;
     }
   }
   if(!isInterface){

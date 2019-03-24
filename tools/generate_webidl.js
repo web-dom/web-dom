@@ -111,83 +111,6 @@ function toRustReturnType(returnType, returnNullable) {
   return "i32";
 }
 
-/*function processOperation(namespace, operation, isInterface) {
-  if (
-    operation.extAttrs &&
-    operation.extAttrs.trivia.open.indexOf("[ChromeOnly]") !== -1
-  ) {
-    return;
-  }
-  if (operation.body.name == null) {
-    return;
-  }
-  processNamespace(namespace);
-  let operationName = operation.body.name.value;
-  let args = [];
-  let params = [];
-  let extractors = [];
-  if (isInterface) {
-    params.push({
-      name: "instance",
-      type: "number",
-      description:
-        "number that represents a handle to an " + namespace + " instance"
-    });
-    extractors.push(`let _instance = A.g(instance);`);
-  }
-  let returnType = operation.body.idlType.idlType;
-  let hasReturn = returnType != "void";
-  let returnsString = returnType == "DOMString";
-  for (a in operation.body.arguments) {
-    let arg = operation.body.arguments[a];
-    let name = toSnake(arg.name);
-    let type = arg.idlType.idlType;
-    if (type == "DOMString") {
-      params.push({
-        name: name,
-        originalType: "DOMString",
-        type: "number",
-        description: 'memory location of string "' + name + '"'
-      });
-      extractors.push(`let _${name} = this.s(${name});`);
-    } else if (!isPrimitive(type)) {
-      extractors.push(`let _${name} = A.g(${name});`);
-      params.push({
-        name,
-        type: "number",
-        originalType: type,
-        description: type + " represented as a number"
-      });
-    } else {
-      extractors.push(`let _${name} = ${name};`);
-      params.push({
-        name,
-        originalType: type,
-        type: "number",
-        description: type + " represented as a number"
-      });
-    }
-    args.push({ name, type });
-  }
-  FUNCTIONS.push(`
-      ${finalNamespaceName(namespace)}_${toSnake(
-    operationName
-  )}: function(${params.map(x => x.name).join(", ")}){
-          ${extractors.join("\n")}
-          ${
-            hasReturn
-              ? returnsString
-                ? "return this.ms("
-                : "return A.a("
-              : "("
-          }
-          ${isInterface ? "_instance" : namespace}.${operationName}(${args
-    .map(x => "_" + x.name)
-    .join(", ")}));
-      }`);
-
-*/
-
 let dom_api = JSON.parse(fs.readFileSync("dom_api.json", "utf8"));
 
 for (i in dom_api) {
@@ -198,7 +121,7 @@ for (i in dom_api) {
     let trueName = member.name;
     let newName = toSnake(member.name);
     let returnType = member.return_type;
-    let returnNullable = member.return_nullable;
+    let returnNullable = false; //member.return_nullable;
     let returnsString = returnType == "string";
     let returnsBool = returnType == "boolean";
     if (member.type == "property") {
@@ -358,7 +281,9 @@ for (i in dom_api) {
       let constType = member.const_type;
       appendToNamespace(
         i,
-        `pub const ${member.name.toUpperCase()}: i32 = ${member.value};\n`
+        `pub const ${member.name.toUpperCase()}: f32 = ${
+          member.value
+        } as f32;\n`
       );
     }
   }
@@ -372,12 +297,16 @@ function createWebIDLContext(){
   const webidl = {
     allocator: function () {return A;},
 
+    global_create_uint8array: function(start,length){
+      return A.a(new Uint8Array(this.memory.buffer).subarray(start, start + length));
+    },
+
     global_is_null: function(o){
-      A.g(o) == null
+      return A.g(o) == null;
     },
 
     global_convert_ref_to_string: function(o){
-      return this.ms(A.g(o));
+      return this.ms(o);
     },
 
     global_debugger: function(){

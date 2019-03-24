@@ -5,7 +5,7 @@
 }(this, function (exports) { 'use strict';
 
   function allocator() {
-    let allocations = [];
+    let allocations = [null];
     let empty = [];
     return {
       //allocate
@@ -28,7 +28,7 @@
           return undefined;
         }
         let ret =  allocations[handle];
-        if(!ret){
+        if(handle !=0 && !ret){
           console.error(`Asked for ${handle} after it was released.`);
         }
         return ret;
@@ -45,12 +45,18 @@
         return A;
       },
 
+      global_create_uint8array: function(start, length) {
+        return A.a(
+          new Uint8Array(this.memory.buffer).subarray(start, start + length)
+        );
+      },
+
       global_is_null: function(o) {
-        A.g(o) == null;
+        return A.g(o) == null;
       },
 
       global_convert_ref_to_string: function(o) {
-        return this.ms(A.g(o));
+        return this.ms(o);
       },
 
       global_debugger: function() {
@@ -4150,22 +4156,22 @@
 
       webglactiveinfo_get_size: function(i) {
         let _i = A.g(i);
-        return A.a(_i.size);
+        return _i.size;
       },
 
       webglactiveinfo_set_size: function(i, v) {
         let _i = A.g(i);
-        _i.size = A.g(v);
+        _i.size = v;
       },
 
       webglactiveinfo_get_type: function(i) {
         let _i = A.g(i);
-        return A.a(_i.type);
+        return _i.type;
       },
 
       webglactiveinfo_set_type: function(i, v) {
         let _i = A.g(i);
-        _i.type = A.g(v);
+        _i.type = v;
       },
 
       webglactiveinfo_get_name: function(i) {
@@ -4180,32 +4186,32 @@
 
       webglshaderprecisionformat_get_range_min: function(i) {
         let _i = A.g(i);
-        return A.a(_i.rangeMin);
+        return _i.rangeMin;
       },
 
       webglshaderprecisionformat_set_range_min: function(i, v) {
         let _i = A.g(i);
-        _i.rangeMin = A.g(v);
+        _i.rangeMin = v;
       },
 
       webglshaderprecisionformat_get_range_max: function(i) {
         let _i = A.g(i);
-        return A.a(_i.rangeMax);
+        return _i.rangeMax;
       },
 
       webglshaderprecisionformat_set_range_max: function(i, v) {
         let _i = A.g(i);
-        _i.rangeMax = A.g(v);
+        _i.rangeMax = v;
       },
 
       webglshaderprecisionformat_get_precision: function(i) {
         let _i = A.g(i);
-        return A.a(_i.precision);
+        return _i.precision;
       },
 
       webglshaderprecisionformat_set_precision: function(i, v) {
         let _i = A.g(i);
-        _i.precision = A.g(v);
+        _i.precision = v;
       },
 
       webgl_get_canvas: function(i) {
@@ -4220,22 +4226,22 @@
 
       webgl_get_drawing_buffer_width: function(i) {
         let _i = A.g(i);
-        return A.a(_i.drawingBufferWidth);
+        return _i.drawingBufferWidth;
       },
 
       webgl_set_drawing_buffer_width: function(i, v) {
         let _i = A.g(i);
-        _i.drawingBufferWidth = A.g(v);
+        _i.drawingBufferWidth = v;
       },
 
       webgl_get_drawing_buffer_height: function(i) {
         let _i = A.g(i);
-        return A.a(_i.drawingBufferHeight);
+        return _i.drawingBufferHeight;
       },
 
       webgl_set_drawing_buffer_height: function(i, v) {
         let _i = A.g(i);
-        _i.drawingBufferHeight = A.g(v);
+        _i.drawingBufferHeight = v;
       },
 
       webgl_get_context_attributes: function(i) {
@@ -4266,7 +4272,7 @@
       webgl_active_texture: function(i, texture) {
         let _i = A.g(i);
 
-        let _texture = A.g(texture);
+        let _texture = texture;
         _i.activeTexture(_texture);
       },
 
@@ -4282,7 +4288,7 @@
         let _i = A.g(i);
 
         let _program = A.g(program);
-        let _index = A.g(index);
+        let _index = index;
         let _name = this.s(name);
         _i.bindAttribLocation(_program, _index, _name);
       },
@@ -4290,7 +4296,7 @@
       webgl_bind_buffer: function(i, target, buffer) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         let _buffer = A.g(buffer);
         _i.bindBuffer(_target, _buffer);
       },
@@ -4298,7 +4304,7 @@
       webgl_bind_framebuffer: function(i, target, framebuffer) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         let _framebuffer = A.g(framebuffer);
         _i.bindFramebuffer(_target, _framebuffer);
       },
@@ -4306,7 +4312,7 @@
       webgl_bind_renderbuffer: function(i, target, renderbuffer) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         let _renderbuffer = A.g(renderbuffer);
         _i.bindRenderbuffer(_target, _renderbuffer);
       },
@@ -4314,7 +4320,7 @@
       webgl_bind_texture: function(i, target, texture) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         let _texture = A.g(texture);
         _i.bindTexture(_target, _texture);
       },
@@ -4322,91 +4328,91 @@
       webgl_blend_color: function(i, red, green, blue, alpha) {
         let _i = A.g(i);
 
-        let _red = A.g(red);
-        let _green = A.g(green);
-        let _blue = A.g(blue);
-        let _alpha = A.g(alpha);
+        let _red = red;
+        let _green = green;
+        let _blue = blue;
+        let _alpha = alpha;
         _i.blendColor(_red, _green, _blue, _alpha);
       },
 
       webgl_blend_equation: function(i, mode) {
         let _i = A.g(i);
 
-        let _mode = A.g(mode);
+        let _mode = mode;
         _i.blendEquation(_mode);
       },
 
       webgl_blend_equation_separate: function(i, modeRGB, modeAlpha) {
         let _i = A.g(i);
 
-        let _modeRGB = A.g(modeRGB);
-        let _modeAlpha = A.g(modeAlpha);
+        let _modeRGB = modeRGB;
+        let _modeAlpha = modeAlpha;
         _i.blendEquationSeparate(_modeRGB, _modeAlpha);
       },
 
       webgl_blend_func: function(i, sfactor, dfactor) {
         let _i = A.g(i);
 
-        let _sfactor = A.g(sfactor);
-        let _dfactor = A.g(dfactor);
+        let _sfactor = sfactor;
+        let _dfactor = dfactor;
         _i.blendFunc(_sfactor, _dfactor);
       },
 
       webgl_blend_func_separate: function(i, srcRGB, dstRGB, srcAlpha, dstAlpha) {
         let _i = A.g(i);
 
-        let _srcRGB = A.g(srcRGB);
-        let _dstRGB = A.g(dstRGB);
-        let _srcAlpha = A.g(srcAlpha);
-        let _dstAlpha = A.g(dstAlpha);
+        let _srcRGB = srcRGB;
+        let _dstRGB = dstRGB;
+        let _srcAlpha = srcAlpha;
+        let _dstAlpha = dstAlpha;
         _i.blendFuncSeparate(_srcRGB, _dstRGB, _srcAlpha, _dstAlpha);
       },
 
       webgl_check_framebuffer_status: function(i, target) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         return A.a(_i.checkFramebufferStatus(_target));
       },
 
       webgl_clear: function(i, mask) {
         let _i = A.g(i);
 
-        let _mask = A.g(mask);
+        let _mask = mask;
         _i.clear(_mask);
       },
 
       webgl_clear_color: function(i, red, green, blue, alpha) {
         let _i = A.g(i);
 
-        let _red = A.g(red);
-        let _green = A.g(green);
-        let _blue = A.g(blue);
-        let _alpha = A.g(alpha);
+        let _red = red;
+        let _green = green;
+        let _blue = blue;
+        let _alpha = alpha;
         _i.clearColor(_red, _green, _blue, _alpha);
       },
 
       webgl_clear_depth: function(i, depth) {
         let _i = A.g(i);
 
-        let _depth = A.g(depth);
+        let _depth = depth;
         _i.clearDepth(_depth);
       },
 
       webgl_clear_stencil: function(i, s) {
         let _i = A.g(i);
 
-        let _s = A.g(s);
+        let _s = s;
         _i.clearStencil(_s);
       },
 
       webgl_color_mask: function(i, red, green, blue, alpha) {
         let _i = A.g(i);
 
-        let _red = A.g(red);
-        let _green = A.g(green);
-        let _blue = A.g(blue);
-        let _alpha = A.g(alpha);
+        let _red = 0 != red;
+        let _green = 0 != green;
+        let _blue = 0 != blue;
+        let _alpha = 0 != alpha;
         _i.colorMask(_red, _green, _blue, _alpha);
       },
 
@@ -4430,14 +4436,14 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _internalformat = A.g(internalformat);
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _width = A.g(width);
-        let _height = A.g(height);
-        let _border = A.g(border);
+        let _target = target;
+        let _level = level;
+        let _internalformat = internalformat;
+        let _x = x;
+        let _y = y;
+        let _width = width;
+        let _height = height;
+        let _border = border;
         _i.copyTexImage2D(
           _target,
           _level,
@@ -4463,14 +4469,14 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _xoffset = A.g(xoffset);
-        let _yoffset = A.g(yoffset);
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _width = A.g(width);
-        let _height = A.g(height);
+        let _target = target;
+        let _level = level;
+        let _xoffset = xoffset;
+        let _yoffset = yoffset;
+        let _x = x;
+        let _y = y;
+        let _width = width;
+        let _height = height;
         _i.copyTexSubImage2D(
           _target,
           _level,
@@ -4510,7 +4516,7 @@
       webgl_create_shader: function(i, shaderType) {
         let _i = A.g(i);
 
-        let _shaderType = A.g(shaderType);
+        let _shaderType = shaderType;
         return A.a(_i.createShader(_shaderType));
       },
 
@@ -4523,7 +4529,7 @@
       webgl_cull_face: function(i, mode) {
         let _i = A.g(i);
 
-        let _mode = A.g(mode);
+        let _mode = mode;
         _i.cullFace(_mode);
       },
 
@@ -4572,22 +4578,22 @@
       webgl_depth_func: function(i, func) {
         let _i = A.g(i);
 
-        let _func = A.g(func);
+        let _func = func;
         _i.depthFunc(_func);
       },
 
       webgl_depth_mask: function(i, flag) {
         let _i = A.g(i);
 
-        let _flag = A.g(flag);
+        let _flag = 0 != flag;
         _i.depthMask(_flag);
       },
 
       webgl_depth_range: function(i, zNear, zFar) {
         let _i = A.g(i);
 
-        let _zNear = A.g(zNear);
-        let _zFar = A.g(zFar);
+        let _zNear = zNear;
+        let _zFar = zFar;
         _i.depthRange(_zNear, _zFar);
       },
 
@@ -4602,47 +4608,47 @@
       webgl_disable: function(i, cap) {
         let _i = A.g(i);
 
-        let _cap = A.g(cap);
+        let _cap = cap;
         _i.disable(_cap);
       },
 
       webgl_disable_vertex_attrib_array: function(i, index) {
         let _i = A.g(i);
 
-        let _index = A.g(index);
+        let _index = index;
         _i.disableVertexAttribArray(_index);
       },
 
       webgl_draw_arrays: function(i, mode, first, count) {
         let _i = A.g(i);
 
-        let _mode = A.g(mode);
-        let _first = A.g(first);
-        let _count = A.g(count);
+        let _mode = mode;
+        let _first = first;
+        let _count = count;
         _i.drawArrays(_mode, _first, _count);
       },
 
       webgl_draw_elements: function(i, mode, count, elementType, offset) {
         let _i = A.g(i);
 
-        let _mode = A.g(mode);
-        let _count = A.g(count);
-        let _elementType = A.g(elementType);
-        let _offset = A.g(offset);
+        let _mode = mode;
+        let _count = count;
+        let _elementType = elementType;
+        let _offset = offset;
         _i.drawElements(_mode, _count, _elementType, _offset);
       },
 
       webgl_enable: function(i, cap) {
         let _i = A.g(i);
 
-        let _cap = A.g(cap);
+        let _cap = cap;
         _i.enable(_cap);
       },
 
       webgl_enable_vertex_attrib_array: function(i, index) {
         let _i = A.g(i);
 
-        let _index = A.g(index);
+        let _index = index;
         _i.enableVertexAttribArray(_index);
       },
 
@@ -4667,9 +4673,9 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _attachment = A.g(attachment);
-        let _renderbuffertarget = A.g(renderbuffertarget);
+        let _target = target;
+        let _attachment = attachment;
+        let _renderbuffertarget = renderbuffertarget;
         let _renderbuffer = A.g(renderbuffer);
         _i.framebufferRenderbuffer(
           _target,
@@ -4689,11 +4695,11 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _attachment = A.g(attachment);
-        let _textarget = A.g(textarget);
+        let _target = target;
+        let _attachment = attachment;
+        let _textarget = textarget;
         let _texture = A.g(texture);
-        let _level = A.g(level);
+        let _level = level;
         _i.framebufferTexture2D(
           _target,
           _attachment,
@@ -4706,14 +4712,14 @@
       webgl_front_face: function(i, mode) {
         let _i = A.g(i);
 
-        let _mode = A.g(mode);
+        let _mode = mode;
         _i.frontFace(_mode);
       },
 
       webgl_generate_mipmap: function(i, target) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         _i.generateMipmap(_target);
       },
 
@@ -4721,7 +4727,7 @@
         let _i = A.g(i);
 
         let _program = A.g(program);
-        let _index = A.g(index);
+        let _index = index;
         return A.a(_i.getActiveAttrib(_program, _index));
       },
 
@@ -4729,7 +4735,7 @@
         let _i = A.g(i);
 
         let _program = A.g(program);
-        let _index = A.g(index);
+        let _index = index;
         return A.a(_i.getActiveUniform(_program, _index));
       },
 
@@ -4751,15 +4757,15 @@
       webgl_get_buffer_parameter: function(i, target, pname) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _pname = A.g(pname);
+        let _target = target;
+        let _pname = pname;
         return A.a(_i.getBufferParameter(_target, _pname));
       },
 
       webgl_get_parameter: function(i, pname) {
         let _i = A.g(i);
 
-        let _pname = A.g(pname);
+        let _pname = pname;
         return A.a(_i.getParameter(_pname));
       },
 
@@ -4777,9 +4783,9 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _attachment = A.g(attachment);
-        let _pname = A.g(pname);
+        let _target = target;
+        let _attachment = attachment;
+        let _pname = pname;
         return A.a(
           _i.getFramebufferAttachmentParameter(_target, _attachment, _pname)
         );
@@ -4789,7 +4795,7 @@
         let _i = A.g(i);
 
         let _program = A.g(program);
-        let _pname = A.g(pname);
+        let _pname = pname;
         return A.a(_i.getProgramParameter(_program, _pname));
       },
 
@@ -4803,8 +4809,8 @@
       webgl_get_renderbuffer_parameter: function(i, target, pname) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _pname = A.g(pname);
+        let _target = target;
+        let _pname = pname;
         return A.a(_i.getRenderbufferParameter(_target, _pname));
       },
 
@@ -4812,15 +4818,15 @@
         let _i = A.g(i);
 
         let _shader = A.g(shader);
-        let _pname = A.g(pname);
+        let _pname = pname;
         return A.a(_i.getShaderParameter(_shader, _pname));
       },
 
       webgl_get_shader_precision_format: function(i, shadertype, precisiontype) {
         let _i = A.g(i);
 
-        let _shadertype = A.g(shadertype);
-        let _precisiontype = A.g(precisiontype);
+        let _shadertype = shadertype;
+        let _precisiontype = precisiontype;
         return A.a(_i.getShaderPrecisionFormat(_shadertype, _precisiontype));
       },
 
@@ -4841,8 +4847,8 @@
       webgl_get_tex_parameter: function(i, target, pname) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _pname = A.g(pname);
+        let _target = target;
+        let _pname = pname;
         return A.a(_i.getTexParameter(_target, _pname));
       },
 
@@ -4865,24 +4871,24 @@
       webgl_get_vertex_attrib: function(i, index, pname) {
         let _i = A.g(i);
 
-        let _index = A.g(index);
-        let _pname = A.g(pname);
+        let _index = index;
+        let _pname = pname;
         return A.a(_i.getVertexAttrib(_index, _pname));
       },
 
       webgl_get_vertex_attrib_offset: function(i, index, pname) {
         let _i = A.g(i);
 
-        let _index = A.g(index);
-        let _pname = A.g(pname);
+        let _index = index;
+        let _pname = pname;
         return A.a(_i.getVertexAttribOffset(_index, _pname));
       },
 
       webgl_hint: function(i, target, mode) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _mode = A.g(mode);
+        let _target = target;
+        let _mode = mode;
         _i.hint(_target, _mode);
       },
 
@@ -4890,55 +4896,55 @@
         let _i = A.g(i);
 
         let _buffer = A.g(buffer);
-        return A.a(_i.isBuffer(_buffer));
+        return A.a(_i.isBuffer(_buffer)) ? 1 : 0;
       },
 
       webgl_is_enabled: function(i, cap) {
         let _i = A.g(i);
 
-        let _cap = A.g(cap);
-        return A.a(_i.isEnabled(_cap));
+        let _cap = cap;
+        return A.a(_i.isEnabled(_cap)) ? 1 : 0;
       },
 
       webgl_is_framebuffer: function(i, framebuffer) {
         let _i = A.g(i);
 
         let _framebuffer = A.g(framebuffer);
-        return A.a(_i.isFramebuffer(_framebuffer));
+        return A.a(_i.isFramebuffer(_framebuffer)) ? 1 : 0;
       },
 
       webgl_is_program: function(i, program) {
         let _i = A.g(i);
 
         let _program = A.g(program);
-        return A.a(_i.isProgram(_program));
+        return A.a(_i.isProgram(_program)) ? 1 : 0;
       },
 
       webgl_is_renderbuffer: function(i, renderbuffer) {
         let _i = A.g(i);
 
         let _renderbuffer = A.g(renderbuffer);
-        return A.a(_i.isRenderbuffer(_renderbuffer));
+        return A.a(_i.isRenderbuffer(_renderbuffer)) ? 1 : 0;
       },
 
       webgl_is_shader: function(i, shader) {
         let _i = A.g(i);
 
         let _shader = A.g(shader);
-        return A.a(_i.isShader(_shader));
+        return A.a(_i.isShader(_shader)) ? 1 : 0;
       },
 
       webgl_is_texture: function(i, texture) {
         let _i = A.g(i);
 
         let _texture = A.g(texture);
-        return A.a(_i.isTexture(_texture));
+        return A.a(_i.isTexture(_texture)) ? 1 : 0;
       },
 
       webgl_line_width: function(i, width) {
         let _i = A.g(i);
 
-        let _width = A.g(width);
+        let _width = width;
         _i.lineWidth(_width);
       },
 
@@ -4952,16 +4958,16 @@
       webgl_pixel_storei: function(i, pname, param) {
         let _i = A.g(i);
 
-        let _pname = A.g(pname);
-        let _param = A.g(param);
+        let _pname = pname;
+        let _param = param;
         _i.pixelStorei(_pname, _param);
       },
 
       webgl_polygon_offset: function(i, factor, units) {
         let _i = A.g(i);
 
-        let _factor = A.g(factor);
-        let _units = A.g(units);
+        let _factor = factor;
+        let _units = units;
         _i.polygonOffset(_factor, _units);
       },
 
@@ -4974,28 +4980,28 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _internalformat = A.g(internalformat);
-        let _width = A.g(width);
-        let _height = A.g(height);
+        let _target = target;
+        let _internalformat = internalformat;
+        let _width = width;
+        let _height = height;
         _i.renderbufferStorage(_target, _internalformat, _width, _height);
       },
 
       webgl_sample_coverage: function(i, value, invert) {
         let _i = A.g(i);
 
-        let _value = A.g(value);
-        let _invert = A.g(invert);
+        let _value = value;
+        let _invert = 0 != invert;
         _i.sampleCoverage(_value, _invert);
       },
 
       webgl_scissor: function(i, x, y, width, height) {
         let _i = A.g(i);
 
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _width = A.g(width);
-        let _height = A.g(height);
+        let _x = x;
+        let _y = y;
+        let _width = width;
+        let _height = height;
         _i.scissor(_x, _y, _width, _height);
       },
 
@@ -5010,71 +5016,71 @@
       webgl_stencil_func: function(i, func, setencelRef, mask) {
         let _i = A.g(i);
 
-        let _func = A.g(func);
-        let _setencelRef = A.g(setencelRef);
-        let _mask = A.g(mask);
+        let _func = func;
+        let _setencelRef = setencelRef;
+        let _mask = mask;
         _i.stencilFunc(_func, _setencelRef, _mask);
       },
 
       webgl_stencil_func_separate: function(i, face, func, setencelRef, mask) {
         let _i = A.g(i);
 
-        let _face = A.g(face);
-        let _func = A.g(func);
-        let _setencelRef = A.g(setencelRef);
-        let _mask = A.g(mask);
+        let _face = face;
+        let _func = func;
+        let _setencelRef = setencelRef;
+        let _mask = mask;
         _i.stencilFuncSeparate(_face, _func, _setencelRef, _mask);
       },
 
       webgl_stencil_mask: function(i, mask) {
         let _i = A.g(i);
 
-        let _mask = A.g(mask);
+        let _mask = mask;
         _i.stencilMask(_mask);
       },
 
       webgl_stencil_mask_separate: function(i, face, mask) {
         let _i = A.g(i);
 
-        let _face = A.g(face);
-        let _mask = A.g(mask);
+        let _face = face;
+        let _mask = mask;
         _i.stencilMaskSeparate(_face, _mask);
       },
 
       webgl_stencil_op: function(i, fail, zfail, zpass) {
         let _i = A.g(i);
 
-        let _fail = A.g(fail);
-        let _zfail = A.g(zfail);
-        let _zpass = A.g(zpass);
+        let _fail = fail;
+        let _zfail = zfail;
+        let _zpass = zpass;
         _i.stencilOp(_fail, _zfail, _zpass);
       },
 
       webgl_stencil_op_separate: function(i, face, fail, zfail, zpass) {
         let _i = A.g(i);
 
-        let _face = A.g(face);
-        let _fail = A.g(fail);
-        let _zfail = A.g(zfail);
-        let _zpass = A.g(zpass);
+        let _face = face;
+        let _fail = fail;
+        let _zfail = zfail;
+        let _zpass = zpass;
         _i.stencilOpSeparate(_face, _fail, _zfail, _zpass);
       },
 
       webgl_tex_parameterf: function(i, target, pname, param) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _pname = A.g(pname);
-        let _param = A.g(param);
+        let _target = target;
+        let _pname = pname;
+        let _param = param;
         _i.texParameterf(_target, _pname, _param);
       },
 
       webgl_tex_parameteri: function(i, target, pname, param) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _pname = A.g(pname);
-        let _param = A.g(param);
+        let _target = target;
+        let _pname = pname;
+        let _param = param;
         _i.texParameteri(_target, _pname, _param);
       },
 
@@ -5082,7 +5088,7 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _x = A.g(x);
+        let _x = x;
         _i.uniform1f(_location, _x);
       },
 
@@ -5090,8 +5096,8 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _x = A.g(x);
-        let _y = A.g(y);
+        let _x = x;
+        let _y = y;
         _i.uniform2f(_location, _x, _y);
       },
 
@@ -5099,9 +5105,9 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _z = A.g(z);
+        let _x = x;
+        let _y = y;
+        let _z = z;
         _i.uniform3f(_location, _x, _y, _z);
       },
 
@@ -5109,10 +5115,10 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _z = A.g(z);
-        let _w = A.g(w);
+        let _x = x;
+        let _y = y;
+        let _z = z;
+        let _w = w;
         _i.uniform4f(_location, _x, _y, _z, _w);
       },
 
@@ -5120,7 +5126,7 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _x = A.g(x);
+        let _x = x;
         _i.uniform1i(_location, _x);
       },
 
@@ -5128,8 +5134,8 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _x = A.g(x);
-        let _y = A.g(y);
+        let _x = x;
+        let _y = y;
         _i.uniform2i(_location, _x, _y);
       },
 
@@ -5137,9 +5143,9 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _z = A.g(z);
+        let _x = x;
+        let _y = y;
+        let _z = z;
         _i.uniform3i(_location, _x, _y, _z);
       },
 
@@ -5147,10 +5153,10 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _z = A.g(z);
-        let _w = A.g(w);
+        let _x = x;
+        let _y = y;
+        let _z = z;
+        let _w = w;
         _i.uniform4i(_location, _x, _y, _z, _w);
       },
 
@@ -5171,15 +5177,15 @@
       webgl_vertex_attrib1f: function(i, indx, x) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
-        let _x = A.g(x);
+        let _indx = indx;
+        let _x = x;
         _i.vertexAttrib1f(_indx, _x);
       },
 
       webgl_vertex_attrib1fv: function(i, indx, values) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
+        let _indx = indx;
         let _values = A.g(values);
         _i.vertexAttrib1fv(_indx, _values);
       },
@@ -5187,16 +5193,16 @@
       webgl_vertex_attrib2f: function(i, indx, x, y) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
-        let _x = A.g(x);
-        let _y = A.g(y);
+        let _indx = indx;
+        let _x = x;
+        let _y = y;
         _i.vertexAttrib2f(_indx, _x, _y);
       },
 
       webgl_vertex_attrib2fv: function(i, indx, values) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
+        let _indx = indx;
         let _values = A.g(values);
         _i.vertexAttrib2fv(_indx, _values);
       },
@@ -5204,17 +5210,17 @@
       webgl_vertex_attrib3f: function(i, indx, x, y, z) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _z = A.g(z);
+        let _indx = indx;
+        let _x = x;
+        let _y = y;
+        let _z = z;
         _i.vertexAttrib3f(_indx, _x, _y, _z);
       },
 
       webgl_vertex_attrib3fv: function(i, indx, values) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
+        let _indx = indx;
         let _values = A.g(values);
         _i.vertexAttrib3fv(_indx, _values);
       },
@@ -5222,18 +5228,18 @@
       webgl_vertex_attrib4f: function(i, indx, x, y, z, w) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _z = A.g(z);
-        let _w = A.g(w);
+        let _indx = indx;
+        let _x = x;
+        let _y = y;
+        let _z = z;
+        let _w = w;
         _i.vertexAttrib4f(_indx, _x, _y, _z, _w);
       },
 
       webgl_vertex_attrib4fv: function(i, indx, values) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
+        let _indx = indx;
         let _values = A.g(values);
         _i.vertexAttrib4fv(_indx, _values);
       },
@@ -5249,12 +5255,12 @@
       ) {
         let _i = A.g(i);
 
-        let _indx = A.g(indx);
-        let _size = A.g(size);
-        let _pointerType = A.g(pointerType);
-        let _normalized = A.g(normalized);
-        let _stride = A.g(stride);
-        let _offset = A.g(offset);
+        let _indx = indx;
+        let _size = size;
+        let _pointerType = pointerType;
+        let _normalized = 0 != normalized;
+        let _stride = stride;
+        let _offset = offset;
         _i.vertexAttribPointer(
           _indx,
           _size,
@@ -5268,45 +5274,45 @@
       webgl_viewport: function(i, x, y, width, height) {
         let _i = A.g(i);
 
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _width = A.g(width);
-        let _height = A.g(height);
+        let _x = x;
+        let _y = y;
+        let _width = width;
+        let _height = height;
         _i.viewport(_x, _y, _width, _height);
       },
 
-      webgl_buffer_data: function(i, target, size, usage) {
+      webgl_buffer_data: function(i, target, data, usage) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _size = A.g(size);
-        let _usage = A.g(usage);
-        _i.bufferData(_target, _size, _usage);
+        let _target = target;
+        let _data = A.g(data);
+        let _usage = usage;
+        _i.bufferData(_target, _data, _usage);
       },
 
-      webgl_buffer_data_1: function(i, target, data, usage) {
+      webgl_buffer_data_1: function(i, target, size, usage) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _data = A.g(data);
-        let _usage = A.g(usage);
-        _i.bufferData(_target, _data, _usage);
+        let _target = target;
+        let _size = A.g(size);
+        let _usage = usage;
+        _i.bufferData(_target, _size, _usage);
       },
 
       webgl_buffer_data_2: function(i, target, data, usage) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         let _data = A.g(data);
-        let _usage = A.g(usage);
+        let _usage = usage;
         _i.bufferData(_target, _data, _usage);
       },
 
       webgl_buffer_sub_data: function(i, target, offset, data) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _offset = A.g(offset);
+        let _target = target;
+        let _offset = offset;
         let _data = A.g(data);
         _i.bufferSubData(_target, _offset, _data);
       },
@@ -5314,8 +5320,8 @@
       webgl_buffer_sub_data_1: function(i, target, offset, data) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _offset = A.g(offset);
+        let _target = target;
+        let _offset = offset;
         let _data = A.g(data);
         _i.bufferSubData(_target, _offset, _data);
       },
@@ -5332,12 +5338,12 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _internalformat = A.g(internalformat);
-        let _width = A.g(width);
-        let _height = A.g(height);
-        let _border = A.g(border);
+        let _target = target;
+        let _level = level;
+        let _internalformat = internalformat;
+        let _width = width;
+        let _height = height;
+        let _border = border;
         let _data = A.g(data);
         _i.compressedTexImage2D(
           _target,
@@ -5363,13 +5369,13 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _xoffset = A.g(xoffset);
-        let _yoffset = A.g(yoffset);
-        let _width = A.g(width);
-        let _height = A.g(height);
-        let _format = A.g(format);
+        let _target = target;
+        let _level = level;
+        let _xoffset = xoffset;
+        let _yoffset = yoffset;
+        let _width = width;
+        let _height = height;
+        let _format = format;
         let _data = A.g(data);
         _i.compressedTexSubImage2D(
           _target,
@@ -5395,12 +5401,12 @@
       ) {
         let _i = A.g(i);
 
-        let _x = A.g(x);
-        let _y = A.g(y);
-        let _width = A.g(width);
-        let _height = A.g(height);
-        let _format = A.g(format);
-        let _pixelType = A.g(pixelType);
+        let _x = x;
+        let _y = y;
+        let _width = width;
+        let _height = height;
+        let _format = format;
+        let _pixelType = pixelType;
         let _pixels = A.g(pixels);
         _i.readPixels(_x, _y, _width, _height, _format, _pixelType, _pixels);
       },
@@ -5419,14 +5425,14 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _internalformat = A.g(internalformat);
-        let _width = A.g(width);
-        let _height = A.g(height);
-        let _border = A.g(border);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _internalformat = internalformat;
+        let _width = width;
+        let _height = height;
+        let _border = border;
+        let _format = format;
+        let _imageType = imageType;
         let _pixels = A.g(pixels);
         _i.texImage2D(
           _target,
@@ -5452,11 +5458,11 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _internalformat = A.g(internalformat);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _internalformat = internalformat;
+        let _format = format;
+        let _imageType = imageType;
         let _pixels = A.g(pixels);
         _i.texImage2D(
           _target,
@@ -5479,11 +5485,11 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _internalformat = A.g(internalformat);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _internalformat = internalformat;
+        let _format = format;
+        let _imageType = imageType;
         let _pixels = A.g(pixels);
         _i.texImage2D(
           _target,
@@ -5506,11 +5512,11 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _internalformat = A.g(internalformat);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _internalformat = internalformat;
+        let _format = format;
+        let _imageType = imageType;
         let _image = A.g(image);
         _i.texImage2D(
           _target,
@@ -5533,11 +5539,11 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _internalformat = A.g(internalformat);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _internalformat = internalformat;
+        let _format = format;
+        let _imageType = imageType;
         let _canvas = A.g(canvas);
         _i.texImage2D(
           _target,
@@ -5560,11 +5566,11 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _internalformat = A.g(internalformat);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _internalformat = internalformat;
+        let _format = format;
+        let _imageType = imageType;
         let _video = A.g(video);
         _i.texImage2D(
           _target,
@@ -5590,14 +5596,14 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _xoffset = A.g(xoffset);
-        let _yoffset = A.g(yoffset);
-        let _width = A.g(width);
-        let _height = A.g(height);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _xoffset = xoffset;
+        let _yoffset = yoffset;
+        let _width = width;
+        let _height = height;
+        let _format = format;
+        let _imageType = imageType;
         let _pixels = A.g(pixels);
         _i.texSubImage2D(
           _target,
@@ -5624,12 +5630,12 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _xoffset = A.g(xoffset);
-        let _yoffset = A.g(yoffset);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _xoffset = xoffset;
+        let _yoffset = yoffset;
+        let _format = format;
+        let _imageType = imageType;
         let _pixels = A.g(pixels);
         _i.texSubImage2D(
           _target,
@@ -5654,12 +5660,12 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _xoffset = A.g(xoffset);
-        let _yoffset = A.g(yoffset);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _xoffset = xoffset;
+        let _yoffset = yoffset;
+        let _format = format;
+        let _imageType = imageType;
         let _pixels = A.g(pixels);
         _i.texSubImage2D(
           _target,
@@ -5684,12 +5690,12 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _xoffset = A.g(xoffset);
-        let _yoffset = A.g(yoffset);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _xoffset = xoffset;
+        let _yoffset = yoffset;
+        let _format = format;
+        let _imageType = imageType;
         let _image = A.g(image);
         _i.texSubImage2D(
           _target,
@@ -5714,12 +5720,12 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _xoffset = A.g(xoffset);
-        let _yoffset = A.g(yoffset);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _xoffset = xoffset;
+        let _yoffset = yoffset;
+        let _format = format;
+        let _imageType = imageType;
         let _canvas = A.g(canvas);
         _i.texSubImage2D(
           _target,
@@ -5744,12 +5750,12 @@
       ) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _level = A.g(level);
-        let _xoffset = A.g(xoffset);
-        let _yoffset = A.g(yoffset);
-        let _format = A.g(format);
-        let _imageType = A.g(imageType);
+        let _target = target;
+        let _level = level;
+        let _xoffset = xoffset;
+        let _yoffset = yoffset;
+        let _format = format;
+        let _imageType = imageType;
         let _video = A.g(video);
         _i.texSubImage2D(
           _target,
@@ -5830,7 +5836,7 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _transpose = A.g(transpose);
+        let _transpose = 0 != transpose;
         let _data = A.g(data);
         _i.uniformMatrix2fv(_location, _transpose, _data);
       },
@@ -5839,7 +5845,7 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _transpose = A.g(transpose);
+        let _transpose = 0 != transpose;
         let _data = A.g(data);
         _i.uniformMatrix3fv(_location, _transpose, _data);
       },
@@ -5848,7 +5854,7 @@
         let _i = A.g(i);
 
         let _location = A.g(location);
-        let _transpose = A.g(transpose);
+        let _transpose = 0 != transpose;
         let _data = A.g(data);
         _i.uniformMatrix4fv(_location, _transpose, _data);
       },
@@ -5908,7 +5914,7 @@
         let _i = A.g(i);
 
         let _arrayObject = A.g(arrayObject);
-        return A.a(_i.isVertexArrayOES(_arrayObject));
+        return A.a(_i.isVertexArrayOES(_arrayObject)) ? 1 : 0;
       },
 
       oesvertexarrayobject_bind_vertex_array_o_e_s: function(i, arrayObject) {
@@ -5927,10 +5933,10 @@
       ) {
         let _i = A.g(i);
 
-        let _mode = A.g(mode);
-        let _first = A.g(first);
-        let _count = A.g(count);
-        let _primcount = A.g(primcount);
+        let _mode = mode;
+        let _first = first;
+        let _count = count;
+        let _primcount = primcount;
         _i.drawArraysInstancedANGLE(_mode, _first, _count, _primcount);
       },
 
@@ -5944,11 +5950,11 @@
       ) {
         let _i = A.g(i);
 
-        let _mode = A.g(mode);
-        let _count = A.g(count);
-        let _elementType = A.g(elementType);
-        let _offset = A.g(offset);
-        let _primcount = A.g(primcount);
+        let _mode = mode;
+        let _count = count;
+        let _elementType = elementType;
+        let _offset = offset;
+        let _primcount = primcount;
         _i.drawElementsInstancedANGLE(
           _mode,
           _count,
@@ -5965,8 +5971,8 @@
       ) {
         let _i = A.g(i);
 
-        let _index = A.g(index);
-        let _divisor = A.g(divisor);
+        let _index = index;
+        let _divisor = divisor;
         _i.vertexAttribDivisorANGLE(_index, _divisor);
       },
 
@@ -5993,7 +5999,7 @@
       extdisjointtimerquery_begin_query_e_x_t: function(i, target, query) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         let _query = A.g(query);
         _i.beginQueryEXT(_target, _query);
       },
@@ -6001,7 +6007,7 @@
       extdisjointtimerquery_end_query_e_x_t: function(i, target) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
+        let _target = target;
         _i.endQueryEXT(_target);
       },
 
@@ -6009,15 +6015,15 @@
         let _i = A.g(i);
 
         let _query = A.g(query);
-        let _target = A.g(target);
+        let _target = target;
         _i.queryCounterEXT(_query, _target);
       },
 
       extdisjointtimerquery_get_query_e_x_t: function(i, target, pname) {
         let _i = A.g(i);
 
-        let _target = A.g(target);
-        let _pname = A.g(pname);
+        let _target = target;
+        let _pname = pname;
         return A.a(_i.getQueryEXT(_target, _pname));
       },
 
@@ -6025,7 +6031,7 @@
         let _i = A.g(i);
 
         let _query = A.g(query);
-        let _pname = A.g(pname);
+        let _pname = pname;
         return A.a(_i.getQueryObjectEXT(_query, _pname));
       },
 

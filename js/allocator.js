@@ -1,5 +1,5 @@
 export default function() {
-  let allocations = [];
+  let allocations = [null];
   let empty = [];
   return {
     //allocate
@@ -22,7 +22,7 @@ export default function() {
         return undefined;
       }
       let ret =  allocations[handle];
-      if(!ret){
+      if(handle !=0 && !ret){
         console.error(`Asked for ${handle} after it was released.`)
       }
       return ret;

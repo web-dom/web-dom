@@ -92,10 +92,10 @@ extern "C" {
 pub fn get_modifier_state(instance: DOMReference, key: &str) -> bool {
     unsafe { 0 != keyboardevent_get_modifier_state(instance, to_cstring(key)) }
 }
-pub const DOM_KEY_LOCATION_STANDARD: i32 = 0x00;
-pub const DOM_KEY_LOCATION_LEFT: i32 = 0x01;
-pub const DOM_KEY_LOCATION_RIGHT: i32 = 0x02;
-pub const DOM_KEY_LOCATION_NUMPAD: i32 = 0x03;
+pub const DOM_KEY_LOCATION_STANDARD: f32 = 0x00 as f32;
+pub const DOM_KEY_LOCATION_LEFT: f32 = 0x01 as f32;
+pub const DOM_KEY_LOCATION_RIGHT: f32 = 0x02 as f32;
+pub const DOM_KEY_LOCATION_NUMPAD: f32 = 0x03 as f32;
 extern "C" {
     fn keyboardevent_get_location(instance: DOMReference) -> f32;
     fn keyboardevent_set_location(instance: DOMReference, value: f32);

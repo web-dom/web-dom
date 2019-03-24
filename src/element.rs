@@ -120,26 +120,28 @@ pub fn get_attribute_names(instance: DOMReference) -> DOMReference {
     unsafe { element_get_attribute_names(instance) }
 }
 extern "C" {
-    fn element_get_attribute(instance: DOMReference, get_attribute: CString) -> DOMReference;
+    fn element_get_attribute(instance: DOMReference, get_attribute: CString) -> CString;
 }
 
-pub fn get_attribute(instance: DOMReference, name: &str) -> DOMReference {
-    unsafe { element_get_attribute(instance, to_cstring(name)) }
+pub fn get_attribute(instance: DOMReference, name: &str) -> String {
+    unsafe { to_string(element_get_attribute(instance, to_cstring(name))) }
 }
 extern "C" {
     fn element_get_attribute_n_s(
         instance: DOMReference,
         get_attribute_n_s: CString,
         get_attribute_n_s: CString,
-    ) -> DOMReference;
+    ) -> CString;
 }
 
-pub fn get_attribute_n_s(
-    instance: DOMReference,
-    namespace: &str,
-    local_name: &str,
-) -> DOMReference {
-    unsafe { element_get_attribute_n_s(instance, to_cstring(namespace), to_cstring(local_name)) }
+pub fn get_attribute_n_s(instance: DOMReference, namespace: &str, local_name: &str) -> String {
+    unsafe {
+        to_string(element_get_attribute_n_s(
+            instance,
+            to_cstring(namespace),
+            to_cstring(local_name),
+        ))
+    }
 }
 extern "C" {
     fn element_toggle_attribute(
