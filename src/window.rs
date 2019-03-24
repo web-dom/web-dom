@@ -197,10 +197,10 @@ pub fn set_status(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn window_close(instance: i32);
+    fn window_close(instance: DOMReference);
 }
 
-pub fn close(instance: i32) {
+pub fn close(instance: DOMReference) {
     unsafe { window_close(instance) }
 }
 extern "C" {
@@ -218,24 +218,24 @@ pub fn set_closed(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_stop(instance: i32);
+    fn window_stop(instance: DOMReference);
 }
 
-pub fn stop(instance: i32) {
+pub fn stop(instance: DOMReference) {
     unsafe { window_stop(instance) }
 }
 extern "C" {
-    fn window_focus(instance: i32);
+    fn window_focus(instance: DOMReference);
 }
 
-pub fn focus(instance: i32) {
+pub fn focus(instance: DOMReference) {
     unsafe { window_focus(instance) }
 }
 extern "C" {
-    fn window_blur(instance: i32);
+    fn window_blur(instance: DOMReference);
 }
 
-pub fn blur(instance: i32) {
+pub fn blur(instance: DOMReference) {
     unsafe { window_blur(instance) }
 }
 extern "C" {
@@ -267,15 +267,15 @@ pub fn set_frames(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_get_length(instance: DOMReference) -> i32;
-    fn window_set_length(instance: DOMReference, value: i32);
+    fn window_get_length(instance: DOMReference) -> f32;
+    fn window_set_length(instance: DOMReference, value: f32);
 }
 
-pub fn get_length(instance: DOMReference) -> i32 {
+pub fn get_length(instance: DOMReference) -> f32 {
     unsafe { window_get_length(instance) }
 }
 
-pub fn set_length(instance: DOMReference, value: i32) {
+pub fn set_length(instance: DOMReference, value: f32) {
     unsafe {
         window_set_length(instance, value);
     }
@@ -337,10 +337,10 @@ pub fn set_frame_element(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_open(instance: i32, url: CString, target: CString, features: CString) -> i32;
+    fn window_open(instance: DOMReference, open: CString, open: CString, open: CString) -> i32;
 }
 
-pub fn open(instance: i32, url: &str, target: &str, features: &str) -> i32 {
+pub fn open(instance: DOMReference, url: &str, target: &str, features: &str) -> i32 {
     unsafe {
         window_open(
             instance,
@@ -393,24 +393,24 @@ pub fn set_application_cache(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_alert(instance: i32, message: CString);
+    fn window_alert(instance: DOMReference, alert: CString);
 }
 
-pub fn alert(instance: i32, message: &str) {
+pub fn alert(instance: DOMReference, message: &str) {
     unsafe { window_alert(instance, to_cstring(message)) }
 }
 extern "C" {
-    fn window_confirm(instance: i32, message: CString) -> i32;
+    fn window_confirm(instance: DOMReference, confirm: CString) -> i32;
 }
 
-pub fn confirm(instance: i32, message: &str) -> i32 {
+pub fn confirm(instance: DOMReference, message: &str) -> i32 {
     unsafe { window_confirm(instance, to_cstring(message)) }
 }
 extern "C" {
-    fn window_prompt(instance: i32, message: CString, default_message: CString) -> CString;
+    fn window_prompt(instance: DOMReference, prompt: CString, prompt: CString) -> CString;
 }
 
-pub fn prompt(instance: i32, message: &str, default_message: &str) -> String {
+pub fn prompt(instance: DOMReference, message: &str, default_message: &str) -> String {
     unsafe {
         to_string(window_prompt(
             instance,
@@ -420,17 +420,22 @@ pub fn prompt(instance: i32, message: &str, default_message: &str) -> String {
     }
 }
 extern "C" {
-    fn window_print(instance: i32);
+    fn window_print(instance: DOMReference);
 }
 
-pub fn print(instance: i32) {
+pub fn print(instance: DOMReference) {
     unsafe { window_print(instance) }
 }
 extern "C" {
-    fn window_post_message(instance: i32, message: i32, target_origin: CString, transfer: i32);
+    fn window_post_message(
+        instance: DOMReference,
+        post_message: i32,
+        post_message: CString,
+        post_message: i32,
+    );
 }
 
-pub fn post_message(instance: i32, message: i32, target_origin: &str, transfer: i32) {
+pub fn post_message(instance: DOMReference, message: i32, target_origin: &str, transfer: i32) {
     unsafe { window_post_message(instance, message, to_cstring(target_origin), transfer) }
 }
 extern "C" {
@@ -448,38 +453,42 @@ pub fn set_onappinstalled(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_capture_events(instance: i32);
+    fn window_capture_events(instance: DOMReference);
 }
 
-pub fn capture_events(instance: i32) {
+pub fn capture_events(instance: DOMReference) {
     unsafe { window_capture_events(instance) }
 }
 extern "C" {
-    fn window_release_events(instance: i32);
+    fn window_release_events(instance: DOMReference);
 }
 
-pub fn release_events(instance: i32) {
+pub fn release_events(instance: DOMReference) {
     unsafe { window_release_events(instance) }
 }
 extern "C" {
-    fn window_get_selection(instance: i32) -> i32;
+    fn window_get_selection(instance: DOMReference) -> i32;
 }
 
-pub fn get_selection(instance: i32) -> i32 {
+pub fn get_selection(instance: DOMReference) -> i32 {
     unsafe { window_get_selection(instance) }
 }
 extern "C" {
-    fn window_get_computed_style(instance: i32, elt: i32, pseudo_elt: CString) -> i32;
+    fn window_get_computed_style(
+        instance: DOMReference,
+        get_computed_style: i32,
+        get_computed_style: CString,
+    ) -> i32;
 }
 
-pub fn get_computed_style(instance: i32, elt: i32, pseudo_elt: &str) -> i32 {
+pub fn get_computed_style(instance: DOMReference, elt: i32, pseudo_elt: &str) -> i32 {
     unsafe { window_get_computed_style(instance, elt, to_cstring(pseudo_elt)) }
 }
 extern "C" {
-    fn window_match_media(instance: i32, query: CString) -> i32;
+    fn window_match_media(instance: DOMReference, match_media: CString) -> i32;
 }
 
-pub fn match_media(instance: i32, query: &str) -> i32 {
+pub fn match_media(instance: DOMReference, query: &str) -> i32 {
     unsafe { window_match_media(instance, to_cstring(query)) }
 }
 extern "C" {
@@ -497,31 +506,31 @@ pub fn set_screen(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_move_to(instance: i32, x: i32, y: i32);
+    fn window_move_to(instance: DOMReference, move_to: f32, move_to: f32);
 }
 
-pub fn move_to(instance: i32, x: i32, y: i32) {
+pub fn move_to(instance: DOMReference, x: f32, y: f32) {
     unsafe { window_move_to(instance, x, y) }
 }
 extern "C" {
-    fn window_move_by(instance: i32, x: i32, y: i32);
+    fn window_move_by(instance: DOMReference, move_by: f32, move_by: f32);
 }
 
-pub fn move_by(instance: i32, x: i32, y: i32) {
+pub fn move_by(instance: DOMReference, x: f32, y: f32) {
     unsafe { window_move_by(instance, x, y) }
 }
 extern "C" {
-    fn window_resize_to(instance: i32, x: i32, y: i32);
+    fn window_resize_to(instance: DOMReference, resize_to: f32, resize_to: f32);
 }
 
-pub fn resize_to(instance: i32, x: i32, y: i32) {
+pub fn resize_to(instance: DOMReference, x: f32, y: f32) {
     unsafe { window_resize_to(instance, x, y) }
 }
 extern "C" {
-    fn window_resize_by(instance: i32, x: i32, y: i32);
+    fn window_resize_by(instance: DOMReference, resize_by: f32, resize_by: f32);
 }
 
-pub fn resize_by(instance: i32, x: i32, y: i32) {
+pub fn resize_by(instance: DOMReference, x: f32, y: f32) {
     unsafe { window_resize_by(instance, x, y) }
 }
 extern "C" {
@@ -553,78 +562,78 @@ pub fn set_inner_height(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_scroll(instance: i32, x: i32, y: i32);
+    fn window_scroll(instance: DOMReference, scroll: f32, scroll: f32);
 }
 
-pub fn scroll(instance: i32, x: i32, y: i32) {
+pub fn scroll(instance: DOMReference, x: f32, y: f32) {
     unsafe { window_scroll(instance, x, y) }
 }
 extern "C" {
-    fn window_scroll_to(instance: i32, x: i32, y: i32);
+    fn window_scroll_to(instance: DOMReference, scroll_to: f32, scroll_to: f32);
 }
 
-pub fn scroll_to(instance: i32, x: i32, y: i32) {
+pub fn scroll_to(instance: DOMReference, x: f32, y: f32) {
     unsafe { window_scroll_to(instance, x, y) }
 }
 extern "C" {
-    fn window_scroll_by(instance: i32, x: i32, y: i32);
+    fn window_scroll_by(instance: DOMReference, scroll_by: f32, scroll_by: f32);
 }
 
-pub fn scroll_by(instance: i32, x: i32, y: i32) {
+pub fn scroll_by(instance: DOMReference, x: f32, y: f32) {
     unsafe { window_scroll_by(instance, x, y) }
 }
 extern "C" {
-    fn window_get_scroll_x(instance: DOMReference) -> i32;
-    fn window_set_scroll_x(instance: DOMReference, value: i32);
+    fn window_get_scroll_x(instance: DOMReference) -> f32;
+    fn window_set_scroll_x(instance: DOMReference, value: f32);
 }
 
-pub fn get_scroll_x(instance: DOMReference) -> i32 {
+pub fn get_scroll_x(instance: DOMReference) -> f32 {
     unsafe { window_get_scroll_x(instance) }
 }
 
-pub fn set_scroll_x(instance: DOMReference, value: i32) {
+pub fn set_scroll_x(instance: DOMReference, value: f32) {
     unsafe {
         window_set_scroll_x(instance, value);
     }
 }
 extern "C" {
-    fn window_get_page_x_offset(instance: DOMReference) -> i32;
-    fn window_set_page_x_offset(instance: DOMReference, value: i32);
+    fn window_get_page_x_offset(instance: DOMReference) -> f32;
+    fn window_set_page_x_offset(instance: DOMReference, value: f32);
 }
 
-pub fn get_page_x_offset(instance: DOMReference) -> i32 {
+pub fn get_page_x_offset(instance: DOMReference) -> f32 {
     unsafe { window_get_page_x_offset(instance) }
 }
 
-pub fn set_page_x_offset(instance: DOMReference, value: i32) {
+pub fn set_page_x_offset(instance: DOMReference, value: f32) {
     unsafe {
         window_set_page_x_offset(instance, value);
     }
 }
 extern "C" {
-    fn window_get_scroll_y(instance: DOMReference) -> i32;
-    fn window_set_scroll_y(instance: DOMReference, value: i32);
+    fn window_get_scroll_y(instance: DOMReference) -> f32;
+    fn window_set_scroll_y(instance: DOMReference, value: f32);
 }
 
-pub fn get_scroll_y(instance: DOMReference) -> i32 {
+pub fn get_scroll_y(instance: DOMReference) -> f32 {
     unsafe { window_get_scroll_y(instance) }
 }
 
-pub fn set_scroll_y(instance: DOMReference, value: i32) {
+pub fn set_scroll_y(instance: DOMReference, value: f32) {
     unsafe {
         window_set_scroll_y(instance, value);
     }
 }
 extern "C" {
-    fn window_get_page_y_offset(instance: DOMReference) -> i32;
-    fn window_set_page_y_offset(instance: DOMReference, value: i32);
+    fn window_get_page_y_offset(instance: DOMReference) -> f32;
+    fn window_set_page_y_offset(instance: DOMReference, value: f32);
 }
 
-pub fn get_page_y_offset(instance: DOMReference) -> i32 {
+pub fn get_page_y_offset(instance: DOMReference) -> f32 {
     unsafe { window_get_page_y_offset(instance) }
 }
 
-pub fn set_page_y_offset(instance: DOMReference, value: i32) {
+pub fn set_page_y_offset(instance: DOMReference, value: f32) {
     unsafe {
         window_set_page_y_offset(instance, value);
     }
@@ -686,31 +695,31 @@ pub fn set_outer_height(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_get_device_pixel_ratio(instance: DOMReference) -> i32;
-    fn window_set_device_pixel_ratio(instance: DOMReference, value: i32);
+    fn window_get_device_pixel_ratio(instance: DOMReference) -> f32;
+    fn window_set_device_pixel_ratio(instance: DOMReference, value: f32);
 }
 
-pub fn get_device_pixel_ratio(instance: DOMReference) -> i32 {
+pub fn get_device_pixel_ratio(instance: DOMReference) -> f32 {
     unsafe { window_get_device_pixel_ratio(instance) }
 }
 
-pub fn set_device_pixel_ratio(instance: DOMReference, value: i32) {
+pub fn set_device_pixel_ratio(instance: DOMReference, value: f32) {
     unsafe {
         window_set_device_pixel_ratio(instance, value);
     }
 }
 extern "C" {
-    fn window_request_animation_frame(instance: i32, callback: i32) -> i32;
+    fn window_request_animation_frame(instance: DOMReference, request_animation_frame: i32) -> f32;
 }
 
-pub fn request_animation_frame(instance: i32, callback: i32) -> i32 {
+pub fn request_animation_frame(instance: DOMReference, callback: i32) -> f32 {
     unsafe { window_request_animation_frame(instance, callback) }
 }
 extern "C" {
-    fn window_cancel_animation_frame(instance: i32, handle: i32);
+    fn window_cancel_animation_frame(instance: DOMReference, cancel_animation_frame: f32);
 }
 
-pub fn cancel_animation_frame(instance: i32, handle: i32) {
+pub fn cancel_animation_frame(instance: DOMReference, handle: f32) {
     unsafe { window_cancel_animation_frame(instance, handle) }
 }
 extern "C" {
@@ -728,15 +737,15 @@ pub fn set_performance(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_get_orientation(instance: DOMReference) -> i32;
-    fn window_set_orientation(instance: DOMReference, value: i32);
+    fn window_get_orientation(instance: DOMReference) -> f32;
+    fn window_set_orientation(instance: DOMReference, value: f32);
 }
 
-pub fn get_orientation(instance: DOMReference) -> i32 {
+pub fn get_orientation(instance: DOMReference) -> f32 {
     unsafe { window_get_orientation(instance) }
 }
 
-pub fn set_orientation(instance: DOMReference, value: i32) {
+pub fn set_orientation(instance: DOMReference, value: f32) {
     unsafe {
         window_set_orientation(instance, value);
     }
@@ -840,17 +849,21 @@ pub fn set_paint_worklet(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_request_idle_callback(instance: i32, callback: i32, options: i32) -> i32;
+    fn window_request_idle_callback(
+        instance: DOMReference,
+        request_idle_callback: i32,
+        request_idle_callback: i32,
+    ) -> f32;
 }
 
-pub fn request_idle_callback(instance: i32, callback: i32, options: i32) -> i32 {
+pub fn request_idle_callback(instance: DOMReference, callback: i32, options: i32) -> f32 {
     unsafe { window_request_idle_callback(instance, callback, options) }
 }
 extern "C" {
-    fn window_cancel_idle_callback(instance: i32, handle: i32);
+    fn window_cancel_idle_callback(instance: DOMReference, cancel_idle_callback: f32);
 }
 
-pub fn cancel_idle_callback(instance: i32, handle: i32) {
+pub fn cancel_idle_callback(instance: DOMReference, handle: f32) {
     unsafe { window_cancel_idle_callback(instance, handle) }
 }
 extern "C" {
@@ -868,65 +881,65 @@ pub fn set_origin(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn window_btoa(instance: i32, btoa: CString) -> CString;
+    fn window_btoa(instance: DOMReference, btoa: CString) -> CString;
 }
 
-pub fn btoa(instance: i32, btoa: &str) -> String {
+pub fn btoa(instance: DOMReference, btoa: &str) -> String {
     unsafe { to_string(window_btoa(instance, to_cstring(btoa))) }
 }
 extern "C" {
-    fn window_atob(instance: i32, atob: CString) -> CString;
+    fn window_atob(instance: DOMReference, atob: CString) -> CString;
 }
 
-pub fn atob(instance: i32, atob: &str) -> String {
+pub fn atob(instance: DOMReference, atob: &str) -> String {
     unsafe { to_string(window_atob(instance, to_cstring(atob))) }
 }
 extern "C" {
-    fn window_set_timeout(instance: i32, handler: i32, timeout: i32) -> i32;
+    fn window_set_timeout(instance: DOMReference, set_timeout: i32, set_timeout: f32) -> f32;
 }
 
-pub fn set_timeout(instance: i32, handler: i32, timeout: i32) -> i32 {
+pub fn set_timeout(instance: DOMReference, handler: i32, timeout: f32) -> f32 {
     unsafe { window_set_timeout(instance, handler, timeout) }
 }
 extern "C" {
-    fn window_clear_timeout(instance: i32, handle: i32);
+    fn window_clear_timeout(instance: DOMReference, clear_timeout: f32);
 }
 
-pub fn clear_timeout(instance: i32, handle: i32) {
+pub fn clear_timeout(instance: DOMReference, handle: f32) {
     unsafe { window_clear_timeout(instance, handle) }
 }
 extern "C" {
-    fn window_set_interval(instance: i32, handler: i32, timeout: i32) -> i32;
+    fn window_set_interval(instance: DOMReference, set_interval: i32, set_interval: f32) -> f32;
 }
 
-pub fn set_interval(instance: i32, handler: i32, timeout: i32) -> i32 {
+pub fn set_interval(instance: DOMReference, handler: i32, timeout: f32) -> f32 {
     unsafe { window_set_interval(instance, handler, timeout) }
 }
 extern "C" {
-    fn window_clear_interval(instance: i32, handle: i32);
+    fn window_clear_interval(instance: DOMReference, clear_interval: f32);
 }
 
-pub fn clear_interval(instance: i32, handle: i32) {
+pub fn clear_interval(instance: DOMReference, handle: f32) {
     unsafe { window_clear_interval(instance, handle) }
 }
 extern "C" {
     fn window_create_image_bitmap(
-        instance: i32,
-        a_image: i32,
-        a_sx: i32,
-        a_sy: i32,
-        a_sw: i32,
-        a_sh: i32,
+        instance: DOMReference,
+        create_image_bitmap: i32,
+        create_image_bitmap: f32,
+        create_image_bitmap: f32,
+        create_image_bitmap: f32,
+        create_image_bitmap: f32,
     ) -> i32;
 }
 
 pub fn create_image_bitmap(
-    instance: i32,
+    instance: DOMReference,
     a_image: i32,
-    a_sx: i32,
-    a_sy: i32,
-    a_sw: i32,
-    a_sh: i32,
+    a_sx: f32,
+    a_sy: f32,
+    a_sw: f32,
+    a_sh: f32,
 ) -> i32 {
     unsafe { window_create_image_bitmap(instance, a_image, a_sx, a_sy, a_sw, a_sh) }
 }

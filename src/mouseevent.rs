@@ -1,113 +1,113 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn mouseevent_get_screen_x(instance: DOMReference) -> i32;
-    fn mouseevent_set_screen_x(instance: DOMReference, value: i32);
+    fn mouseevent_get_screen_x(instance: DOMReference) -> f32;
+    fn mouseevent_set_screen_x(instance: DOMReference, value: f32);
 }
 
-pub fn get_screen_x(instance: DOMReference) -> i32 {
+pub fn get_screen_x(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_screen_x(instance) }
 }
 
-pub fn set_screen_x(instance: DOMReference, value: i32) {
+pub fn set_screen_x(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_screen_x(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_screen_y(instance: DOMReference) -> i32;
-    fn mouseevent_set_screen_y(instance: DOMReference, value: i32);
+    fn mouseevent_get_screen_y(instance: DOMReference) -> f32;
+    fn mouseevent_set_screen_y(instance: DOMReference, value: f32);
 }
 
-pub fn get_screen_y(instance: DOMReference) -> i32 {
+pub fn get_screen_y(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_screen_y(instance) }
 }
 
-pub fn set_screen_y(instance: DOMReference, value: i32) {
+pub fn set_screen_y(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_screen_y(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_client_x(instance: DOMReference) -> i32;
-    fn mouseevent_set_client_x(instance: DOMReference, value: i32);
+    fn mouseevent_get_client_x(instance: DOMReference) -> f32;
+    fn mouseevent_set_client_x(instance: DOMReference, value: f32);
 }
 
-pub fn get_client_x(instance: DOMReference) -> i32 {
+pub fn get_client_x(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_client_x(instance) }
 }
 
-pub fn set_client_x(instance: DOMReference, value: i32) {
+pub fn set_client_x(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_client_x(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_client_y(instance: DOMReference) -> i32;
-    fn mouseevent_set_client_y(instance: DOMReference, value: i32);
+    fn mouseevent_get_client_y(instance: DOMReference) -> f32;
+    fn mouseevent_set_client_y(instance: DOMReference, value: f32);
 }
 
-pub fn get_client_y(instance: DOMReference) -> i32 {
+pub fn get_client_y(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_client_y(instance) }
 }
 
-pub fn set_client_y(instance: DOMReference, value: i32) {
+pub fn set_client_y(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_client_y(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_x(instance: DOMReference) -> i32;
-    fn mouseevent_set_x(instance: DOMReference, value: i32);
+    fn mouseevent_get_x(instance: DOMReference) -> f32;
+    fn mouseevent_set_x(instance: DOMReference, value: f32);
 }
 
-pub fn get_x(instance: DOMReference) -> i32 {
+pub fn get_x(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_x(instance) }
 }
 
-pub fn set_x(instance: DOMReference, value: i32) {
+pub fn set_x(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_x(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_y(instance: DOMReference) -> i32;
-    fn mouseevent_set_y(instance: DOMReference, value: i32);
+    fn mouseevent_get_y(instance: DOMReference) -> f32;
+    fn mouseevent_set_y(instance: DOMReference, value: f32);
 }
 
-pub fn get_y(instance: DOMReference) -> i32 {
+pub fn get_y(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_y(instance) }
 }
 
-pub fn set_y(instance: DOMReference, value: i32) {
+pub fn set_y(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_y(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_offset_x(instance: DOMReference) -> i32;
-    fn mouseevent_set_offset_x(instance: DOMReference, value: i32);
+    fn mouseevent_get_offset_x(instance: DOMReference) -> f32;
+    fn mouseevent_set_offset_x(instance: DOMReference, value: f32);
 }
 
-pub fn get_offset_x(instance: DOMReference) -> i32 {
+pub fn get_offset_x(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_offset_x(instance) }
 }
 
-pub fn set_offset_x(instance: DOMReference, value: i32) {
+pub fn set_offset_x(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_offset_x(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_offset_y(instance: DOMReference) -> i32;
-    fn mouseevent_set_offset_y(instance: DOMReference, value: i32);
+    fn mouseevent_get_offset_y(instance: DOMReference) -> f32;
+    fn mouseevent_set_offset_y(instance: DOMReference, value: f32);
 }
 
-pub fn get_offset_y(instance: DOMReference) -> i32 {
+pub fn get_offset_y(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_offset_y(instance) }
 }
 
-pub fn set_offset_y(instance: DOMReference, value: i32) {
+pub fn set_offset_y(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_offset_y(instance, value);
     }
@@ -169,29 +169,29 @@ pub fn set_meta_key(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn mouseevent_get_button(instance: DOMReference) -> i32;
-    fn mouseevent_set_button(instance: DOMReference, value: i32);
+    fn mouseevent_get_button(instance: DOMReference) -> f32;
+    fn mouseevent_set_button(instance: DOMReference, value: f32);
 }
 
-pub fn get_button(instance: DOMReference) -> i32 {
+pub fn get_button(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_button(instance) }
 }
 
-pub fn set_button(instance: DOMReference, value: i32) {
+pub fn set_button(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_button(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_buttons(instance: DOMReference) -> i32;
-    fn mouseevent_set_buttons(instance: DOMReference, value: i32);
+    fn mouseevent_get_buttons(instance: DOMReference) -> f32;
+    fn mouseevent_set_buttons(instance: DOMReference, value: f32);
 }
 
-pub fn get_buttons(instance: DOMReference) -> i32 {
+pub fn get_buttons(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_buttons(instance) }
 }
 
-pub fn set_buttons(instance: DOMReference, value: i32) {
+pub fn set_buttons(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_buttons(instance, value);
     }
@@ -225,70 +225,70 @@ pub fn set_region(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn mouseevent_get_movement_x(instance: DOMReference) -> i32;
-    fn mouseevent_set_movement_x(instance: DOMReference, value: i32);
+    fn mouseevent_get_movement_x(instance: DOMReference) -> f32;
+    fn mouseevent_set_movement_x(instance: DOMReference, value: f32);
 }
 
-pub fn get_movement_x(instance: DOMReference) -> i32 {
+pub fn get_movement_x(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_movement_x(instance) }
 }
 
-pub fn set_movement_x(instance: DOMReference, value: i32) {
+pub fn set_movement_x(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_movement_x(instance, value);
     }
 }
 extern "C" {
-    fn mouseevent_get_movement_y(instance: DOMReference) -> i32;
-    fn mouseevent_set_movement_y(instance: DOMReference, value: i32);
+    fn mouseevent_get_movement_y(instance: DOMReference) -> f32;
+    fn mouseevent_set_movement_y(instance: DOMReference, value: f32);
 }
 
-pub fn get_movement_y(instance: DOMReference) -> i32 {
+pub fn get_movement_y(instance: DOMReference) -> f32 {
     unsafe { mouseevent_get_movement_y(instance) }
 }
 
-pub fn set_movement_y(instance: DOMReference, value: i32) {
+pub fn set_movement_y(instance: DOMReference, value: f32) {
     unsafe {
         mouseevent_set_movement_y(instance, value);
     }
 }
 extern "C" {
     fn mouseevent_init_mouse_event(
-        instance: i32,
-        type_arg: CString,
-        can_bubble_arg: i32,
-        cancelable_arg: i32,
-        view_arg: i32,
-        detail_arg: i32,
-        screen_x_arg: i32,
-        screen_y_arg: i32,
-        client_x_arg: i32,
-        client_y_arg: i32,
-        ctrl_key_arg: i32,
-        alt_key_arg: i32,
-        shift_key_arg: i32,
-        meta_key_arg: i32,
-        button_arg: i32,
-        related_target_arg: i32,
+        instance: DOMReference,
+        init_mouse_event: CString,
+        init_mouse_event: i32,
+        init_mouse_event: i32,
+        init_mouse_event: i32,
+        init_mouse_event: f32,
+        init_mouse_event: f32,
+        init_mouse_event: f32,
+        init_mouse_event: f32,
+        init_mouse_event: f32,
+        init_mouse_event: i32,
+        init_mouse_event: i32,
+        init_mouse_event: i32,
+        init_mouse_event: i32,
+        init_mouse_event: f32,
+        init_mouse_event: i32,
     );
 }
 
 pub fn init_mouse_event(
-    instance: i32,
+    instance: DOMReference,
     type_arg: &str,
     can_bubble_arg: i32,
     cancelable_arg: i32,
     view_arg: i32,
-    detail_arg: i32,
-    screen_x_arg: i32,
-    screen_y_arg: i32,
-    client_x_arg: i32,
-    client_y_arg: i32,
+    detail_arg: f32,
+    screen_x_arg: f32,
+    screen_y_arg: f32,
+    client_x_arg: f32,
+    client_y_arg: f32,
     ctrl_key_arg: i32,
     alt_key_arg: i32,
     shift_key_arg: i32,
     meta_key_arg: i32,
-    button_arg: i32,
+    button_arg: f32,
     related_target_arg: i32,
 ) {
     unsafe {
@@ -313,9 +313,9 @@ pub fn init_mouse_event(
     }
 }
 extern "C" {
-    fn mouseevent_get_modifier_state(instance: i32, key_arg: CString) -> i32;
+    fn mouseevent_get_modifier_state(instance: DOMReference, get_modifier_state: CString) -> i32;
 }
 
-pub fn get_modifier_state(instance: i32, key_arg: &str) -> i32 {
+pub fn get_modifier_state(instance: DOMReference, key_arg: &str) -> i32 {
     unsafe { mouseevent_get_modifier_state(instance, to_cstring(key_arg)) }
 }

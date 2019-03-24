@@ -197,15 +197,15 @@ pub fn set_form_target(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinput_get_height(instance: DOMReference) -> i32;
-    fn htmlinput_set_height(instance: DOMReference, value: i32);
+    fn htmlinput_get_height(instance: DOMReference) -> f32;
+    fn htmlinput_set_height(instance: DOMReference, value: f32);
 }
 
-pub fn get_height(instance: DOMReference) -> i32 {
+pub fn get_height(instance: DOMReference) -> f32 {
     unsafe { htmlinput_get_height(instance) }
 }
 
-pub fn set_height(instance: DOMReference, value: i32) {
+pub fn set_height(instance: DOMReference, value: f32) {
     unsafe {
         htmlinput_set_height(instance, value);
     }
@@ -267,15 +267,15 @@ pub fn set_max(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinput_get_max_length(instance: DOMReference) -> i32;
-    fn htmlinput_set_max_length(instance: DOMReference, value: i32);
+    fn htmlinput_get_max_length(instance: DOMReference) -> f32;
+    fn htmlinput_set_max_length(instance: DOMReference, value: f32);
 }
 
-pub fn get_max_length(instance: DOMReference) -> i32 {
+pub fn get_max_length(instance: DOMReference) -> f32 {
     unsafe { htmlinput_get_max_length(instance) }
 }
 
-pub fn set_max_length(instance: DOMReference, value: i32) {
+pub fn set_max_length(instance: DOMReference, value: f32) {
     unsafe {
         htmlinput_set_max_length(instance, value);
     }
@@ -295,15 +295,15 @@ pub fn set_min(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinput_get_min_length(instance: DOMReference) -> i32;
-    fn htmlinput_set_min_length(instance: DOMReference, value: i32);
+    fn htmlinput_get_min_length(instance: DOMReference) -> f32;
+    fn htmlinput_set_min_length(instance: DOMReference, value: f32);
 }
 
-pub fn get_min_length(instance: DOMReference) -> i32 {
+pub fn get_min_length(instance: DOMReference) -> f32 {
     unsafe { htmlinput_get_min_length(instance) }
 }
 
-pub fn set_min_length(instance: DOMReference, value: i32) {
+pub fn set_min_length(instance: DOMReference, value: f32) {
     unsafe {
         htmlinput_set_min_length(instance, value);
     }
@@ -393,15 +393,15 @@ pub fn set_required(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn htmlinput_get_size(instance: DOMReference) -> i32;
-    fn htmlinput_set_size(instance: DOMReference, value: i32);
+    fn htmlinput_get_size(instance: DOMReference) -> f32;
+    fn htmlinput_set_size(instance: DOMReference, value: f32);
 }
 
-pub fn get_size(instance: DOMReference) -> i32 {
+pub fn get_size(instance: DOMReference) -> f32 {
     unsafe { htmlinput_get_size(instance) }
 }
 
-pub fn set_size(instance: DOMReference, value: i32) {
+pub fn set_size(instance: DOMReference, value: f32) {
     unsafe {
         htmlinput_set_size(instance, value);
     }
@@ -491,29 +491,29 @@ pub fn set_value_as_date(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn htmlinput_get_value_as_number(instance: DOMReference) -> i32;
-    fn htmlinput_set_value_as_number(instance: DOMReference, value: i32);
+    fn htmlinput_get_value_as_number(instance: DOMReference) -> f32;
+    fn htmlinput_set_value_as_number(instance: DOMReference, value: f32);
 }
 
-pub fn get_value_as_number(instance: DOMReference) -> i32 {
+pub fn get_value_as_number(instance: DOMReference) -> f32 {
     unsafe { htmlinput_get_value_as_number(instance) }
 }
 
-pub fn set_value_as_number(instance: DOMReference, value: i32) {
+pub fn set_value_as_number(instance: DOMReference, value: f32) {
     unsafe {
         htmlinput_set_value_as_number(instance, value);
     }
 }
 extern "C" {
-    fn htmlinput_get_width(instance: DOMReference) -> i32;
-    fn htmlinput_set_width(instance: DOMReference, value: i32);
+    fn htmlinput_get_width(instance: DOMReference) -> f32;
+    fn htmlinput_set_width(instance: DOMReference, value: f32);
 }
 
-pub fn get_width(instance: DOMReference) -> i32 {
+pub fn get_width(instance: DOMReference) -> f32 {
     unsafe { htmlinput_get_width(instance) }
 }
 
-pub fn set_width(instance: DOMReference, value: i32) {
+pub fn set_width(instance: DOMReference, value: f32) {
     unsafe {
         htmlinput_set_width(instance, value);
     }
@@ -561,24 +561,24 @@ pub fn set_validation_message(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinput_check_validity(instance: i32) -> i32;
+    fn htmlinput_check_validity(instance: DOMReference) -> i32;
 }
 
-pub fn check_validity(instance: i32) -> i32 {
+pub fn check_validity(instance: DOMReference) -> i32 {
     unsafe { htmlinput_check_validity(instance) }
 }
 extern "C" {
-    fn htmlinput_report_validity(instance: i32) -> i32;
+    fn htmlinput_report_validity(instance: DOMReference) -> i32;
 }
 
-pub fn report_validity(instance: i32) -> i32 {
+pub fn report_validity(instance: DOMReference) -> i32 {
     unsafe { htmlinput_report_validity(instance) }
 }
 extern "C" {
-    fn htmlinput_set_custom_validity(instance: i32, error: CString);
+    fn htmlinput_set_custom_validity(instance: DOMReference, set_custom_validity: CString);
 }
 
-pub fn set_custom_validity(instance: i32, error: &str) {
+pub fn set_custom_validity(instance: DOMReference, error: &str) {
     unsafe { htmlinput_set_custom_validity(instance, to_cstring(error)) }
 }
 extern "C" {
@@ -596,10 +596,10 @@ pub fn set_labels(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn htmlinput_select(instance: i32);
+    fn htmlinput_select(instance: DOMReference);
 }
 
-pub fn select(instance: i32) {
+pub fn select(instance: DOMReference) {
     unsafe { htmlinput_select(instance) }
 }
 extern "C" {
@@ -618,15 +618,21 @@ pub fn set_selection_direction(instance: DOMReference, value: &str) {
 }
 extern "C" {
     fn htmlinput_set_range_text(
-        instance: i32,
-        replacement: CString,
-        start: i32,
-        end: i32,
-        selection_mode: i32,
+        instance: DOMReference,
+        set_range_text: CString,
+        set_range_text: f32,
+        set_range_text: f32,
+        set_range_text: i32,
     );
 }
 
-pub fn set_range_text(instance: i32, replacement: &str, start: i32, end: i32, selection_mode: i32) {
+pub fn set_range_text(
+    instance: DOMReference,
+    replacement: &str,
+    start: f32,
+    end: f32,
+    selection_mode: i32,
+) {
     unsafe {
         htmlinput_set_range_text(
             instance,
@@ -638,10 +644,15 @@ pub fn set_range_text(instance: i32, replacement: &str, start: i32, end: i32, se
     }
 }
 extern "C" {
-    fn htmlinput_set_selection_range(instance: i32, start: i32, end: i32, direction: CString);
+    fn htmlinput_set_selection_range(
+        instance: DOMReference,
+        set_selection_range: f32,
+        set_selection_range: f32,
+        set_selection_range: CString,
+    );
 }
 
-pub fn set_selection_range(instance: i32, start: i32, end: i32, direction: &str) {
+pub fn set_selection_range(instance: DOMReference, start: f32, end: f32, direction: &str) {
     unsafe { htmlinput_set_selection_range(instance, start, end, to_cstring(direction)) }
 }
 extern "C" {
@@ -673,38 +684,44 @@ pub fn set_use_map(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinput_get_date_time_input_box_value(instance: i32) -> i32;
+    fn htmlinput_get_date_time_input_box_value(instance: DOMReference) -> i32;
 }
 
-pub fn get_date_time_input_box_value(instance: i32) -> i32 {
+pub fn get_date_time_input_box_value(instance: DOMReference) -> i32 {
     unsafe { htmlinput_get_date_time_input_box_value(instance) }
 }
 extern "C" {
-    fn htmlinput_update_date_time_input_box(instance: i32, value: i32);
+    fn htmlinput_update_date_time_input_box(
+        instance: DOMReference,
+        update_date_time_input_box: i32,
+    );
 }
 
-pub fn update_date_time_input_box(instance: i32, value: i32) {
+pub fn update_date_time_input_box(instance: DOMReference, value: i32) {
     unsafe { htmlinput_update_date_time_input_box(instance, value) }
 }
 extern "C" {
-    fn htmlinput_set_date_time_picker_state(instance: i32, open: i32);
+    fn htmlinput_set_date_time_picker_state(
+        instance: DOMReference,
+        set_date_time_picker_state: i32,
+    );
 }
 
-pub fn set_date_time_picker_state(instance: i32, open: i32) {
+pub fn set_date_time_picker_state(instance: DOMReference, open: i32) {
     unsafe { htmlinput_set_date_time_picker_state(instance, open) }
 }
 extern "C" {
-    fn htmlinput_get_minimum(instance: i32) -> f32;
+    fn htmlinput_get_minimum(instance: DOMReference) -> f32;
 }
 
-pub fn get_minimum(instance: i32) -> f32 {
+pub fn get_minimum(instance: DOMReference) -> f32 {
     unsafe { htmlinput_get_minimum(instance) }
 }
 extern "C" {
-    fn htmlinput_get_maximum(instance: i32) -> f32;
+    fn htmlinput_get_maximum(instance: DOMReference) -> f32;
 }
 
-pub fn get_maximum(instance: i32) -> f32 {
+pub fn get_maximum(instance: DOMReference) -> f32 {
     unsafe { htmlinput_get_maximum(instance) }
 }
 extern "C" {

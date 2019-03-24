@@ -1,15 +1,15 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn node_get_node_type(instance: DOMReference) -> i32;
-    fn node_set_node_type(instance: DOMReference, value: i32);
+    fn node_get_node_type(instance: DOMReference) -> f32;
+    fn node_set_node_type(instance: DOMReference, value: f32);
 }
 
-pub fn get_node_type(instance: DOMReference) -> i32 {
+pub fn get_node_type(instance: DOMReference) -> f32 {
     unsafe { node_get_node_type(instance) }
 }
 
-pub fn set_node_type(instance: DOMReference, value: i32) {
+pub fn set_node_type(instance: DOMReference, value: f32) {
     unsafe {
         node_set_node_type(instance, value);
     }
@@ -71,10 +71,10 @@ pub fn set_owner_document(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn node_get_root_node(instance: i32, options: i32) -> i32;
+    fn node_get_root_node(instance: DOMReference, get_root_node: i32) -> i32;
 }
 
-pub fn get_root_node(instance: i32, options: i32) -> i32 {
+pub fn get_root_node(instance: DOMReference, options: i32) -> i32 {
     unsafe { node_get_root_node(instance, options) }
 }
 extern "C" {
@@ -106,10 +106,10 @@ pub fn set_parent_element(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn node_has_child_nodes(instance: i32) -> i32;
+    fn node_has_child_nodes(instance: DOMReference) -> i32;
 }
 
-pub fn has_child_nodes(instance: i32) -> i32 {
+pub fn has_child_nodes(instance: DOMReference) -> i32 {
     unsafe { node_has_child_nodes(instance) }
 }
 extern "C" {
@@ -211,93 +211,96 @@ pub fn set_text_content(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn node_insert_before(instance: i32, node: i32, child: i32) -> i32;
+    fn node_insert_before(instance: DOMReference, insert_before: i32, insert_before: i32) -> i32;
 }
 
-pub fn insert_before(instance: i32, node: i32, child: i32) -> i32 {
+pub fn insert_before(instance: DOMReference, node: i32, child: i32) -> i32 {
     unsafe { node_insert_before(instance, node, child) }
 }
 extern "C" {
-    fn node_append_child(instance: i32, node: i32) -> i32;
+    fn node_append_child(instance: DOMReference, append_child: i32) -> i32;
 }
 
-pub fn append_child(instance: i32, node: i32) -> i32 {
+pub fn append_child(instance: DOMReference, node: i32) -> i32 {
     unsafe { node_append_child(instance, node) }
 }
 extern "C" {
-    fn node_replace_child(instance: i32, node: i32, child: i32) -> i32;
+    fn node_replace_child(instance: DOMReference, replace_child: i32, replace_child: i32) -> i32;
 }
 
-pub fn replace_child(instance: i32, node: i32, child: i32) -> i32 {
+pub fn replace_child(instance: DOMReference, node: i32, child: i32) -> i32 {
     unsafe { node_replace_child(instance, node, child) }
 }
 extern "C" {
-    fn node_remove_child(instance: i32, child: i32) -> i32;
+    fn node_remove_child(instance: DOMReference, remove_child: i32) -> i32;
 }
 
-pub fn remove_child(instance: i32, child: i32) -> i32 {
+pub fn remove_child(instance: DOMReference, child: i32) -> i32 {
     unsafe { node_remove_child(instance, child) }
 }
 extern "C" {
-    fn node_normalize(instance: i32);
+    fn node_normalize(instance: DOMReference);
 }
 
-pub fn normalize(instance: i32) {
+pub fn normalize(instance: DOMReference) {
     unsafe { node_normalize(instance) }
 }
 extern "C" {
-    fn node_clone_node(instance: i32, deep: i32) -> i32;
+    fn node_clone_node(instance: DOMReference, clone_node: i32) -> i32;
 }
 
-pub fn clone_node(instance: i32, deep: i32) -> i32 {
+pub fn clone_node(instance: DOMReference, deep: i32) -> i32 {
     unsafe { node_clone_node(instance, deep) }
 }
 extern "C" {
-    fn node_is_same_node(instance: i32, node: i32) -> i32;
+    fn node_is_same_node(instance: DOMReference, is_same_node: i32) -> i32;
 }
 
-pub fn is_same_node(instance: i32, node: i32) -> i32 {
+pub fn is_same_node(instance: DOMReference, node: i32) -> i32 {
     unsafe { node_is_same_node(instance, node) }
 }
 extern "C" {
-    fn node_is_equal_node(instance: i32, node: i32) -> i32;
+    fn node_is_equal_node(instance: DOMReference, is_equal_node: i32) -> i32;
 }
 
-pub fn is_equal_node(instance: i32, node: i32) -> i32 {
+pub fn is_equal_node(instance: DOMReference, node: i32) -> i32 {
     unsafe { node_is_equal_node(instance, node) }
 }
 extern "C" {
-    fn node_compare_document_position(instance: i32, other: i32) -> i32;
+    fn node_compare_document_position(
+        instance: DOMReference,
+        compare_document_position: i32,
+    ) -> f32;
 }
 
-pub fn compare_document_position(instance: i32, other: i32) -> i32 {
+pub fn compare_document_position(instance: DOMReference, other: i32) -> f32 {
     unsafe { node_compare_document_position(instance, other) }
 }
 extern "C" {
-    fn node_contains(instance: i32, other: i32) -> i32;
+    fn node_contains(instance: DOMReference, contains: i32) -> i32;
 }
 
-pub fn contains(instance: i32, other: i32) -> i32 {
+pub fn contains(instance: DOMReference, other: i32) -> i32 {
     unsafe { node_contains(instance, other) }
 }
 extern "C" {
-    fn node_lookup_prefix(instance: i32, namespace: CString) -> CString;
+    fn node_lookup_prefix(instance: DOMReference, lookup_prefix: CString) -> CString;
 }
 
-pub fn lookup_prefix(instance: i32, namespace: &str) -> String {
+pub fn lookup_prefix(instance: DOMReference, namespace: &str) -> String {
     unsafe { to_string(node_lookup_prefix(instance, to_cstring(namespace))) }
 }
 extern "C" {
-    fn node_lookup_namespace_uri(instance: i32, prefix: CString) -> CString;
+    fn node_lookup_namespace_uri(instance: DOMReference, lookup_namespace_uri: CString) -> CString;
 }
 
-pub fn lookup_namespace_uri(instance: i32, prefix: &str) -> String {
+pub fn lookup_namespace_uri(instance: DOMReference, prefix: &str) -> String {
     unsafe { to_string(node_lookup_namespace_uri(instance, to_cstring(prefix))) }
 }
 extern "C" {
-    fn node_is_default_namespace(instance: i32, namespace: CString) -> i32;
+    fn node_is_default_namespace(instance: DOMReference, is_default_namespace: CString) -> i32;
 }
 
-pub fn is_default_namespace(instance: i32, namespace: &str) -> i32 {
+pub fn is_default_namespace(instance: DOMReference, namespace: &str) -> i32 {
     unsafe { node_is_default_namespace(instance, to_cstring(namespace)) }
 }

@@ -38,18 +38,34 @@ let namespaces = [];
 function processNamespace(namespace) {
   namespace = finalNamespaceName(namespace);
   if (namespaces.includes(namespace)) {
-    return;
+    return namespace;
   }
   namespaces.push(namespace);
   fs.writeFileSync(
     "src/" + namespace + ".rs",
     "#[allow(unused_imports)]\nuse crate::*;\n"
   );
+  return namespace;
 }
 
 function appendToNamespace(namespace, text) {
   namespace = finalNamespaceName(namespace);
   fs.appendFileSync("src/" + namespace + ".rs", text);
+}
+
+function toUnsafeRustType(returnType) {
+  let returnsString = returnType == "string";
+  return returnsString ? "CString" : returnType == "number" ? "f32" : "i32";
+}
+
+function toRustParamType(returnType) {
+  let returnsString = returnType == "string";
+  return returnsString ? "&str" : returnType == "number" ? "f32" : "i32";
+}
+
+function toRustReturnType(returnType) {
+  let returnsString = returnType == "string";
+  return returnsString ? "String" : returnType == "number" ? "f32" : "i32";
 }
 
 /*function processOperation(namespace, operation, isInterface) {
@@ -74,7 +90,7 @@ function appendToNamespace(namespace, text) {
       description:
         "number that represents a handle to an " + namespace + " instance"
     });
-    extractors.push(`let _instance = ALLOCATOR.g(instance);`);
+    extractors.push(`let _instance = A.g(instance);`);
   }
   let returnType = operation.body.idlType.idlType;
   let hasReturn = returnType != "void";
@@ -92,7 +108,7 @@ function appendToNamespace(namespace, text) {
       });
       extractors.push(`let _${name} = this.s(${name});`);
     } else if (!isPrimitive(type)) {
-      extractors.push(`let _${name} = ALLOCATOR.g(${name});`);
+      extractors.push(`let _${name} = A.g(${name});`);
       params.push({
         name,
         type: "number",
@@ -119,200 +135,150 @@ function appendToNamespace(namespace, text) {
             hasReturn
               ? returnsString
                 ? "return this.ms("
-                : "return ALLOCATOR.a("
+                : "return A.a("
               : "("
           }
           ${isInterface ? "_instance" : namespace}.${operationName}(${args
     .map(x => "_" + x.name)
     .join(", ")}));
       }`);
-  appendToNamespace(
-    namespace,
-    `extern \"C\" {
-    fn ${finalNamespaceName(namespace)}_${toSnake(operationName)}(${params
-      .map(
-        x =>
-          toSnake(x.name) +
-          (x.originalType == "DOMString"
-            ? ":CString"
-            : x.originalType == "double"
-            ? ":f32"
-            : ":i32")
-      )
-      .join(", ")}) ${
-      hasReturn
-        ? ` -> ${
-            returnsString ? "CString" : returnType == "double" ? "f32" : "i32"
-          }`
-        : ""
-    };
-}\n
-pub fn ` +
-      toSnake(toSnake(operationName)) +
-      `(${params
-        .map(
-          x =>
-            toSnake(x.name) +
-            (x.originalType == "DOMString"
-              ? ":&str"
-              : x.originalType == "double"
-              ? ":f32"
-              : ":i32")
-        )
-        .join(", ")}) ${
-        hasReturn
-          ? ` -> ${
-              returnsString ? "String" : returnType == "double" ? "f32" : "i32"
-            }`
-          : ""
-      } {\nunsafe{
-        ${returnsString ? "to_string(" : ""}
-        ${finalNamespaceName(namespace)}_${toSnake(operationName)}(${params
-        .map(x =>
-          x.originalType == "DOMString"
-            ? `to_cstring(${toSnake(x.name)})`
-            : toSnake(x.name)
-        )
-        .join(", ")})
-        ${returnsString ? ")" : ""}
-      }\n}\n`
-  );
-}
 
-function processAttribute(interface, idl) {
-  if (!idl.name) {
-    return;
-  }
-  processNamespace(interface);
-  let name = idl.name;
-  let primitive = isPrimitive(idl.idlType.idlType);
-  let returnsString = idl.idlType.idlType == "DOMString";
-  if (primitive) {
-    if (idl.idlType.idlType == "DOMString") {
-      FUNCTIONS.push(`
-        ${finalNamespaceName(interface)}_get_${toSnake(
-        name
-      )}: function(instance) {
-          let _instance = ALLOCATOR.g(instance);
-          return this.ms(_instance.${name});
-        }`);
-      FUNCTIONS.push(`
-        ${finalNamespaceName(interface)}_set_${toSnake(
-        name
-      )}: function(instance,str) {
-          let _instance = ALLOCATOR.g(instance);
-          _instance.${name} = this.s(str);
-        }`);
-    } else {
-      FUNCTIONS.push(`
-        ${finalNamespaceName(interface)}_get_${toSnake(
-        name
-      )}: function(instance) {
-          let _instance = ALLOCATOR.g(instance);
-          return _instance.${name};
-        }`);
-      FUNCTIONS.push(`
-        ${finalNamespaceName(interface)}_set_${toSnake(
-        name
-      )}: function(instance,val) {
-          let _instance = ALLOCATOR.g(instance);
-          _instance.${name} = val;
-        }`);
-    }
-  } else {
-    FUNCTIONS.push(`
-      ${finalNamespaceName(interface)}_get_${toSnake(
-      name
-    )}: function(instance) {
-        let _instance = ALLOCATOR.g(instance);
-        return ALLOCATOR.a(_instance.${name});
-      }`);
-    FUNCTIONS.push(`
-      ${finalNamespaceName(interface)}_set_${toSnake(
-      name
-    )}: function(instance,handle) {
-        let _instance = ALLOCATOR.g(instance);
-        _instance.${name} = ALLOCATOR.g(handle);
-      }`);
-  }
-  appendToNamespace(
-    interface,
-    `extern \"C\" {
-    fn ${finalNamespaceName(interface)}_get_${toSnake(
-      name
-    )}(instance:DOMReference) ${returnsString ? " -> CString" : " -> i32"};
-    fn ${finalNamespaceName(interface)}_set_${toSnake(
-      name
-    )}(instance:DOMReference,value:${returnsString ? "CString" : "i32"});
-}\n
-pub fn get_${toSnake(name)}(instance:DOMReference) ${
-      returnsString ? " -> String" : " -> i32"
-    } {\nunsafe{
-  ${returnsString ? "to_string(" : ""} ${finalNamespaceName(
-      interface
-    )}_get_${toSnake(name)}(instance)
-  ${returnsString ? ")" : ""}
-  }\n}\n
+*/
 
-  pub fn set_${toSnake(name)}(instance:DOMReference,value:${
-      returnsString ? "&str" : "i32"
-    }){\nunsafe{
-  ${finalNamespaceName(interface)}_set_${toSnake(name)}(instance,  ${
-      returnsString ? "to_cstring(" : ""
-    }value${returnsString ? ")" : ""});
-        }\n}\n`
-  );
-}
+let dom_api = JSON.parse(fs.readFileSync("dom_api.json", "utf8"));
 
-function processIdl(idls, file) {
-  console.log(`Processing \`${file}\`...`);
-  for (i in idls) {
-    let idl = idls[i];
-    if (idl.type === "namespace") {
-      for (m in idl.members) {
-        let member = idl.members[m];
-        if (member.type == "operation") {
-          processOperation(idl.name, member);
-        }
-      }
-    } else if (idl.type === "interface") {
-      for (m in idl.members) {
-        let member = idl.members[m];
-        if (member.type == "operation") {
-          processOperation(idl.name, member, true);
-        }
-        if (member.type == "attribute") {
-          processAttribute(idl.name, member);
-        }
-      }
+for (i in dom_api) {
+  let newNamespace = processNamespace(i);
+  for (f in dom_api[i]) {
+    let member = dom_api[i][f];
+    let trueName = member.name;
+    let newName = toSnake(member.name);
+    let returnType = member.return_type;
+    let returnsString = returnType == "string";
+    if (member.type == "property") {
+      FUNCTIONS.push(`
+        ${newNamespace}_get_${newName}: function(i) {
+          let _i = A.g(i);
+          return ${
+            returnsString
+              ? `this.ms(_i.${trueName})`
+              : isPrimitive(returnType)
+              ? `_i.${trueName}`
+              : `A.a(_i.${trueName})`
+          };
+        }`);
+      FUNCTIONS.push(`
+        ${newNamespace}_set_${newName}: function(i,v) {
+          let _i = A.g(i);
+          _i.${trueName} = ${
+        returnsString ? `this.s(v)` : isPrimitive(returnType) ? `v` : ` A.g(v)`
+      };
+        }`);
+      appendToNamespace(
+        i,
+        `extern \"C\" {
+        fn ${newNamespace}_get_${newName}(instance:DOMReference) -> ${toUnsafeRustType(
+          returnType
+        )};
+        fn ${newNamespace}_set_${newName}(instance:DOMReference,value:${toUnsafeRustType(
+          returnType
+        )});
+    }\n
+    pub fn get_${newName}(instance:DOMReference) -> ${toRustReturnType(
+          returnType
+        )} {\nunsafe{
+      ${
+        returnsString ? "to_string(" : ""
+      } ${newNamespace}_get_${newName}(instance)
+      ${returnsString ? ")" : ""}
+      }\n}\n
+
+      pub fn set_${newName}(instance:DOMReference,value:${toRustParamType(
+          returnType
+        )}){\nunsafe{
+      ${newNamespace}_set_${newName}(instance,  ${
+          returnsString ? "to_cstring(" : ""
+        }value${returnsString ? ")" : ""});
+            }\n}\n`
+      );
+    } else if (member.type == "function") {
+      let params = member.params;
+      let returnType = member.return_type;
+      let hasReturn = member.return_type != null;
+      let isStatic = member.is_static;
+      FUNCTIONS.push(`
+          ${newNamespace}_${newName}: function(${
+        member.is_static ? "" : "i,"
+      }${params.map(x => x.name).join(", ")}){
+              ${member.is_static ? "" : "let _i = A.g(i);\n"}
+              ${params
+                .map(
+                  x =>
+                    `let _${x.name} = ${
+                      x.type == "string"
+                        ? `this.s(${x.name})`
+                        : x.type == "object"
+                        ? ` A.g(${x.name})`
+                        : x.name
+                    };`
+                )
+                .join("\n")}
+              ${
+                hasReturn
+                  ? returnsString
+                    ? "return this.ms("
+                    : "return A.a("
+                  : "("
+              }
+              ${!isStatic ? "_i" : i}.${trueName}(${params
+        .map(x => "_" + x.name)
+        .join(", ")}));
+          }`);
+      appendToNamespace(
+        i,
+        `extern \"C\" {
+        fn ${newNamespace}_${newName}(${
+          isStatic ? "" : "instance:DOMReference,"
+        }${params
+          .map(x => newName + ":" + toUnsafeRustType(x.type))
+          .join(", ")}) ${
+          hasReturn ? ` -> ${toUnsafeRustType(returnType)}` : ""
+        };
+    }\n
+    pub fn ` +
+          newName +
+          `(${isStatic ? "" : "instance:DOMReference,"}${params
+            .map(x => toSnake(x.name) + ":" + toRustParamType(x.type))
+            .join(", ")}) ${
+            hasReturn ? ` -> ${toRustReturnType(returnType)}` : ""
+          } {\nunsafe{
+            ${returnsString ? "to_string(" : ""}
+            ${newNamespace}_${newName}(${
+            isStatic ? "" : "instance,"
+          }${params
+            .map(x =>
+              x.type == "string"
+                ? `to_cstring(${toSnake(x.name)})`
+                : toSnake(x.name)
+            )
+            .join(", ")})
+            ${returnsString ? ")" : ""}
+          }\n}\n`
+      );
     }
   }
-}
-
-fs.readdirSync("webidl/").forEach(file => {
-  if (WHITELIST.indexOf(file) != -1) {
-    var text = fs.readFileSync("webidl/" + file, "utf8");
-    processIdl(webidlParser.parse(text), file);
-  }
-});*/
-
-let dom_api = JSON.parse(fs.readFileSync('dom_api.json', 'utf8'));
-
-for(i in dom_api){
-  processNamespace(i);
-  console.log(i)
 }
 
 const template = `// THIS FILE IS GENERATED FROM tools/generate_webidl.js
 import allocator from './allocator'
 
 function createWebIDLContext(){
-  let ALLOCATOR = allocator();
+  let A = allocator();
   const webidl = {
-    allocator: function () {return ALLOCATOR;},
+    allocator: function () {return A;},
 
     global_is_null: function(o){
-      ALLOCATOR.g(o) == null
+      A.g(o) == null
     },
 
     global_debugger: function(){
@@ -320,20 +286,20 @@ function createWebIDLContext(){
     },
 
     global_get_window: function(){
-      return ALLOCATOR.a(window);
+      return A.a(window);
     },
 
     global_release: function(handle) {
-      ALLOCATOR.r(handle);
+      A.r(handle);
     },
 
     global_create_event_listener: function() {
-      let handle = ALLOCATOR.a((e) => this.executeCallback(handle,e,ALLOCATOR));
+      let handle = A.a((e) => this.executeCallback(handle,e,A));
       return handle;
     },
 
     global_get_property: function(handle,name) {
-      let o = ALLOCATOR.g(handle);
+      let o = A.g(handle);
       let p = o[this.s(name)];
       if(typeof p == "string"){
         return this.ms(p);
@@ -342,7 +308,7 @@ function createWebIDLContext(){
       } else if(typeof p == "number"){
         return p;
       }
-      return ALLOCATOR.a(p);
+      return A.a(p);
     },
 
     date_now: function() {
@@ -361,8 +327,8 @@ function createWebIDLContext(){
       return Math.floor(Math.random()*n);
     },
     customelement_attach_shadow: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.attachShadow({mode:"open"}));
+      let _instance = A.g(instance);
+      return A.a(_instance.attachShadow({mode:"open"}));
     },
     customelement_define: function(componentName) {
       componentName = this.s(componentName);
@@ -373,7 +339,7 @@ function createWebIDLContext(){
           class extends HTMLElement {
             constructor() {
               super();
-              var e = new CustomEvent("customelementcreated",{detail:ALLOCATOR.a(this)});
+              var e = new CustomEvent("customelementcreated",{detail:A.a(this)});
               window.dispatchEvent(e);
             }
             connectedCallback() {
@@ -410,7 +376,7 @@ function createWebIDLContext(){
           class extends HTMLElement {
             constructor() {
               super();
-              var e = new CustomEvent("customelementcreated",{detail:ALLOCATOR.a(this)});
+              var e = new CustomEvent("customelementcreated",{detail:A.a(this)});
               window.dispatchEvent(e);
             }
             static get observedAttributes() {
@@ -441,8 +407,8 @@ function createWebIDLContext(){
     },
 
     WasmWorker_onWorkerLoaded: function(instance,listener){
-      let _instance = ALLOCATOR.g(instance);
-      let _listener = ALLOCATOR.g(listener);
+      let _instance = A.g(instance);
+      let _listener = A.g(listener);
       if(_instance.loaded){
           _listener(new CustomEvent("load",{detail:{id:_instance.workerId}}))
       } else {
@@ -450,25 +416,25 @@ function createWebIDLContext(){
       }
     },
     WasmWorker_onWorkerMessage: function(instance,listener){
-      let _instance = ALLOCATOR.g(instance);
-      let _listener = ALLOCATOR.g(listener);
+      let _instance = A.g(instance);
+      let _listener = A.g(listener);
       _instance.addEventListener("message", _listener);
     },
     WasmWorker_sendWorkerMessage: function(instance,start,len){
-      let _instance = ALLOCATOR.g(instance);
+      let _instance = A.g(instance);
       const data = new Uint8Array(this.memory.buffer)
       _instance.sendMessage(data.subarray(start,start+len))
     },
     WasmWorkerLoadEvent_getWorkerId: function(ev){
-      let e = ALLOCATOR.g(ev)
+      let e = A.g(ev)
       return e.detail.id;
     },
     WasmWorkerMessageEvent_get_length: function(ev){
-      let e = ALLOCATOR.g(ev)
+      let e = A.g(ev)
       return e.detail.length;
     },
     WasmWorkerMessageEvent_get_data: function(ev){
-      let e = ALLOCATOR.g(ev)
+      let e = A.g(ev)
       let start = this.m(e.length);
       const data = new Uint8Array(this.memory.buffer)
       data.set(e.detail, start);

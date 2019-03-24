@@ -141,21 +141,28 @@ pub fn set_document_element(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_get_elements_by_tag_name(instance: i32, local_name: CString) -> i32;
+    fn document_get_elements_by_tag_name(
+        instance: DOMReference,
+        get_elements_by_tag_name: CString,
+    ) -> i32;
 }
 
-pub fn get_elements_by_tag_name(instance: i32, local_name: &str) -> i32 {
+pub fn get_elements_by_tag_name(instance: DOMReference, local_name: &str) -> i32 {
     unsafe { document_get_elements_by_tag_name(instance, to_cstring(local_name)) }
 }
 extern "C" {
     fn document_get_elements_by_tag_name_n_s(
-        instance: i32,
-        namespace: CString,
-        local_name: CString,
+        instance: DOMReference,
+        get_elements_by_tag_name_n_s: CString,
+        get_elements_by_tag_name_n_s: CString,
     ) -> i32;
 }
 
-pub fn get_elements_by_tag_name_n_s(instance: i32, namespace: &str, local_name: &str) -> i32 {
+pub fn get_elements_by_tag_name_n_s(
+    instance: DOMReference,
+    namespace: &str,
+    local_name: &str,
+) -> i32 {
     unsafe {
         document_get_elements_by_tag_name_n_s(
             instance,
@@ -165,37 +172,44 @@ pub fn get_elements_by_tag_name_n_s(instance: i32, namespace: &str, local_name: 
     }
 }
 extern "C" {
-    fn document_get_elements_by_class_name(instance: i32, class_names: CString) -> i32;
+    fn document_get_elements_by_class_name(
+        instance: DOMReference,
+        get_elements_by_class_name: CString,
+    ) -> i32;
 }
 
-pub fn get_elements_by_class_name(instance: i32, class_names: &str) -> i32 {
+pub fn get_elements_by_class_name(instance: DOMReference, class_names: &str) -> i32 {
     unsafe { document_get_elements_by_class_name(instance, to_cstring(class_names)) }
 }
 extern "C" {
-    fn document_get_element_by_id(instance: i32, element_id: CString) -> i32;
+    fn document_get_element_by_id(instance: DOMReference, get_element_by_id: CString) -> i32;
 }
 
-pub fn get_element_by_id(instance: i32, element_id: &str) -> i32 {
+pub fn get_element_by_id(instance: DOMReference, element_id: &str) -> i32 {
     unsafe { document_get_element_by_id(instance, to_cstring(element_id)) }
 }
 extern "C" {
-    fn document_create_element(instance: i32, local_name: CString, options: i32) -> i32;
+    fn document_create_element(
+        instance: DOMReference,
+        create_element: CString,
+        create_element: i32,
+    ) -> i32;
 }
 
-pub fn create_element(instance: i32, local_name: &str, options: i32) -> i32 {
+pub fn create_element(instance: DOMReference, local_name: &str, options: i32) -> i32 {
     unsafe { document_create_element(instance, to_cstring(local_name), options) }
 }
 extern "C" {
     fn document_create_element_n_s(
-        instance: i32,
-        namespace: CString,
-        qualified_name: CString,
-        options: i32,
+        instance: DOMReference,
+        create_element_n_s: CString,
+        create_element_n_s: CString,
+        create_element_n_s: i32,
     ) -> i32;
 }
 
 pub fn create_element_n_s(
-    instance: i32,
+    instance: DOMReference,
     namespace: &str,
     qualified_name: &str,
     options: i32,
@@ -210,103 +224,127 @@ pub fn create_element_n_s(
     }
 }
 extern "C" {
-    fn document_create_document_fragment(instance: i32) -> i32;
+    fn document_create_document_fragment(instance: DOMReference) -> i32;
 }
 
-pub fn create_document_fragment(instance: i32) -> i32 {
+pub fn create_document_fragment(instance: DOMReference) -> i32 {
     unsafe { document_create_document_fragment(instance) }
 }
 extern "C" {
-    fn document_create_text_node(instance: i32, data: CString) -> i32;
+    fn document_create_text_node(instance: DOMReference, create_text_node: CString) -> i32;
 }
 
-pub fn create_text_node(instance: i32, data: &str) -> i32 {
+pub fn create_text_node(instance: DOMReference, data: &str) -> i32 {
     unsafe { document_create_text_node(instance, to_cstring(data)) }
 }
 extern "C" {
-    fn document_create_comment(instance: i32, data: CString) -> i32;
+    fn document_create_comment(instance: DOMReference, create_comment: CString) -> i32;
 }
 
-pub fn create_comment(instance: i32, data: &str) -> i32 {
+pub fn create_comment(instance: DOMReference, data: &str) -> i32 {
     unsafe { document_create_comment(instance, to_cstring(data)) }
 }
 extern "C" {
-    fn document_create_processing_instruction(instance: i32, target: CString, data: CString)
-        -> i32;
+    fn document_create_processing_instruction(
+        instance: DOMReference,
+        create_processing_instruction: CString,
+        create_processing_instruction: CString,
+    ) -> i32;
 }
 
-pub fn create_processing_instruction(instance: i32, target: &str, data: &str) -> i32 {
+pub fn create_processing_instruction(instance: DOMReference, target: &str, data: &str) -> i32 {
     unsafe {
         document_create_processing_instruction(instance, to_cstring(target), to_cstring(data))
     }
 }
 extern "C" {
-    fn document_import_node(instance: i32, node: i32, deep: i32) -> i32;
+    fn document_import_node(instance: DOMReference, import_node: i32, import_node: i32) -> i32;
 }
 
-pub fn import_node(instance: i32, node: i32, deep: i32) -> i32 {
+pub fn import_node(instance: DOMReference, node: i32, deep: i32) -> i32 {
     unsafe { document_import_node(instance, node, deep) }
 }
 extern "C" {
-    fn document_adopt_node(instance: i32, node: i32) -> i32;
+    fn document_adopt_node(instance: DOMReference, adopt_node: i32) -> i32;
 }
 
-pub fn adopt_node(instance: i32, node: i32) -> i32 {
+pub fn adopt_node(instance: DOMReference, node: i32) -> i32 {
     unsafe { document_adopt_node(instance, node) }
 }
 extern "C" {
-    fn document_create_event(instance: i32, name: CString) -> i32;
+    fn document_create_event(instance: DOMReference, create_event: CString) -> i32;
 }
 
-pub fn create_event(instance: i32, name: &str) -> i32 {
+pub fn create_event(instance: DOMReference, name: &str) -> i32 {
     unsafe { document_create_event(instance, to_cstring(name)) }
 }
 extern "C" {
-    fn document_create_range(instance: i32) -> i32;
+    fn document_create_range(instance: DOMReference) -> i32;
 }
 
-pub fn create_range(instance: i32) -> i32 {
+pub fn create_range(instance: DOMReference) -> i32 {
     unsafe { document_create_range(instance) }
 }
 extern "C" {
     fn document_create_node_iterator(
-        instance: i32,
-        root: i32,
-        what_to_show: i32,
-        filter: i32,
+        instance: DOMReference,
+        create_node_iterator: i32,
+        create_node_iterator: f32,
+        create_node_iterator: i32,
     ) -> i32;
 }
 
-pub fn create_node_iterator(instance: i32, root: i32, what_to_show: i32, filter: i32) -> i32 {
+pub fn create_node_iterator(
+    instance: DOMReference,
+    root: i32,
+    what_to_show: f32,
+    filter: i32,
+) -> i32 {
     unsafe { document_create_node_iterator(instance, root, what_to_show, filter) }
 }
 extern "C" {
-    fn document_create_tree_walker(instance: i32, root: i32, what_to_show: i32, filter: i32)
-        -> i32;
+    fn document_create_tree_walker(
+        instance: DOMReference,
+        create_tree_walker: i32,
+        create_tree_walker: f32,
+        create_tree_walker: i32,
+    ) -> i32;
 }
 
-pub fn create_tree_walker(instance: i32, root: i32, what_to_show: i32, filter: i32) -> i32 {
+pub fn create_tree_walker(
+    instance: DOMReference,
+    root: i32,
+    what_to_show: f32,
+    filter: i32,
+) -> i32 {
     unsafe { document_create_tree_walker(instance, root, what_to_show, filter) }
 }
 extern "C" {
-    fn document_create_c_d_a_t_a_section(instance: i32, data: CString) -> i32;
+    fn document_create_c_d_a_t_a_section(
+        instance: DOMReference,
+        create_c_d_a_t_a_section: CString,
+    ) -> i32;
 }
 
-pub fn create_c_d_a_t_a_section(instance: i32, data: &str) -> i32 {
+pub fn create_c_d_a_t_a_section(instance: DOMReference, data: &str) -> i32 {
     unsafe { document_create_c_d_a_t_a_section(instance, to_cstring(data)) }
 }
 extern "C" {
-    fn document_create_attribute(instance: i32, name: CString) -> i32;
+    fn document_create_attribute(instance: DOMReference, create_attribute: CString) -> i32;
 }
 
-pub fn create_attribute(instance: i32, name: &str) -> i32 {
+pub fn create_attribute(instance: DOMReference, name: &str) -> i32 {
     unsafe { document_create_attribute(instance, to_cstring(name)) }
 }
 extern "C" {
-    fn document_create_attribute_n_s(instance: i32, namespace: CString, name: CString) -> i32;
+    fn document_create_attribute_n_s(
+        instance: DOMReference,
+        create_attribute_n_s: CString,
+        create_attribute_n_s: CString,
+    ) -> i32;
 }
 
-pub fn create_attribute_n_s(instance: i32, namespace: &str, name: &str) -> i32 {
+pub fn create_attribute_n_s(instance: DOMReference, namespace: &str, name: &str) -> i32 {
     unsafe { document_create_attribute_n_s(instance, to_cstring(namespace), to_cstring(name)) }
 }
 extern "C" {
@@ -506,10 +544,10 @@ pub fn set_scripts(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_get_elements_by_name(instance: i32, element_name: CString) -> i32;
+    fn document_get_elements_by_name(instance: DOMReference, get_elements_by_name: CString) -> i32;
 }
 
-pub fn get_elements_by_name(instance: i32, element_name: &str) -> i32 {
+pub fn get_elements_by_name(instance: DOMReference, element_name: &str) -> i32 {
     unsafe { document_get_elements_by_name(instance, to_cstring(element_name)) }
 }
 extern "C" {
@@ -527,10 +565,10 @@ pub fn set_default_view(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_has_focus(instance: i32) -> i32;
+    fn document_has_focus(instance: DOMReference) -> i32;
 }
 
-pub fn has_focus(instance: i32) -> i32 {
+pub fn has_focus(instance: DOMReference) -> i32 {
     unsafe { document_has_focus(instance) }
 }
 extern "C" {
@@ -604,10 +642,10 @@ pub fn set_current_script(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_release_capture(instance: i32);
+    fn document_release_capture(instance: DOMReference);
 }
 
-pub fn release_capture(instance: i32) {
+pub fn release_capture(instance: DOMReference) {
     unsafe { document_release_capture(instance) }
 }
 extern "C" {
@@ -625,15 +663,15 @@ pub fn set_document_uri_object(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_get_referrer_policy(instance: DOMReference) -> i32;
-    fn document_set_referrer_policy(instance: DOMReference, value: i32);
+    fn document_get_referrer_policy(instance: DOMReference) -> f32;
+    fn document_set_referrer_policy(instance: DOMReference, value: f32);
 }
 
-pub fn get_referrer_policy(instance: DOMReference) -> i32 {
+pub fn get_referrer_policy(instance: DOMReference) -> f32 {
     unsafe { document_get_referrer_policy(instance) }
 }
 
-pub fn set_referrer_policy(instance: DOMReference, value: i32) {
+pub fn set_referrer_policy(instance: DOMReference, value: f32) {
     unsafe {
         document_set_referrer_policy(instance, value);
     }
@@ -695,10 +733,10 @@ pub fn set_fullscreen_enabled(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_exit_fullscreen(instance: i32);
+    fn document_exit_fullscreen(instance: DOMReference);
 }
 
-pub fn exit_fullscreen(instance: i32) {
+pub fn exit_fullscreen(instance: DOMReference) {
     unsafe { document_exit_fullscreen(instance) }
 }
 extern "C" {
@@ -730,10 +768,10 @@ pub fn set_onfullscreenerror(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_exit_pointer_lock(instance: i32);
+    fn document_exit_pointer_lock(instance: DOMReference);
 }
 
-pub fn exit_pointer_lock(instance: i32) {
+pub fn exit_pointer_lock(instance: DOMReference) {
     unsafe { document_exit_pointer_lock(instance) }
 }
 extern "C" {
@@ -863,17 +901,24 @@ pub fn set_style_sheet_sets(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_enable_style_sheets_for_set(instance: i32, name: CString);
+    fn document_enable_style_sheets_for_set(
+        instance: DOMReference,
+        enable_style_sheets_for_set: CString,
+    );
 }
 
-pub fn enable_style_sheets_for_set(instance: i32, name: &str) {
+pub fn enable_style_sheets_for_set(instance: DOMReference, name: &str) {
     unsafe { document_enable_style_sheets_for_set(instance, to_cstring(name)) }
 }
 extern "C" {
-    fn document_caret_position_from_point(instance: i32, x: i32, y: i32) -> i32;
+    fn document_caret_position_from_point(
+        instance: DOMReference,
+        caret_position_from_point: f32,
+        caret_position_from_point: f32,
+    ) -> i32;
 }
 
-pub fn caret_position_from_point(instance: i32, x: i32, y: i32) -> i32 {
+pub fn caret_position_from_point(instance: DOMReference, x: f32, y: f32) -> i32 {
     unsafe { document_caret_position_from_point(instance, x, y) }
 }
 extern "C" {
@@ -891,17 +936,17 @@ pub fn set_scrolling_element(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_query_selector(instance: i32, selectors: CString) -> i32;
+    fn document_query_selector(instance: DOMReference, query_selector: CString) -> i32;
 }
 
-pub fn query_selector(instance: i32, selectors: &str) -> i32 {
+pub fn query_selector(instance: DOMReference, selectors: &str) -> i32 {
     unsafe { document_query_selector(instance, to_cstring(selectors)) }
 }
 extern "C" {
-    fn document_query_selector_all(instance: i32, selectors: CString) -> i32;
+    fn document_query_selector_all(instance: DOMReference, query_selector_all: CString) -> i32;
 }
 
-pub fn query_selector_all(instance: i32, selectors: &str) -> i32 {
+pub fn query_selector_all(instance: DOMReference, selectors: &str) -> i32 {
     unsafe { document_query_selector_all(instance, to_cstring(selectors)) }
 }
 extern "C" {
@@ -919,10 +964,10 @@ pub fn set_timeline(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_get_animations(instance: i32) -> i32;
+    fn document_get_animations(instance: DOMReference) -> i32;
 }
 
-pub fn get_animations(instance: i32) -> i32 {
+pub fn get_animations(instance: DOMReference) -> i32 {
     unsafe { document_get_animations(instance) }
 }
 extern "C" {
@@ -968,24 +1013,27 @@ pub fn set_sandbox_flags_as_string(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn document_insert_anonymous_content(instance: i32, a_element: i32) -> i32;
+    fn document_insert_anonymous_content(
+        instance: DOMReference,
+        insert_anonymous_content: i32,
+    ) -> i32;
 }
 
-pub fn insert_anonymous_content(instance: i32, a_element: i32) -> i32 {
+pub fn insert_anonymous_content(instance: DOMReference, a_element: i32) -> i32 {
     unsafe { document_insert_anonymous_content(instance, a_element) }
 }
 extern "C" {
-    fn document_remove_anonymous_content(instance: i32, a_content: i32);
+    fn document_remove_anonymous_content(instance: DOMReference, remove_anonymous_content: i32);
 }
 
-pub fn remove_anonymous_content(instance: i32, a_content: i32) {
+pub fn remove_anonymous_content(instance: DOMReference, a_content: i32) {
     unsafe { document_remove_anonymous_content(instance, a_content) }
 }
 extern "C" {
-    fn document_get_selection(instance: i32) -> i32;
+    fn document_get_selection(instance: DOMReference) -> i32;
 }
 
-pub fn get_selection(instance: i32) -> i32 {
+pub fn get_selection(instance: DOMReference) -> i32 {
     unsafe { document_get_selection(instance) }
 }
 extern "C" {
@@ -1003,10 +1051,10 @@ pub fn set_user_has_interacted(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn document_notify_user_gesture_activation(instance: i32);
+    fn document_notify_user_gesture_activation(instance: DOMReference);
 }
 
-pub fn notify_user_gesture_activation(instance: i32) {
+pub fn notify_user_gesture_activation(instance: DOMReference) {
     unsafe { document_notify_user_gesture_activation(instance) }
 }
 extern "C" {

@@ -1,8 +1,6 @@
 let fs = require("fs");
 let webidlParser = require("webidl2");
 
-let FUNCTIONS = [];
-
 let WHITELIST = process.argv.slice(2);
 
 function toInterfaceName(n) {
@@ -12,23 +10,18 @@ function toInterfaceName(n) {
 let dom_api = {}
 
 function isPrimitive(n) {
-  if (n == "DOMString") {
+  if (n == "DOMString" || n == "long" || n == "double" || n == "short" || n == "unrestricted double" || n == "boolean" || n == "unsigned long" || n == "unsigned short" || n == "float") {
     return true;
   }
   if (Array.isArray(n)) {
     return false;
   }
-  return n[0] == n[0].toLowerCase();
+  return false;
 }
 
 let namespaces = [];
 
-function finalNamespaceName(namespace) {
-  return namespace;
-}
-
 function processNamespace(namespace) {
-  namespace = finalNamespaceName(namespace);
   if (namespaces.includes(namespace)) {
     return namespace;
   }
@@ -38,7 +31,6 @@ function processNamespace(namespace) {
 }
 
 function appendToNamespace(namespace, text) {
-  namespace = finalNamespaceName(namespace);
   fs.appendFileSync("src/" + namespace + ".rs", text);
 }
 
@@ -109,7 +101,7 @@ function processAttribute(interface, idl) {
   } else {
     propType = "object"
   }
-  dom_api[namespace].push({type:"property",name:name,property_type:propType})
+  dom_api[namespace].push({type:"property",name:name,return_type:propType})
 }
 
 function processIdl(idls, file) {

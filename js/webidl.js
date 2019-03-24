@@ -2,10 +2,14 @@
 import allocator from "./allocator";
 
 function createWebIDLContext() {
-  let ALLOCATOR = allocator();
+  let A = allocator();
   const webidl = {
     allocator: function() {
-      return ALLOCATOR;
+      return A;
+    },
+
+    global_is_null: function(o) {
+      A.g(o) == null;
     },
 
     global_debugger: function() {
@@ -13,18 +17,20 @@ function createWebIDLContext() {
     },
 
     global_get_window: function() {
-      return ALLOCATOR.a(window);
+      return A.a(window);
     },
 
     global_release: function(handle) {
-      ALLOCATOR.r(handle);
+      A.r(handle);
     },
+
     global_create_event_listener: function() {
-      let handle = ALLOCATOR.a(e => this.executeCallback(handle, e, ALLOCATOR));
+      let handle = A.a(e => this.executeCallback(handle, e, A));
       return handle;
     },
+
     global_get_property: function(handle, name) {
-      let o = ALLOCATOR.g(handle);
+      let o = A.g(handle);
       let p = o[this.s(name)];
       if (typeof p == "string") {
         return this.ms(p);
@@ -33,8 +39,9 @@ function createWebIDLContext() {
       } else if (typeof p == "number") {
         return p;
       }
-      return ALLOCATOR.a(p);
+      return A.a(p);
     },
+
     date_now: function() {
       return Date.now();
     },
@@ -51,8 +58,8 @@ function createWebIDLContext() {
       return Math.floor(Math.random() * n);
     },
     customelement_attach_shadow: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.attachShadow({ mode: "open" }));
+      let _instance = A.g(instance);
+      return A.a(_instance.attachShadow({ mode: "open" }));
     },
     customelement_define: function(componentName) {
       componentName = this.s(componentName);
@@ -64,7 +71,7 @@ function createWebIDLContext() {
             constructor() {
               super();
               var e = new CustomEvent("customelementcreated", {
-                detail: ALLOCATOR.a(this)
+                detail: A.a(this)
               });
               window.dispatchEvent(e);
             }
@@ -103,7 +110,7 @@ function createWebIDLContext() {
             constructor() {
               super();
               var e = new CustomEvent("customelementcreated", {
-                detail: ALLOCATOR.a(this)
+                detail: A.a(this)
               });
               window.dispatchEvent(e);
             }
@@ -135,8 +142,8 @@ function createWebIDLContext() {
     },
 
     WasmWorker_onWorkerLoaded: function(instance, listener) {
-      let _instance = ALLOCATOR.g(instance);
-      let _listener = ALLOCATOR.g(listener);
+      let _instance = A.g(instance);
+      let _listener = A.g(listener);
       if (_instance.loaded) {
         _listener(
           new CustomEvent("load", { detail: { id: _instance.workerId } })
@@ -146,25 +153,25 @@ function createWebIDLContext() {
       }
     },
     WasmWorker_onWorkerMessage: function(instance, listener) {
-      let _instance = ALLOCATOR.g(instance);
-      let _listener = ALLOCATOR.g(listener);
+      let _instance = A.g(instance);
+      let _listener = A.g(listener);
       _instance.addEventListener("message", _listener);
     },
     WasmWorker_sendWorkerMessage: function(instance, start, len) {
-      let _instance = ALLOCATOR.g(instance);
+      let _instance = A.g(instance);
       const data = new Uint8Array(this.memory.buffer);
       _instance.sendMessage(data.subarray(start, start + len));
     },
     WasmWorkerLoadEvent_getWorkerId: function(ev) {
-      let e = ALLOCATOR.g(ev);
+      let e = A.g(ev);
       return e.detail.id;
     },
     WasmWorkerMessageEvent_get_length: function(ev) {
-      let e = ALLOCATOR.g(ev);
+      let e = A.g(ev);
       return e.detail.length;
     },
     WasmWorkerMessageEvent_get_data: function(ev) {
-      let e = ALLOCATOR.g(ev);
+      let e = A.g(ev);
       let start = this.m(e.length);
       const data = new Uint8Array(this.memory.buffer);
       data.set(e.detail, start);
@@ -179,340 +186,346 @@ function createWebIDLContext() {
     //TODO: get rid of one day when this isn't required by tinygo
     resource_write: function() {},
 
-    drawing_get_canvas: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.canvas);
+    drawing_get_canvas: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.canvas);
     },
 
-    drawing_set_canvas: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.canvas = ALLOCATOR.g(handle);
+    drawing_set_canvas: function(i, v) {
+      let _i = A.g(i);
+      _i.canvas = A.g(v);
     },
 
-    drawing_draw_window: function(
-      instance,
-      window,
-      x,
-      y,
-      w,
-      h,
-      bg_color,
-      flags
-    ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _window = ALLOCATOR.g(window);
+    drawing_draw_window: function(i, window, x, y, w, h, bgColor, flags) {
+      let _i = A.g(i);
+
+      let _window = A.g(window);
       let _x = x;
       let _y = y;
       let _w = w;
       let _h = h;
-      let _bg_color = this.s(bg_color);
+      let _bgColor = this.s(bgColor);
       let _flags = flags;
-      _instance.drawWindow(_window, _x, _y, _w, _h, _bg_color, _flags);
+      _i.drawWindow(_window, _x, _y, _w, _h, _bgColor, _flags);
     },
 
-    drawing_demote: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.demote();
+    drawing_demote: function(i) {
+      let _i = A.g(i);
+
+      _i.demote();
     },
 
-    drawing_save: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.save();
+    drawing_save: function(i) {
+      let _i = A.g(i);
+
+      _i.save();
     },
 
-    drawing_restore: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.restore();
+    drawing_restore: function(i) {
+      let _i = A.g(i);
+
+      _i.restore();
     },
 
-    drawing_scale: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_scale: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.scale(_x, _y);
+      _i.scale(_x, _y);
     },
 
-    drawing_rotate: function(instance, angle) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_rotate: function(i, angle) {
+      let _i = A.g(i);
+
       let _angle = angle;
-      _instance.rotate(_angle);
+      _i.rotate(_angle);
     },
 
-    drawing_translate: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_translate: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.translate(_x, _y);
+      _i.translate(_x, _y);
     },
 
-    drawing_transform: function(instance, a, b, c, d, e, f) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_transform: function(i, a, b, c, d, e, f) {
+      let _i = A.g(i);
+
       let _a = a;
       let _b = b;
       let _c = c;
       let _d = d;
       let _e = e;
       let _f = f;
-      _instance.transform(_a, _b, _c, _d, _e, _f);
+      _i.transform(_a, _b, _c, _d, _e, _f);
     },
 
-    drawing_set_transform: function(instance, a, b, c, d, e, f) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_set_transform: function(i, a, b, c, d, e, f) {
+      let _i = A.g(i);
+
       let _a = a;
       let _b = b;
       let _c = c;
       let _d = d;
       let _e = e;
       let _f = f;
-      _instance.setTransform(_a, _b, _c, _d, _e, _f);
+      _i.setTransform(_a, _b, _c, _d, _e, _f);
     },
 
-    drawing_reset_transform: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.resetTransform();
+    drawing_reset_transform: function(i) {
+      let _i = A.g(i);
+
+      _i.resetTransform();
     },
 
-    drawing_get_global_alpha: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.globalAlpha;
+    drawing_get_global_alpha: function(i) {
+      let _i = A.g(i);
+      return _i.globalAlpha;
     },
 
-    drawing_set_global_alpha: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.globalAlpha = val;
+    drawing_set_global_alpha: function(i, v) {
+      let _i = A.g(i);
+      _i.globalAlpha = v;
     },
 
-    drawing_get_global_composite_operation: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.globalCompositeOperation);
+    drawing_get_global_composite_operation: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.globalCompositeOperation);
     },
 
-    drawing_set_global_composite_operation: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.globalCompositeOperation = this.s(str);
+    drawing_set_global_composite_operation: function(i, v) {
+      let _i = A.g(i);
+      _i.globalCompositeOperation = this.s(v);
     },
 
-    drawing_get_image_smoothing_enabled: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.imageSmoothingEnabled;
+    drawing_get_image_smoothing_enabled: function(i) {
+      let _i = A.g(i);
+      return _i.imageSmoothingEnabled;
     },
 
-    drawing_set_image_smoothing_enabled: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.imageSmoothingEnabled = val;
+    drawing_set_image_smoothing_enabled: function(i, v) {
+      let _i = A.g(i);
+      _i.imageSmoothingEnabled = v;
     },
 
-    drawing_get_stroke_style: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.strokeStyle);
+    drawing_get_stroke_style: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.strokeStyle);
     },
 
-    drawing_set_stroke_style: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.strokeStyle = this.s(str);
+    drawing_set_stroke_style: function(i, v) {
+      let _i = A.g(i);
+      _i.strokeStyle = this.s(v);
     },
 
-    drawing_get_fill_style: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.fillStyle);
+    drawing_get_fill_style: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.fillStyle);
     },
 
-    drawing_set_fill_style: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.fillStyle = this.s(str);
+    drawing_set_fill_style: function(i, v) {
+      let _i = A.g(i);
+      _i.fillStyle = this.s(v);
     },
 
-    drawing_create_linear_gradient: function(instance, x0, y0, x1, y1) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_create_linear_gradient: function(i, x0, y0, x1, y1) {
+      let _i = A.g(i);
+
       let _x0 = x0;
       let _y0 = y0;
       let _x1 = x1;
       let _y1 = y1;
-      return ALLOCATOR.a(_instance.createLinearGradient(_x0, _y0, _x1, _y1));
+      return A.a(_i.createLinearGradient(_x0, _y0, _x1, _y1));
     },
 
-    drawing_create_radial_gradient: function(instance, x0, y0, r0, x1, y1, r1) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_create_radial_gradient: function(i, x0, y0, r0, x1, y1, r1) {
+      let _i = A.g(i);
+
       let _x0 = x0;
       let _y0 = y0;
       let _r0 = r0;
       let _x1 = x1;
       let _y1 = y1;
       let _r1 = r1;
-      return ALLOCATOR.a(
-        _instance.createRadialGradient(_x0, _y0, _r0, _x1, _y1, _r1)
-      );
+      return A.a(_i.createRadialGradient(_x0, _y0, _r0, _x1, _y1, _r1));
     },
 
-    drawing_create_pattern: function(instance, image, repetition) {
-      let _instance = ALLOCATOR.g(instance);
-      let _image = ALLOCATOR.g(image);
+    drawing_create_pattern: function(i, image, repetition) {
+      let _i = A.g(i);
+
+      let _image = A.g(image);
       let _repetition = this.s(repetition);
-      return ALLOCATOR.a(_instance.createPattern(_image, _repetition));
+      return A.a(_i.createPattern(_image, _repetition));
     },
 
-    drawing_get_shadow_offset_x: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.shadowOffsetX;
+    drawing_get_shadow_offset_x: function(i) {
+      let _i = A.g(i);
+      return _i.shadowOffsetX;
     },
 
-    drawing_set_shadow_offset_x: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.shadowOffsetX = val;
+    drawing_set_shadow_offset_x: function(i, v) {
+      let _i = A.g(i);
+      _i.shadowOffsetX = v;
     },
 
-    drawing_get_shadow_offset_y: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.shadowOffsetY;
+    drawing_get_shadow_offset_y: function(i) {
+      let _i = A.g(i);
+      return _i.shadowOffsetY;
     },
 
-    drawing_set_shadow_offset_y: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.shadowOffsetY = val;
+    drawing_set_shadow_offset_y: function(i, v) {
+      let _i = A.g(i);
+      _i.shadowOffsetY = v;
     },
 
-    drawing_get_shadow_blur: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.shadowBlur;
+    drawing_get_shadow_blur: function(i) {
+      let _i = A.g(i);
+      return _i.shadowBlur;
     },
 
-    drawing_set_shadow_blur: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.shadowBlur = val;
+    drawing_set_shadow_blur: function(i, v) {
+      let _i = A.g(i);
+      _i.shadowBlur = v;
     },
 
-    drawing_get_shadow_color: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.shadowColor);
+    drawing_get_shadow_color: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.shadowColor);
     },
 
-    drawing_set_shadow_color: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.shadowColor = this.s(str);
+    drawing_set_shadow_color: function(i, v) {
+      let _i = A.g(i);
+      _i.shadowColor = this.s(v);
     },
 
-    drawing_get_filter: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.filter);
+    drawing_get_filter: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.filter);
     },
 
-    drawing_set_filter: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.filter = this.s(str);
+    drawing_set_filter: function(i, v) {
+      let _i = A.g(i);
+      _i.filter = this.s(v);
     },
 
-    drawing_clear_rect: function(instance, x, y, w, h) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_clear_rect: function(i, x, y, w, h) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
       let _w = w;
       let _h = h;
-      _instance.clearRect(_x, _y, _w, _h);
+      _i.clearRect(_x, _y, _w, _h);
     },
 
-    drawing_fill_rect: function(instance, x, y, w, h) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_fill_rect: function(i, x, y, w, h) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
       let _w = w;
       let _h = h;
-      _instance.fillRect(_x, _y, _w, _h);
+      _i.fillRect(_x, _y, _w, _h);
     },
 
-    drawing_stroke_rect: function(instance, x, y, w, h) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_stroke_rect: function(i, x, y, w, h) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
       let _w = w;
       let _h = h;
-      _instance.strokeRect(_x, _y, _w, _h);
+      _i.strokeRect(_x, _y, _w, _h);
     },
 
-    drawing_begin_path: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.beginPath();
+    drawing_begin_path: function(i) {
+      let _i = A.g(i);
+
+      _i.beginPath();
     },
 
-    drawing_fill: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.fill();
+    drawing_fill: function(i) {
+      let _i = A.g(i);
+
+      _i.fill();
     },
 
-    drawing_stroke: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.stroke();
+    drawing_stroke: function(i) {
+      let _i = A.g(i);
+
+      _i.stroke();
     },
 
-    drawing_clip: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clip();
+    drawing_clip: function(i) {
+      let _i = A.g(i);
+
+      _i.clip();
     },
 
-    drawing_is_point_in_path: function(instance, x, y, winding) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_is_point_in_path: function(i, x, y, winding) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      let _winding = ALLOCATOR.g(winding);
-      return ALLOCATOR.a(_instance.isPointInPath(_x, _y, _winding));
+      let _winding = A.g(winding);
+      return A.a(_i.isPointInPath(_x, _y, _winding));
     },
 
-    drawing_is_point_in_stroke: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_is_point_in_stroke: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      return ALLOCATOR.a(_instance.isPointInStroke(_x, _y));
+      return A.a(_i.isPointInStroke(_x, _y));
     },
 
-    drawing_draw_focus_if_needed: function(instance, element) {
-      let _instance = ALLOCATOR.g(instance);
-      let _element = ALLOCATOR.g(element);
-      _instance.drawFocusIfNeeded(_element);
+    drawing_draw_focus_if_needed: function(i, element) {
+      let _i = A.g(i);
+
+      let _element = A.g(element);
+      _i.drawFocusIfNeeded(_element);
     },
 
-    drawing_draw_custom_focus_ring: function(instance, element) {
-      let _instance = ALLOCATOR.g(instance);
-      let _element = ALLOCATOR.g(element);
-      return ALLOCATOR.a(_instance.drawCustomFocusRing(_element));
+    drawing_draw_custom_focus_ring: function(i, element) {
+      let _i = A.g(i);
+
+      let _element = A.g(element);
+      return A.a(_i.drawCustomFocusRing(_element));
     },
 
-    drawing_fill_text: function(instance, text, x, y, max_width) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_fill_text: function(i, text, x, y, maxWidth) {
+      let _i = A.g(i);
+
       let _text = this.s(text);
       let _x = x;
       let _y = y;
-      let _max_width = max_width;
-      _instance.fillText(_text, _x, _y, _max_width);
+      let _maxWidth = maxWidth;
+      _i.fillText(_text, _x, _y, _maxWidth);
     },
 
-    drawing_stroke_text: function(instance, text, x, y, max_width) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_stroke_text: function(i, text, x, y, maxWidth) {
+      let _i = A.g(i);
+
       let _text = this.s(text);
       let _x = x;
       let _y = y;
-      let _max_width = max_width;
-      _instance.strokeText(_text, _x, _y, _max_width);
+      let _maxWidth = maxWidth;
+      _i.strokeText(_text, _x, _y, _maxWidth);
     },
 
-    drawing_measure_text: function(instance, text) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_measure_text: function(i, text) {
+      let _i = A.g(i);
+
       let _text = this.s(text);
-      return ALLOCATOR.a(_instance.measureText(_text));
+      return A.a(_i.measureText(_text));
     },
 
-    drawing_draw_image: function(
-      instance,
-      image,
-      sx,
-      sy,
-      sw,
-      sh,
-      dx,
-      dy,
-      dw,
-      dh
-    ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _image = ALLOCATOR.g(image);
+    drawing_draw_image: function(i, image, sx, sy, sw, sh, dx, dy, dw, dh) {
+      let _i = A.g(i);
+
+      let _image = A.g(image);
       let _sx = sx;
       let _sy = sy;
       let _sw = sw;
@@ -521,299 +534,319 @@ function createWebIDLContext() {
       let _dy = dy;
       let _dw = dw;
       let _dh = dh;
-      _instance.drawImage(_image, _sx, _sy, _sw, _sh, _dx, _dy, _dw, _dh);
+      _i.drawImage(_image, _sx, _sy, _sw, _sh, _dx, _dy, _dw, _dh);
     },
 
-    drawing_create_image_data: function(instance, sw, sh) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_create_image_data: function(i, sw, sh) {
+      let _i = A.g(i);
+
       let _sw = sw;
       let _sh = sh;
-      return ALLOCATOR.a(_instance.createImageData(_sw, _sh));
+      return A.a(_i.createImageData(_sw, _sh));
     },
 
-    drawing_get_image_data: function(instance, sx, sy, sw, sh) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_get_image_data: function(i, sx, sy, sw, sh) {
+      let _i = A.g(i);
+
       let _sx = sx;
       let _sy = sy;
       let _sw = sw;
       let _sh = sh;
-      return ALLOCATOR.a(_instance.getImageData(_sx, _sy, _sw, _sh));
+      return A.a(_i.getImageData(_sx, _sy, _sw, _sh));
     },
 
     drawing_put_image_data: function(
-      instance,
+      i,
       imagedata,
       dx,
       dy,
-      dirty_x,
-      dirty_y,
-      dirty_width,
-      dirty_height
+      dirtyX,
+      dirtyY,
+      dirtyWidth,
+      dirtyHeight
     ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _imagedata = ALLOCATOR.g(imagedata);
+      let _i = A.g(i);
+
+      let _imagedata = A.g(imagedata);
       let _dx = dx;
       let _dy = dy;
-      let _dirty_x = dirty_x;
-      let _dirty_y = dirty_y;
-      let _dirty_width = dirty_width;
-      let _dirty_height = dirty_height;
-      _instance.putImageData(
+      let _dirtyX = dirtyX;
+      let _dirtyY = dirtyY;
+      let _dirtyWidth = dirtyWidth;
+      let _dirtyHeight = dirtyHeight;
+      _i.putImageData(
         _imagedata,
         _dx,
         _dy,
-        _dirty_x,
-        _dirty_y,
-        _dirty_width,
-        _dirty_height
+        _dirtyX,
+        _dirtyY,
+        _dirtyWidth,
+        _dirtyHeight
       );
     },
 
-    drawing_get_line_width: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.lineWidth;
+    drawing_get_line_width: function(i) {
+      let _i = A.g(i);
+      return _i.lineWidth;
     },
 
-    drawing_set_line_width: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.lineWidth = val;
+    drawing_set_line_width: function(i, v) {
+      let _i = A.g(i);
+      _i.lineWidth = v;
     },
 
-    drawing_get_line_cap: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.lineCap);
+    drawing_get_line_cap: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.lineCap);
     },
 
-    drawing_set_line_cap: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.lineCap = this.s(str);
+    drawing_set_line_cap: function(i, v) {
+      let _i = A.g(i);
+      _i.lineCap = this.s(v);
     },
 
-    drawing_get_line_join: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.lineJoin);
+    drawing_get_line_join: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.lineJoin);
     },
 
-    drawing_set_line_join: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.lineJoin = this.s(str);
+    drawing_set_line_join: function(i, v) {
+      let _i = A.g(i);
+      _i.lineJoin = this.s(v);
     },
 
-    drawing_get_miter_limit: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.miterLimit;
+    drawing_get_miter_limit: function(i) {
+      let _i = A.g(i);
+      return _i.miterLimit;
     },
 
-    drawing_set_miter_limit: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.miterLimit = val;
+    drawing_set_miter_limit: function(i, v) {
+      let _i = A.g(i);
+      _i.miterLimit = v;
     },
 
-    drawing_set_line_dash: function(instance, segments) {
-      let _instance = ALLOCATOR.g(instance);
-      let _segments = ALLOCATOR.g(segments);
-      _instance.setLineDash(_segments);
+    drawing_set_line_dash: function(i, segments) {
+      let _i = A.g(i);
+
+      let _segments = A.g(segments);
+      _i.setLineDash(_segments);
     },
 
-    drawing_get_line_dash: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getLineDash());
+    drawing_get_line_dash: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getLineDash());
     },
 
-    drawing_get_line_dash_offset: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.lineDashOffset;
+    drawing_get_line_dash_offset: function(i) {
+      let _i = A.g(i);
+      return _i.lineDashOffset;
     },
 
-    drawing_set_line_dash_offset: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.lineDashOffset = val;
+    drawing_set_line_dash_offset: function(i, v) {
+      let _i = A.g(i);
+      _i.lineDashOffset = v;
     },
 
-    drawing_get_font: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.font);
+    drawing_get_font: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.font);
     },
 
-    drawing_set_font: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.font = this.s(str);
+    drawing_set_font: function(i, v) {
+      let _i = A.g(i);
+      _i.font = this.s(v);
     },
 
-    drawing_get_text_align: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.textAlign);
+    drawing_get_text_align: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.textAlign);
     },
 
-    drawing_set_text_align: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.textAlign = this.s(str);
+    drawing_set_text_align: function(i, v) {
+      let _i = A.g(i);
+      _i.textAlign = this.s(v);
     },
 
-    drawing_get_text_baseline: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.textBaseline);
+    drawing_get_text_baseline: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.textBaseline);
     },
 
-    drawing_set_text_baseline: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.textBaseline = this.s(str);
+    drawing_set_text_baseline: function(i, v) {
+      let _i = A.g(i);
+      _i.textBaseline = this.s(v);
     },
 
-    drawing_close_path: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.closePath();
+    drawing_close_path: function(i) {
+      let _i = A.g(i);
+
+      _i.closePath();
     },
 
-    drawing_move_to: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_move_to: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.moveTo(_x, _y);
+      _i.moveTo(_x, _y);
     },
 
-    drawing_line_to: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_line_to: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.lineTo(_x, _y);
+      _i.lineTo(_x, _y);
     },
 
-    drawing_quadratic_curve_to: function(instance, cpx, cpy, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_quadratic_curve_to: function(i, cpx, cpy, x, y) {
+      let _i = A.g(i);
+
       let _cpx = cpx;
       let _cpy = cpy;
       let _x = x;
       let _y = y;
-      _instance.quadraticCurveTo(_cpx, _cpy, _x, _y);
+      _i.quadraticCurveTo(_cpx, _cpy, _x, _y);
     },
 
-    drawing_bezier_curve_to: function(instance, cp1x, cp1y, cp2x, cp2y, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_bezier_curve_to: function(i, cp1x, cp1y, cp2x, cp2y, x, y) {
+      let _i = A.g(i);
+
       let _cp1x = cp1x;
       let _cp1y = cp1y;
       let _cp2x = cp2x;
       let _cp2y = cp2y;
       let _x = x;
       let _y = y;
-      _instance.bezierCurveTo(_cp1x, _cp1y, _cp2x, _cp2y, _x, _y);
+      _i.bezierCurveTo(_cp1x, _cp1y, _cp2x, _cp2y, _x, _y);
     },
 
-    drawing_arc_to: function(instance, x1, y1, x2, y2, radius) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_arc_to: function(i, x1, y1, x2, y2, radius) {
+      let _i = A.g(i);
+
       let _x1 = x1;
       let _y1 = y1;
       let _x2 = x2;
       let _y2 = y2;
       let _radius = radius;
-      _instance.arcTo(_x1, _y1, _x2, _y2, _radius);
+      _i.arcTo(_x1, _y1, _x2, _y2, _radius);
     },
 
-    drawing_rect: function(instance, x, y, w, h) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_rect: function(i, x, y, w, h) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
       let _w = w;
       let _h = h;
-      _instance.rect(_x, _y, _w, _h);
+      _i.rect(_x, _y, _w, _h);
     },
 
     drawing_arc: function(
-      instance,
+      i,
       x,
       y,
       radius,
-      start_angle,
-      end_angle,
+      startAngle,
+      endAngle,
       anticlockwise
     ) {
-      let _instance = ALLOCATOR.g(instance);
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
       let _radius = radius;
-      let _start_angle = start_angle;
-      let _end_angle = end_angle;
+      let _startAngle = startAngle;
+      let _endAngle = endAngle;
       let _anticlockwise = anticlockwise;
-      _instance.arc(_x, _y, _radius, _start_angle, _end_angle, _anticlockwise);
+      _i.arc(_x, _y, _radius, _startAngle, _endAngle, _anticlockwise);
     },
 
     drawing_ellipse: function(
-      instance,
+      i,
       x,
       y,
-      radius_x,
-      radius_y,
+      radiusX,
+      radiusY,
       rotation,
-      start_angle,
-      end_angle,
+      startAngle,
+      endAngle,
       anticlockwise
     ) {
-      let _instance = ALLOCATOR.g(instance);
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      let _radius_x = radius_x;
-      let _radius_y = radius_y;
+      let _radiusX = radiusX;
+      let _radiusY = radiusY;
       let _rotation = rotation;
-      let _start_angle = start_angle;
-      let _end_angle = end_angle;
+      let _startAngle = startAngle;
+      let _endAngle = endAngle;
       let _anticlockwise = anticlockwise;
-      _instance.ellipse(
+      _i.ellipse(
         _x,
         _y,
-        _radius_x,
-        _radius_y,
+        _radiusX,
+        _radiusY,
         _rotation,
-        _start_angle,
-        _end_angle,
+        _startAngle,
+        _endAngle,
         _anticlockwise
       );
     },
 
-    drawing_add_hit_region: function(instance, options) {
-      let _instance = ALLOCATOR.g(instance);
-      let _options = ALLOCATOR.g(options);
-      _instance.addHitRegion(_options);
+    drawing_add_hit_region: function(i, options) {
+      let _i = A.g(i);
+
+      let _options = A.g(options);
+      _i.addHitRegion(_options);
     },
 
-    drawing_remove_hit_region: function(instance, id) {
-      let _instance = ALLOCATOR.g(instance);
+    drawing_remove_hit_region: function(i, id) {
+      let _i = A.g(i);
+
       let _id = this.s(id);
-      _instance.removeHitRegion(_id);
+      _i.removeHitRegion(_id);
     },
 
-    drawing_clear_hit_regions: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clearHitRegions();
+    drawing_clear_hit_regions: function(i) {
+      let _i = A.g(i);
+
+      _i.clearHitRegions();
     },
 
-    canvasgradient_add_color_stop: function(instance, offset, color) {
-      let _instance = ALLOCATOR.g(instance);
+    canvasgradient_add_color_stop: function(i, offset, color) {
+      let _i = A.g(i);
+
       let _offset = offset;
       let _color = this.s(color);
-      _instance.addColorStop(_offset, _color);
+      _i.addColorStop(_offset, _color);
     },
 
-    canvaspattern_set_transform: function(instance, matrix) {
-      let _instance = ALLOCATOR.g(instance);
-      let _matrix = ALLOCATOR.g(matrix);
-      _instance.setTransform(_matrix);
+    canvaspattern_set_transform: function(i, matrix) {
+      let _i = A.g(i);
+
+      let _matrix = A.g(matrix);
+      _i.setTransform(_matrix);
     },
 
-    textmetrics_get_width: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.width;
+    textmetrics_get_width: function(i) {
+      let _i = A.g(i);
+      return _i.width;
     },
 
-    textmetrics_set_width: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.width = val;
+    textmetrics_set_width: function(i, v) {
+      let _i = A.g(i);
+      _i.width = v;
     },
 
-    path2d_add_path: function(instance, path, transformation) {
-      let _instance = ALLOCATOR.g(instance);
-      let _path = ALLOCATOR.g(path);
-      let _transformation = ALLOCATOR.g(transformation);
-      _instance.addPath(_path, _transformation);
+    path2d_add_path: function(i, path, transformation) {
+      let _i = A.g(i);
+
+      let _path = A.g(path);
+      let _transformation = A.g(transformation);
+      _i.addPath(_path, _transformation);
     },
 
     console_assert: function(condition, message) {
@@ -931,3468 +964,3600 @@ function createWebIDLContext() {
       console.profileEnd(_message);
     },
 
-    consoleinstance_assert: function(instance, condition, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_assert: function(i, condition, message) {
+      let _i = A.g(i);
+
       let _condition = condition;
       let _message = this.s(message);
-      _instance.assert(_condition, _message);
+      _i.assert(_condition, _message);
     },
 
-    consoleinstance_clear: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clear();
+    consoleinstance_clear: function(i) {
+      let _i = A.g(i);
+
+      _i.clear();
     },
 
-    consoleinstance_count: function(instance, label) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_count: function(i, label) {
+      let _i = A.g(i);
+
       let _label = this.s(label);
-      _instance.count(_label);
+      _i.count(_label);
     },
 
-    consoleinstance_count_reset: function(instance, label) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_count_reset: function(i, label) {
+      let _i = A.g(i);
+
       let _label = this.s(label);
-      _instance.countReset(_label);
+      _i.countReset(_label);
     },
 
-    consoleinstance_debug: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_debug: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.debug(_message);
+      _i.debug(_message);
     },
 
-    consoleinstance_error: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_error: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.error(_message);
+      _i.error(_message);
     },
 
-    consoleinstance_info: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_info: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.info(_message);
+      _i.info(_message);
     },
 
-    consoleinstance_log: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_log: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.log(_message);
+      _i.log(_message);
     },
 
-    consoleinstance_table: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_table: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.table(_message);
+      _i.table(_message);
     },
 
-    consoleinstance_trace: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_trace: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.trace(_message);
+      _i.trace(_message);
     },
 
-    consoleinstance_warn: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_warn: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.warn(_message);
+      _i.warn(_message);
     },
 
-    consoleinstance_dir: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_dir: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.dir(_message);
+      _i.dir(_message);
     },
 
-    consoleinstance_dirxml: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_dirxml: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.dirxml(_message);
+      _i.dirxml(_message);
     },
 
-    consoleinstance_group: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_group: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.group(_message);
+      _i.group(_message);
     },
 
-    consoleinstance_group_collapsed: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_group_collapsed: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.groupCollapsed(_message);
+      _i.groupCollapsed(_message);
     },
 
-    consoleinstance_group_end: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.groupEnd();
+    consoleinstance_group_end: function(i) {
+      let _i = A.g(i);
+
+      _i.groupEnd();
     },
 
-    consoleinstance_time: function(instance, label) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_time: function(i, label) {
+      let _i = A.g(i);
+
       let _label = this.s(label);
-      _instance.time(_label);
+      _i.time(_label);
     },
 
-    consoleinstance_time_log: function(instance, label, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_time_log: function(i, label, message) {
+      let _i = A.g(i);
+
       let _label = this.s(label);
       let _message = this.s(message);
-      _instance.timeLog(_label, _message);
+      _i.timeLog(_label, _message);
     },
 
-    consoleinstance_time_end: function(instance, label) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_time_end: function(i, label) {
+      let _i = A.g(i);
+
       let _label = this.s(label);
-      _instance.timeEnd(_label);
+      _i.timeEnd(_label);
     },
 
-    consoleinstance_exception: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_exception: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.exception(_message);
+      _i.exception(_message);
     },
 
-    consoleinstance_time_stamp: function(instance, data) {
-      let _instance = ALLOCATOR.g(instance);
-      let _data = data;
-      _instance.timeStamp(_data);
+    consoleinstance_time_stamp: function(i, data) {
+      let _i = A.g(i);
+
+      let _data = A.g(data);
+      _i.timeStamp(_data);
     },
 
-    consoleinstance_profile: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_profile: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.profile(_message);
+      _i.profile(_message);
     },
 
-    consoleinstance_profile_end: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    consoleinstance_profile_end: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.profileEnd(_message);
+      _i.profileEnd(_message);
     },
 
     consoleinstance_report_for_service_worker_scope: function(
-      instance,
+      i,
       scope,
       message,
       filename,
-      line_number,
-      column_number,
+      lineNumber,
+      columnNumber,
       level
     ) {
-      let _instance = ALLOCATOR.g(instance);
+      let _i = A.g(i);
+
       let _scope = this.s(scope);
       let _message = this.s(message);
       let _filename = this.s(filename);
-      let _line_number = line_number;
-      let _column_number = column_number;
-      let _level = ALLOCATOR.g(level);
-      _instance.reportForServiceWorkerScope(
+      let _lineNumber = lineNumber;
+      let _columnNumber = columnNumber;
+      let _level = A.g(level);
+      _i.reportForServiceWorkerScope(
         _scope,
         _message,
         _filename,
-        _line_number,
-        _column_number,
+        _lineNumber,
+        _columnNumber,
         _level
       );
     },
 
-    document_get_implementation: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.implementation);
+    document_get_implementation: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.implementation);
     },
 
-    document_set_implementation: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.implementation = ALLOCATOR.g(handle);
+    document_set_implementation: function(i, v) {
+      let _i = A.g(i);
+      _i.implementation = A.g(v);
     },
 
-    document_get_url: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.URL);
+    document_get_url: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.URL);
     },
 
-    document_set_url: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.URL = this.s(str);
+    document_set_url: function(i, v) {
+      let _i = A.g(i);
+      _i.URL = this.s(v);
     },
 
-    document_get_document_uri: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.documentURI);
+    document_get_document_uri: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.documentURI);
     },
 
-    document_set_document_uri: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.documentURI = this.s(str);
+    document_set_document_uri: function(i, v) {
+      let _i = A.g(i);
+      _i.documentURI = this.s(v);
     },
 
-    document_get_compat_mode: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.compatMode);
+    document_get_compat_mode: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.compatMode);
     },
 
-    document_set_compat_mode: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.compatMode = this.s(str);
+    document_set_compat_mode: function(i, v) {
+      let _i = A.g(i);
+      _i.compatMode = this.s(v);
     },
 
-    document_get_character_set: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.characterSet);
+    document_get_character_set: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.characterSet);
     },
 
-    document_set_character_set: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.characterSet = this.s(str);
+    document_set_character_set: function(i, v) {
+      let _i = A.g(i);
+      _i.characterSet = this.s(v);
     },
 
-    document_get_charset: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.charset);
+    document_get_charset: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.charset);
     },
 
-    document_set_charset: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.charset = this.s(str);
+    document_set_charset: function(i, v) {
+      let _i = A.g(i);
+      _i.charset = this.s(v);
     },
 
-    document_get_input_encoding: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.inputEncoding);
+    document_get_input_encoding: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.inputEncoding);
     },
 
-    document_set_input_encoding: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.inputEncoding = this.s(str);
+    document_set_input_encoding: function(i, v) {
+      let _i = A.g(i);
+      _i.inputEncoding = this.s(v);
     },
 
-    document_get_content_type: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.contentType);
+    document_get_content_type: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.contentType);
     },
 
-    document_set_content_type: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.contentType = this.s(str);
+    document_set_content_type: function(i, v) {
+      let _i = A.g(i);
+      _i.contentType = this.s(v);
     },
 
-    document_get_doctype: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.doctype);
+    document_get_doctype: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.doctype);
     },
 
-    document_set_doctype: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.doctype = ALLOCATOR.g(handle);
+    document_set_doctype: function(i, v) {
+      let _i = A.g(i);
+      _i.doctype = A.g(v);
     },
 
-    document_get_document_element: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.documentElement);
+    document_get_document_element: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.documentElement);
     },
 
-    document_set_document_element: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.documentElement = ALLOCATOR.g(handle);
+    document_set_document_element: function(i, v) {
+      let _i = A.g(i);
+      _i.documentElement = A.g(v);
     },
 
-    document_get_elements_by_tag_name: function(instance, local_name) {
-      let _instance = ALLOCATOR.g(instance);
-      let _local_name = this.s(local_name);
-      return ALLOCATOR.a(_instance.getElementsByTagName(_local_name));
+    document_get_elements_by_tag_name: function(i, localName) {
+      let _i = A.g(i);
+
+      let _localName = this.s(localName);
+      return A.a(_i.getElementsByTagName(_localName));
     },
 
-    document_get_elements_by_tag_name_n_s: function(
-      instance,
-      namespace,
-      local_name
-    ) {
-      let _instance = ALLOCATOR.g(instance);
+    document_get_elements_by_tag_name_n_s: function(i, namespace, localName) {
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
-      let _local_name = this.s(local_name);
-      return ALLOCATOR.a(
-        _instance.getElementsByTagNameNS(_namespace, _local_name)
-      );
+      let _localName = this.s(localName);
+      return A.a(_i.getElementsByTagNameNS(_namespace, _localName));
     },
 
-    document_get_elements_by_class_name: function(instance, class_names) {
-      let _instance = ALLOCATOR.g(instance);
-      let _class_names = this.s(class_names);
-      return ALLOCATOR.a(_instance.getElementsByClassName(_class_names));
+    document_get_elements_by_class_name: function(i, classNames) {
+      let _i = A.g(i);
+
+      let _classNames = this.s(classNames);
+      return A.a(_i.getElementsByClassName(_classNames));
     },
 
-    document_get_element_by_id: function(instance, element_id) {
-      let _instance = ALLOCATOR.g(instance);
-      let _element_id = this.s(element_id);
-      return ALLOCATOR.a(_instance.getElementById(_element_id));
+    document_get_element_by_id: function(i, elementId) {
+      let _i = A.g(i);
+
+      let _elementId = this.s(elementId);
+      return A.a(_i.getElementById(_elementId));
     },
 
-    document_create_element: function(instance, local_name, options) {
-      let _instance = ALLOCATOR.g(instance);
-      let _local_name = this.s(local_name);
-      let _options = ALLOCATOR.g(options);
-      return ALLOCATOR.a(_instance.createElement(_local_name, _options));
+    document_create_element: function(i, localName, options) {
+      let _i = A.g(i);
+
+      let _localName = this.s(localName);
+      let _options = A.g(options);
+      return A.a(_i.createElement(_localName, _options));
     },
 
     document_create_element_n_s: function(
-      instance,
+      i,
       namespace,
-      qualified_name,
+      qualifiedName,
       options
     ) {
-      let _instance = ALLOCATOR.g(instance);
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
-      let _qualified_name = this.s(qualified_name);
-      let _options = ALLOCATOR.g(options);
-      return ALLOCATOR.a(
-        _instance.createElementNS(_namespace, _qualified_name, _options)
-      );
+      let _qualifiedName = this.s(qualifiedName);
+      let _options = A.g(options);
+      return A.a(_i.createElementNS(_namespace, _qualifiedName, _options));
     },
 
-    document_create_document_fragment: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.createDocumentFragment());
+    document_create_document_fragment: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createDocumentFragment());
     },
 
-    document_create_text_node: function(instance, data) {
-      let _instance = ALLOCATOR.g(instance);
+    document_create_text_node: function(i, data) {
+      let _i = A.g(i);
+
       let _data = this.s(data);
-      return ALLOCATOR.a(_instance.createTextNode(_data));
+      return A.a(_i.createTextNode(_data));
     },
 
-    document_create_comment: function(instance, data) {
-      let _instance = ALLOCATOR.g(instance);
+    document_create_comment: function(i, data) {
+      let _i = A.g(i);
+
       let _data = this.s(data);
-      return ALLOCATOR.a(_instance.createComment(_data));
+      return A.a(_i.createComment(_data));
     },
 
-    document_create_processing_instruction: function(instance, target, data) {
-      let _instance = ALLOCATOR.g(instance);
+    document_create_processing_instruction: function(i, target, data) {
+      let _i = A.g(i);
+
       let _target = this.s(target);
       let _data = this.s(data);
-      return ALLOCATOR.a(_instance.createProcessingInstruction(_target, _data));
+      return A.a(_i.createProcessingInstruction(_target, _data));
     },
 
-    document_import_node: function(instance, node, deep) {
-      let _instance = ALLOCATOR.g(instance);
-      let _node = ALLOCATOR.g(node);
+    document_import_node: function(i, node, deep) {
+      let _i = A.g(i);
+
+      let _node = A.g(node);
       let _deep = deep;
-      return ALLOCATOR.a(_instance.importNode(_node, _deep));
+      return A.a(_i.importNode(_node, _deep));
     },
 
-    document_adopt_node: function(instance, node) {
-      let _instance = ALLOCATOR.g(instance);
-      let _node = ALLOCATOR.g(node);
-      return ALLOCATOR.a(_instance.adoptNode(_node));
+    document_adopt_node: function(i, node) {
+      let _i = A.g(i);
+
+      let _node = A.g(node);
+      return A.a(_i.adoptNode(_node));
     },
 
-    document_create_event: function(instance, name) {
-      let _instance = ALLOCATOR.g(instance);
+    document_create_event: function(i, name) {
+      let _i = A.g(i);
+
       let _name = this.s(name);
-      return ALLOCATOR.a(_instance.createEvent(_name));
+      return A.a(_i.createEvent(_name));
     },
 
-    document_create_range: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.createRange());
+    document_create_range: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createRange());
     },
 
-    document_create_node_iterator: function(
-      instance,
-      root,
-      what_to_show,
-      filter
-    ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _root = ALLOCATOR.g(root);
-      let _what_to_show = what_to_show;
-      let _filter = ALLOCATOR.g(filter);
-      return ALLOCATOR.a(
-        _instance.createNodeIterator(_root, _what_to_show, _filter)
-      );
+    document_create_node_iterator: function(i, root, whatToShow, filter) {
+      let _i = A.g(i);
+
+      let _root = A.g(root);
+      let _whatToShow = whatToShow;
+      let _filter = A.g(filter);
+      return A.a(_i.createNodeIterator(_root, _whatToShow, _filter));
     },
 
-    document_create_tree_walker: function(
-      instance,
-      root,
-      what_to_show,
-      filter
-    ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _root = ALLOCATOR.g(root);
-      let _what_to_show = what_to_show;
-      let _filter = ALLOCATOR.g(filter);
-      return ALLOCATOR.a(
-        _instance.createTreeWalker(_root, _what_to_show, _filter)
-      );
+    document_create_tree_walker: function(i, root, whatToShow, filter) {
+      let _i = A.g(i);
+
+      let _root = A.g(root);
+      let _whatToShow = whatToShow;
+      let _filter = A.g(filter);
+      return A.a(_i.createTreeWalker(_root, _whatToShow, _filter));
     },
 
-    document_create_c_d_a_t_a_section: function(instance, data) {
-      let _instance = ALLOCATOR.g(instance);
+    document_create_c_d_a_t_a_section: function(i, data) {
+      let _i = A.g(i);
+
       let _data = this.s(data);
-      return ALLOCATOR.a(_instance.createCDATASection(_data));
+      return A.a(_i.createCDATASection(_data));
     },
 
-    document_create_attribute: function(instance, name) {
-      let _instance = ALLOCATOR.g(instance);
+    document_create_attribute: function(i, name) {
+      let _i = A.g(i);
+
       let _name = this.s(name);
-      return ALLOCATOR.a(_instance.createAttribute(_name));
+      return A.a(_i.createAttribute(_name));
     },
 
-    document_create_attribute_n_s: function(instance, namespace, name) {
-      let _instance = ALLOCATOR.g(instance);
+    document_create_attribute_n_s: function(i, namespace, name) {
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
       let _name = this.s(name);
-      return ALLOCATOR.a(_instance.createAttributeNS(_namespace, _name));
+      return A.a(_i.createAttributeNS(_namespace, _name));
     },
 
-    document_get_location: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.location);
+    document_get_location: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.location);
     },
 
-    document_set_location: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.location = ALLOCATOR.g(handle);
+    document_set_location: function(i, v) {
+      let _i = A.g(i);
+      _i.location = A.g(v);
     },
 
-    document_get_referrer: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.referrer);
+    document_get_referrer: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.referrer);
     },
 
-    document_set_referrer: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.referrer = this.s(str);
+    document_set_referrer: function(i, v) {
+      let _i = A.g(i);
+      _i.referrer = this.s(v);
     },
 
-    document_get_last_modified: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.lastModified);
+    document_get_last_modified: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.lastModified);
     },
 
-    document_set_last_modified: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.lastModified = this.s(str);
+    document_set_last_modified: function(i, v) {
+      let _i = A.g(i);
+      _i.lastModified = this.s(v);
     },
 
-    document_get_ready_state: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.readyState);
+    document_get_ready_state: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.readyState);
     },
 
-    document_set_ready_state: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.readyState = this.s(str);
+    document_set_ready_state: function(i, v) {
+      let _i = A.g(i);
+      _i.readyState = this.s(v);
     },
 
-    document_get_title: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.title);
+    document_get_title: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.title);
     },
 
-    document_set_title: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.title = this.s(str);
+    document_set_title: function(i, v) {
+      let _i = A.g(i);
+      _i.title = this.s(v);
     },
 
-    document_get_dir: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.dir);
+    document_get_dir: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.dir);
     },
 
-    document_set_dir: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.dir = this.s(str);
+    document_set_dir: function(i, v) {
+      let _i = A.g(i);
+      _i.dir = this.s(v);
     },
 
-    document_get_body: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.body);
+    document_get_body: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.body);
     },
 
-    document_set_body: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.body = ALLOCATOR.g(handle);
+    document_set_body: function(i, v) {
+      let _i = A.g(i);
+      _i.body = A.g(v);
     },
 
-    document_get_head: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.head);
+    document_get_head: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.head);
     },
 
-    document_set_head: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.head = ALLOCATOR.g(handle);
+    document_set_head: function(i, v) {
+      let _i = A.g(i);
+      _i.head = A.g(v);
     },
 
-    document_get_images: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.images);
+    document_get_images: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.images);
     },
 
-    document_set_images: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.images = ALLOCATOR.g(handle);
+    document_set_images: function(i, v) {
+      let _i = A.g(i);
+      _i.images = A.g(v);
     },
 
-    document_get_embeds: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.embeds);
+    document_get_embeds: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.embeds);
     },
 
-    document_set_embeds: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.embeds = ALLOCATOR.g(handle);
+    document_set_embeds: function(i, v) {
+      let _i = A.g(i);
+      _i.embeds = A.g(v);
     },
 
-    document_get_plugins: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.plugins);
+    document_get_plugins: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.plugins);
     },
 
-    document_set_plugins: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.plugins = ALLOCATOR.g(handle);
+    document_set_plugins: function(i, v) {
+      let _i = A.g(i);
+      _i.plugins = A.g(v);
     },
 
-    document_get_links: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.links);
+    document_get_links: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.links);
     },
 
-    document_set_links: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.links = ALLOCATOR.g(handle);
+    document_set_links: function(i, v) {
+      let _i = A.g(i);
+      _i.links = A.g(v);
     },
 
-    document_get_forms: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.forms);
+    document_get_forms: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.forms);
     },
 
-    document_set_forms: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.forms = ALLOCATOR.g(handle);
+    document_set_forms: function(i, v) {
+      let _i = A.g(i);
+      _i.forms = A.g(v);
     },
 
-    document_get_scripts: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.scripts);
+    document_get_scripts: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.scripts);
     },
 
-    document_set_scripts: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scripts = ALLOCATOR.g(handle);
+    document_set_scripts: function(i, v) {
+      let _i = A.g(i);
+      _i.scripts = A.g(v);
     },
 
-    document_get_elements_by_name: function(instance, element_name) {
-      let _instance = ALLOCATOR.g(instance);
-      let _element_name = this.s(element_name);
-      return ALLOCATOR.a(_instance.getElementsByName(_element_name));
+    document_get_elements_by_name: function(i, elementName) {
+      let _i = A.g(i);
+
+      let _elementName = this.s(elementName);
+      return A.a(_i.getElementsByName(_elementName));
     },
 
-    document_get_default_view: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.defaultView);
+    document_get_default_view: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.defaultView);
     },
 
-    document_set_default_view: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.defaultView = ALLOCATOR.g(handle);
+    document_set_default_view: function(i, v) {
+      let _i = A.g(i);
+      _i.defaultView = A.g(v);
     },
 
-    document_has_focus: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.hasFocus());
+    document_has_focus: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.hasFocus());
     },
 
-    document_get_onreadystatechange: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onreadystatechange);
+    document_get_onreadystatechange: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onreadystatechange);
     },
 
-    document_set_onreadystatechange: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onreadystatechange = ALLOCATOR.g(handle);
+    document_set_onreadystatechange: function(i, v) {
+      let _i = A.g(i);
+      _i.onreadystatechange = A.g(v);
     },
 
-    document_get_onbeforescriptexecute: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onbeforescriptexecute);
+    document_get_onbeforescriptexecute: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onbeforescriptexecute);
     },
 
-    document_set_onbeforescriptexecute: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onbeforescriptexecute = ALLOCATOR.g(handle);
+    document_set_onbeforescriptexecute: function(i, v) {
+      let _i = A.g(i);
+      _i.onbeforescriptexecute = A.g(v);
     },
 
-    document_get_onafterscriptexecute: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onafterscriptexecute);
+    document_get_onafterscriptexecute: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onafterscriptexecute);
     },
 
-    document_set_onafterscriptexecute: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onafterscriptexecute = ALLOCATOR.g(handle);
+    document_set_onafterscriptexecute: function(i, v) {
+      let _i = A.g(i);
+      _i.onafterscriptexecute = A.g(v);
     },
 
-    document_get_onselectionchange: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onselectionchange);
+    document_get_onselectionchange: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onselectionchange);
     },
 
-    document_set_onselectionchange: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onselectionchange = ALLOCATOR.g(handle);
+    document_set_onselectionchange: function(i, v) {
+      let _i = A.g(i);
+      _i.onselectionchange = A.g(v);
     },
 
-    document_get_current_script: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.currentScript);
+    document_get_current_script: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.currentScript);
     },
 
-    document_set_current_script: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.currentScript = ALLOCATOR.g(handle);
+    document_set_current_script: function(i, v) {
+      let _i = A.g(i);
+      _i.currentScript = A.g(v);
     },
+
+    document_release_capture: function(i) {
+      let _i = A.g(i);
 
-    document_release_capture: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.releaseCapture();
+      _i.releaseCapture();
     },
 
-    document_get_document_uri_object: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.documentURIObject);
+    document_get_document_uri_object: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.documentURIObject);
     },
 
-    document_set_document_uri_object: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.documentURIObject = ALLOCATOR.g(handle);
+    document_set_document_uri_object: function(i, v) {
+      let _i = A.g(i);
+      _i.documentURIObject = A.g(v);
     },
 
-    document_get_referrer_policy: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.referrerPolicy;
+    document_get_referrer_policy: function(i) {
+      let _i = A.g(i);
+      return _i.referrerPolicy;
     },
 
-    document_set_referrer_policy: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.referrerPolicy = val;
+    document_set_referrer_policy: function(i, v) {
+      let _i = A.g(i);
+      _i.referrerPolicy = v;
     },
 
-    document_get_anchors: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.anchors);
+    document_get_anchors: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.anchors);
     },
 
-    document_set_anchors: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.anchors = ALLOCATOR.g(handle);
+    document_set_anchors: function(i, v) {
+      let _i = A.g(i);
+      _i.anchors = A.g(v);
     },
 
-    document_get_applets: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.applets);
+    document_get_applets: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.applets);
     },
 
-    document_set_applets: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.applets = ALLOCATOR.g(handle);
+    document_set_applets: function(i, v) {
+      let _i = A.g(i);
+      _i.applets = A.g(v);
     },
 
-    document_get_fullscreen: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.fullscreen;
+    document_get_fullscreen: function(i) {
+      let _i = A.g(i);
+      return _i.fullscreen;
     },
 
-    document_set_fullscreen: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.fullscreen = val;
+    document_set_fullscreen: function(i, v) {
+      let _i = A.g(i);
+      _i.fullscreen = v;
     },
 
-    document_get_fullscreen_enabled: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.fullscreenEnabled;
+    document_get_fullscreen_enabled: function(i) {
+      let _i = A.g(i);
+      return _i.fullscreenEnabled;
     },
 
-    document_set_fullscreen_enabled: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.fullscreenEnabled = val;
+    document_set_fullscreen_enabled: function(i, v) {
+      let _i = A.g(i);
+      _i.fullscreenEnabled = v;
     },
 
-    document_exit_fullscreen: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.exitFullscreen();
+    document_exit_fullscreen: function(i) {
+      let _i = A.g(i);
+
+      _i.exitFullscreen();
     },
 
-    document_get_onfullscreenchange: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onfullscreenchange);
+    document_get_onfullscreenchange: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onfullscreenchange);
     },
 
-    document_set_onfullscreenchange: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onfullscreenchange = ALLOCATOR.g(handle);
+    document_set_onfullscreenchange: function(i, v) {
+      let _i = A.g(i);
+      _i.onfullscreenchange = A.g(v);
     },
 
-    document_get_onfullscreenerror: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onfullscreenerror);
+    document_get_onfullscreenerror: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onfullscreenerror);
     },
 
-    document_set_onfullscreenerror: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onfullscreenerror = ALLOCATOR.g(handle);
+    document_set_onfullscreenerror: function(i, v) {
+      let _i = A.g(i);
+      _i.onfullscreenerror = A.g(v);
     },
 
-    document_exit_pointer_lock: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.exitPointerLock();
+    document_exit_pointer_lock: function(i) {
+      let _i = A.g(i);
+
+      _i.exitPointerLock();
     },
 
-    document_get_onpointerlockchange: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onpointerlockchange);
+    document_get_onpointerlockchange: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onpointerlockchange);
     },
 
-    document_set_onpointerlockchange: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onpointerlockchange = ALLOCATOR.g(handle);
+    document_set_onpointerlockchange: function(i, v) {
+      let _i = A.g(i);
+      _i.onpointerlockchange = A.g(v);
     },
 
-    document_get_onpointerlockerror: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onpointerlockerror);
+    document_get_onpointerlockerror: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onpointerlockerror);
     },
 
-    document_set_onpointerlockerror: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onpointerlockerror = ALLOCATOR.g(handle);
+    document_set_onpointerlockerror: function(i, v) {
+      let _i = A.g(i);
+      _i.onpointerlockerror = A.g(v);
     },
 
-    document_get_hidden: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.hidden;
+    document_get_hidden: function(i) {
+      let _i = A.g(i);
+      return _i.hidden;
     },
 
-    document_set_hidden: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.hidden = val;
+    document_set_hidden: function(i, v) {
+      let _i = A.g(i);
+      _i.hidden = v;
     },
 
-    document_get_visibility_state: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.visibilityState);
+    document_get_visibility_state: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.visibilityState);
     },
 
-    document_set_visibility_state: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.visibilityState = ALLOCATOR.g(handle);
+    document_set_visibility_state: function(i, v) {
+      let _i = A.g(i);
+      _i.visibilityState = A.g(v);
     },
 
-    document_get_onvisibilitychange: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onvisibilitychange);
+    document_get_onvisibilitychange: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onvisibilitychange);
     },
 
-    document_set_onvisibilitychange: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onvisibilitychange = ALLOCATOR.g(handle);
+    document_set_onvisibilitychange: function(i, v) {
+      let _i = A.g(i);
+      _i.onvisibilitychange = A.g(v);
     },
 
-    document_get_selected_style_sheet_set: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.selectedStyleSheetSet);
+    document_get_selected_style_sheet_set: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.selectedStyleSheetSet);
     },
 
-    document_set_selected_style_sheet_set: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.selectedStyleSheetSet = this.s(str);
+    document_set_selected_style_sheet_set: function(i, v) {
+      let _i = A.g(i);
+      _i.selectedStyleSheetSet = this.s(v);
     },
 
-    document_get_last_style_sheet_set: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.lastStyleSheetSet);
+    document_get_last_style_sheet_set: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.lastStyleSheetSet);
     },
 
-    document_set_last_style_sheet_set: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.lastStyleSheetSet = this.s(str);
+    document_set_last_style_sheet_set: function(i, v) {
+      let _i = A.g(i);
+      _i.lastStyleSheetSet = this.s(v);
     },
 
-    document_get_preferred_style_sheet_set: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.preferredStyleSheetSet);
+    document_get_preferred_style_sheet_set: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.preferredStyleSheetSet);
     },
 
-    document_set_preferred_style_sheet_set: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.preferredStyleSheetSet = this.s(str);
+    document_set_preferred_style_sheet_set: function(i, v) {
+      let _i = A.g(i);
+      _i.preferredStyleSheetSet = this.s(v);
     },
 
-    document_get_style_sheet_sets: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.styleSheetSets);
+    document_get_style_sheet_sets: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.styleSheetSets);
     },
 
-    document_set_style_sheet_sets: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.styleSheetSets = ALLOCATOR.g(handle);
+    document_set_style_sheet_sets: function(i, v) {
+      let _i = A.g(i);
+      _i.styleSheetSets = A.g(v);
     },
+
+    document_enable_style_sheets_for_set: function(i, name) {
+      let _i = A.g(i);
 
-    document_enable_style_sheets_for_set: function(instance, name) {
-      let _instance = ALLOCATOR.g(instance);
       let _name = this.s(name);
-      _instance.enableStyleSheetsForSet(_name);
+      _i.enableStyleSheetsForSet(_name);
     },
 
-    document_caret_position_from_point: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    document_caret_position_from_point: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      return ALLOCATOR.a(_instance.caretPositionFromPoint(_x, _y));
+      return A.a(_i.caretPositionFromPoint(_x, _y));
     },
 
-    document_get_scrolling_element: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.scrollingElement);
+    document_get_scrolling_element: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.scrollingElement);
     },
 
-    document_set_scrolling_element: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scrollingElement = ALLOCATOR.g(handle);
+    document_set_scrolling_element: function(i, v) {
+      let _i = A.g(i);
+      _i.scrollingElement = A.g(v);
     },
 
-    document_query_selector: function(instance, selectors) {
-      let _instance = ALLOCATOR.g(instance);
+    document_query_selector: function(i, selectors) {
+      let _i = A.g(i);
+
       let _selectors = this.s(selectors);
-      return ALLOCATOR.a(_instance.querySelector(_selectors));
+      return A.a(_i.querySelector(_selectors));
     },
 
-    document_query_selector_all: function(instance, selectors) {
-      let _instance = ALLOCATOR.g(instance);
+    document_query_selector_all: function(i, selectors) {
+      let _i = A.g(i);
+
       let _selectors = this.s(selectors);
-      return ALLOCATOR.a(_instance.querySelectorAll(_selectors));
+      return A.a(_i.querySelectorAll(_selectors));
     },
 
-    document_get_timeline: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.timeline);
+    document_get_timeline: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.timeline);
     },
 
-    document_set_timeline: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.timeline = ALLOCATOR.g(handle);
+    document_set_timeline: function(i, v) {
+      let _i = A.g(i);
+      _i.timeline = A.g(v);
     },
 
-    document_get_animations: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getAnimations());
+    document_get_animations: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getAnimations());
     },
 
-    document_get_root_element: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.rootElement);
+    document_get_root_element: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.rootElement);
     },
 
-    document_set_root_element: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.rootElement = ALLOCATOR.g(handle);
+    document_set_root_element: function(i, v) {
+      let _i = A.g(i);
+      _i.rootElement = A.g(v);
     },
 
-    document_get_is_srcdoc_document: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.isSrcdocDocument;
+    document_get_is_srcdoc_document: function(i) {
+      let _i = A.g(i);
+      return _i.isSrcdocDocument;
     },
 
-    document_set_is_srcdoc_document: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.isSrcdocDocument = val;
+    document_set_is_srcdoc_document: function(i, v) {
+      let _i = A.g(i);
+      _i.isSrcdocDocument = v;
     },
 
-    document_get_sandbox_flags_as_string: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.sandboxFlagsAsString);
+    document_get_sandbox_flags_as_string: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.sandboxFlagsAsString);
     },
 
-    document_set_sandbox_flags_as_string: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.sandboxFlagsAsString = this.s(str);
+    document_set_sandbox_flags_as_string: function(i, v) {
+      let _i = A.g(i);
+      _i.sandboxFlagsAsString = this.s(v);
     },
 
-    document_insert_anonymous_content: function(instance, a_element) {
-      let _instance = ALLOCATOR.g(instance);
-      let _a_element = ALLOCATOR.g(a_element);
-      return ALLOCATOR.a(_instance.insertAnonymousContent(_a_element));
+    document_insert_anonymous_content: function(i, aElement) {
+      let _i = A.g(i);
+
+      let _aElement = A.g(aElement);
+      return A.a(_i.insertAnonymousContent(_aElement));
     },
 
-    document_remove_anonymous_content: function(instance, a_content) {
-      let _instance = ALLOCATOR.g(instance);
-      let _a_content = ALLOCATOR.g(a_content);
-      _instance.removeAnonymousContent(_a_content);
+    document_remove_anonymous_content: function(i, aContent) {
+      let _i = A.g(i);
+
+      let _aContent = A.g(aContent);
+      _i.removeAnonymousContent(_aContent);
     },
 
-    document_get_selection: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getSelection());
+    document_get_selection: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getSelection());
     },
 
-    document_get_user_has_interacted: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.userHasInteracted;
+    document_get_user_has_interacted: function(i) {
+      let _i = A.g(i);
+      return _i.userHasInteracted;
     },
 
-    document_set_user_has_interacted: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.userHasInteracted = val;
+    document_set_user_has_interacted: function(i, v) {
+      let _i = A.g(i);
+      _i.userHasInteracted = v;
     },
 
-    document_notify_user_gesture_activation: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.notifyUserGestureActivation();
+    document_notify_user_gesture_activation: function(i) {
+      let _i = A.g(i);
+
+      _i.notifyUserGestureActivation();
     },
 
-    document_get_document_flash_classification: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.documentFlashClassification);
+    document_get_document_flash_classification: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.documentFlashClassification);
     },
 
-    document_set_document_flash_classification: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.documentFlashClassification = ALLOCATOR.g(handle);
+    document_set_document_flash_classification: function(i, v) {
+      let _i = A.g(i);
+      _i.documentFlashClassification = A.g(v);
     },
 
-    element_get_namespace_uri: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.namespaceURI);
+    element_get_namespace_uri: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.namespaceURI);
     },
 
-    element_set_namespace_uri: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.namespaceURI = this.s(str);
+    element_set_namespace_uri: function(i, v) {
+      let _i = A.g(i);
+      _i.namespaceURI = this.s(v);
     },
 
-    element_get_prefix: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.prefix);
+    element_get_prefix: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.prefix);
     },
 
-    element_set_prefix: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.prefix = this.s(str);
+    element_set_prefix: function(i, v) {
+      let _i = A.g(i);
+      _i.prefix = this.s(v);
     },
 
-    element_get_local_name: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.localName);
+    element_get_local_name: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.localName);
     },
 
-    element_set_local_name: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.localName = this.s(str);
+    element_set_local_name: function(i, v) {
+      let _i = A.g(i);
+      _i.localName = this.s(v);
     },
 
-    element_get_tag_name: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.tagName);
+    element_get_tag_name: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.tagName);
     },
 
-    element_set_tag_name: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.tagName = this.s(str);
+    element_set_tag_name: function(i, v) {
+      let _i = A.g(i);
+      _i.tagName = this.s(v);
     },
 
-    element_get_id: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.id);
+    element_get_id: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.id);
     },
 
-    element_set_id: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.id = this.s(str);
+    element_set_id: function(i, v) {
+      let _i = A.g(i);
+      _i.id = this.s(v);
     },
 
-    element_get_class_name: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.className);
+    element_get_class_name: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.className);
     },
 
-    element_set_class_name: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.className = this.s(str);
+    element_set_class_name: function(i, v) {
+      let _i = A.g(i);
+      _i.className = this.s(v);
     },
 
-    element_get_class_list: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.classList);
+    element_get_class_list: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.classList);
     },
 
-    element_set_class_list: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.classList = ALLOCATOR.g(handle);
+    element_set_class_list: function(i, v) {
+      let _i = A.g(i);
+      _i.classList = A.g(v);
     },
 
-    element_get_attributes: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.attributes);
+    element_get_attributes: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.attributes);
     },
 
-    element_set_attributes: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.attributes = ALLOCATOR.g(handle);
+    element_set_attributes: function(i, v) {
+      let _i = A.g(i);
+      _i.attributes = A.g(v);
     },
 
-    element_get_attribute_names: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getAttributeNames());
+    element_get_attribute_names: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getAttributeNames());
     },
 
-    element_get_attribute: function(instance, name) {
-      let _instance = ALLOCATOR.g(instance);
+    element_get_attribute: function(i, name) {
+      let _i = A.g(i);
+
       let _name = this.s(name);
-      return this.ms(_instance.getAttribute(_name));
+      return this.ms(_i.getAttribute(_name));
     },
 
-    element_get_attribute_n_s: function(instance, namespace, local_name) {
-      let _instance = ALLOCATOR.g(instance);
+    element_get_attribute_n_s: function(i, namespace, localName) {
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
-      let _local_name = this.s(local_name);
-      return this.ms(_instance.getAttributeNS(_namespace, _local_name));
+      let _localName = this.s(localName);
+      return this.ms(_i.getAttributeNS(_namespace, _localName));
     },
 
-    element_toggle_attribute: function(instance, name, force) {
-      let _instance = ALLOCATOR.g(instance);
+    element_toggle_attribute: function(i, name, force) {
+      let _i = A.g(i);
+
       let _name = this.s(name);
       let _force = force;
-      return ALLOCATOR.a(_instance.toggleAttribute(_name, _force));
+      return A.a(_i.toggleAttribute(_name, _force));
     },
 
-    element_set_attribute: function(instance, name, value) {
-      let _instance = ALLOCATOR.g(instance);
+    element_set_attribute: function(i, name, value) {
+      let _i = A.g(i);
+
       let _name = this.s(name);
       let _value = this.s(value);
-      _instance.setAttribute(_name, _value);
+      _i.setAttribute(_name, _value);
     },
 
-    element_set_attribute_n_s: function(instance, namespace, name, value) {
-      let _instance = ALLOCATOR.g(instance);
+    element_set_attribute_n_s: function(i, namespace, name, value) {
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
       let _name = this.s(name);
       let _value = this.s(value);
-      _instance.setAttributeNS(_namespace, _name, _value);
+      _i.setAttributeNS(_namespace, _name, _value);
     },
 
-    element_remove_attribute: function(instance, name) {
-      let _instance = ALLOCATOR.g(instance);
+    element_remove_attribute: function(i, name) {
+      let _i = A.g(i);
+
       let _name = this.s(name);
-      _instance.removeAttribute(_name);
+      _i.removeAttribute(_name);
     },
 
-    element_remove_attribute_n_s: function(instance, namespace, local_name) {
-      let _instance = ALLOCATOR.g(instance);
+    element_remove_attribute_n_s: function(i, namespace, localName) {
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
-      let _local_name = this.s(local_name);
-      _instance.removeAttributeNS(_namespace, _local_name);
+      let _localName = this.s(localName);
+      _i.removeAttributeNS(_namespace, _localName);
     },
 
-    element_has_attribute: function(instance, name) {
-      let _instance = ALLOCATOR.g(instance);
+    element_has_attribute: function(i, name) {
+      let _i = A.g(i);
+
       let _name = this.s(name);
-      return ALLOCATOR.a(_instance.hasAttribute(_name));
+      return A.a(_i.hasAttribute(_name));
     },
 
-    element_has_attribute_n_s: function(instance, namespace, local_name) {
-      let _instance = ALLOCATOR.g(instance);
+    element_has_attribute_n_s: function(i, namespace, localName) {
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
-      let _local_name = this.s(local_name);
-      return ALLOCATOR.a(_instance.hasAttributeNS(_namespace, _local_name));
+      let _localName = this.s(localName);
+      return A.a(_i.hasAttributeNS(_namespace, _localName));
     },
 
-    element_has_attributes: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.hasAttributes());
+    element_has_attributes: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.hasAttributes());
     },
 
-    element_closest: function(instance, selector) {
-      let _instance = ALLOCATOR.g(instance);
+    element_closest: function(i, selector) {
+      let _i = A.g(i);
+
       let _selector = this.s(selector);
-      return ALLOCATOR.a(_instance.closest(_selector));
+      return A.a(_i.closest(_selector));
     },
 
-    element_matches: function(instance, selector) {
-      let _instance = ALLOCATOR.g(instance);
+    element_matches: function(i, selector) {
+      let _i = A.g(i);
+
       let _selector = this.s(selector);
-      return ALLOCATOR.a(_instance.matches(_selector));
+      return A.a(_i.matches(_selector));
     },
 
-    element_webkit_matches_selector: function(instance, selector) {
-      let _instance = ALLOCATOR.g(instance);
+    element_webkit_matches_selector: function(i, selector) {
+      let _i = A.g(i);
+
       let _selector = this.s(selector);
-      return ALLOCATOR.a(_instance.webkitMatchesSelector(_selector));
+      return A.a(_i.webkitMatchesSelector(_selector));
     },
 
-    element_get_elements_with_grid: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getElementsWithGrid());
+    element_get_elements_with_grid: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getElementsWithGrid());
     },
 
-    element_insert_adjacent_element: function(instance, location, element) {
-      let _instance = ALLOCATOR.g(instance);
+    element_insert_adjacent_element: function(i, location, element) {
+      let _i = A.g(i);
+
       let _location = this.s(location);
-      let _element = ALLOCATOR.g(element);
-      return ALLOCATOR.a(_instance.insertAdjacentElement(_location, _element));
+      let _element = A.g(element);
+      return A.a(_i.insertAdjacentElement(_location, _element));
     },
 
-    element_insert_adjacent_text: function(instance, location, data) {
-      let _instance = ALLOCATOR.g(instance);
+    element_insert_adjacent_text: function(i, location, data) {
+      let _i = A.g(i);
+
       let _location = this.s(location);
       let _data = this.s(data);
-      _instance.insertAdjacentText(_location, _data);
+      _i.insertAdjacentText(_location, _data);
     },
 
-    element_get_font_size_inflation: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.fontSizeInflation;
+    element_get_font_size_inflation: function(i) {
+      let _i = A.g(i);
+      return _i.fontSizeInflation;
     },
 
-    element_set_font_size_inflation: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.fontSizeInflation = val;
+    element_set_font_size_inflation: function(i, v) {
+      let _i = A.g(i);
+      _i.fontSizeInflation = v;
     },
 
-    element_set_pointer_capture: function(instance, pointer_id) {
-      let _instance = ALLOCATOR.g(instance);
-      let _pointer_id = pointer_id;
-      _instance.setPointerCapture(_pointer_id);
+    element_set_pointer_capture: function(i, pointerId) {
+      let _i = A.g(i);
+
+      let _pointerId = pointerId;
+      _i.setPointerCapture(_pointerId);
     },
 
-    element_release_pointer_capture: function(instance, pointer_id) {
-      let _instance = ALLOCATOR.g(instance);
-      let _pointer_id = pointer_id;
-      _instance.releasePointerCapture(_pointer_id);
+    element_release_pointer_capture: function(i, pointerId) {
+      let _i = A.g(i);
+
+      let _pointerId = pointerId;
+      _i.releasePointerCapture(_pointerId);
     },
 
-    element_has_pointer_capture: function(instance, pointer_id) {
-      let _instance = ALLOCATOR.g(instance);
-      let _pointer_id = pointer_id;
-      return ALLOCATOR.a(_instance.hasPointerCapture(_pointer_id));
+    element_has_pointer_capture: function(i, pointerId) {
+      let _i = A.g(i);
+
+      let _pointerId = pointerId;
+      return A.a(_i.hasPointerCapture(_pointerId));
     },
 
-    element_set_capture: function(instance, retarget_to_element) {
-      let _instance = ALLOCATOR.g(instance);
-      let _retarget_to_element = retarget_to_element;
-      _instance.setCapture(_retarget_to_element);
+    element_set_capture: function(i, retargetToElement) {
+      let _i = A.g(i);
+
+      let _retargetToElement = retargetToElement;
+      _i.setCapture(_retargetToElement);
     },
 
-    element_release_capture: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.releaseCapture();
+    element_release_capture: function(i) {
+      let _i = A.g(i);
+
+      _i.releaseCapture();
     },
 
-    element_set_capture_always: function(instance, retarget_to_element) {
-      let _instance = ALLOCATOR.g(instance);
-      let _retarget_to_element = retarget_to_element;
-      _instance.setCaptureAlways(_retarget_to_element);
+    element_set_capture_always: function(i, retargetToElement) {
+      let _i = A.g(i);
+
+      let _retargetToElement = retargetToElement;
+      _i.setCaptureAlways(_retargetToElement);
     },
 
-    element_get_attribute_node: function(instance, name) {
-      let _instance = ALLOCATOR.g(instance);
+    element_get_attribute_node: function(i, name) {
+      let _i = A.g(i);
+
       let _name = this.s(name);
-      return ALLOCATOR.a(_instance.getAttributeNode(_name));
+      return A.a(_i.getAttributeNode(_name));
     },
 
-    element_set_attribute_node: function(instance, new_attr) {
-      let _instance = ALLOCATOR.g(instance);
-      let _new_attr = ALLOCATOR.g(new_attr);
-      return ALLOCATOR.a(_instance.setAttributeNode(_new_attr));
+    element_set_attribute_node: function(i, newAttr) {
+      let _i = A.g(i);
+
+      let _newAttr = A.g(newAttr);
+      return A.a(_i.setAttributeNode(_newAttr));
     },
 
-    element_remove_attribute_node: function(instance, old_attr) {
-      let _instance = ALLOCATOR.g(instance);
-      let _old_attr = ALLOCATOR.g(old_attr);
-      return ALLOCATOR.a(_instance.removeAttributeNode(_old_attr));
+    element_remove_attribute_node: function(i, oldAttr) {
+      let _i = A.g(i);
+
+      let _oldAttr = A.g(oldAttr);
+      return A.a(_i.removeAttributeNode(_oldAttr));
     },
 
-    element_get_attribute_node_n_s: function(
-      instance,
-      namespace_uri,
-      local_name
-    ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _namespace_uri = this.s(namespace_uri);
-      let _local_name = this.s(local_name);
-      return ALLOCATOR.a(
-        _instance.getAttributeNodeNS(_namespace_uri, _local_name)
-      );
+    element_get_attribute_node_n_s: function(i, namespaceURI, localName) {
+      let _i = A.g(i);
+
+      let _namespaceURI = this.s(namespaceURI);
+      let _localName = this.s(localName);
+      return A.a(_i.getAttributeNodeNS(_namespaceURI, _localName));
     },
 
-    element_set_attribute_node_n_s: function(instance, new_attr) {
-      let _instance = ALLOCATOR.g(instance);
-      let _new_attr = ALLOCATOR.g(new_attr);
-      return ALLOCATOR.a(_instance.setAttributeNodeNS(_new_attr));
+    element_set_attribute_node_n_s: function(i, newAttr) {
+      let _i = A.g(i);
+
+      let _newAttr = A.g(newAttr);
+      return A.a(_i.setAttributeNodeNS(_newAttr));
     },
 
-    element_scroll_by_no_flush: function(instance, dx, dy) {
-      let _instance = ALLOCATOR.g(instance);
+    element_scroll_by_no_flush: function(i, dx, dy) {
+      let _i = A.g(i);
+
       let _dx = dx;
       let _dy = dy;
-      return ALLOCATOR.a(_instance.scrollByNoFlush(_dx, _dy));
+      return A.a(_i.scrollByNoFlush(_dx, _dy));
     },
 
-    element_get_as_flex_container: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getAsFlexContainer());
+    element_get_as_flex_container: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getAsFlexContainer());
     },
 
-    element_get_grid_fragments: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getGridFragments());
+    element_get_grid_fragments: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getGridFragments());
     },
 
-    element_get_transform_to_ancestor: function(instance, ancestor) {
-      let _instance = ALLOCATOR.g(instance);
-      let _ancestor = ALLOCATOR.g(ancestor);
-      return ALLOCATOR.a(_instance.getTransformToAncestor(_ancestor));
+    element_get_transform_to_ancestor: function(i, ancestor) {
+      let _i = A.g(i);
+
+      let _ancestor = A.g(ancestor);
+      return A.a(_i.getTransformToAncestor(_ancestor));
     },
 
-    element_get_transform_to_parent: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getTransformToParent());
+    element_get_transform_to_parent: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getTransformToParent());
     },
 
-    element_get_transform_to_viewport: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getTransformToViewport());
+    element_get_transform_to_viewport: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getTransformToViewport());
     },
 
-    element_get_client_rects: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getClientRects());
+    element_get_client_rects: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getClientRects());
     },
 
-    element_get_bounding_client_rect: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getBoundingClientRect());
+    element_get_bounding_client_rect: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getBoundingClientRect());
     },
 
-    element_scroll_into_view: function(instance, arg) {
-      let _instance = ALLOCATOR.g(instance);
-      let _arg = ALLOCATOR.g(arg);
-      _instance.scrollIntoView(_arg);
+    element_scroll_into_view: function(i, arg) {
+      let _i = A.g(i);
+
+      let _arg = A.g(arg);
+      _i.scrollIntoView(_arg);
     },
 
-    element_get_scroll_top: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.scrollTop;
+    element_get_scroll_top: function(i) {
+      let _i = A.g(i);
+      return _i.scrollTop;
     },
 
-    element_set_scroll_top: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scrollTop = val;
+    element_set_scroll_top: function(i, v) {
+      let _i = A.g(i);
+      _i.scrollTop = v;
     },
 
-    element_get_scroll_left: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.scrollLeft;
+    element_get_scroll_left: function(i) {
+      let _i = A.g(i);
+      return _i.scrollLeft;
     },
 
-    element_set_scroll_left: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scrollLeft = val;
+    element_set_scroll_left: function(i, v) {
+      let _i = A.g(i);
+      _i.scrollLeft = v;
     },
 
-    element_get_scroll_width: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.scrollWidth;
+    element_get_scroll_width: function(i) {
+      let _i = A.g(i);
+      return _i.scrollWidth;
     },
 
-    element_set_scroll_width: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scrollWidth = val;
+    element_set_scroll_width: function(i, v) {
+      let _i = A.g(i);
+      _i.scrollWidth = v;
     },
 
-    element_get_scroll_height: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.scrollHeight;
+    element_get_scroll_height: function(i) {
+      let _i = A.g(i);
+      return _i.scrollHeight;
     },
 
-    element_set_scroll_height: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scrollHeight = val;
+    element_set_scroll_height: function(i, v) {
+      let _i = A.g(i);
+      _i.scrollHeight = v;
     },
 
-    element_scroll: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    element_scroll: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.scroll(_x, _y);
+      _i.scroll(_x, _y);
     },
 
-    element_scroll_to: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    element_scroll_to: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.scrollTo(_x, _y);
+      _i.scrollTo(_x, _y);
     },
 
-    element_scroll_by: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    element_scroll_by: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.scrollBy(_x, _y);
+      _i.scrollBy(_x, _y);
     },
 
-    element_get_client_top: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.clientTop;
+    element_get_client_top: function(i) {
+      let _i = A.g(i);
+      return _i.clientTop;
     },
 
-    element_set_client_top: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clientTop = val;
+    element_set_client_top: function(i, v) {
+      let _i = A.g(i);
+      _i.clientTop = v;
     },
 
-    element_get_client_left: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.clientLeft;
+    element_get_client_left: function(i) {
+      let _i = A.g(i);
+      return _i.clientLeft;
     },
 
-    element_set_client_left: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clientLeft = val;
+    element_set_client_left: function(i, v) {
+      let _i = A.g(i);
+      _i.clientLeft = v;
     },
 
-    element_get_client_width: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.clientWidth;
+    element_get_client_width: function(i) {
+      let _i = A.g(i);
+      return _i.clientWidth;
     },
 
-    element_set_client_width: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clientWidth = val;
+    element_set_client_width: function(i, v) {
+      let _i = A.g(i);
+      _i.clientWidth = v;
     },
 
-    element_get_client_height: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.clientHeight;
+    element_get_client_height: function(i) {
+      let _i = A.g(i);
+      return _i.clientHeight;
     },
 
-    element_set_client_height: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clientHeight = val;
+    element_set_client_height: function(i, v) {
+      let _i = A.g(i);
+      _i.clientHeight = v;
     },
 
-    element_get_inner_html: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.innerHTML);
+    element_get_inner_html: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.innerHTML);
     },
 
-    element_set_inner_html: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.innerHTML = this.s(str);
+    element_set_inner_html: function(i, v) {
+      let _i = A.g(i);
+      _i.innerHTML = this.s(v);
     },
 
-    element_get_outer_html: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.outerHTML);
+    element_get_outer_html: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.outerHTML);
     },
 
-    element_set_outer_html: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.outerHTML = this.s(str);
+    element_set_outer_html: function(i, v) {
+      let _i = A.g(i);
+      _i.outerHTML = this.s(v);
     },
 
-    element_insert_adjacent_html: function(instance, position, text) {
-      let _instance = ALLOCATOR.g(instance);
+    element_insert_adjacent_html: function(i, position, text) {
+      let _i = A.g(i);
+
       let _position = this.s(position);
       let _text = this.s(text);
-      _instance.insertAdjacentHTML(_position, _text);
+      _i.insertAdjacentHTML(_position, _text);
     },
 
-    element_query_selector: function(instance, selectors) {
-      let _instance = ALLOCATOR.g(instance);
+    element_query_selector: function(i, selectors) {
+      let _i = A.g(i);
+
       let _selectors = this.s(selectors);
-      return ALLOCATOR.a(_instance.querySelector(_selectors));
+      return A.a(_i.querySelector(_selectors));
     },
 
-    element_query_selector_all: function(instance, selectors) {
-      let _instance = ALLOCATOR.g(instance);
+    element_query_selector_all: function(i, selectors) {
+      let _i = A.g(i);
+
       let _selectors = this.s(selectors);
-      return ALLOCATOR.a(_instance.querySelectorAll(_selectors));
+      return A.a(_i.querySelectorAll(_selectors));
     },
 
-    element_get_shadow_root: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.shadowRoot);
+    element_get_shadow_root: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.shadowRoot);
     },
 
-    element_set_shadow_root: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.shadowRoot = ALLOCATOR.g(handle);
+    element_set_shadow_root: function(i, v) {
+      let _i = A.g(i);
+      _i.shadowRoot = A.g(v);
     },
 
-    element_get_open_or_closed_shadow_root: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.openOrClosedShadowRoot);
+    element_get_open_or_closed_shadow_root: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.openOrClosedShadowRoot);
     },
 
-    element_set_open_or_closed_shadow_root: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.openOrClosedShadowRoot = ALLOCATOR.g(handle);
+    element_set_open_or_closed_shadow_root: function(i, v) {
+      let _i = A.g(i);
+      _i.openOrClosedShadowRoot = A.g(v);
     },
 
-    element_get_assigned_slot: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.assignedSlot);
+    element_get_assigned_slot: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.assignedSlot);
     },
 
-    element_set_assigned_slot: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.assignedSlot = ALLOCATOR.g(handle);
+    element_set_assigned_slot: function(i, v) {
+      let _i = A.g(i);
+      _i.assignedSlot = A.g(v);
     },
 
-    element_get_slot: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.slot);
+    element_get_slot: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.slot);
     },
 
-    element_set_slot: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.slot = this.s(str);
+    element_set_slot: function(i, v) {
+      let _i = A.g(i);
+      _i.slot = this.s(v);
     },
 
-    element_request_fullscreen: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.requestFullscreen();
+    element_request_fullscreen: function(i) {
+      let _i = A.g(i);
+
+      _i.requestFullscreen();
     },
+
+    element_request_pointer_lock: function(i) {
+      let _i = A.g(i);
 
-    element_request_pointer_lock: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.requestPointerLock();
+      _i.requestPointerLock();
     },
 
-    element_get_children: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.children);
+    element_get_children: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.children);
     },
 
-    element_set_children: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.children = ALLOCATOR.g(handle);
+    element_set_children: function(i, v) {
+      let _i = A.g(i);
+      _i.children = A.g(v);
     },
 
-    element_get_first_element_child: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.firstElementChild);
+    element_get_first_element_child: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.firstElementChild);
     },
 
-    element_set_first_element_child: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.firstElementChild = ALLOCATOR.g(handle);
+    element_set_first_element_child: function(i, v) {
+      let _i = A.g(i);
+      _i.firstElementChild = A.g(v);
     },
 
-    element_get_last_element_child: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.lastElementChild);
+    element_get_last_element_child: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.lastElementChild);
     },
 
-    element_set_last_element_child: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.lastElementChild = ALLOCATOR.g(handle);
+    element_set_last_element_child: function(i, v) {
+      let _i = A.g(i);
+      _i.lastElementChild = A.g(v);
     },
 
-    element_get_child_element_count: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.childElementCount;
+    element_get_child_element_count: function(i) {
+      let _i = A.g(i);
+      return _i.childElementCount;
     },
 
-    element_set_child_element_count: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.childElementCount = val;
+    element_set_child_element_count: function(i, v) {
+      let _i = A.g(i);
+      _i.childElementCount = v;
     },
 
-    element_prepend: function(instance, nodes) {
-      let _instance = ALLOCATOR.g(instance);
-      let _nodes = ALLOCATOR.g(nodes);
-      _instance.prepend(_nodes);
+    element_prepend: function(i, nodes) {
+      let _i = A.g(i);
+
+      let _nodes = A.g(nodes);
+      _i.prepend(_nodes);
     },
+
+    element_append: function(i, nodes) {
+      let _i = A.g(i);
 
-    element_append: function(instance, nodes) {
-      let _instance = ALLOCATOR.g(instance);
-      let _nodes = ALLOCATOR.g(nodes);
-      _instance.append(_nodes);
+      let _nodes = A.g(nodes);
+      _i.append(_nodes);
     },
 
-    element_before: function(instance, nodes) {
-      let _instance = ALLOCATOR.g(instance);
-      let _nodes = ALLOCATOR.g(nodes);
-      _instance.before(_nodes);
+    element_before: function(i, nodes) {
+      let _i = A.g(i);
+
+      let _nodes = A.g(nodes);
+      _i.before(_nodes);
     },
+
+    element_after: function(i, nodes) {
+      let _i = A.g(i);
 
-    element_after: function(instance, nodes) {
-      let _instance = ALLOCATOR.g(instance);
-      let _nodes = ALLOCATOR.g(nodes);
-      _instance.after(_nodes);
+      let _nodes = A.g(nodes);
+      _i.after(_nodes);
     },
 
-    element_replace_with: function(instance, nodes) {
-      let _instance = ALLOCATOR.g(instance);
-      let _nodes = ALLOCATOR.g(nodes);
-      _instance.replaceWith(_nodes);
+    element_replace_with: function(i, nodes) {
+      let _i = A.g(i);
+
+      let _nodes = A.g(nodes);
+      _i.replaceWith(_nodes);
     },
 
-    element_remove: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.remove();
+    element_remove: function(i) {
+      let _i = A.g(i);
+
+      _i.remove();
     },
 
-    element_get_previous_element_sibling: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.previousElementSibling);
+    element_get_previous_element_sibling: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.previousElementSibling);
     },
 
-    element_set_previous_element_sibling: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.previousElementSibling = ALLOCATOR.g(handle);
+    element_set_previous_element_sibling: function(i, v) {
+      let _i = A.g(i);
+      _i.previousElementSibling = A.g(v);
     },
 
-    element_get_next_element_sibling: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.nextElementSibling);
+    element_get_next_element_sibling: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.nextElementSibling);
     },
 
-    element_set_next_element_sibling: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.nextElementSibling = ALLOCATOR.g(handle);
+    element_set_next_element_sibling: function(i, v) {
+      let _i = A.g(i);
+      _i.nextElementSibling = A.g(v);
     },
+
+    eventtarget_add_event_listener: function(i, eventType, listener) {
+      let _i = A.g(i);
 
-    eventtarget_add_event_listener: function(instance, event_type, listener) {
-      let _instance = ALLOCATOR.g(instance);
-      let _event_type = this.s(event_type);
-      let _listener = ALLOCATOR.g(listener);
-      _instance.addEventListener(_event_type, _listener);
+      let _eventType = this.s(eventType);
+      let _listener = A.g(listener);
+      _i.addEventListener(_eventType, _listener);
     },
 
-    eventtarget_remove_event_listener: function(
-      instance,
-      event_type,
-      listener
-    ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _event_type = this.s(event_type);
-      let _listener = ALLOCATOR.g(listener);
-      _instance.removeEventListener(_event_type, _listener);
+    eventtarget_remove_event_listener: function(i, eventType, listener) {
+      let _i = A.g(i);
+
+      let _eventType = this.s(eventType);
+      let _listener = A.g(listener);
+      _i.removeEventListener(_eventType, _listener);
     },
+
+    eventtarget_dispatch_event: function(i, event) {
+      let _i = A.g(i);
 
-    eventtarget_dispatch_event: function(instance, event) {
-      let _instance = ALLOCATOR.g(instance);
-      let _event = ALLOCATOR.g(event);
-      return ALLOCATOR.a(_instance.dispatchEvent(_event));
+      let _event = A.g(event);
+      return A.a(_i.dispatchEvent(_event));
     },
 
-    htmlcanvas_get_width: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.width;
+    htmlcanvas_get_width: function(i) {
+      let _i = A.g(i);
+      return _i.width;
     },
 
-    htmlcanvas_set_width: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.width = val;
+    htmlcanvas_set_width: function(i, v) {
+      let _i = A.g(i);
+      _i.width = v;
     },
 
-    htmlcanvas_get_height: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.height;
+    htmlcanvas_get_height: function(i) {
+      let _i = A.g(i);
+      return _i.height;
     },
 
-    htmlcanvas_set_height: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.height = val;
+    htmlcanvas_set_height: function(i, v) {
+      let _i = A.g(i);
+      _i.height = v;
     },
 
-    htmlcanvas_get_context: function(instance, context_id) {
-      let _instance = ALLOCATOR.g(instance);
-      let _context_id = this.s(context_id);
-      return ALLOCATOR.a(_instance.getContext(_context_id));
+    htmlcanvas_get_context: function(i, contextId) {
+      let _i = A.g(i);
+
+      let _contextId = this.s(contextId);
+      return A.a(_i.getContext(_contextId));
     },
+
+    htmlcanvas_to_data_url: function(i, dataType, encoderOptions) {
+      let _i = A.g(i);
 
-    htmlcanvas_to_data_url: function(instance, data_type, encoder_options) {
-      let _instance = ALLOCATOR.g(instance);
-      let _data_type = this.s(data_type);
-      let _encoder_options = encoder_options;
-      return this.ms(_instance.toDataURL(_data_type, _encoder_options));
+      let _dataType = this.s(dataType);
+      let _encoderOptions = A.g(encoderOptions);
+      return this.ms(_i.toDataURL(_dataType, _encoderOptions));
     },
 
-    htmlcanvas_to_blob: function(
-      instance,
-      callback,
-      blob_type,
-      encoder_options
-    ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _callback = ALLOCATOR.g(callback);
-      let _blob_type = this.s(blob_type);
-      let _encoder_options = encoder_options;
-      _instance.toBlob(_callback, _blob_type, _encoder_options);
+    htmlcanvas_to_blob: function(i, callback, blobType, encoderOptions) {
+      let _i = A.g(i);
+
+      let _callback = A.g(callback);
+      let _blobType = this.s(blobType);
+      let _encoderOptions = A.g(encoderOptions);
+      _i.toBlob(_callback, _blobType, _encoderOptions);
     },
+
+    htmlcanvas_transfer_control_to_offscreen: function(i) {
+      let _i = A.g(i);
 
-    htmlcanvas_transfer_control_to_offscreen: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.transferControlToOffscreen());
+      return A.a(_i.transferControlToOffscreen());
     },
 
-    htmlinput_get_accept: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.accept);
+    htmlinput_get_accept: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.accept);
     },
 
-    htmlinput_set_accept: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.accept = this.s(str);
+    htmlinput_set_accept: function(i, v) {
+      let _i = A.g(i);
+      _i.accept = this.s(v);
     },
 
-    htmlinput_get_alt: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.alt);
+    htmlinput_get_alt: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.alt);
     },
 
-    htmlinput_set_alt: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.alt = this.s(str);
+    htmlinput_set_alt: function(i, v) {
+      let _i = A.g(i);
+      _i.alt = this.s(v);
     },
 
-    htmlinput_get_autocomplete: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.autocomplete);
+    htmlinput_get_autocomplete: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.autocomplete);
     },
 
-    htmlinput_set_autocomplete: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.autocomplete = this.s(str);
+    htmlinput_set_autocomplete: function(i, v) {
+      let _i = A.g(i);
+      _i.autocomplete = this.s(v);
     },
 
-    htmlinput_get_autofocus: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.autofocus;
+    htmlinput_get_autofocus: function(i) {
+      let _i = A.g(i);
+      return _i.autofocus;
     },
 
-    htmlinput_set_autofocus: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.autofocus = val;
+    htmlinput_set_autofocus: function(i, v) {
+      let _i = A.g(i);
+      _i.autofocus = v;
     },
 
-    htmlinput_get_default_checked: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.defaultChecked;
+    htmlinput_get_default_checked: function(i) {
+      let _i = A.g(i);
+      return _i.defaultChecked;
     },
 
-    htmlinput_set_default_checked: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.defaultChecked = val;
+    htmlinput_set_default_checked: function(i, v) {
+      let _i = A.g(i);
+      _i.defaultChecked = v;
     },
 
-    htmlinput_get_checked: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.checked;
+    htmlinput_get_checked: function(i) {
+      let _i = A.g(i);
+      return _i.checked;
     },
 
-    htmlinput_set_checked: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.checked = val;
+    htmlinput_set_checked: function(i, v) {
+      let _i = A.g(i);
+      _i.checked = v;
     },
 
-    htmlinput_get_disabled: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.disabled;
+    htmlinput_get_disabled: function(i) {
+      let _i = A.g(i);
+      return _i.disabled;
     },
 
-    htmlinput_set_disabled: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.disabled = val;
+    htmlinput_set_disabled: function(i, v) {
+      let _i = A.g(i);
+      _i.disabled = v;
     },
 
-    htmlinput_get_form: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.form);
+    htmlinput_get_form: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.form);
     },
 
-    htmlinput_set_form: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.form = ALLOCATOR.g(handle);
+    htmlinput_set_form: function(i, v) {
+      let _i = A.g(i);
+      _i.form = A.g(v);
     },
 
-    htmlinput_get_files: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.files);
+    htmlinput_get_files: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.files);
     },
 
-    htmlinput_set_files: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.files = ALLOCATOR.g(handle);
+    htmlinput_set_files: function(i, v) {
+      let _i = A.g(i);
+      _i.files = A.g(v);
     },
 
-    htmlinput_get_form_action: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.formAction);
+    htmlinput_get_form_action: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.formAction);
     },
 
-    htmlinput_set_form_action: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.formAction = this.s(str);
+    htmlinput_set_form_action: function(i, v) {
+      let _i = A.g(i);
+      _i.formAction = this.s(v);
     },
 
-    htmlinput_get_form_enctype: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.formEnctype);
+    htmlinput_get_form_enctype: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.formEnctype);
     },
 
-    htmlinput_set_form_enctype: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.formEnctype = this.s(str);
+    htmlinput_set_form_enctype: function(i, v) {
+      let _i = A.g(i);
+      _i.formEnctype = this.s(v);
     },
 
-    htmlinput_get_form_method: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.formMethod);
+    htmlinput_get_form_method: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.formMethod);
     },
 
-    htmlinput_set_form_method: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.formMethod = this.s(str);
+    htmlinput_set_form_method: function(i, v) {
+      let _i = A.g(i);
+      _i.formMethod = this.s(v);
     },
 
-    htmlinput_get_form_no_validate: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.formNoValidate;
+    htmlinput_get_form_no_validate: function(i) {
+      let _i = A.g(i);
+      return _i.formNoValidate;
     },
 
-    htmlinput_set_form_no_validate: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.formNoValidate = val;
+    htmlinput_set_form_no_validate: function(i, v) {
+      let _i = A.g(i);
+      _i.formNoValidate = v;
     },
 
-    htmlinput_get_form_target: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.formTarget);
+    htmlinput_get_form_target: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.formTarget);
     },
 
-    htmlinput_set_form_target: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.formTarget = this.s(str);
+    htmlinput_set_form_target: function(i, v) {
+      let _i = A.g(i);
+      _i.formTarget = this.s(v);
     },
 
-    htmlinput_get_height: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.height;
+    htmlinput_get_height: function(i) {
+      let _i = A.g(i);
+      return _i.height;
     },
 
-    htmlinput_set_height: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.height = val;
+    htmlinput_set_height: function(i, v) {
+      let _i = A.g(i);
+      _i.height = v;
     },
 
-    htmlinput_get_indeterminate: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.indeterminate;
+    htmlinput_get_indeterminate: function(i) {
+      let _i = A.g(i);
+      return _i.indeterminate;
     },
 
-    htmlinput_set_indeterminate: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.indeterminate = val;
+    htmlinput_set_indeterminate: function(i, v) {
+      let _i = A.g(i);
+      _i.indeterminate = v;
     },
 
-    htmlinput_get_input_mode: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.inputMode);
+    htmlinput_get_input_mode: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.inputMode);
     },
 
-    htmlinput_set_input_mode: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.inputMode = this.s(str);
+    htmlinput_set_input_mode: function(i, v) {
+      let _i = A.g(i);
+      _i.inputMode = this.s(v);
     },
 
-    htmlinput_get_list: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.list);
+    htmlinput_get_list: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.list);
     },
 
-    htmlinput_set_list: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.list = ALLOCATOR.g(handle);
+    htmlinput_set_list: function(i, v) {
+      let _i = A.g(i);
+      _i.list = A.g(v);
     },
 
-    htmlinput_get_max: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.max);
+    htmlinput_get_max: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.max);
     },
 
-    htmlinput_set_max: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.max = this.s(str);
+    htmlinput_set_max: function(i, v) {
+      let _i = A.g(i);
+      _i.max = this.s(v);
     },
 
-    htmlinput_get_max_length: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.maxLength;
+    htmlinput_get_max_length: function(i) {
+      let _i = A.g(i);
+      return _i.maxLength;
     },
 
-    htmlinput_set_max_length: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.maxLength = val;
+    htmlinput_set_max_length: function(i, v) {
+      let _i = A.g(i);
+      _i.maxLength = v;
     },
 
-    htmlinput_get_min: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.min);
+    htmlinput_get_min: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.min);
     },
 
-    htmlinput_set_min: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.min = this.s(str);
+    htmlinput_set_min: function(i, v) {
+      let _i = A.g(i);
+      _i.min = this.s(v);
     },
 
-    htmlinput_get_min_length: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.minLength;
+    htmlinput_get_min_length: function(i) {
+      let _i = A.g(i);
+      return _i.minLength;
     },
 
-    htmlinput_set_min_length: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.minLength = val;
+    htmlinput_set_min_length: function(i, v) {
+      let _i = A.g(i);
+      _i.minLength = v;
     },
 
-    htmlinput_get_multiple: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.multiple;
+    htmlinput_get_multiple: function(i) {
+      let _i = A.g(i);
+      return _i.multiple;
     },
 
-    htmlinput_set_multiple: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.multiple = val;
+    htmlinput_set_multiple: function(i, v) {
+      let _i = A.g(i);
+      _i.multiple = v;
     },
 
-    htmlinput_get_name: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.name);
+    htmlinput_get_name: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.name);
     },
 
-    htmlinput_set_name: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.name = this.s(str);
+    htmlinput_set_name: function(i, v) {
+      let _i = A.g(i);
+      _i.name = this.s(v);
     },
 
-    htmlinput_get_pattern: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.pattern);
+    htmlinput_get_pattern: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.pattern);
     },
 
-    htmlinput_set_pattern: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.pattern = this.s(str);
+    htmlinput_set_pattern: function(i, v) {
+      let _i = A.g(i);
+      _i.pattern = this.s(v);
     },
 
-    htmlinput_get_placeholder: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.placeholder);
+    htmlinput_get_placeholder: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.placeholder);
     },
 
-    htmlinput_set_placeholder: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.placeholder = this.s(str);
+    htmlinput_set_placeholder: function(i, v) {
+      let _i = A.g(i);
+      _i.placeholder = this.s(v);
     },
 
-    htmlinput_get_read_only: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.readOnly;
+    htmlinput_get_read_only: function(i) {
+      let _i = A.g(i);
+      return _i.readOnly;
     },
 
-    htmlinput_set_read_only: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.readOnly = val;
+    htmlinput_set_read_only: function(i, v) {
+      let _i = A.g(i);
+      _i.readOnly = v;
     },
 
-    htmlinput_get_required: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.required;
+    htmlinput_get_required: function(i) {
+      let _i = A.g(i);
+      return _i.required;
     },
 
-    htmlinput_set_required: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.required = val;
+    htmlinput_set_required: function(i, v) {
+      let _i = A.g(i);
+      _i.required = v;
     },
 
-    htmlinput_get_size: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.size;
+    htmlinput_get_size: function(i) {
+      let _i = A.g(i);
+      return _i.size;
     },
 
-    htmlinput_set_size: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.size = val;
+    htmlinput_set_size: function(i, v) {
+      let _i = A.g(i);
+      _i.size = v;
     },
 
-    htmlinput_get_src: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.src);
+    htmlinput_get_src: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.src);
     },
 
-    htmlinput_set_src: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.src = this.s(str);
+    htmlinput_set_src: function(i, v) {
+      let _i = A.g(i);
+      _i.src = this.s(v);
     },
 
-    htmlinput_get_step: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.step);
+    htmlinput_get_step: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.step);
     },
 
-    htmlinput_set_step: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.step = this.s(str);
+    htmlinput_set_step: function(i, v) {
+      let _i = A.g(i);
+      _i.step = this.s(v);
     },
 
-    htmlinput_get_type: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.type);
+    htmlinput_get_type: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.type);
     },
 
-    htmlinput_set_type: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.type = this.s(str);
+    htmlinput_set_type: function(i, v) {
+      let _i = A.g(i);
+      _i.type = this.s(v);
     },
 
-    htmlinput_get_default_value: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.defaultValue);
+    htmlinput_get_default_value: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.defaultValue);
     },
 
-    htmlinput_set_default_value: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.defaultValue = this.s(str);
+    htmlinput_set_default_value: function(i, v) {
+      let _i = A.g(i);
+      _i.defaultValue = this.s(v);
     },
 
-    htmlinput_get_value: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.value);
+    htmlinput_get_value: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.value);
     },
 
-    htmlinput_set_value: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.value = this.s(str);
+    htmlinput_set_value: function(i, v) {
+      let _i = A.g(i);
+      _i.value = this.s(v);
     },
 
-    htmlinput_get_value_as_date: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.valueAsDate);
+    htmlinput_get_value_as_date: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.valueAsDate);
     },
 
-    htmlinput_set_value_as_date: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.valueAsDate = ALLOCATOR.g(handle);
+    htmlinput_set_value_as_date: function(i, v) {
+      let _i = A.g(i);
+      _i.valueAsDate = A.g(v);
     },
 
-    htmlinput_get_value_as_number: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.valueAsNumber;
+    htmlinput_get_value_as_number: function(i) {
+      let _i = A.g(i);
+      return _i.valueAsNumber;
     },
 
-    htmlinput_set_value_as_number: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.valueAsNumber = val;
+    htmlinput_set_value_as_number: function(i, v) {
+      let _i = A.g(i);
+      _i.valueAsNumber = v;
     },
 
-    htmlinput_get_width: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.width;
+    htmlinput_get_width: function(i) {
+      let _i = A.g(i);
+      return _i.width;
     },
 
-    htmlinput_set_width: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.width = val;
+    htmlinput_set_width: function(i, v) {
+      let _i = A.g(i);
+      _i.width = v;
     },
 
-    htmlinput_get_will_validate: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.willValidate;
+    htmlinput_get_will_validate: function(i) {
+      let _i = A.g(i);
+      return _i.willValidate;
     },
 
-    htmlinput_set_will_validate: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.willValidate = val;
+    htmlinput_set_will_validate: function(i, v) {
+      let _i = A.g(i);
+      _i.willValidate = v;
     },
 
-    htmlinput_get_validity: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.validity);
+    htmlinput_get_validity: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.validity);
     },
 
-    htmlinput_set_validity: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.validity = ALLOCATOR.g(handle);
+    htmlinput_set_validity: function(i, v) {
+      let _i = A.g(i);
+      _i.validity = A.g(v);
     },
 
-    htmlinput_get_validation_message: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.validationMessage);
+    htmlinput_get_validation_message: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.validationMessage);
     },
 
-    htmlinput_set_validation_message: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.validationMessage = this.s(str);
+    htmlinput_set_validation_message: function(i, v) {
+      let _i = A.g(i);
+      _i.validationMessage = this.s(v);
     },
 
-    htmlinput_check_validity: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.checkValidity());
+    htmlinput_check_validity: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.checkValidity());
     },
 
-    htmlinput_report_validity: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.reportValidity());
+    htmlinput_report_validity: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.reportValidity());
     },
+
+    htmlinput_set_custom_validity: function(i, error) {
+      let _i = A.g(i);
 
-    htmlinput_set_custom_validity: function(instance, error) {
-      let _instance = ALLOCATOR.g(instance);
       let _error = this.s(error);
-      _instance.setCustomValidity(_error);
+      _i.setCustomValidity(_error);
     },
 
-    htmlinput_get_labels: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.labels);
+    htmlinput_get_labels: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.labels);
     },
 
-    htmlinput_set_labels: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.labels = ALLOCATOR.g(handle);
+    htmlinput_set_labels: function(i, v) {
+      let _i = A.g(i);
+      _i.labels = A.g(v);
     },
 
-    htmlinput_select: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.select();
+    htmlinput_select: function(i) {
+      let _i = A.g(i);
+
+      _i.select();
     },
 
-    htmlinput_get_selection_direction: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.selectionDirection);
+    htmlinput_get_selection_direction: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.selectionDirection);
     },
 
-    htmlinput_set_selection_direction: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.selectionDirection = this.s(str);
+    htmlinput_set_selection_direction: function(i, v) {
+      let _i = A.g(i);
+      _i.selectionDirection = this.s(v);
     },
 
     htmlinput_set_range_text: function(
-      instance,
+      i,
       replacement,
       start,
       end,
-      selection_mode
+      selectionMode
     ) {
-      let _instance = ALLOCATOR.g(instance);
+      let _i = A.g(i);
+
       let _replacement = this.s(replacement);
       let _start = start;
       let _end = end;
-      let _selection_mode = ALLOCATOR.g(selection_mode);
-      _instance.setRangeText(_replacement, _start, _end, _selection_mode);
+      let _selectionMode = A.g(selectionMode);
+      _i.setRangeText(_replacement, _start, _end, _selectionMode);
     },
 
-    htmlinput_set_selection_range: function(instance, start, end, direction) {
-      let _instance = ALLOCATOR.g(instance);
+    htmlinput_set_selection_range: function(i, start, end, direction) {
+      let _i = A.g(i);
+
       let _start = start;
       let _end = end;
       let _direction = this.s(direction);
-      _instance.setSelectionRange(_start, _end, _direction);
+      _i.setSelectionRange(_start, _end, _direction);
     },
 
-    htmlinput_get_align: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.align);
+    htmlinput_get_align: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.align);
     },
 
-    htmlinput_set_align: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.align = this.s(str);
+    htmlinput_set_align: function(i, v) {
+      let _i = A.g(i);
+      _i.align = this.s(v);
     },
 
-    htmlinput_get_use_map: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.useMap);
+    htmlinput_get_use_map: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.useMap);
     },
 
-    htmlinput_set_use_map: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.useMap = this.s(str);
+    htmlinput_set_use_map: function(i, v) {
+      let _i = A.g(i);
+      _i.useMap = this.s(v);
     },
 
-    htmlinput_get_date_time_input_box_value: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getDateTimeInputBoxValue());
+    htmlinput_get_date_time_input_box_value: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getDateTimeInputBoxValue());
     },
 
-    htmlinput_update_date_time_input_box: function(instance, value) {
-      let _instance = ALLOCATOR.g(instance);
-      let _value = ALLOCATOR.g(value);
-      _instance.updateDateTimeInputBox(_value);
+    htmlinput_update_date_time_input_box: function(i, value) {
+      let _i = A.g(i);
+
+      let _value = A.g(value);
+      _i.updateDateTimeInputBox(_value);
     },
 
-    htmlinput_set_date_time_picker_state: function(instance, open) {
-      let _instance = ALLOCATOR.g(instance);
+    htmlinput_set_date_time_picker_state: function(i, open) {
+      let _i = A.g(i);
+
       let _open = open;
-      _instance.setDateTimePickerState(_open);
+      _i.setDateTimePickerState(_open);
     },
 
-    htmlinput_get_minimum: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getMinimum());
+    htmlinput_get_minimum: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getMinimum());
     },
 
-    htmlinput_get_maximum: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getMaximum());
+    htmlinput_get_maximum: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getMaximum());
     },
 
-    htmlinput_get_preview_value: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.previewValue);
+    htmlinput_get_preview_value: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.previewValue);
     },
 
-    htmlinput_set_preview_value: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.previewValue = this.s(str);
+    htmlinput_set_preview_value: function(i, v) {
+      let _i = A.g(i);
+      _i.previewValue = this.s(v);
     },
 
-    keyboardevent_get_char_code: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.charCode;
+    keyboardevent_get_char_code: function(i) {
+      let _i = A.g(i);
+      return _i.charCode;
     },
 
-    keyboardevent_set_char_code: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.charCode = val;
+    keyboardevent_set_char_code: function(i, v) {
+      let _i = A.g(i);
+      _i.charCode = v;
     },
 
-    keyboardevent_get_key_code: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.keyCode;
+    keyboardevent_get_key_code: function(i) {
+      let _i = A.g(i);
+      return _i.keyCode;
     },
 
-    keyboardevent_set_key_code: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.keyCode = val;
+    keyboardevent_set_key_code: function(i, v) {
+      let _i = A.g(i);
+      _i.keyCode = v;
     },
 
-    keyboardevent_get_alt_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.altKey;
+    keyboardevent_get_alt_key: function(i) {
+      let _i = A.g(i);
+      return _i.altKey;
     },
 
-    keyboardevent_set_alt_key: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.altKey = val;
+    keyboardevent_set_alt_key: function(i, v) {
+      let _i = A.g(i);
+      _i.altKey = v;
     },
 
-    keyboardevent_get_ctrl_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.ctrlKey;
+    keyboardevent_get_ctrl_key: function(i) {
+      let _i = A.g(i);
+      return _i.ctrlKey;
     },
 
-    keyboardevent_set_ctrl_key: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.ctrlKey = val;
+    keyboardevent_set_ctrl_key: function(i, v) {
+      let _i = A.g(i);
+      _i.ctrlKey = v;
     },
 
-    keyboardevent_get_shift_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.shiftKey;
+    keyboardevent_get_shift_key: function(i) {
+      let _i = A.g(i);
+      return _i.shiftKey;
     },
 
-    keyboardevent_set_shift_key: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.shiftKey = val;
+    keyboardevent_set_shift_key: function(i, v) {
+      let _i = A.g(i);
+      _i.shiftKey = v;
     },
 
-    keyboardevent_get_meta_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.metaKey;
+    keyboardevent_get_meta_key: function(i) {
+      let _i = A.g(i);
+      return _i.metaKey;
     },
 
-    keyboardevent_set_meta_key: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.metaKey = val;
+    keyboardevent_set_meta_key: function(i, v) {
+      let _i = A.g(i);
+      _i.metaKey = v;
     },
 
-    keyboardevent_get_modifier_state: function(instance, key) {
-      let _instance = ALLOCATOR.g(instance);
+    keyboardevent_get_modifier_state: function(i, key) {
+      let _i = A.g(i);
+
       let _key = this.s(key);
-      return ALLOCATOR.a(_instance.getModifierState(_key));
+      return A.a(_i.getModifierState(_key));
     },
 
-    keyboardevent_get_location: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.location;
+    keyboardevent_get_location: function(i) {
+      let _i = A.g(i);
+      return _i.location;
     },
 
-    keyboardevent_set_location: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.location = val;
+    keyboardevent_set_location: function(i, v) {
+      let _i = A.g(i);
+      _i.location = v;
     },
 
-    keyboardevent_get_repeat: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.repeat;
+    keyboardevent_get_repeat: function(i) {
+      let _i = A.g(i);
+      return _i.repeat;
     },
 
-    keyboardevent_set_repeat: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.repeat = val;
+    keyboardevent_set_repeat: function(i, v) {
+      let _i = A.g(i);
+      _i.repeat = v;
     },
 
-    keyboardevent_get_is_composing: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.isComposing;
+    keyboardevent_get_is_composing: function(i) {
+      let _i = A.g(i);
+      return _i.isComposing;
     },
 
-    keyboardevent_set_is_composing: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.isComposing = val;
+    keyboardevent_set_is_composing: function(i, v) {
+      let _i = A.g(i);
+      _i.isComposing = v;
     },
 
-    keyboardevent_get_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.key);
+    keyboardevent_get_key: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.key);
     },
 
-    keyboardevent_set_key: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.key = this.s(str);
+    keyboardevent_set_key: function(i, v) {
+      let _i = A.g(i);
+      _i.key = this.s(v);
     },
 
-    keyboardevent_get_code: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.code);
+    keyboardevent_get_code: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.code);
     },
 
-    keyboardevent_set_code: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.code = this.s(str);
+    keyboardevent_set_code: function(i, v) {
+      let _i = A.g(i);
+      _i.code = this.s(v);
     },
 
     keyboardevent_init_keyboard_event: function(
-      instance,
-      type_arg,
-      bubbles_arg,
-      cancelable_arg,
-      view_arg,
-      key_arg,
-      location_arg,
-      ctrl_key,
-      alt_key,
-      shift_key,
-      meta_key
+      i,
+      typeArg,
+      bubblesArg,
+      cancelableArg,
+      viewArg,
+      keyArg,
+      locationArg,
+      ctrlKey,
+      altKey,
+      shiftKey,
+      metaKey
     ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _type_arg = this.s(type_arg);
-      let _bubbles_arg = bubbles_arg;
-      let _cancelable_arg = cancelable_arg;
-      let _view_arg = ALLOCATOR.g(view_arg);
-      let _key_arg = this.s(key_arg);
-      let _location_arg = location_arg;
-      let _ctrl_key = ctrl_key;
-      let _alt_key = alt_key;
-      let _shift_key = shift_key;
-      let _meta_key = meta_key;
-      _instance.initKeyboardEvent(
-        _type_arg,
-        _bubbles_arg,
-        _cancelable_arg,
-        _view_arg,
-        _key_arg,
-        _location_arg,
-        _ctrl_key,
-        _alt_key,
-        _shift_key,
-        _meta_key
+      let _i = A.g(i);
+
+      let _typeArg = this.s(typeArg);
+      let _bubblesArg = bubblesArg;
+      let _cancelableArg = cancelableArg;
+      let _viewArg = A.g(viewArg);
+      let _keyArg = this.s(keyArg);
+      let _locationArg = locationArg;
+      let _ctrlKey = ctrlKey;
+      let _altKey = altKey;
+      let _shiftKey = shiftKey;
+      let _metaKey = metaKey;
+      _i.initKeyboardEvent(
+        _typeArg,
+        _bubblesArg,
+        _cancelableArg,
+        _viewArg,
+        _keyArg,
+        _locationArg,
+        _ctrlKey,
+        _altKey,
+        _shiftKey,
+        _metaKey
       );
     },
 
-    keyboardevent_get_init_dict: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.initDict);
+    keyboardevent_get_init_dict: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.initDict);
     },
 
-    keyboardevent_set_init_dict: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.initDict = ALLOCATOR.g(handle);
+    keyboardevent_set_init_dict: function(i, v) {
+      let _i = A.g(i);
+      _i.initDict = A.g(v);
     },
 
-    mouseevent_get_screen_x: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.screenX;
+    mouseevent_get_screen_x: function(i) {
+      let _i = A.g(i);
+      return _i.screenX;
     },
 
-    mouseevent_set_screen_x: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.screenX = val;
+    mouseevent_set_screen_x: function(i, v) {
+      let _i = A.g(i);
+      _i.screenX = v;
     },
 
-    mouseevent_get_screen_y: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.screenY;
+    mouseevent_get_screen_y: function(i) {
+      let _i = A.g(i);
+      return _i.screenY;
     },
 
-    mouseevent_set_screen_y: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.screenY = val;
+    mouseevent_set_screen_y: function(i, v) {
+      let _i = A.g(i);
+      _i.screenY = v;
     },
 
-    mouseevent_get_client_x: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.clientX;
+    mouseevent_get_client_x: function(i) {
+      let _i = A.g(i);
+      return _i.clientX;
     },
 
-    mouseevent_set_client_x: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clientX = val;
+    mouseevent_set_client_x: function(i, v) {
+      let _i = A.g(i);
+      _i.clientX = v;
     },
 
-    mouseevent_get_client_y: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.clientY;
+    mouseevent_get_client_y: function(i) {
+      let _i = A.g(i);
+      return _i.clientY;
     },
 
-    mouseevent_set_client_y: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.clientY = val;
+    mouseevent_set_client_y: function(i, v) {
+      let _i = A.g(i);
+      _i.clientY = v;
     },
 
-    mouseevent_get_x: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.x;
+    mouseevent_get_x: function(i) {
+      let _i = A.g(i);
+      return _i.x;
     },
 
-    mouseevent_set_x: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.x = val;
+    mouseevent_set_x: function(i, v) {
+      let _i = A.g(i);
+      _i.x = v;
     },
 
-    mouseevent_get_y: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.y;
+    mouseevent_get_y: function(i) {
+      let _i = A.g(i);
+      return _i.y;
     },
 
-    mouseevent_set_y: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.y = val;
+    mouseevent_set_y: function(i, v) {
+      let _i = A.g(i);
+      _i.y = v;
     },
 
-    mouseevent_get_offset_x: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.offsetX;
+    mouseevent_get_offset_x: function(i) {
+      let _i = A.g(i);
+      return _i.offsetX;
     },
 
-    mouseevent_set_offset_x: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.offsetX = val;
+    mouseevent_set_offset_x: function(i, v) {
+      let _i = A.g(i);
+      _i.offsetX = v;
     },
 
-    mouseevent_get_offset_y: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.offsetY;
+    mouseevent_get_offset_y: function(i) {
+      let _i = A.g(i);
+      return _i.offsetY;
     },
 
-    mouseevent_set_offset_y: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.offsetY = val;
+    mouseevent_set_offset_y: function(i, v) {
+      let _i = A.g(i);
+      _i.offsetY = v;
     },
 
-    mouseevent_get_ctrl_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.ctrlKey;
+    mouseevent_get_ctrl_key: function(i) {
+      let _i = A.g(i);
+      return _i.ctrlKey;
     },
 
-    mouseevent_set_ctrl_key: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.ctrlKey = val;
+    mouseevent_set_ctrl_key: function(i, v) {
+      let _i = A.g(i);
+      _i.ctrlKey = v;
     },
 
-    mouseevent_get_shift_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.shiftKey;
+    mouseevent_get_shift_key: function(i) {
+      let _i = A.g(i);
+      return _i.shiftKey;
     },
 
-    mouseevent_set_shift_key: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.shiftKey = val;
+    mouseevent_set_shift_key: function(i, v) {
+      let _i = A.g(i);
+      _i.shiftKey = v;
     },
 
-    mouseevent_get_alt_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.altKey;
+    mouseevent_get_alt_key: function(i) {
+      let _i = A.g(i);
+      return _i.altKey;
     },
 
-    mouseevent_set_alt_key: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.altKey = val;
+    mouseevent_set_alt_key: function(i, v) {
+      let _i = A.g(i);
+      _i.altKey = v;
     },
 
-    mouseevent_get_meta_key: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.metaKey;
+    mouseevent_get_meta_key: function(i) {
+      let _i = A.g(i);
+      return _i.metaKey;
     },
 
-    mouseevent_set_meta_key: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.metaKey = val;
+    mouseevent_set_meta_key: function(i, v) {
+      let _i = A.g(i);
+      _i.metaKey = v;
     },
 
-    mouseevent_get_button: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.button;
+    mouseevent_get_button: function(i) {
+      let _i = A.g(i);
+      return _i.button;
     },
 
-    mouseevent_set_button: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.button = val;
+    mouseevent_set_button: function(i, v) {
+      let _i = A.g(i);
+      _i.button = v;
     },
 
-    mouseevent_get_buttons: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.buttons;
+    mouseevent_get_buttons: function(i) {
+      let _i = A.g(i);
+      return _i.buttons;
     },
 
-    mouseevent_set_buttons: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.buttons = val;
+    mouseevent_set_buttons: function(i, v) {
+      let _i = A.g(i);
+      _i.buttons = v;
     },
 
-    mouseevent_get_related_target: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.relatedTarget);
+    mouseevent_get_related_target: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.relatedTarget);
     },
 
-    mouseevent_set_related_target: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.relatedTarget = ALLOCATOR.g(handle);
+    mouseevent_set_related_target: function(i, v) {
+      let _i = A.g(i);
+      _i.relatedTarget = A.g(v);
     },
 
-    mouseevent_get_region: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.region);
+    mouseevent_get_region: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.region);
     },
 
-    mouseevent_set_region: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.region = this.s(str);
+    mouseevent_set_region: function(i, v) {
+      let _i = A.g(i);
+      _i.region = this.s(v);
     },
 
-    mouseevent_get_movement_x: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.movementX;
+    mouseevent_get_movement_x: function(i) {
+      let _i = A.g(i);
+      return _i.movementX;
     },
 
-    mouseevent_set_movement_x: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.movementX = val;
+    mouseevent_set_movement_x: function(i, v) {
+      let _i = A.g(i);
+      _i.movementX = v;
     },
 
-    mouseevent_get_movement_y: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.movementY;
+    mouseevent_get_movement_y: function(i) {
+      let _i = A.g(i);
+      return _i.movementY;
     },
 
-    mouseevent_set_movement_y: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.movementY = val;
+    mouseevent_set_movement_y: function(i, v) {
+      let _i = A.g(i);
+      _i.movementY = v;
     },
 
     mouseevent_init_mouse_event: function(
-      instance,
-      type_arg,
-      can_bubble_arg,
-      cancelable_arg,
-      view_arg,
-      detail_arg,
-      screen_x_arg,
-      screen_y_arg,
-      client_x_arg,
-      client_y_arg,
-      ctrl_key_arg,
-      alt_key_arg,
-      shift_key_arg,
-      meta_key_arg,
-      button_arg,
-      related_target_arg
+      i,
+      typeArg,
+      canBubbleArg,
+      cancelableArg,
+      viewArg,
+      detailArg,
+      screenXArg,
+      screenYArg,
+      clientXArg,
+      clientYArg,
+      ctrlKeyArg,
+      altKeyArg,
+      shiftKeyArg,
+      metaKeyArg,
+      buttonArg,
+      relatedTargetArg
     ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _type_arg = this.s(type_arg);
-      let _can_bubble_arg = can_bubble_arg;
-      let _cancelable_arg = cancelable_arg;
-      let _view_arg = ALLOCATOR.g(view_arg);
-      let _detail_arg = detail_arg;
-      let _screen_x_arg = screen_x_arg;
-      let _screen_y_arg = screen_y_arg;
-      let _client_x_arg = client_x_arg;
-      let _client_y_arg = client_y_arg;
-      let _ctrl_key_arg = ctrl_key_arg;
-      let _alt_key_arg = alt_key_arg;
-      let _shift_key_arg = shift_key_arg;
-      let _meta_key_arg = meta_key_arg;
-      let _button_arg = button_arg;
-      let _related_target_arg = ALLOCATOR.g(related_target_arg);
-      _instance.initMouseEvent(
-        _type_arg,
-        _can_bubble_arg,
-        _cancelable_arg,
-        _view_arg,
-        _detail_arg,
-        _screen_x_arg,
-        _screen_y_arg,
-        _client_x_arg,
-        _client_y_arg,
-        _ctrl_key_arg,
-        _alt_key_arg,
-        _shift_key_arg,
-        _meta_key_arg,
-        _button_arg,
-        _related_target_arg
+      let _i = A.g(i);
+
+      let _typeArg = this.s(typeArg);
+      let _canBubbleArg = canBubbleArg;
+      let _cancelableArg = cancelableArg;
+      let _viewArg = A.g(viewArg);
+      let _detailArg = detailArg;
+      let _screenXArg = screenXArg;
+      let _screenYArg = screenYArg;
+      let _clientXArg = clientXArg;
+      let _clientYArg = clientYArg;
+      let _ctrlKeyArg = ctrlKeyArg;
+      let _altKeyArg = altKeyArg;
+      let _shiftKeyArg = shiftKeyArg;
+      let _metaKeyArg = metaKeyArg;
+      let _buttonArg = buttonArg;
+      let _relatedTargetArg = A.g(relatedTargetArg);
+      _i.initMouseEvent(
+        _typeArg,
+        _canBubbleArg,
+        _cancelableArg,
+        _viewArg,
+        _detailArg,
+        _screenXArg,
+        _screenYArg,
+        _clientXArg,
+        _clientYArg,
+        _ctrlKeyArg,
+        _altKeyArg,
+        _shiftKeyArg,
+        _metaKeyArg,
+        _buttonArg,
+        _relatedTargetArg
       );
     },
 
-    mouseevent_get_modifier_state: function(instance, key_arg) {
-      let _instance = ALLOCATOR.g(instance);
-      let _key_arg = this.s(key_arg);
-      return ALLOCATOR.a(_instance.getModifierState(_key_arg));
+    mouseevent_get_modifier_state: function(i, keyArg) {
+      let _i = A.g(i);
+
+      let _keyArg = this.s(keyArg);
+      return A.a(_i.getModifierState(_keyArg));
     },
 
-    node_get_node_type: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.nodeType;
+    node_get_node_type: function(i) {
+      let _i = A.g(i);
+      return _i.nodeType;
     },
 
-    node_set_node_type: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.nodeType = val;
+    node_set_node_type: function(i, v) {
+      let _i = A.g(i);
+      _i.nodeType = v;
     },
 
-    node_get_node_name: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.nodeName);
+    node_get_node_name: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.nodeName);
     },
 
-    node_set_node_name: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.nodeName = this.s(str);
+    node_set_node_name: function(i, v) {
+      let _i = A.g(i);
+      _i.nodeName = this.s(v);
     },
 
-    node_get_base_uri: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.baseURI);
+    node_get_base_uri: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.baseURI);
     },
 
-    node_set_base_uri: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.baseURI = this.s(str);
+    node_set_base_uri: function(i, v) {
+      let _i = A.g(i);
+      _i.baseURI = this.s(v);
     },
 
-    node_get_is_connected: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.isConnected;
+    node_get_is_connected: function(i) {
+      let _i = A.g(i);
+      return _i.isConnected;
     },
 
-    node_set_is_connected: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.isConnected = val;
+    node_set_is_connected: function(i, v) {
+      let _i = A.g(i);
+      _i.isConnected = v;
     },
 
-    node_get_owner_document: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.ownerDocument);
+    node_get_owner_document: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.ownerDocument);
     },
 
-    node_set_owner_document: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.ownerDocument = ALLOCATOR.g(handle);
+    node_set_owner_document: function(i, v) {
+      let _i = A.g(i);
+      _i.ownerDocument = A.g(v);
     },
 
-    node_get_root_node: function(instance, options) {
-      let _instance = ALLOCATOR.g(instance);
-      let _options = ALLOCATOR.g(options);
-      return ALLOCATOR.a(_instance.getRootNode(_options));
+    node_get_root_node: function(i, options) {
+      let _i = A.g(i);
+
+      let _options = A.g(options);
+      return A.a(_i.getRootNode(_options));
     },
 
-    node_get_parent_node: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.parentNode);
+    node_get_parent_node: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.parentNode);
     },
 
-    node_set_parent_node: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.parentNode = ALLOCATOR.g(handle);
+    node_set_parent_node: function(i, v) {
+      let _i = A.g(i);
+      _i.parentNode = A.g(v);
     },
 
-    node_get_parent_element: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.parentElement);
+    node_get_parent_element: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.parentElement);
     },
 
-    node_set_parent_element: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.parentElement = ALLOCATOR.g(handle);
+    node_set_parent_element: function(i, v) {
+      let _i = A.g(i);
+      _i.parentElement = A.g(v);
     },
 
-    node_has_child_nodes: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.hasChildNodes());
+    node_has_child_nodes: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.hasChildNodes());
     },
 
-    node_get_child_nodes: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.childNodes);
+    node_get_child_nodes: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.childNodes);
     },
 
-    node_set_child_nodes: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.childNodes = ALLOCATOR.g(handle);
+    node_set_child_nodes: function(i, v) {
+      let _i = A.g(i);
+      _i.childNodes = A.g(v);
     },
 
-    node_get_first_child: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.firstChild);
+    node_get_first_child: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.firstChild);
     },
 
-    node_set_first_child: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.firstChild = ALLOCATOR.g(handle);
+    node_set_first_child: function(i, v) {
+      let _i = A.g(i);
+      _i.firstChild = A.g(v);
     },
 
-    node_get_last_child: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.lastChild);
+    node_get_last_child: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.lastChild);
     },
 
-    node_set_last_child: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.lastChild = ALLOCATOR.g(handle);
+    node_set_last_child: function(i, v) {
+      let _i = A.g(i);
+      _i.lastChild = A.g(v);
     },
 
-    node_get_previous_sibling: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.previousSibling);
+    node_get_previous_sibling: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.previousSibling);
     },
 
-    node_set_previous_sibling: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.previousSibling = ALLOCATOR.g(handle);
+    node_set_previous_sibling: function(i, v) {
+      let _i = A.g(i);
+      _i.previousSibling = A.g(v);
     },
 
-    node_get_next_sibling: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.nextSibling);
+    node_get_next_sibling: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.nextSibling);
     },
 
-    node_set_next_sibling: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.nextSibling = ALLOCATOR.g(handle);
+    node_set_next_sibling: function(i, v) {
+      let _i = A.g(i);
+      _i.nextSibling = A.g(v);
     },
 
-    node_get_node_value: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.nodeValue);
+    node_get_node_value: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.nodeValue);
     },
 
-    node_set_node_value: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.nodeValue = this.s(str);
+    node_set_node_value: function(i, v) {
+      let _i = A.g(i);
+      _i.nodeValue = this.s(v);
     },
 
-    node_get_text_content: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.textContent);
+    node_get_text_content: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.textContent);
     },
 
-    node_set_text_content: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.textContent = this.s(str);
+    node_set_text_content: function(i, v) {
+      let _i = A.g(i);
+      _i.textContent = this.s(v);
     },
 
-    node_insert_before: function(instance, node, child) {
-      let _instance = ALLOCATOR.g(instance);
-      let _node = ALLOCATOR.g(node);
-      let _child = ALLOCATOR.g(child);
-      return ALLOCATOR.a(_instance.insertBefore(_node, _child));
+    node_insert_before: function(i, node, child) {
+      let _i = A.g(i);
+
+      let _node = A.g(node);
+      let _child = A.g(child);
+      return A.a(_i.insertBefore(_node, _child));
     },
 
-    node_append_child: function(instance, node) {
-      let _instance = ALLOCATOR.g(instance);
-      let _node = ALLOCATOR.g(node);
-      return ALLOCATOR.a(_instance.appendChild(_node));
+    node_append_child: function(i, node) {
+      let _i = A.g(i);
+
+      let _node = A.g(node);
+      return A.a(_i.appendChild(_node));
     },
 
-    node_replace_child: function(instance, node, child) {
-      let _instance = ALLOCATOR.g(instance);
-      let _node = ALLOCATOR.g(node);
-      let _child = ALLOCATOR.g(child);
-      return ALLOCATOR.a(_instance.replaceChild(_node, _child));
+    node_replace_child: function(i, node, child) {
+      let _i = A.g(i);
+
+      let _node = A.g(node);
+      let _child = A.g(child);
+      return A.a(_i.replaceChild(_node, _child));
     },
 
-    node_remove_child: function(instance, child) {
-      let _instance = ALLOCATOR.g(instance);
-      let _child = ALLOCATOR.g(child);
-      return ALLOCATOR.a(_instance.removeChild(_child));
+    node_remove_child: function(i, child) {
+      let _i = A.g(i);
+
+      let _child = A.g(child);
+      return A.a(_i.removeChild(_child));
     },
 
-    node_normalize: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.normalize();
+    node_normalize: function(i) {
+      let _i = A.g(i);
+
+      _i.normalize();
     },
 
-    node_clone_node: function(instance, deep) {
-      let _instance = ALLOCATOR.g(instance);
+    node_clone_node: function(i, deep) {
+      let _i = A.g(i);
+
       let _deep = deep;
-      return ALLOCATOR.a(_instance.cloneNode(_deep));
+      return A.a(_i.cloneNode(_deep));
     },
 
-    node_is_same_node: function(instance, node) {
-      let _instance = ALLOCATOR.g(instance);
-      let _node = ALLOCATOR.g(node);
-      return ALLOCATOR.a(_instance.isSameNode(_node));
+    node_is_same_node: function(i, node) {
+      let _i = A.g(i);
+
+      let _node = A.g(node);
+      return A.a(_i.isSameNode(_node));
     },
 
-    node_is_equal_node: function(instance, node) {
-      let _instance = ALLOCATOR.g(instance);
-      let _node = ALLOCATOR.g(node);
-      return ALLOCATOR.a(_instance.isEqualNode(_node));
+    node_is_equal_node: function(i, node) {
+      let _i = A.g(i);
+
+      let _node = A.g(node);
+      return A.a(_i.isEqualNode(_node));
     },
 
-    node_compare_document_position: function(instance, other) {
-      let _instance = ALLOCATOR.g(instance);
-      let _other = ALLOCATOR.g(other);
-      return ALLOCATOR.a(_instance.compareDocumentPosition(_other));
+    node_compare_document_position: function(i, other) {
+      let _i = A.g(i);
+
+      let _other = A.g(other);
+      return A.a(_i.compareDocumentPosition(_other));
     },
 
-    node_contains: function(instance, other) {
-      let _instance = ALLOCATOR.g(instance);
-      let _other = ALLOCATOR.g(other);
-      return ALLOCATOR.a(_instance.contains(_other));
+    node_contains: function(i, other) {
+      let _i = A.g(i);
+
+      let _other = A.g(other);
+      return A.a(_i.contains(_other));
     },
 
-    node_lookup_prefix: function(instance, namespace) {
-      let _instance = ALLOCATOR.g(instance);
+    node_lookup_prefix: function(i, namespace) {
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
-      return this.ms(_instance.lookupPrefix(_namespace));
+      return this.ms(_i.lookupPrefix(_namespace));
     },
 
-    node_lookup_namespace_uri: function(instance, prefix) {
-      let _instance = ALLOCATOR.g(instance);
+    node_lookup_namespace_uri: function(i, prefix) {
+      let _i = A.g(i);
+
       let _prefix = this.s(prefix);
-      return this.ms(_instance.lookupNamespaceURI(_prefix));
+      return this.ms(_i.lookupNamespaceURI(_prefix));
     },
 
-    node_is_default_namespace: function(instance, namespace) {
-      let _instance = ALLOCATOR.g(instance);
+    node_is_default_namespace: function(i, namespace) {
+      let _i = A.g(i);
+
       let _namespace = this.s(namespace);
-      return ALLOCATOR.a(_instance.isDefaultNamespace(_namespace));
+      return A.a(_i.isDefaultNamespace(_namespace));
     },
 
-    window_get_window: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.window);
+    window_get_window: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.window);
     },
 
-    window_set_window: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.window = ALLOCATOR.g(handle);
+    window_set_window: function(i, v) {
+      let _i = A.g(i);
+      _i.window = A.g(v);
     },
 
-    window_get_self: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.self);
+    window_get_self: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.self);
     },
 
-    window_set_self: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.self = ALLOCATOR.g(handle);
+    window_set_self: function(i, v) {
+      let _i = A.g(i);
+      _i.self = A.g(v);
     },
 
-    window_get_document: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.document);
+    window_get_document: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.document);
     },
 
-    window_set_document: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.document = ALLOCATOR.g(handle);
+    window_set_document: function(i, v) {
+      let _i = A.g(i);
+      _i.document = A.g(v);
     },
 
-    window_get_name: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.name);
+    window_get_name: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.name);
     },
 
-    window_set_name: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.name = this.s(str);
+    window_set_name: function(i, v) {
+      let _i = A.g(i);
+      _i.name = this.s(v);
     },
 
-    window_get_location: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.location);
+    window_get_location: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.location);
     },
 
-    window_set_location: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.location = ALLOCATOR.g(handle);
+    window_set_location: function(i, v) {
+      let _i = A.g(i);
+      _i.location = A.g(v);
     },
 
-    window_get_history: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.history);
+    window_get_history: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.history);
     },
 
-    window_set_history: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.history = ALLOCATOR.g(handle);
+    window_set_history: function(i, v) {
+      let _i = A.g(i);
+      _i.history = A.g(v);
     },
 
-    window_get_custom_elements: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.customElements);
+    window_get_custom_elements: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.customElements);
     },
 
-    window_set_custom_elements: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.customElements = ALLOCATOR.g(handle);
+    window_set_custom_elements: function(i, v) {
+      let _i = A.g(i);
+      _i.customElements = A.g(v);
     },
 
-    window_get_locationbar: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.locationbar);
+    window_get_locationbar: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.locationbar);
     },
 
-    window_set_locationbar: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.locationbar = ALLOCATOR.g(handle);
+    window_set_locationbar: function(i, v) {
+      let _i = A.g(i);
+      _i.locationbar = A.g(v);
     },
 
-    window_get_menubar: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.menubar);
+    window_get_menubar: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.menubar);
     },
 
-    window_set_menubar: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.menubar = ALLOCATOR.g(handle);
+    window_set_menubar: function(i, v) {
+      let _i = A.g(i);
+      _i.menubar = A.g(v);
     },
 
-    window_get_personalbar: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.personalbar);
+    window_get_personalbar: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.personalbar);
     },
 
-    window_set_personalbar: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.personalbar = ALLOCATOR.g(handle);
+    window_set_personalbar: function(i, v) {
+      let _i = A.g(i);
+      _i.personalbar = A.g(v);
     },
 
-    window_get_scrollbars: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.scrollbars);
+    window_get_scrollbars: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.scrollbars);
     },
 
-    window_set_scrollbars: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scrollbars = ALLOCATOR.g(handle);
+    window_set_scrollbars: function(i, v) {
+      let _i = A.g(i);
+      _i.scrollbars = A.g(v);
     },
 
-    window_get_statusbar: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.statusbar);
+    window_get_statusbar: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.statusbar);
     },
 
-    window_set_statusbar: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.statusbar = ALLOCATOR.g(handle);
+    window_set_statusbar: function(i, v) {
+      let _i = A.g(i);
+      _i.statusbar = A.g(v);
     },
 
-    window_get_toolbar: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.toolbar);
+    window_get_toolbar: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.toolbar);
     },
 
-    window_set_toolbar: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.toolbar = ALLOCATOR.g(handle);
+    window_set_toolbar: function(i, v) {
+      let _i = A.g(i);
+      _i.toolbar = A.g(v);
     },
 
-    window_get_status: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return this.ms(_instance.status);
+    window_get_status: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.status);
     },
 
-    window_set_status: function(instance, str) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.status = this.s(str);
+    window_set_status: function(i, v) {
+      let _i = A.g(i);
+      _i.status = this.s(v);
     },
 
-    window_close: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.close();
+    window_close: function(i) {
+      let _i = A.g(i);
+
+      _i.close();
     },
 
-    window_get_closed: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.closed;
+    window_get_closed: function(i) {
+      let _i = A.g(i);
+      return _i.closed;
     },
 
-    window_set_closed: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.closed = val;
+    window_set_closed: function(i, v) {
+      let _i = A.g(i);
+      _i.closed = v;
     },
 
-    window_stop: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.stop();
+    window_stop: function(i) {
+      let _i = A.g(i);
+
+      _i.stop();
     },
 
-    window_focus: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.focus();
+    window_focus: function(i) {
+      let _i = A.g(i);
+
+      _i.focus();
     },
 
-    window_blur: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.blur();
+    window_blur: function(i) {
+      let _i = A.g(i);
+
+      _i.blur();
     },
 
-    window_get_event: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.event;
+    window_get_event: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.event);
     },
 
-    window_set_event: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.event = val;
+    window_set_event: function(i, v) {
+      let _i = A.g(i);
+      _i.event = A.g(v);
     },
 
-    window_get_frames: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.frames);
+    window_get_frames: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.frames);
     },
 
-    window_set_frames: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.frames = ALLOCATOR.g(handle);
+    window_set_frames: function(i, v) {
+      let _i = A.g(i);
+      _i.frames = A.g(v);
     },
 
-    window_get_length: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.length;
+    window_get_length: function(i) {
+      let _i = A.g(i);
+      return _i.length;
     },
 
-    window_set_length: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.length = val;
+    window_set_length: function(i, v) {
+      let _i = A.g(i);
+      _i.length = v;
     },
 
-    window_get_top: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.top);
+    window_get_top: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.top);
     },
 
-    window_set_top: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.top = ALLOCATOR.g(handle);
+    window_set_top: function(i, v) {
+      let _i = A.g(i);
+      _i.top = A.g(v);
     },
 
-    window_get_opener: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.opener;
+    window_get_opener: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.opener);
     },
 
-    window_set_opener: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.opener = val;
+    window_set_opener: function(i, v) {
+      let _i = A.g(i);
+      _i.opener = A.g(v);
     },
 
-    window_get_parent: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.parent);
+    window_get_parent: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.parent);
     },
 
-    window_set_parent: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.parent = ALLOCATOR.g(handle);
+    window_set_parent: function(i, v) {
+      let _i = A.g(i);
+      _i.parent = A.g(v);
     },
 
-    window_get_frame_element: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.frameElement);
+    window_get_frame_element: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.frameElement);
     },
 
-    window_set_frame_element: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.frameElement = ALLOCATOR.g(handle);
+    window_set_frame_element: function(i, v) {
+      let _i = A.g(i);
+      _i.frameElement = A.g(v);
     },
 
-    window_open: function(instance, url, target, features) {
-      let _instance = ALLOCATOR.g(instance);
+    window_open: function(i, url, target, features) {
+      let _i = A.g(i);
+
       let _url = this.s(url);
       let _target = this.s(target);
       let _features = this.s(features);
-      return ALLOCATOR.a(_instance.open(_url, _target, _features));
+      return A.a(_i.open(_url, _target, _features));
     },
 
-    window_get_navigator: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.navigator);
+    window_get_navigator: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.navigator);
     },
 
-    window_set_navigator: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.navigator = ALLOCATOR.g(handle);
+    window_set_navigator: function(i, v) {
+      let _i = A.g(i);
+      _i.navigator = A.g(v);
     },
 
-    window_get_external: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.external);
+    window_get_external: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.external);
     },
 
-    window_set_external: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.external = ALLOCATOR.g(handle);
+    window_set_external: function(i, v) {
+      let _i = A.g(i);
+      _i.external = A.g(v);
     },
 
-    window_get_application_cache: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.applicationCache);
+    window_get_application_cache: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.applicationCache);
     },
 
-    window_set_application_cache: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.applicationCache = ALLOCATOR.g(handle);
+    window_set_application_cache: function(i, v) {
+      let _i = A.g(i);
+      _i.applicationCache = A.g(v);
     },
 
-    window_alert: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    window_alert: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      _instance.alert(_message);
+      _i.alert(_message);
     },
 
-    window_confirm: function(instance, message) {
-      let _instance = ALLOCATOR.g(instance);
+    window_confirm: function(i, message) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      return ALLOCATOR.a(_instance.confirm(_message));
+      return A.a(_i.confirm(_message));
     },
 
-    window_prompt: function(instance, message, default_message) {
-      let _instance = ALLOCATOR.g(instance);
+    window_prompt: function(i, message, defaultMessage) {
+      let _i = A.g(i);
+
       let _message = this.s(message);
-      let _default_message = this.s(default_message);
-      return this.ms(_instance.prompt(_message, _default_message));
+      let _defaultMessage = this.s(defaultMessage);
+      return this.ms(_i.prompt(_message, _defaultMessage));
     },
 
-    window_print: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.print();
+    window_print: function(i) {
+      let _i = A.g(i);
+
+      _i.print();
     },
 
-    window_post_message: function(instance, message, target_origin, transfer) {
-      let _instance = ALLOCATOR.g(instance);
-      let _message = message;
-      let _target_origin = this.s(target_origin);
-      let _transfer = ALLOCATOR.g(transfer);
-      _instance.postMessage(_message, _target_origin, _transfer);
+    window_post_message: function(i, message, targetOrigin, transfer) {
+      let _i = A.g(i);
+
+      let _message = A.g(message);
+      let _targetOrigin = this.s(targetOrigin);
+      let _transfer = A.g(transfer);
+      _i.postMessage(_message, _targetOrigin, _transfer);
     },
 
-    window_get_onappinstalled: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onappinstalled);
+    window_get_onappinstalled: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onappinstalled);
     },
 
-    window_set_onappinstalled: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onappinstalled = ALLOCATOR.g(handle);
+    window_set_onappinstalled: function(i, v) {
+      let _i = A.g(i);
+      _i.onappinstalled = A.g(v);
     },
 
-    window_capture_events: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.captureEvents();
+    window_capture_events: function(i) {
+      let _i = A.g(i);
+
+      _i.captureEvents();
     },
 
-    window_release_events: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.releaseEvents();
+    window_release_events: function(i) {
+      let _i = A.g(i);
+
+      _i.releaseEvents();
     },
 
-    window_get_selection: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.getSelection());
+    window_get_selection: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getSelection());
     },
 
-    window_get_computed_style: function(instance, elt, pseudo_elt) {
-      let _instance = ALLOCATOR.g(instance);
-      let _elt = ALLOCATOR.g(elt);
-      let _pseudo_elt = this.s(pseudo_elt);
-      return ALLOCATOR.a(_instance.getComputedStyle(_elt, _pseudo_elt));
+    window_get_computed_style: function(i, elt, pseudoElt) {
+      let _i = A.g(i);
+
+      let _elt = A.g(elt);
+      let _pseudoElt = this.s(pseudoElt);
+      return A.a(_i.getComputedStyle(_elt, _pseudoElt));
     },
 
-    window_match_media: function(instance, query) {
-      let _instance = ALLOCATOR.g(instance);
+    window_match_media: function(i, query) {
+      let _i = A.g(i);
+
       let _query = this.s(query);
-      return ALLOCATOR.a(_instance.matchMedia(_query));
+      return A.a(_i.matchMedia(_query));
     },
 
-    window_get_screen: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.screen);
+    window_get_screen: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.screen);
     },
 
-    window_set_screen: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.screen = ALLOCATOR.g(handle);
+    window_set_screen: function(i, v) {
+      let _i = A.g(i);
+      _i.screen = A.g(v);
     },
 
-    window_move_to: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    window_move_to: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.moveTo(_x, _y);
+      _i.moveTo(_x, _y);
     },
 
-    window_move_by: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    window_move_by: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.moveBy(_x, _y);
+      _i.moveBy(_x, _y);
     },
 
-    window_resize_to: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    window_resize_to: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.resizeTo(_x, _y);
+      _i.resizeTo(_x, _y);
     },
 
-    window_resize_by: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    window_resize_by: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.resizeBy(_x, _y);
+      _i.resizeBy(_x, _y);
     },
 
-    window_get_inner_width: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.innerWidth;
+    window_get_inner_width: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.innerWidth);
     },
 
-    window_set_inner_width: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.innerWidth = val;
+    window_set_inner_width: function(i, v) {
+      let _i = A.g(i);
+      _i.innerWidth = A.g(v);
     },
 
-    window_get_inner_height: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.innerHeight;
+    window_get_inner_height: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.innerHeight);
     },
 
-    window_set_inner_height: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.innerHeight = val;
+    window_set_inner_height: function(i, v) {
+      let _i = A.g(i);
+      _i.innerHeight = A.g(v);
     },
 
-    window_scroll: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    window_scroll: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.scroll(_x, _y);
+      _i.scroll(_x, _y);
     },
 
-    window_scroll_to: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    window_scroll_to: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.scrollTo(_x, _y);
+      _i.scrollTo(_x, _y);
     },
 
-    window_scroll_by: function(instance, x, y) {
-      let _instance = ALLOCATOR.g(instance);
+    window_scroll_by: function(i, x, y) {
+      let _i = A.g(i);
+
       let _x = x;
       let _y = y;
-      _instance.scrollBy(_x, _y);
+      _i.scrollBy(_x, _y);
     },
 
-    window_get_scroll_x: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.scrollX;
+    window_get_scroll_x: function(i) {
+      let _i = A.g(i);
+      return _i.scrollX;
     },
 
-    window_set_scroll_x: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scrollX = val;
+    window_set_scroll_x: function(i, v) {
+      let _i = A.g(i);
+      _i.scrollX = v;
     },
 
-    window_get_page_x_offset: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.pageXOffset;
+    window_get_page_x_offset: function(i) {
+      let _i = A.g(i);
+      return _i.pageXOffset;
     },
 
-    window_set_page_x_offset: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.pageXOffset = val;
+    window_set_page_x_offset: function(i, v) {
+      let _i = A.g(i);
+      _i.pageXOffset = v;
     },
 
-    window_get_scroll_y: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.scrollY;
+    window_get_scroll_y: function(i) {
+      let _i = A.g(i);
+      return _i.scrollY;
     },
 
-    window_set_scroll_y: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.scrollY = val;
+    window_set_scroll_y: function(i, v) {
+      let _i = A.g(i);
+      _i.scrollY = v;
     },
 
-    window_get_page_y_offset: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.pageYOffset;
+    window_get_page_y_offset: function(i) {
+      let _i = A.g(i);
+      return _i.pageYOffset;
     },
 
-    window_set_page_y_offset: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.pageYOffset = val;
+    window_set_page_y_offset: function(i, v) {
+      let _i = A.g(i);
+      _i.pageYOffset = v;
     },
 
-    window_get_screen_x: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.screenX;
+    window_get_screen_x: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.screenX);
     },
 
-    window_set_screen_x: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.screenX = val;
+    window_set_screen_x: function(i, v) {
+      let _i = A.g(i);
+      _i.screenX = A.g(v);
     },
 
-    window_get_screen_y: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.screenY;
+    window_get_screen_y: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.screenY);
     },
 
-    window_set_screen_y: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.screenY = val;
+    window_set_screen_y: function(i, v) {
+      let _i = A.g(i);
+      _i.screenY = A.g(v);
     },
 
-    window_get_outer_width: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.outerWidth;
+    window_get_outer_width: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.outerWidth);
     },
 
-    window_set_outer_width: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.outerWidth = val;
+    window_set_outer_width: function(i, v) {
+      let _i = A.g(i);
+      _i.outerWidth = A.g(v);
     },
 
-    window_get_outer_height: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.outerHeight;
+    window_get_outer_height: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.outerHeight);
     },
 
-    window_set_outer_height: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.outerHeight = val;
+    window_set_outer_height: function(i, v) {
+      let _i = A.g(i);
+      _i.outerHeight = A.g(v);
     },
 
-    window_get_device_pixel_ratio: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.devicePixelRatio;
+    window_get_device_pixel_ratio: function(i) {
+      let _i = A.g(i);
+      return _i.devicePixelRatio;
     },
 
-    window_set_device_pixel_ratio: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.devicePixelRatio = val;
+    window_set_device_pixel_ratio: function(i, v) {
+      let _i = A.g(i);
+      _i.devicePixelRatio = v;
     },
 
-    window_request_animation_frame: function(instance, callback) {
-      let _instance = ALLOCATOR.g(instance);
-      let _callback = ALLOCATOR.g(callback);
-      return ALLOCATOR.a(_instance.requestAnimationFrame(_callback));
+    window_request_animation_frame: function(i, callback) {
+      let _i = A.g(i);
+
+      let _callback = A.g(callback);
+      return A.a(_i.requestAnimationFrame(_callback));
     },
 
-    window_cancel_animation_frame: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
+    window_cancel_animation_frame: function(i, handle) {
+      let _i = A.g(i);
+
       let _handle = handle;
-      _instance.cancelAnimationFrame(_handle);
+      _i.cancelAnimationFrame(_handle);
     },
 
-    window_get_performance: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.performance);
+    window_get_performance: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.performance);
     },
 
-    window_set_performance: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.performance = ALLOCATOR.g(handle);
+    window_set_performance: function(i, v) {
+      let _i = A.g(i);
+      _i.performance = A.g(v);
     },
 
-    window_get_orientation: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return _instance.orientation;
+    window_get_orientation: function(i) {
+      let _i = A.g(i);
+      return _i.orientation;
     },
 
-    window_set_orientation: function(instance, val) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.orientation = val;
+    window_set_orientation: function(i, v) {
+      let _i = A.g(i);
+      _i.orientation = v;
     },
 
-    window_get_onorientationchange: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onorientationchange);
+    window_get_onorientationchange: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onorientationchange);
     },
 
-    window_set_onorientationchange: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onorientationchange = ALLOCATOR.g(handle);
+    window_set_onorientationchange: function(i, v) {
+      let _i = A.g(i);
+      _i.onorientationchange = A.g(v);
     },
 
-    window_get_onvrdisplayconnect: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onvrdisplayconnect);
+    window_get_onvrdisplayconnect: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onvrdisplayconnect);
     },
 
-    window_set_onvrdisplayconnect: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onvrdisplayconnect = ALLOCATOR.g(handle);
+    window_set_onvrdisplayconnect: function(i, v) {
+      let _i = A.g(i);
+      _i.onvrdisplayconnect = A.g(v);
     },
 
-    window_get_onvrdisplaydisconnect: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onvrdisplaydisconnect);
+    window_get_onvrdisplaydisconnect: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onvrdisplaydisconnect);
     },
 
-    window_set_onvrdisplaydisconnect: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onvrdisplaydisconnect = ALLOCATOR.g(handle);
+    window_set_onvrdisplaydisconnect: function(i, v) {
+      let _i = A.g(i);
+      _i.onvrdisplaydisconnect = A.g(v);
     },
 
-    window_get_onvrdisplayactivate: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onvrdisplayactivate);
+    window_get_onvrdisplayactivate: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onvrdisplayactivate);
     },
 
-    window_set_onvrdisplayactivate: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onvrdisplayactivate = ALLOCATOR.g(handle);
+    window_set_onvrdisplayactivate: function(i, v) {
+      let _i = A.g(i);
+      _i.onvrdisplayactivate = A.g(v);
     },
 
-    window_get_onvrdisplaydeactivate: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onvrdisplaydeactivate);
+    window_get_onvrdisplaydeactivate: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onvrdisplaydeactivate);
     },
 
-    window_set_onvrdisplaydeactivate: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onvrdisplaydeactivate = ALLOCATOR.g(handle);
+    window_set_onvrdisplaydeactivate: function(i, v) {
+      let _i = A.g(i);
+      _i.onvrdisplaydeactivate = A.g(v);
     },
 
-    window_get_onvrdisplaypresentchange: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.onvrdisplaypresentchange);
+    window_get_onvrdisplaypresentchange: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.onvrdisplaypresentchange);
     },
 
-    window_set_onvrdisplaypresentchange: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.onvrdisplaypresentchange = ALLOCATOR.g(handle);
+    window_set_onvrdisplaypresentchange: function(i, v) {
+      let _i = A.g(i);
+      _i.onvrdisplaypresentchange = A.g(v);
     },
 
-    window_get_paint_worklet: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.paintWorklet);
+    window_get_paint_worklet: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.paintWorklet);
     },
 
-    window_set_paint_worklet: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.paintWorklet = ALLOCATOR.g(handle);
+    window_set_paint_worklet: function(i, v) {
+      let _i = A.g(i);
+      _i.paintWorklet = A.g(v);
     },
 
-    window_request_idle_callback: function(instance, callback, options) {
-      let _instance = ALLOCATOR.g(instance);
-      let _callback = ALLOCATOR.g(callback);
-      let _options = ALLOCATOR.g(options);
-      return ALLOCATOR.a(_instance.requestIdleCallback(_callback, _options));
+    window_request_idle_callback: function(i, callback, options) {
+      let _i = A.g(i);
+
+      let _callback = A.g(callback);
+      let _options = A.g(options);
+      return A.a(_i.requestIdleCallback(_callback, _options));
     },
 
-    window_cancel_idle_callback: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
+    window_cancel_idle_callback: function(i, handle) {
+      let _i = A.g(i);
+
       let _handle = handle;
-      _instance.cancelIdleCallback(_handle);
+      _i.cancelIdleCallback(_handle);
     },
 
-    window_get_origin: function(instance) {
-      let _instance = ALLOCATOR.g(instance);
-      return ALLOCATOR.a(_instance.origin);
+    window_get_origin: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.origin);
     },
 
-    window_set_origin: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
-      _instance.origin = ALLOCATOR.g(handle);
+    window_set_origin: function(i, v) {
+      let _i = A.g(i);
+      _i.origin = A.g(v);
     },
 
-    window_btoa: function(instance, btoa) {
-      let _instance = ALLOCATOR.g(instance);
+    window_btoa: function(i, btoa) {
+      let _i = A.g(i);
+
       let _btoa = this.s(btoa);
-      return this.ms(_instance.btoa(_btoa));
+      return this.ms(_i.btoa(_btoa));
     },
 
-    window_atob: function(instance, atob) {
-      let _instance = ALLOCATOR.g(instance);
+    window_atob: function(i, atob) {
+      let _i = A.g(i);
+
       let _atob = this.s(atob);
-      return this.ms(_instance.atob(_atob));
+      return this.ms(_i.atob(_atob));
     },
 
-    window_set_timeout: function(instance, handler, timeout) {
-      let _instance = ALLOCATOR.g(instance);
-      let _handler = ALLOCATOR.g(handler);
+    window_set_timeout: function(i, handler, timeout) {
+      let _i = A.g(i);
+
+      let _handler = A.g(handler);
       let _timeout = timeout;
-      return ALLOCATOR.a(_instance.setTimeout(_handler, _timeout));
+      return A.a(_i.setTimeout(_handler, _timeout));
     },
 
-    window_clear_timeout: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
+    window_clear_timeout: function(i, handle) {
+      let _i = A.g(i);
+
       let _handle = handle;
-      _instance.clearTimeout(_handle);
+      _i.clearTimeout(_handle);
     },
 
-    window_set_interval: function(instance, handler, timeout) {
-      let _instance = ALLOCATOR.g(instance);
-      let _handler = ALLOCATOR.g(handler);
+    window_set_interval: function(i, handler, timeout) {
+      let _i = A.g(i);
+
+      let _handler = A.g(handler);
       let _timeout = timeout;
-      return ALLOCATOR.a(_instance.setInterval(_handler, _timeout));
+      return A.a(_i.setInterval(_handler, _timeout));
     },
 
-    window_clear_interval: function(instance, handle) {
-      let _instance = ALLOCATOR.g(instance);
+    window_clear_interval: function(i, handle) {
+      let _i = A.g(i);
+
       let _handle = handle;
-      _instance.clearInterval(_handle);
+      _i.clearInterval(_handle);
     },
 
-    window_create_image_bitmap: function(
-      instance,
-      a_image,
-      a_sx,
-      a_sy,
-      a_sw,
-      a_sh
-    ) {
-      let _instance = ALLOCATOR.g(instance);
-      let _a_image = ALLOCATOR.g(a_image);
-      let _a_sx = a_sx;
-      let _a_sy = a_sy;
-      let _a_sw = a_sw;
-      let _a_sh = a_sh;
-      return ALLOCATOR.a(
-        _instance.createImageBitmap(_a_image, _a_sx, _a_sy, _a_sw, _a_sh)
-      );
+    window_create_image_bitmap: function(i, aImage, aSx, aSy, aSw, aSh) {
+      let _i = A.g(i);
+
+      let _aImage = A.g(aImage);
+      let _aSx = aSx;
+      let _aSy = aSy;
+      let _aSw = aSw;
+      let _aSh = aSh;
+      return A.a(_i.createImageBitmap(_aImage, _aSx, _aSy, _aSw, _aSh));
     }
   };
   return webidl;

@@ -1,29 +1,29 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn keyboardevent_get_char_code(instance: DOMReference) -> i32;
-    fn keyboardevent_set_char_code(instance: DOMReference, value: i32);
+    fn keyboardevent_get_char_code(instance: DOMReference) -> f32;
+    fn keyboardevent_set_char_code(instance: DOMReference, value: f32);
 }
 
-pub fn get_char_code(instance: DOMReference) -> i32 {
+pub fn get_char_code(instance: DOMReference) -> f32 {
     unsafe { keyboardevent_get_char_code(instance) }
 }
 
-pub fn set_char_code(instance: DOMReference, value: i32) {
+pub fn set_char_code(instance: DOMReference, value: f32) {
     unsafe {
         keyboardevent_set_char_code(instance, value);
     }
 }
 extern "C" {
-    fn keyboardevent_get_key_code(instance: DOMReference) -> i32;
-    fn keyboardevent_set_key_code(instance: DOMReference, value: i32);
+    fn keyboardevent_get_key_code(instance: DOMReference) -> f32;
+    fn keyboardevent_set_key_code(instance: DOMReference, value: f32);
 }
 
-pub fn get_key_code(instance: DOMReference) -> i32 {
+pub fn get_key_code(instance: DOMReference) -> f32 {
     unsafe { keyboardevent_get_key_code(instance) }
 }
 
-pub fn set_key_code(instance: DOMReference, value: i32) {
+pub fn set_key_code(instance: DOMReference, value: f32) {
     unsafe {
         keyboardevent_set_key_code(instance, value);
     }
@@ -85,22 +85,23 @@ pub fn set_meta_key(instance: DOMReference, value: i32) {
     }
 }
 extern "C" {
-    fn keyboardevent_get_modifier_state(instance: i32, key: CString) -> i32;
+    fn keyboardevent_get_modifier_state(instance: DOMReference, get_modifier_state: CString)
+        -> i32;
 }
 
-pub fn get_modifier_state(instance: i32, key: &str) -> i32 {
+pub fn get_modifier_state(instance: DOMReference, key: &str) -> i32 {
     unsafe { keyboardevent_get_modifier_state(instance, to_cstring(key)) }
 }
 extern "C" {
-    fn keyboardevent_get_location(instance: DOMReference) -> i32;
-    fn keyboardevent_set_location(instance: DOMReference, value: i32);
+    fn keyboardevent_get_location(instance: DOMReference) -> f32;
+    fn keyboardevent_set_location(instance: DOMReference, value: f32);
 }
 
-pub fn get_location(instance: DOMReference) -> i32 {
+pub fn get_location(instance: DOMReference) -> f32 {
     unsafe { keyboardevent_get_location(instance) }
 }
 
-pub fn set_location(instance: DOMReference, value: i32) {
+pub fn set_location(instance: DOMReference, value: f32) {
     unsafe {
         keyboardevent_set_location(instance, value);
     }
@@ -163,28 +164,28 @@ pub fn set_code(instance: DOMReference, value: &str) {
 }
 extern "C" {
     fn keyboardevent_init_keyboard_event(
-        instance: i32,
-        type_arg: CString,
-        bubbles_arg: i32,
-        cancelable_arg: i32,
-        view_arg: i32,
-        key_arg: CString,
-        location_arg: i32,
-        ctrl_key: i32,
-        alt_key: i32,
-        shift_key: i32,
-        meta_key: i32,
+        instance: DOMReference,
+        init_keyboard_event: CString,
+        init_keyboard_event: i32,
+        init_keyboard_event: i32,
+        init_keyboard_event: i32,
+        init_keyboard_event: CString,
+        init_keyboard_event: f32,
+        init_keyboard_event: i32,
+        init_keyboard_event: i32,
+        init_keyboard_event: i32,
+        init_keyboard_event: i32,
     );
 }
 
 pub fn init_keyboard_event(
-    instance: i32,
+    instance: DOMReference,
     type_arg: &str,
     bubbles_arg: i32,
     cancelable_arg: i32,
     view_arg: i32,
     key_arg: &str,
-    location_arg: i32,
+    location_arg: f32,
     ctrl_key: i32,
     alt_key: i32,
     shift_key: i32,
