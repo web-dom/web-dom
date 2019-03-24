@@ -1,6 +1,6 @@
 {
   "name": "web-dom",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "A web component for making web assembly modules that can interat with dom easily",
   "main": "web-dom.js",
   "directories": {
