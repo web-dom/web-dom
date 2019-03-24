@@ -6,6 +6,26 @@
       "return_type": "object"
     },
     {
+      "type": "property",
+      "name": "mozCurrentTransform",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "mozCurrentTransformInverse",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "mozTextStyle",
+      "return_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "mozImageSmoothingEnabled",
+      "return_type": "boolean"
+    },
+    {
       "type": "function",
       "name": "drawWindow",
       "params": [
@@ -175,12 +195,12 @@
     {
       "type": "property",
       "name": "strokeStyle",
-      "return_type": "string"
+      "return_type": "object"
     },
     {
       "type": "property",
       "name": "fillStyle",
-      "return_type": "string"
+      "return_type": "object"
     },
     {
       "type": "function",
@@ -350,7 +370,26 @@
     {
       "type": "function",
       "name": "fill",
-      "params": []
+      "params": [
+        {
+          "name": "winding",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "fill",
+      "params": [
+        {
+          "name": "path",
+          "type": "object"
+        },
+        {
+          "name": "winding",
+          "type": "object"
+        }
+      ]
     },
     {
       "type": "function",
@@ -359,13 +398,65 @@
     },
     {
       "type": "function",
+      "name": "stroke",
+      "params": [
+        {
+          "name": "path",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
       "name": "clip",
-      "params": []
+      "params": [
+        {
+          "name": "winding",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "clip",
+      "params": [
+        {
+          "name": "path",
+          "type": "object"
+        },
+        {
+          "name": "winding",
+          "type": "object"
+        }
+      ]
     },
     {
       "type": "function",
       "name": "isPointInPath",
       "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "winding",
+          "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "isPointInPath",
+      "params": [
+        {
+          "name": "path",
+          "type": "object"
+        },
         {
           "name": "x",
           "type": "number"
@@ -398,6 +489,25 @@
     },
     {
       "type": "function",
+      "name": "isPointInStroke",
+      "params": [
+        {
+          "name": "path",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
       "name": "drawFocusIfNeeded",
       "params": [
         {
@@ -405,17 +515,6 @@
           "type": "object"
         }
       ]
-    },
-    {
-      "type": "function",
-      "name": "drawCustomFocusRing",
-      "params": [
-        {
-          "name": "element",
-          "type": "object"
-        }
-      ],
-      "return_type": "boolean"
     },
     {
       "type": "function",
@@ -481,6 +580,50 @@
           "type": "object"
         },
         {
+          "name": "dx",
+          "type": "number"
+        },
+        {
+          "name": "dy",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "drawImage",
+      "params": [
+        {
+          "name": "image",
+          "type": "object"
+        },
+        {
+          "name": "dx",
+          "type": "number"
+        },
+        {
+          "name": "dy",
+          "type": "number"
+        },
+        {
+          "name": "dw",
+          "type": "number"
+        },
+        {
+          "name": "dh",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "drawImage",
+      "params": [
+        {
+          "name": "image",
+          "type": "object"
+        },
+        {
           "name": "sx",
           "type": "number"
         },
@@ -531,6 +674,17 @@
     },
     {
       "type": "function",
+      "name": "createImageData",
+      "params": [
+        {
+          "name": "imagedata",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
       "name": "getImageData",
       "params": [
         {
@@ -551,6 +705,24 @@
         }
       ],
       "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "putImageData",
+      "params": [
+        {
+          "name": "imagedata",
+          "type": "object"
+        },
+        {
+          "name": "dx",
+          "type": "number"
+        },
+        {
+          "name": "dy",
+          "type": "number"
+        }
+      ]
     },
     {
       "type": "function",
@@ -916,6 +1088,207 @@
         {
           "name": "transformation",
           "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "closePath",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "quadraticCurveTo",
+      "params": [
+        {
+          "name": "cpx",
+          "type": "number"
+        },
+        {
+          "name": "cpy",
+          "type": "number"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bezierCurveTo",
+      "params": [
+        {
+          "name": "cp1x",
+          "type": "number"
+        },
+        {
+          "name": "cp1y",
+          "type": "number"
+        },
+        {
+          "name": "cp2x",
+          "type": "number"
+        },
+        {
+          "name": "cp2y",
+          "type": "number"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "x1",
+          "type": "number"
+        },
+        {
+          "name": "y1",
+          "type": "number"
+        },
+        {
+          "name": "x2",
+          "type": "number"
+        },
+        {
+          "name": "y2",
+          "type": "number"
+        },
+        {
+          "name": "radius",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "rect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "w",
+          "type": "number"
+        },
+        {
+          "name": "h",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "arc",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "radius",
+          "type": "number"
+        },
+        {
+          "name": "startAngle",
+          "type": "number"
+        },
+        {
+          "name": "endAngle",
+          "type": "number"
+        },
+        {
+          "name": "anticlockwise",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "ellipse",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "radiusX",
+          "type": "number"
+        },
+        {
+          "name": "radiusY",
+          "type": "number"
+        },
+        {
+          "name": "rotation",
+          "type": "number"
+        },
+        {
+          "name": "startAngle",
+          "type": "number"
+        },
+        {
+          "name": "endAngle",
+          "type": "number"
+        },
+        {
+          "name": "anticlockwise",
+          "type": "boolean"
         }
       ]
     }

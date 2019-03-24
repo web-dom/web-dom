@@ -1,4 +1,5 @@
 
+pub mod canvas;
 pub mod canvasgradient;
 pub mod canvaspattern;
 pub mod console;
@@ -6,7 +7,6 @@ pub mod consoleinstance;
 pub mod customelement;
 pub mod date;
 pub mod document;
-pub mod drawing;
 pub mod element;
 pub mod eventtarget;
 mod global;

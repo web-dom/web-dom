@@ -27,7 +27,7 @@ function isPrimitive(n) {
 function finalNamespaceName(namespace) {
   namespace = namespace.toLowerCase();
   if (namespace == "canvasrenderingcontext2d") {
-    return "drawing";
+    return "canvas";
   } else if (namespace != "element" && namespace.indexOf("element") != -1) {
     return namespace.replace("element", "");
   }
@@ -165,6 +165,7 @@ let dom_api = JSON.parse(fs.readFileSync("dom_api.json", "utf8"));
 
 for (i in dom_api) {
   let newNamespace = processNamespace(i);
+  let seenMembers = {};
   for (f in dom_api[i]) {
     let member = dom_api[i][f];
     let trueName = member.name;
@@ -227,6 +228,14 @@ for (i in dom_api) {
             }\n}\n`
       );
     } else if (member.type == "function") {
+      if (seenMembers[newName] == undefined) {
+        seenMembers[newName] = 1;
+      } else {
+        let n = newName + "_" + seenMembers[newName];
+        seenMembers[newName] = seenMembers[newName] + 1;
+        newName = n;
+      }
+
       let params = member.params;
       let returnType = member.return_type;
       let hasReturn = member.return_type != null;

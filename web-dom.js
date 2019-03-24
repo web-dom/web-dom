@@ -223,17 +223,57 @@
       //TODO: get rid of one day when this isn't required by tinygo
       resource_write: function() {},
 
-      drawing_get_canvas: function(i) {
+      canvas_get_canvas: function(i) {
         let _i = A.g(i);
         return A.a(_i.canvas);
       },
 
-      drawing_set_canvas: function(i, v) {
+      canvas_set_canvas: function(i, v) {
         let _i = A.g(i);
         _i.canvas = A.g(v);
       },
 
-      drawing_draw_window: function(i, window, x, y, w, h, bgColor, flags) {
+      canvas_get_moz_current_transform: function(i) {
+        let _i = A.g(i);
+        return A.a(_i.mozCurrentTransform);
+      },
+
+      canvas_set_moz_current_transform: function(i, v) {
+        let _i = A.g(i);
+        _i.mozCurrentTransform = A.g(v);
+      },
+
+      canvas_get_moz_current_transform_inverse: function(i) {
+        let _i = A.g(i);
+        return A.a(_i.mozCurrentTransformInverse);
+      },
+
+      canvas_set_moz_current_transform_inverse: function(i, v) {
+        let _i = A.g(i);
+        _i.mozCurrentTransformInverse = A.g(v);
+      },
+
+      canvas_get_moz_text_style: function(i) {
+        let _i = A.g(i);
+        return this.ms(_i.mozTextStyle);
+      },
+
+      canvas_set_moz_text_style: function(i, v) {
+        let _i = A.g(i);
+        _i.mozTextStyle = this.s(v);
+      },
+
+      canvas_get_moz_image_smoothing_enabled: function(i) {
+        let _i = A.g(i);
+        return _i.mozImageSmoothingEnabled ? 1 : 0;
+      },
+
+      canvas_set_moz_image_smoothing_enabled: function(i, v) {
+        let _i = A.g(i);
+        _i.mozImageSmoothingEnabled = 1 == v;
+      },
+
+      canvas_draw_window: function(i, window, x, y, w, h, bgColor, flags) {
         let _i = A.g(i);
 
         let _window = A.g(window);
@@ -246,25 +286,25 @@
         _i.drawWindow(_window, _x, _y, _w, _h, _bgColor, _flags);
       },
 
-      drawing_demote: function(i) {
+      canvas_demote: function(i) {
         let _i = A.g(i);
 
         _i.demote();
       },
 
-      drawing_save: function(i) {
+      canvas_save: function(i) {
         let _i = A.g(i);
 
         _i.save();
       },
 
-      drawing_restore: function(i) {
+      canvas_restore: function(i) {
         let _i = A.g(i);
 
         _i.restore();
       },
 
-      drawing_scale: function(i, x, y) {
+      canvas_scale: function(i, x, y) {
         let _i = A.g(i);
 
         let _x = x;
@@ -272,14 +312,14 @@
         _i.scale(_x, _y);
       },
 
-      drawing_rotate: function(i, angle) {
+      canvas_rotate: function(i, angle) {
         let _i = A.g(i);
 
         let _angle = angle;
         _i.rotate(_angle);
       },
 
-      drawing_translate: function(i, x, y) {
+      canvas_translate: function(i, x, y) {
         let _i = A.g(i);
 
         let _x = x;
@@ -287,7 +327,7 @@
         _i.translate(_x, _y);
       },
 
-      drawing_transform: function(i, a, b, c, d, e, f) {
+      canvas_transform: function(i, a, b, c, d, e, f) {
         let _i = A.g(i);
 
         let _a = a;
@@ -299,7 +339,7 @@
         _i.transform(_a, _b, _c, _d, _e, _f);
       },
 
-      drawing_set_transform: function(i, a, b, c, d, e, f) {
+      canvas_set_transform: function(i, a, b, c, d, e, f) {
         let _i = A.g(i);
 
         let _a = a;
@@ -311,63 +351,63 @@
         _i.setTransform(_a, _b, _c, _d, _e, _f);
       },
 
-      drawing_reset_transform: function(i) {
+      canvas_reset_transform: function(i) {
         let _i = A.g(i);
 
         _i.resetTransform();
       },
 
-      drawing_get_global_alpha: function(i) {
+      canvas_get_global_alpha: function(i) {
         let _i = A.g(i);
         return _i.globalAlpha;
       },
 
-      drawing_set_global_alpha: function(i, v) {
+      canvas_set_global_alpha: function(i, v) {
         let _i = A.g(i);
         _i.globalAlpha = v;
       },
 
-      drawing_get_global_composite_operation: function(i) {
+      canvas_get_global_composite_operation: function(i) {
         let _i = A.g(i);
         return this.ms(_i.globalCompositeOperation);
       },
 
-      drawing_set_global_composite_operation: function(i, v) {
+      canvas_set_global_composite_operation: function(i, v) {
         let _i = A.g(i);
         _i.globalCompositeOperation = this.s(v);
       },
 
-      drawing_get_image_smoothing_enabled: function(i) {
+      canvas_get_image_smoothing_enabled: function(i) {
         let _i = A.g(i);
         return _i.imageSmoothingEnabled ? 1 : 0;
       },
 
-      drawing_set_image_smoothing_enabled: function(i, v) {
+      canvas_set_image_smoothing_enabled: function(i, v) {
         let _i = A.g(i);
         _i.imageSmoothingEnabled = 1 == v;
       },
 
-      drawing_get_stroke_style: function(i) {
+      canvas_get_stroke_style: function(i) {
         let _i = A.g(i);
-        return this.ms(_i.strokeStyle);
+        return A.a(_i.strokeStyle);
       },
 
-      drawing_set_stroke_style: function(i, v) {
+      canvas_set_stroke_style: function(i, v) {
         let _i = A.g(i);
-        _i.strokeStyle = this.s(v);
+        _i.strokeStyle = A.g(v);
       },
 
-      drawing_get_fill_style: function(i) {
+      canvas_get_fill_style: function(i) {
         let _i = A.g(i);
-        return this.ms(_i.fillStyle);
+        return A.a(_i.fillStyle);
       },
 
-      drawing_set_fill_style: function(i, v) {
+      canvas_set_fill_style: function(i, v) {
         let _i = A.g(i);
-        _i.fillStyle = this.s(v);
+        _i.fillStyle = A.g(v);
       },
 
-      drawing_create_linear_gradient: function(i, x0, y0, x1, y1) {
+      canvas_create_linear_gradient: function(i, x0, y0, x1, y1) {
         let _i = A.g(i);
 
         let _x0 = x0;
@@ -377,7 +417,7 @@
         return A.a(_i.createLinearGradient(_x0, _y0, _x1, _y1));
       },
 
-      drawing_create_radial_gradient: function(i, x0, y0, r0, x1, y1, r1) {
+      canvas_create_radial_gradient: function(i, x0, y0, r0, x1, y1, r1) {
         let _i = A.g(i);
 
         let _x0 = x0;
@@ -389,7 +429,7 @@
         return A.a(_i.createRadialGradient(_x0, _y0, _r0, _x1, _y1, _r1));
       },
 
-      drawing_create_pattern: function(i, image, repetition) {
+      canvas_create_pattern: function(i, image, repetition) {
         let _i = A.g(i);
 
         let _image = A.g(image);
@@ -397,57 +437,57 @@
         return A.a(_i.createPattern(_image, _repetition));
       },
 
-      drawing_get_shadow_offset_x: function(i) {
+      canvas_get_shadow_offset_x: function(i) {
         let _i = A.g(i);
         return _i.shadowOffsetX;
       },
 
-      drawing_set_shadow_offset_x: function(i, v) {
+      canvas_set_shadow_offset_x: function(i, v) {
         let _i = A.g(i);
         _i.shadowOffsetX = v;
       },
 
-      drawing_get_shadow_offset_y: function(i) {
+      canvas_get_shadow_offset_y: function(i) {
         let _i = A.g(i);
         return _i.shadowOffsetY;
       },
 
-      drawing_set_shadow_offset_y: function(i, v) {
+      canvas_set_shadow_offset_y: function(i, v) {
         let _i = A.g(i);
         _i.shadowOffsetY = v;
       },
 
-      drawing_get_shadow_blur: function(i) {
+      canvas_get_shadow_blur: function(i) {
         let _i = A.g(i);
         return _i.shadowBlur;
       },
 
-      drawing_set_shadow_blur: function(i, v) {
+      canvas_set_shadow_blur: function(i, v) {
         let _i = A.g(i);
         _i.shadowBlur = v;
       },
 
-      drawing_get_shadow_color: function(i) {
+      canvas_get_shadow_color: function(i) {
         let _i = A.g(i);
         return this.ms(_i.shadowColor);
       },
 
-      drawing_set_shadow_color: function(i, v) {
+      canvas_set_shadow_color: function(i, v) {
         let _i = A.g(i);
         _i.shadowColor = this.s(v);
       },
 
-      drawing_get_filter: function(i) {
+      canvas_get_filter: function(i) {
         let _i = A.g(i);
         return this.ms(_i.filter);
       },
 
-      drawing_set_filter: function(i, v) {
+      canvas_set_filter: function(i, v) {
         let _i = A.g(i);
         _i.filter = this.s(v);
       },
 
-      drawing_clear_rect: function(i, x, y, w, h) {
+      canvas_clear_rect: function(i, x, y, w, h) {
         let _i = A.g(i);
 
         let _x = x;
@@ -457,7 +497,7 @@
         _i.clearRect(_x, _y, _w, _h);
       },
 
-      drawing_fill_rect: function(i, x, y, w, h) {
+      canvas_fill_rect: function(i, x, y, w, h) {
         let _i = A.g(i);
 
         let _x = x;
@@ -467,7 +507,7 @@
         _i.fillRect(_x, _y, _w, _h);
       },
 
-      drawing_stroke_rect: function(i, x, y, w, h) {
+      canvas_stroke_rect: function(i, x, y, w, h) {
         let _i = A.g(i);
 
         let _x = x;
@@ -477,31 +517,56 @@
         _i.strokeRect(_x, _y, _w, _h);
       },
 
-      drawing_begin_path: function(i) {
+      canvas_begin_path: function(i) {
         let _i = A.g(i);
 
         _i.beginPath();
       },
 
-      drawing_fill: function(i) {
+      canvas_fill: function(i, winding) {
         let _i = A.g(i);
 
-        _i.fill();
+        let _winding = A.g(winding);
+        _i.fill(_winding);
       },
 
-      drawing_stroke: function(i) {
+      canvas_fill_1: function(i, path, winding) {
+        let _i = A.g(i);
+
+        let _path = A.g(path);
+        let _winding = A.g(winding);
+        _i.fill(_path, _winding);
+      },
+
+      canvas_stroke: function(i) {
         let _i = A.g(i);
 
         _i.stroke();
       },
 
-      drawing_clip: function(i) {
+      canvas_stroke_1: function(i, path) {
         let _i = A.g(i);
 
-        _i.clip();
+        let _path = A.g(path);
+        _i.stroke(_path);
       },
 
-      drawing_is_point_in_path: function(i, x, y, winding) {
+      canvas_clip: function(i, winding) {
+        let _i = A.g(i);
+
+        let _winding = A.g(winding);
+        _i.clip(_winding);
+      },
+
+      canvas_clip_1: function(i, path, winding) {
+        let _i = A.g(i);
+
+        let _path = A.g(path);
+        let _winding = A.g(winding);
+        _i.clip(_path, _winding);
+      },
+
+      canvas_is_point_in_path: function(i, x, y, winding) {
         let _i = A.g(i);
 
         let _x = x;
@@ -510,7 +575,17 @@
         return A.a(_i.isPointInPath(_x, _y, _winding)) ? 1 : 0;
       },
 
-      drawing_is_point_in_stroke: function(i, x, y) {
+      canvas_is_point_in_path_1: function(i, path, x, y, winding) {
+        let _i = A.g(i);
+
+        let _path = A.g(path);
+        let _x = x;
+        let _y = y;
+        let _winding = A.g(winding);
+        return A.a(_i.isPointInPath(_path, _x, _y, _winding)) ? 1 : 0;
+      },
+
+      canvas_is_point_in_stroke: function(i, x, y) {
         let _i = A.g(i);
 
         let _x = x;
@@ -518,21 +593,23 @@
         return A.a(_i.isPointInStroke(_x, _y)) ? 1 : 0;
       },
 
-      drawing_draw_focus_if_needed: function(i, element) {
+      canvas_is_point_in_stroke_1: function(i, path, x, y) {
+        let _i = A.g(i);
+
+        let _path = A.g(path);
+        let _x = x;
+        let _y = y;
+        return A.a(_i.isPointInStroke(_path, _x, _y)) ? 1 : 0;
+      },
+
+      canvas_draw_focus_if_needed: function(i, element) {
         let _i = A.g(i);
 
         let _element = A.g(element);
         _i.drawFocusIfNeeded(_element);
       },
 
-      drawing_draw_custom_focus_ring: function(i, element) {
-        let _i = A.g(i);
-
-        let _element = A.g(element);
-        return A.a(_i.drawCustomFocusRing(_element)) ? 1 : 0;
-      },
-
-      drawing_fill_text: function(i, text, x, y, maxWidth) {
+      canvas_fill_text: function(i, text, x, y, maxWidth) {
         let _i = A.g(i);
 
         let _text = this.s(text);
@@ -542,7 +619,7 @@
         _i.fillText(_text, _x, _y, _maxWidth);
       },
 
-      drawing_stroke_text: function(i, text, x, y, maxWidth) {
+      canvas_stroke_text: function(i, text, x, y, maxWidth) {
         let _i = A.g(i);
 
         let _text = this.s(text);
@@ -552,14 +629,34 @@
         _i.strokeText(_text, _x, _y, _maxWidth);
       },
 
-      drawing_measure_text: function(i, text) {
+      canvas_measure_text: function(i, text) {
         let _i = A.g(i);
 
         let _text = this.s(text);
         return A.a(_i.measureText(_text));
       },
 
-      drawing_draw_image: function(i, image, sx, sy, sw, sh, dx, dy, dw, dh) {
+      canvas_draw_image: function(i, image, dx, dy) {
+        let _i = A.g(i);
+
+        let _image = A.g(image);
+        let _dx = dx;
+        let _dy = dy;
+        _i.drawImage(_image, _dx, _dy);
+      },
+
+      canvas_draw_image_1: function(i, image, dx, dy, dw, dh) {
+        let _i = A.g(i);
+
+        let _image = A.g(image);
+        let _dx = dx;
+        let _dy = dy;
+        let _dw = dw;
+        let _dh = dh;
+        _i.drawImage(_image, _dx, _dy, _dw, _dh);
+      },
+
+      canvas_draw_image_2: function(i, image, sx, sy, sw, sh, dx, dy, dw, dh) {
         let _i = A.g(i);
 
         let _image = A.g(image);
@@ -574,7 +671,7 @@
         _i.drawImage(_image, _sx, _sy, _sw, _sh, _dx, _dy, _dw, _dh);
       },
 
-      drawing_create_image_data: function(i, sw, sh) {
+      canvas_create_image_data: function(i, sw, sh) {
         let _i = A.g(i);
 
         let _sw = sw;
@@ -582,7 +679,14 @@
         return A.a(_i.createImageData(_sw, _sh));
       },
 
-      drawing_get_image_data: function(i, sx, sy, sw, sh) {
+      canvas_create_image_data_1: function(i, imagedata) {
+        let _i = A.g(i);
+
+        let _imagedata = A.g(imagedata);
+        return A.a(_i.createImageData(_imagedata));
+      },
+
+      canvas_get_image_data: function(i, sx, sy, sw, sh) {
         let _i = A.g(i);
 
         let _sx = sx;
@@ -592,7 +696,16 @@
         return A.a(_i.getImageData(_sx, _sy, _sw, _sh));
       },
 
-      drawing_put_image_data: function(
+      canvas_put_image_data: function(i, imagedata, dx, dy) {
+        let _i = A.g(i);
+
+        let _imagedata = A.g(imagedata);
+        let _dx = dx;
+        let _dy = dy;
+        _i.putImageData(_imagedata, _dx, _dy);
+      },
+
+      canvas_put_image_data_1: function(
         i,
         imagedata,
         dx,
@@ -622,106 +735,106 @@
         );
       },
 
-      drawing_get_line_width: function(i) {
+      canvas_get_line_width: function(i) {
         let _i = A.g(i);
         return _i.lineWidth;
       },
 
-      drawing_set_line_width: function(i, v) {
+      canvas_set_line_width: function(i, v) {
         let _i = A.g(i);
         _i.lineWidth = v;
       },
 
-      drawing_get_line_cap: function(i) {
+      canvas_get_line_cap: function(i) {
         let _i = A.g(i);
         return this.ms(_i.lineCap);
       },
 
-      drawing_set_line_cap: function(i, v) {
+      canvas_set_line_cap: function(i, v) {
         let _i = A.g(i);
         _i.lineCap = this.s(v);
       },
 
-      drawing_get_line_join: function(i) {
+      canvas_get_line_join: function(i) {
         let _i = A.g(i);
         return this.ms(_i.lineJoin);
       },
 
-      drawing_set_line_join: function(i, v) {
+      canvas_set_line_join: function(i, v) {
         let _i = A.g(i);
         _i.lineJoin = this.s(v);
       },
 
-      drawing_get_miter_limit: function(i) {
+      canvas_get_miter_limit: function(i) {
         let _i = A.g(i);
         return _i.miterLimit;
       },
 
-      drawing_set_miter_limit: function(i, v) {
+      canvas_set_miter_limit: function(i, v) {
         let _i = A.g(i);
         _i.miterLimit = v;
       },
 
-      drawing_set_line_dash: function(i, segments) {
+      canvas_set_line_dash: function(i, segments) {
         let _i = A.g(i);
 
         let _segments = A.g(segments);
         _i.setLineDash(_segments);
       },
 
-      drawing_get_line_dash: function(i) {
+      canvas_get_line_dash: function(i) {
         let _i = A.g(i);
 
         return A.a(_i.getLineDash());
       },
 
-      drawing_get_line_dash_offset: function(i) {
+      canvas_get_line_dash_offset: function(i) {
         let _i = A.g(i);
         return _i.lineDashOffset;
       },
 
-      drawing_set_line_dash_offset: function(i, v) {
+      canvas_set_line_dash_offset: function(i, v) {
         let _i = A.g(i);
         _i.lineDashOffset = v;
       },
 
-      drawing_get_font: function(i) {
+      canvas_get_font: function(i) {
         let _i = A.g(i);
         return this.ms(_i.font);
       },
 
-      drawing_set_font: function(i, v) {
+      canvas_set_font: function(i, v) {
         let _i = A.g(i);
         _i.font = this.s(v);
       },
 
-      drawing_get_text_align: function(i) {
+      canvas_get_text_align: function(i) {
         let _i = A.g(i);
         return this.ms(_i.textAlign);
       },
 
-      drawing_set_text_align: function(i, v) {
+      canvas_set_text_align: function(i, v) {
         let _i = A.g(i);
         _i.textAlign = this.s(v);
       },
 
-      drawing_get_text_baseline: function(i) {
+      canvas_get_text_baseline: function(i) {
         let _i = A.g(i);
         return this.ms(_i.textBaseline);
       },
 
-      drawing_set_text_baseline: function(i, v) {
+      canvas_set_text_baseline: function(i, v) {
         let _i = A.g(i);
         _i.textBaseline = this.s(v);
       },
 
-      drawing_close_path: function(i) {
+      canvas_close_path: function(i) {
         let _i = A.g(i);
 
         _i.closePath();
       },
 
-      drawing_move_to: function(i, x, y) {
+      canvas_move_to: function(i, x, y) {
         let _i = A.g(i);
 
         let _x = x;
@@ -729,7 +842,7 @@
         _i.moveTo(_x, _y);
       },
 
-      drawing_line_to: function(i, x, y) {
+      canvas_line_to: function(i, x, y) {
         let _i = A.g(i);
 
         let _x = x;
@@ -737,7 +850,7 @@
         _i.lineTo(_x, _y);
       },
 
-      drawing_quadratic_curve_to: function(i, cpx, cpy, x, y) {
+      canvas_quadratic_curve_to: function(i, cpx, cpy, x, y) {
         let _i = A.g(i);
 
         let _cpx = cpx;
@@ -747,7 +860,7 @@
         _i.quadraticCurveTo(_cpx, _cpy, _x, _y);
       },
 
-      drawing_bezier_curve_to: function(i, cp1x, cp1y, cp2x, cp2y, x, y) {
+      canvas_bezier_curve_to: function(i, cp1x, cp1y, cp2x, cp2y, x, y) {
         let _i = A.g(i);
 
         let _cp1x = cp1x;
@@ -759,7 +872,7 @@
         _i.bezierCurveTo(_cp1x, _cp1y, _cp2x, _cp2y, _x, _y);
       },
 
-      drawing_arc_to: function(i, x1, y1, x2, y2, radius) {
+      canvas_arc_to: function(i, x1, y1, x2, y2, radius) {
         let _i = A.g(i);
 
         let _x1 = x1;
@@ -770,7 +883,7 @@
         _i.arcTo(_x1, _y1, _x2, _y2, _radius);
       },
 
-      drawing_rect: function(i, x, y, w, h) {
+      canvas_rect: function(i, x, y, w, h) {
         let _i = A.g(i);
 
         let _x = x;
@@ -780,15 +893,7 @@
         _i.rect(_x, _y, _w, _h);
       },
 
-      drawing_arc: function(
-        i,
-        x,
-        y,
-        radius,
-        startAngle,
-        endAngle,
-        anticlockwise
-      ) {
+      canvas_arc: function(i, x, y, radius, startAngle, endAngle, anticlockwise) {
         let _i = A.g(i);
 
         let _x = x;
@@ -800,7 +905,7 @@
         _i.arc(_x, _y, _radius, _startAngle, _endAngle, _anticlockwise);
       },
 
-      drawing_ellipse: function(
+      canvas_ellipse: function(
         i,
         x,
         y,
@@ -833,21 +938,21 @@
         );
       },
 
-      drawing_add_hit_region: function(i, options) {
+      canvas_add_hit_region: function(i, options) {
         let _i = A.g(i);
 
         let _options = A.g(options);
         _i.addHitRegion(_options);
       },
 
-      drawing_remove_hit_region: function(i, id) {
+      canvas_remove_hit_region: function(i, id) {
         let _i = A.g(i);
 
         let _id = this.s(id);
         _i.removeHitRegion(_id);
       },
 
-      drawing_clear_hit_regions: function(i) {
+      canvas_clear_hit_regions: function(i) {
         let _i = A.g(i);
 
         _i.clearHitRegions();
@@ -884,6 +989,116 @@
         let _path = A.g(path);
         let _transformation = A.g(transformation);
         _i.addPath(_path, _transformation);
+      },
+
+      path2d_close_path: function(i) {
+        let _i = A.g(i);
+
+        _i.closePath();
+      },
+
+      path2d_move_to: function(i, x, y) {
+        let _i = A.g(i);
+
+        let _x = x;
+        let _y = y;
+        _i.moveTo(_x, _y);
+      },
+
+      path2d_line_to: function(i, x, y) {
+        let _i = A.g(i);
+
+        let _x = x;
+        let _y = y;
+        _i.lineTo(_x, _y);
+      },
+
+      path2d_quadratic_curve_to: function(i, cpx, cpy, x, y) {
+        let _i = A.g(i);
+
+        let _cpx = cpx;
+        let _cpy = cpy;
+        let _x = x;
+        let _y = y;
+        _i.quadraticCurveTo(_cpx, _cpy, _x, _y);
+      },
+
+      path2d_bezier_curve_to: function(i, cp1x, cp1y, cp2x, cp2y, x, y) {
+        let _i = A.g(i);
+
+        let _cp1x = cp1x;
+        let _cp1y = cp1y;
+        let _cp2x = cp2x;
+        let _cp2y = cp2y;
+        let _x = x;
+        let _y = y;
+        _i.bezierCurveTo(_cp1x, _cp1y, _cp2x, _cp2y, _x, _y);
+      },
+
+      path2d_arc_to: function(i, x1, y1, x2, y2, radius) {
+        let _i = A.g(i);
+
+        let _x1 = x1;
+        let _y1 = y1;
+        let _x2 = x2;
+        let _y2 = y2;
+        let _radius = radius;
+        _i.arcTo(_x1, _y1, _x2, _y2, _radius);
+      },
+
+      path2d_rect: function(i, x, y, w, h) {
+        let _i = A.g(i);
+
+        let _x = x;
+        let _y = y;
+        let _w = w;
+        let _h = h;
+        _i.rect(_x, _y, _w, _h);
+      },
+
+      path2d_arc: function(i, x, y, radius, startAngle, endAngle, anticlockwise) {
+        let _i = A.g(i);
+
+        let _x = x;
+        let _y = y;
+        let _radius = radius;
+        let _startAngle = startAngle;
+        let _endAngle = endAngle;
+        let _anticlockwise = 0 != anticlockwise;
+        _i.arc(_x, _y, _radius, _startAngle, _endAngle, _anticlockwise);
+      },
+
+      path2d_ellipse: function(
+        i,
+        x,
+        y,
+        radiusX,
+        radiusY,
+        rotation,
+        startAngle,
+        endAngle,
+        anticlockwise
+      ) {
+        let _i = A.g(i);
+
+        let _x = x;
+        let _y = y;
+        let _radiusX = radiusX;
+        let _radiusY = radiusY;
+        let _rotation = rotation;
+        let _startAngle = startAngle;
+        let _endAngle = endAngle;
+        let _anticlockwise = 0 != anticlockwise;
+        _i.ellipse(
+          _x,
+          _y,
+          _radiusX,
+          _radiusY,
+          _rotation,
+          _startAngle,
+          _endAngle,
+          _anticlockwise
+        );
       },
 
       console_assert: function(condition, message) {

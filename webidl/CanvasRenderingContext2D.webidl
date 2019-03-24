@@ -40,6 +40,21 @@ interface CanvasRenderingContext2D {
   // associated with a canvas.
   readonly attribute HTMLCanvasElement? canvas;
 
+  // Mozilla-specific stuff
+  // FIXME Bug 768048 mozCurrentTransform/mozCurrentTransformInverse should return a WebIDL array.
+  [Throws]
+  attribute object mozCurrentTransform; // [ m11, m12, m21, m22, dx, dy ], i.e. row major
+  [Throws]
+  attribute object mozCurrentTransformInverse;
+
+  [SetterThrows]
+  attribute DOMString mozTextStyle;
+
+  // image smoothing mode -- if disabled, images won't be smoothed
+  // if scaled.
+  [Deprecated="PrefixedImageSmoothingEnabled"]
+  attribute boolean mozImageSmoothingEnabled;
+
   // Show the caret if appropriate when drawing
   [Func="CanvasUtils::HasDrawWindowPrivilege"]
   const unsigned long DRAWWINDOW_DRAW_CARET   = 0x01;
@@ -105,9 +120,11 @@ interface CanvasRenderingContext2D {
    */
   [ChromeOnly]
   void demote();
+
   // state
   void save(); // push state on state stack
   void restore(); // pop state stack and restore state
+
   // transformations (default transform is the identity matrix)
 // NOT IMPLEMENTED           attribute SVGMatrix currentTransform;
   [Throws, LenientFloat]
@@ -122,20 +139,24 @@ interface CanvasRenderingContext2D {
   void setTransform(double a, double b, double c, double d, double e, double f);
   [Throws]
   void resetTransform();
+
   attribute unrestricted double globalAlpha; // (default 1.0)
   [Throws]
   attribute DOMString globalCompositeOperation; // (default source-over)
+
   // drawing images
   attribute boolean imageSmoothingEnabled;
+
   // colors and styles (see also the CanvasPathDrawingStyles interface)
-  attribute DOMString strokeStyle; // (default black)
-  attribute DOMString fillStyle; // (default black)
+  attribute (DOMString or CanvasGradient or CanvasPattern) strokeStyle; // (default black)
+  attribute (DOMString or CanvasGradient or CanvasPattern) fillStyle; // (default black)
   [NewObject]
   CanvasGradient createLinearGradient(double x0, double y0, double x1, double y1);
   [NewObject, Throws]
   CanvasGradient createRadialGradient(double x0, double y0, double r0, double x1, double y1, double r1);
   [NewObject, Throws]
   CanvasPattern? createPattern(CanvasImageSource image, [TreatNullAs=EmptyString] DOMString repetition);
+
   [LenientFloat]
   attribute double shadowOffsetX; // (default 0)
   [LenientFloat]
@@ -143,37 +164,39 @@ interface CanvasRenderingContext2D {
   [LenientFloat]
   attribute double shadowBlur; // (default 0)
   attribute DOMString shadowColor; // (default transparent black)
+
   [Pref="canvas.filters.enabled", SetterThrows]
   attribute DOMString filter; // (default empty string = no filter)
+
   [LenientFloat]
   void clearRect(double x, double y, double w, double h);
   [LenientFloat]
   void fillRect(double x, double y, double w, double h);
   [LenientFloat]
   void strokeRect(double x, double y, double w, double h);
+
   // path API (see also CanvasPathMethods)
   void beginPath();
-  //void fill(optional CanvasWindingRule winding = "nonzero");
-  void fill();//Path2D path, optional CanvasWindingRule winding = "nonzero");
+  void fill(optional CanvasWindingRule winding = "nonzero");
+  void fill(Path2D path, optional CanvasWindingRule winding = "nonzero");
   void stroke();
-  //void stroke(Path2D path);
-  //void clip(optional CanvasWindingRule winding = "nonzero");
-  void clip();//Path2D path, optional CanvasWindingRule winding = "nonzero");
+  void stroke(Path2D path);
+  void clip(optional CanvasWindingRule winding = "nonzero");
+  void clip(Path2D path, optional CanvasWindingRule winding = "nonzero");
 // NOT IMPLEMENTED  void resetClip();
   [NeedsSubjectPrincipal]
   boolean isPointInPath(unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
-  //[NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
-  //boolean isPointInPath(Path2D path, unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
+  [NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
+  boolean isPointInPath(Path2D path, unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
   [NeedsSubjectPrincipal]
   boolean isPointInStroke(double x, double y);
-  //[NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
-  //boolean isPointInStroke(Path2D path, unrestricted double x, unrestricted double y);
+  [NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
+  boolean isPointInStroke(Path2D path, unrestricted double x, unrestricted double y);
+
   [Pref="canvas.focusring.enabled", Throws] void drawFocusIfNeeded(Element element);
-// NOT IMPLEMENTED  void drawSystemFocusRing(Path path, HTMLElement element);
-  [Pref="canvas.customfocusring.enabled"] boolean drawCustomFocusRing(Element element);
-// NOT IMPLEMENTED  boolean drawCustomFocusRing(Path path, HTMLElement element);
 // NOT IMPLEMENTED  void scrollPathIntoView();
 // NOT IMPLEMENTED  void scrollPathIntoView(Path path);
+
   // text (see also the CanvasPathDrawingStyles interface)
   [Throws, LenientFloat]
   void fillText(DOMString text, double x, double y, optional double maxWidth);
@@ -181,23 +204,26 @@ interface CanvasRenderingContext2D {
   void strokeText(DOMString text, double x, double y, optional double maxWidth);
   [NewObject, Throws]
   TextMetrics measureText(DOMString text);
-  //[Throws, LenientFloat]
-  //void drawImage(CanvasImageSource image, double dx, double dy);
-  //[Throws, LenientFloat]
-  //void drawImage(CanvasImageSource image, double dx, double dy, double dw, double dh);
+
+  [Throws, LenientFloat]
+  void drawImage(CanvasImageSource image, double dx, double dy);
+  [Throws, LenientFloat]
+  void drawImage(CanvasImageSource image, double dx, double dy, double dw, double dh);
   [Throws, LenientFloat]
   void drawImage(CanvasImageSource image, double sx, double sy, double sw, double sh, double dx, double dy, double dw, double dh);
+
   // pixel manipulation
   [NewObject, Throws]
   ImageData createImageData(double sw, double sh);
-  //[NewObject, Throws]
-  //ImageData createImageData(ImageData imagedata);
+  [NewObject, Throws]
+  ImageData createImageData(ImageData imagedata);
   [NewObject, Throws, NeedsSubjectPrincipal]
   ImageData getImageData(double sx, double sy, double sw, double sh);
-  //[Throws]
-  //void putImageData(ImageData imagedata, double dx, double dy);
+  [Throws]
+  void putImageData(ImageData imagedata, double dx, double dy);
   [Throws]
   void putImageData(ImageData imagedata, double dx, double dy, double dirtyX, double dirtyY, double dirtyWidth, double dirtyHeight);
+
   // line caps/joins
   [LenientFloat]
   attribute double lineWidth; // (default 1)
@@ -211,11 +237,13 @@ interface CanvasRenderingContext2D {
   [LenientFloat, Throws] void setLineDash(sequence<double> segments); // default empty
   sequence<double> getLineDash();
   [LenientFloat] attribute double lineDashOffset;
+
   // text
   [SetterThrows]
   attribute DOMString font; // (default 10px sans-serif)
   attribute DOMString textAlign; // "start", "end", "left", "right", "center" (default: "start")
   attribute DOMString textBaseline; // "top", "hanging", "middle", "alphabetic", "ideographic", "bottom" (default: "alphabetic")
+
   // shared path API methods
   void closePath();
   [LenientFloat]
@@ -240,6 +268,7 @@ interface CanvasRenderingContext2D {
 
   [Throws, LenientFloat]
   void ellipse(double x, double y, double radiusX, double radiusY, double rotation, double startAngle, double endAngle, optional boolean anticlockwise = false);
+
   // hit regions
   [Pref="canvas.hitregions.enabled", Throws] void addHitRegion(optional HitRegionOptions options);
   [Pref="canvas.hitregions.enabled"] void removeHitRegion(DOMString id);
@@ -294,5 +323,28 @@ interface TextMetrics {
 interface Path2D
 {
   void addPath(Path2D path, optional SVGMatrix transformation);
+  // shared path API methods
+  void closePath();
+  [LenientFloat]
+  void moveTo(double x, double y);
+  [LenientFloat]
+  void lineTo(double x, double y);
+  [LenientFloat]
+  void quadraticCurveTo(double cpx, double cpy, double x, double y);
+
+  [LenientFloat]
+  void bezierCurveTo(double cp1x, double cp1y, double cp2x, double cp2y, double x, double y);
+
+  [Throws, LenientFloat]
+  void arcTo(double x1, double y1, double x2, double y2, double radius);
+// NOT IMPLEMENTED  [LenientFloat] void arcTo(double x1, double y1, double x2, double y2, double radiusX, double radiusY, double rotation);
+
+  [LenientFloat]
+  void rect(double x, double y, double w, double h);
+
+  [Throws, LenientFloat]
+  void arc(double x, double y, double radius, double startAngle, double endAngle, optional boolean anticlockwise = false);
+
+  [Throws, LenientFloat]
+  void ellipse(double x, double y, double radiusX, double radiusY, double rotation, double startAngle, double endAngle, optional boolean anticlockwise = false);
 };
-Path2D includes CanvasPathMethods;
