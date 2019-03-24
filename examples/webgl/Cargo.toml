@@ -1,0 +1,10 @@
+[package]
+name = "example"
+version = "0.0.0"
+edition = "2018"
+
+[lib]
+crate-type =["cdylib"]
+
+[dependencies]
+web-dom = {path="../../"}

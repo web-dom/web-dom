@@ -111,7 +111,7 @@ typedef (Int32Array or sequence<GLint>) Int32List;
 // WebGL2RenderingContext have in common.  This doesn't have all the things they
 // have in common, because we don't support splitting multiple overloads of the
 // same method across separate interfaces and pulling them in with "implements".
-interface mixin WebGLRenderingContextBase {
+partial interface  WebGLRenderingContext {
     /* ClearBufferMask */
     const GLenum DEPTH_BUFFER_BIT               = 0x00000100;
     const GLenum STENCIL_BUFFER_BIT             = 0x00000400;
@@ -673,8 +673,8 @@ interface mixin WebGLRenderingContextBase {
 
     void shaderSource(WebGLShader shader, DOMString source);
 
-    void stencilFunc(GLenum func, GLint ref, GLuint mask);
-    void stencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask);
+    void stencilFunc(GLenum func, GLint setencelRef, GLuint mask);
+    void stencilFuncSeparate(GLenum face, GLenum func, GLint setencelRef, GLuint mask);
     void stencilMask(GLuint mask);
     void stencilMaskSeparate(GLenum face, GLuint mask);
     void stencilOp(GLenum fail, GLenum zfail, GLenum zpass);
@@ -801,7 +801,6 @@ interface WebGLRenderingContext {
     void uniformMatrix4fv(WebGLUniformLocation? location, GLboolean transpose, Float32List data);
 };
 
-WebGLRenderingContext includes WebGLRenderingContextBase;
 
 // For OffscreenCanvas
 // Reference: https://wiki.whatwg.org/wiki/OffscreenCanvas

@@ -4195,6 +4195,1729 @@
   ],
   "WebGLRenderingContext": [
     {
+      "type": "property",
+      "name": "canvas",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "drawingBufferWidth",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "drawingBufferHeight",
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getContextAttributes",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "isContextLost",
+      "params": [],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "getSupportedExtensions",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getExtension",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "attachShader",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "shader",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bindAttribLocation",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "index",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bindBuffer",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "buffer",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "framebuffer",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bindRenderbuffer",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "renderbuffer",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "texture",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "blendColor",
+      "params": [
+        {
+          "name": "red",
+          "type": "object"
+        },
+        {
+          "name": "green",
+          "type": "object"
+        },
+        {
+          "name": "blue",
+          "type": "object"
+        },
+        {
+          "name": "alpha",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "blendEquation",
+      "params": [
+        {
+          "name": "mode",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "blendEquationSeparate",
+      "params": [
+        {
+          "name": "modeRGB",
+          "type": "object"
+        },
+        {
+          "name": "modeAlpha",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "blendFunc",
+      "params": [
+        {
+          "name": "sfactor",
+          "type": "object"
+        },
+        {
+          "name": "dfactor",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "blendFuncSeparate",
+      "params": [
+        {
+          "name": "srcRGB",
+          "type": "object"
+        },
+        {
+          "name": "dstRGB",
+          "type": "object"
+        },
+        {
+          "name": "srcAlpha",
+          "type": "object"
+        },
+        {
+          "name": "dstAlpha",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "checkFramebufferStatus",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "clear",
+      "params": [
+        {
+          "name": "mask",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "red",
+          "type": "object"
+        },
+        {
+          "name": "green",
+          "type": "object"
+        },
+        {
+          "name": "blue",
+          "type": "object"
+        },
+        {
+          "name": "alpha",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "clearDepth",
+      "params": [
+        {
+          "name": "depth",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "clearStencil",
+      "params": [
+        {
+          "name": "s",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "colorMask",
+      "params": [
+        {
+          "name": "red",
+          "type": "object"
+        },
+        {
+          "name": "green",
+          "type": "object"
+        },
+        {
+          "name": "blue",
+          "type": "object"
+        },
+        {
+          "name": "alpha",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "compileShader",
+      "params": [
+        {
+          "name": "shader",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "copyTexImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        },
+        {
+          "name": "border",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "copyTexSubImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "xoffset",
+          "type": "object"
+        },
+        {
+          "name": "yoffset",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "createBuffer",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "createFramebuffer",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "createProgram",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "createRenderbuffer",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "createShader",
+      "params": [
+        {
+          "name": "shaderType",
+          "type": "object"
+        }
+      ],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "createTexture",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "cullFace",
+      "params": [
+        {
+          "name": "mode",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "deleteBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "deleteFramebuffer",
+      "params": [
+        {
+          "name": "framebuffer",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "deleteProgram",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "deleteRenderbuffer",
+      "params": [
+        {
+          "name": "renderbuffer",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "deleteShader",
+      "params": [
+        {
+          "name": "shader",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "deleteTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "depthFunc",
+      "params": [
+        {
+          "name": "func",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "depthMask",
+      "params": [
+        {
+          "name": "flag",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "depthRange",
+      "params": [
+        {
+          "name": "zNear",
+          "type": "object"
+        },
+        {
+          "name": "zFar",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "detachShader",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "shader",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "disable",
+      "params": [
+        {
+          "name": "cap",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "disableVertexAttribArray",
+      "params": [
+        {
+          "name": "index",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "drawArrays",
+      "params": [
+        {
+          "name": "mode",
+          "type": "object"
+        },
+        {
+          "name": "first",
+          "type": "object"
+        },
+        {
+          "name": "count",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "drawElements",
+      "params": [
+        {
+          "name": "mode",
+          "type": "object"
+        },
+        {
+          "name": "count",
+          "type": "object"
+        },
+        {
+          "name": "elementType",
+          "type": "object"
+        },
+        {
+          "name": "offset",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "enable",
+      "params": [
+        {
+          "name": "cap",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "enableVertexAttribArray",
+      "params": [
+        {
+          "name": "index",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "finish",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "flush",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "framebufferRenderbuffer",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "attachment",
+          "type": "object"
+        },
+        {
+          "name": "renderbuffertarget",
+          "type": "object"
+        },
+        {
+          "name": "renderbuffer",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "attachment",
+          "type": "object"
+        },
+        {
+          "name": "textarget",
+          "type": "object"
+        },
+        {
+          "name": "texture",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "frontFace",
+      "params": [
+        {
+          "name": "mode",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "generateMipmap",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getActiveAttrib",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "index",
+          "type": "object"
+        }
+      ],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getActiveUniform",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "index",
+          "type": "object"
+        }
+      ],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getAttachedShaders",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        }
+      ],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getAttribLocation",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getBufferParameter",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getParameter",
+      "params": [
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getError",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getFramebufferAttachmentParameter",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "attachment",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getProgramParameter",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getProgramInfoLog",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        }
+      ],
+      "return_type": "string",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getRenderbufferParameter",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getShaderParameter",
+      "params": [
+        {
+          "name": "shader",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getShaderPrecisionFormat",
+      "params": [
+        {
+          "name": "shadertype",
+          "type": "object"
+        },
+        {
+          "name": "precisiontype",
+          "type": "object"
+        }
+      ],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getShaderInfoLog",
+      "params": [
+        {
+          "name": "shader",
+          "type": "object"
+        }
+      ],
+      "return_type": "string",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getShaderSource",
+      "params": [
+        {
+          "name": "shader",
+          "type": "object"
+        }
+      ],
+      "return_type": "string",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getTexParameter",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getUniform",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "location",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getUniformLocation",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getVertexAttrib",
+      "params": [
+        {
+          "name": "index",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getVertexAttribOffset",
+      "params": [
+        {
+          "name": "index",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "hint",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "mode",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "isBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "isEnabled",
+      "params": [
+        {
+          "name": "cap",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "isFramebuffer",
+      "params": [
+        {
+          "name": "framebuffer",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "isProgram",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "isRenderbuffer",
+      "params": [
+        {
+          "name": "renderbuffer",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "isShader",
+      "params": [
+        {
+          "name": "shader",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "isTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "lineWidth",
+      "params": [
+        {
+          "name": "width",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "linkProgram",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "pixelStorei",
+      "params": [
+        {
+          "name": "pname",
+          "type": "object"
+        },
+        {
+          "name": "param",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "polygonOffset",
+      "params": [
+        {
+          "name": "factor",
+          "type": "object"
+        },
+        {
+          "name": "units",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "renderbufferStorage",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "sampleCoverage",
+      "params": [
+        {
+          "name": "value",
+          "type": "object"
+        },
+        {
+          "name": "invert",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "scissor",
+      "params": [
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "shaderSource",
+      "params": [
+        {
+          "name": "shader",
+          "type": "object"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "stencilFunc",
+      "params": [
+        {
+          "name": "func",
+          "type": "object"
+        },
+        {
+          "name": "setencelRef",
+          "type": "object"
+        },
+        {
+          "name": "mask",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "stencilFuncSeparate",
+      "params": [
+        {
+          "name": "face",
+          "type": "object"
+        },
+        {
+          "name": "func",
+          "type": "object"
+        },
+        {
+          "name": "setencelRef",
+          "type": "object"
+        },
+        {
+          "name": "mask",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "stencilMask",
+      "params": [
+        {
+          "name": "mask",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "stencilMaskSeparate",
+      "params": [
+        {
+          "name": "face",
+          "type": "object"
+        },
+        {
+          "name": "mask",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "stencilOp",
+      "params": [
+        {
+          "name": "fail",
+          "type": "object"
+        },
+        {
+          "name": "zfail",
+          "type": "object"
+        },
+        {
+          "name": "zpass",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "stencilOpSeparate",
+      "params": [
+        {
+          "name": "face",
+          "type": "object"
+        },
+        {
+          "name": "fail",
+          "type": "object"
+        },
+        {
+          "name": "zfail",
+          "type": "object"
+        },
+        {
+          "name": "zpass",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texParameterf",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        },
+        {
+          "name": "param",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texParameteri",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        },
+        {
+          "name": "param",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform1f",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform2f",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform3f",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "z",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform4f",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "z",
+          "type": "object"
+        },
+        {
+          "name": "w",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform1i",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform2i",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform3i",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "z",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform4i",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "z",
+          "type": "object"
+        },
+        {
+          "name": "w",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "useProgram",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "validateProgram",
+      "params": [
+        {
+          "name": "program",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttrib1f",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttrib1fv",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "values",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttrib2f",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttrib2fv",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "values",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttrib3f",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "z",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttrib3fv",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "values",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttrib4f",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "z",
+          "type": "object"
+        },
+        {
+          "name": "w",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttrib4fv",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "values",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttribPointer",
+      "params": [
+        {
+          "name": "indx",
+          "type": "object"
+        },
+        {
+          "name": "size",
+          "type": "object"
+        },
+        {
+          "name": "pointerType",
+          "type": "object"
+        },
+        {
+          "name": "normalized",
+          "type": "object"
+        },
+        {
+          "name": "stride",
+          "type": "object"
+        },
+        {
+          "name": "offset",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "viewport",
+      "params": [
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        }
+      ]
+    },
+    {
       "type": "function",
       "name": "bufferData",
       "params": [

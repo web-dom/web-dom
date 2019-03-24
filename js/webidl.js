@@ -4167,6 +4167,1073 @@ function createWebIDLContext() {
       _i.precision = A.g(v);
     },
 
+    webgl_get_canvas: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.canvas);
+    },
+
+    webgl_set_canvas: function(i, v) {
+      let _i = A.g(i);
+      _i.canvas = A.g(v);
+    },
+
+    webgl_get_drawing_buffer_width: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.drawingBufferWidth);
+    },
+
+    webgl_set_drawing_buffer_width: function(i, v) {
+      let _i = A.g(i);
+      _i.drawingBufferWidth = A.g(v);
+    },
+
+    webgl_get_drawing_buffer_height: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.drawingBufferHeight);
+    },
+
+    webgl_set_drawing_buffer_height: function(i, v) {
+      let _i = A.g(i);
+      _i.drawingBufferHeight = A.g(v);
+    },
+
+    webgl_get_context_attributes: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getContextAttributes());
+    },
+
+    webgl_is_context_lost: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.isContextLost()) ? 1 : 0;
+    },
+
+    webgl_get_supported_extensions: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getSupportedExtensions());
+    },
+
+    webgl_get_extension: function(i, name) {
+      let _i = A.g(i);
+
+      let _name = this.s(name);
+      return A.a(_i.getExtension(_name));
+    },
+
+    webgl_active_texture: function(i, texture) {
+      let _i = A.g(i);
+
+      let _texture = A.g(texture);
+      _i.activeTexture(_texture);
+    },
+
+    webgl_attach_shader: function(i, program, shader) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _shader = A.g(shader);
+      _i.attachShader(_program, _shader);
+    },
+
+    webgl_bind_attrib_location: function(i, program, index, name) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _index = A.g(index);
+      let _name = this.s(name);
+      _i.bindAttribLocation(_program, _index, _name);
+    },
+
+    webgl_bind_buffer: function(i, target, buffer) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _buffer = A.g(buffer);
+      _i.bindBuffer(_target, _buffer);
+    },
+
+    webgl_bind_framebuffer: function(i, target, framebuffer) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _framebuffer = A.g(framebuffer);
+      _i.bindFramebuffer(_target, _framebuffer);
+    },
+
+    webgl_bind_renderbuffer: function(i, target, renderbuffer) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _renderbuffer = A.g(renderbuffer);
+      _i.bindRenderbuffer(_target, _renderbuffer);
+    },
+
+    webgl_bind_texture: function(i, target, texture) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _texture = A.g(texture);
+      _i.bindTexture(_target, _texture);
+    },
+
+    webgl_blend_color: function(i, red, green, blue, alpha) {
+      let _i = A.g(i);
+
+      let _red = A.g(red);
+      let _green = A.g(green);
+      let _blue = A.g(blue);
+      let _alpha = A.g(alpha);
+      _i.blendColor(_red, _green, _blue, _alpha);
+    },
+
+    webgl_blend_equation: function(i, mode) {
+      let _i = A.g(i);
+
+      let _mode = A.g(mode);
+      _i.blendEquation(_mode);
+    },
+
+    webgl_blend_equation_separate: function(i, modeRGB, modeAlpha) {
+      let _i = A.g(i);
+
+      let _modeRGB = A.g(modeRGB);
+      let _modeAlpha = A.g(modeAlpha);
+      _i.blendEquationSeparate(_modeRGB, _modeAlpha);
+    },
+
+    webgl_blend_func: function(i, sfactor, dfactor) {
+      let _i = A.g(i);
+
+      let _sfactor = A.g(sfactor);
+      let _dfactor = A.g(dfactor);
+      _i.blendFunc(_sfactor, _dfactor);
+    },
+
+    webgl_blend_func_separate: function(i, srcRGB, dstRGB, srcAlpha, dstAlpha) {
+      let _i = A.g(i);
+
+      let _srcRGB = A.g(srcRGB);
+      let _dstRGB = A.g(dstRGB);
+      let _srcAlpha = A.g(srcAlpha);
+      let _dstAlpha = A.g(dstAlpha);
+      _i.blendFuncSeparate(_srcRGB, _dstRGB, _srcAlpha, _dstAlpha);
+    },
+
+    webgl_check_framebuffer_status: function(i, target) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      return A.a(_i.checkFramebufferStatus(_target));
+    },
+
+    webgl_clear: function(i, mask) {
+      let _i = A.g(i);
+
+      let _mask = A.g(mask);
+      _i.clear(_mask);
+    },
+
+    webgl_clear_color: function(i, red, green, blue, alpha) {
+      let _i = A.g(i);
+
+      let _red = A.g(red);
+      let _green = A.g(green);
+      let _blue = A.g(blue);
+      let _alpha = A.g(alpha);
+      _i.clearColor(_red, _green, _blue, _alpha);
+    },
+
+    webgl_clear_depth: function(i, depth) {
+      let _i = A.g(i);
+
+      let _depth = A.g(depth);
+      _i.clearDepth(_depth);
+    },
+
+    webgl_clear_stencil: function(i, s) {
+      let _i = A.g(i);
+
+      let _s = A.g(s);
+      _i.clearStencil(_s);
+    },
+
+    webgl_color_mask: function(i, red, green, blue, alpha) {
+      let _i = A.g(i);
+
+      let _red = A.g(red);
+      let _green = A.g(green);
+      let _blue = A.g(blue);
+      let _alpha = A.g(alpha);
+      _i.colorMask(_red, _green, _blue, _alpha);
+    },
+
+    webgl_compile_shader: function(i, shader) {
+      let _i = A.g(i);
+
+      let _shader = A.g(shader);
+      _i.compileShader(_shader);
+    },
+
+    webgl_copy_tex_image2_d: function(
+      i,
+      target,
+      level,
+      internalformat,
+      x,
+      y,
+      width,
+      height,
+      border
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _internalformat = A.g(internalformat);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      let _border = A.g(border);
+      _i.copyTexImage2D(
+        _target,
+        _level,
+        _internalformat,
+        _x,
+        _y,
+        _width,
+        _height,
+        _border
+      );
+    },
+
+    webgl_copy_tex_sub_image2_d: function(
+      i,
+      target,
+      level,
+      xoffset,
+      yoffset,
+      x,
+      y,
+      width,
+      height
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _xoffset = A.g(xoffset);
+      let _yoffset = A.g(yoffset);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      _i.copyTexSubImage2D(
+        _target,
+        _level,
+        _xoffset,
+        _yoffset,
+        _x,
+        _y,
+        _width,
+        _height
+      );
+    },
+
+    webgl_create_buffer: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createBuffer());
+    },
+
+    webgl_create_framebuffer: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createFramebuffer());
+    },
+
+    webgl_create_program: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createProgram());
+    },
+
+    webgl_create_renderbuffer: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createRenderbuffer());
+    },
+
+    webgl_create_shader: function(i, shaderType) {
+      let _i = A.g(i);
+
+      let _shaderType = A.g(shaderType);
+      return A.a(_i.createShader(_shaderType));
+    },
+
+    webgl_create_texture: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createTexture());
+    },
+
+    webgl_cull_face: function(i, mode) {
+      let _i = A.g(i);
+
+      let _mode = A.g(mode);
+      _i.cullFace(_mode);
+    },
+
+    webgl_delete_buffer: function(i, buffer) {
+      let _i = A.g(i);
+
+      let _buffer = A.g(buffer);
+      _i.deleteBuffer(_buffer);
+    },
+
+    webgl_delete_framebuffer: function(i, framebuffer) {
+      let _i = A.g(i);
+
+      let _framebuffer = A.g(framebuffer);
+      _i.deleteFramebuffer(_framebuffer);
+    },
+
+    webgl_delete_program: function(i, program) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      _i.deleteProgram(_program);
+    },
+
+    webgl_delete_renderbuffer: function(i, renderbuffer) {
+      let _i = A.g(i);
+
+      let _renderbuffer = A.g(renderbuffer);
+      _i.deleteRenderbuffer(_renderbuffer);
+    },
+
+    webgl_delete_shader: function(i, shader) {
+      let _i = A.g(i);
+
+      let _shader = A.g(shader);
+      _i.deleteShader(_shader);
+    },
+
+    webgl_delete_texture: function(i, texture) {
+      let _i = A.g(i);
+
+      let _texture = A.g(texture);
+      _i.deleteTexture(_texture);
+    },
+
+    webgl_depth_func: function(i, func) {
+      let _i = A.g(i);
+
+      let _func = A.g(func);
+      _i.depthFunc(_func);
+    },
+
+    webgl_depth_mask: function(i, flag) {
+      let _i = A.g(i);
+
+      let _flag = A.g(flag);
+      _i.depthMask(_flag);
+    },
+
+    webgl_depth_range: function(i, zNear, zFar) {
+      let _i = A.g(i);
+
+      let _zNear = A.g(zNear);
+      let _zFar = A.g(zFar);
+      _i.depthRange(_zNear, _zFar);
+    },
+
+    webgl_detach_shader: function(i, program, shader) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _shader = A.g(shader);
+      _i.detachShader(_program, _shader);
+    },
+
+    webgl_disable: function(i, cap) {
+      let _i = A.g(i);
+
+      let _cap = A.g(cap);
+      _i.disable(_cap);
+    },
+
+    webgl_disable_vertex_attrib_array: function(i, index) {
+      let _i = A.g(i);
+
+      let _index = A.g(index);
+      _i.disableVertexAttribArray(_index);
+    },
+
+    webgl_draw_arrays: function(i, mode, first, count) {
+      let _i = A.g(i);
+
+      let _mode = A.g(mode);
+      let _first = A.g(first);
+      let _count = A.g(count);
+      _i.drawArrays(_mode, _first, _count);
+    },
+
+    webgl_draw_elements: function(i, mode, count, elementType, offset) {
+      let _i = A.g(i);
+
+      let _mode = A.g(mode);
+      let _count = A.g(count);
+      let _elementType = A.g(elementType);
+      let _offset = A.g(offset);
+      _i.drawElements(_mode, _count, _elementType, _offset);
+    },
+
+    webgl_enable: function(i, cap) {
+      let _i = A.g(i);
+
+      let _cap = A.g(cap);
+      _i.enable(_cap);
+    },
+
+    webgl_enable_vertex_attrib_array: function(i, index) {
+      let _i = A.g(i);
+
+      let _index = A.g(index);
+      _i.enableVertexAttribArray(_index);
+    },
+
+    webgl_finish: function(i) {
+      let _i = A.g(i);
+
+      _i.finish();
+    },
+
+    webgl_flush: function(i) {
+      let _i = A.g(i);
+
+      _i.flush();
+    },
+
+    webgl_framebuffer_renderbuffer: function(
+      i,
+      target,
+      attachment,
+      renderbuffertarget,
+      renderbuffer
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _attachment = A.g(attachment);
+      let _renderbuffertarget = A.g(renderbuffertarget);
+      let _renderbuffer = A.g(renderbuffer);
+      _i.framebufferRenderbuffer(
+        _target,
+        _attachment,
+        _renderbuffertarget,
+        _renderbuffer
+      );
+    },
+
+    webgl_framebuffer_texture2_d: function(
+      i,
+      target,
+      attachment,
+      textarget,
+      texture,
+      level
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _attachment = A.g(attachment);
+      let _textarget = A.g(textarget);
+      let _texture = A.g(texture);
+      let _level = A.g(level);
+      _i.framebufferTexture2D(
+        _target,
+        _attachment,
+        _textarget,
+        _texture,
+        _level
+      );
+    },
+
+    webgl_front_face: function(i, mode) {
+      let _i = A.g(i);
+
+      let _mode = A.g(mode);
+      _i.frontFace(_mode);
+    },
+
+    webgl_generate_mipmap: function(i, target) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      _i.generateMipmap(_target);
+    },
+
+    webgl_get_active_attrib: function(i, program, index) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _index = A.g(index);
+      return A.a(_i.getActiveAttrib(_program, _index));
+    },
+
+    webgl_get_active_uniform: function(i, program, index) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _index = A.g(index);
+      return A.a(_i.getActiveUniform(_program, _index));
+    },
+
+    webgl_get_attached_shaders: function(i, program) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      return A.a(_i.getAttachedShaders(_program));
+    },
+
+    webgl_get_attrib_location: function(i, program, name) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _name = this.s(name);
+      return A.a(_i.getAttribLocation(_program, _name));
+    },
+
+    webgl_get_buffer_parameter: function(i, target, pname) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _pname = A.g(pname);
+      return A.a(_i.getBufferParameter(_target, _pname));
+    },
+
+    webgl_get_parameter: function(i, pname) {
+      let _i = A.g(i);
+
+      let _pname = A.g(pname);
+      return A.a(_i.getParameter(_pname));
+    },
+
+    webgl_get_error: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getError());
+    },
+
+    webgl_get_framebuffer_attachment_parameter: function(
+      i,
+      target,
+      attachment,
+      pname
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _attachment = A.g(attachment);
+      let _pname = A.g(pname);
+      return A.a(
+        _i.getFramebufferAttachmentParameter(_target, _attachment, _pname)
+      );
+    },
+
+    webgl_get_program_parameter: function(i, program, pname) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _pname = A.g(pname);
+      return A.a(_i.getProgramParameter(_program, _pname));
+    },
+
+    webgl_get_program_info_log: function(i, program) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      return this.ms(_i.getProgramInfoLog(_program));
+    },
+
+    webgl_get_renderbuffer_parameter: function(i, target, pname) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _pname = A.g(pname);
+      return A.a(_i.getRenderbufferParameter(_target, _pname));
+    },
+
+    webgl_get_shader_parameter: function(i, shader, pname) {
+      let _i = A.g(i);
+
+      let _shader = A.g(shader);
+      let _pname = A.g(pname);
+      return A.a(_i.getShaderParameter(_shader, _pname));
+    },
+
+    webgl_get_shader_precision_format: function(i, shadertype, precisiontype) {
+      let _i = A.g(i);
+
+      let _shadertype = A.g(shadertype);
+      let _precisiontype = A.g(precisiontype);
+      return A.a(_i.getShaderPrecisionFormat(_shadertype, _precisiontype));
+    },
+
+    webgl_get_shader_info_log: function(i, shader) {
+      let _i = A.g(i);
+
+      let _shader = A.g(shader);
+      return this.ms(_i.getShaderInfoLog(_shader));
+    },
+
+    webgl_get_shader_source: function(i, shader) {
+      let _i = A.g(i);
+
+      let _shader = A.g(shader);
+      return this.ms(_i.getShaderSource(_shader));
+    },
+
+    webgl_get_tex_parameter: function(i, target, pname) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _pname = A.g(pname);
+      return A.a(_i.getTexParameter(_target, _pname));
+    },
+
+    webgl_get_uniform: function(i, program, location) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _location = A.g(location);
+      return A.a(_i.getUniform(_program, _location));
+    },
+
+    webgl_get_uniform_location: function(i, program, name) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      let _name = this.s(name);
+      return A.a(_i.getUniformLocation(_program, _name));
+    },
+
+    webgl_get_vertex_attrib: function(i, index, pname) {
+      let _i = A.g(i);
+
+      let _index = A.g(index);
+      let _pname = A.g(pname);
+      return A.a(_i.getVertexAttrib(_index, _pname));
+    },
+
+    webgl_get_vertex_attrib_offset: function(i, index, pname) {
+      let _i = A.g(i);
+
+      let _index = A.g(index);
+      let _pname = A.g(pname);
+      return A.a(_i.getVertexAttribOffset(_index, _pname));
+    },
+
+    webgl_hint: function(i, target, mode) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _mode = A.g(mode);
+      _i.hint(_target, _mode);
+    },
+
+    webgl_is_buffer: function(i, buffer) {
+      let _i = A.g(i);
+
+      let _buffer = A.g(buffer);
+      return A.a(_i.isBuffer(_buffer));
+    },
+
+    webgl_is_enabled: function(i, cap) {
+      let _i = A.g(i);
+
+      let _cap = A.g(cap);
+      return A.a(_i.isEnabled(_cap));
+    },
+
+    webgl_is_framebuffer: function(i, framebuffer) {
+      let _i = A.g(i);
+
+      let _framebuffer = A.g(framebuffer);
+      return A.a(_i.isFramebuffer(_framebuffer));
+    },
+
+    webgl_is_program: function(i, program) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      return A.a(_i.isProgram(_program));
+    },
+
+    webgl_is_renderbuffer: function(i, renderbuffer) {
+      let _i = A.g(i);
+
+      let _renderbuffer = A.g(renderbuffer);
+      return A.a(_i.isRenderbuffer(_renderbuffer));
+    },
+
+    webgl_is_shader: function(i, shader) {
+      let _i = A.g(i);
+
+      let _shader = A.g(shader);
+      return A.a(_i.isShader(_shader));
+    },
+
+    webgl_is_texture: function(i, texture) {
+      let _i = A.g(i);
+
+      let _texture = A.g(texture);
+      return A.a(_i.isTexture(_texture));
+    },
+
+    webgl_line_width: function(i, width) {
+      let _i = A.g(i);
+
+      let _width = A.g(width);
+      _i.lineWidth(_width);
+    },
+
+    webgl_link_program: function(i, program) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      _i.linkProgram(_program);
+    },
+
+    webgl_pixel_storei: function(i, pname, param) {
+      let _i = A.g(i);
+
+      let _pname = A.g(pname);
+      let _param = A.g(param);
+      _i.pixelStorei(_pname, _param);
+    },
+
+    webgl_polygon_offset: function(i, factor, units) {
+      let _i = A.g(i);
+
+      let _factor = A.g(factor);
+      let _units = A.g(units);
+      _i.polygonOffset(_factor, _units);
+    },
+
+    webgl_renderbuffer_storage: function(
+      i,
+      target,
+      internalformat,
+      width,
+      height
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _internalformat = A.g(internalformat);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      _i.renderbufferStorage(_target, _internalformat, _width, _height);
+    },
+
+    webgl_sample_coverage: function(i, value, invert) {
+      let _i = A.g(i);
+
+      let _value = A.g(value);
+      let _invert = A.g(invert);
+      _i.sampleCoverage(_value, _invert);
+    },
+
+    webgl_scissor: function(i, x, y, width, height) {
+      let _i = A.g(i);
+
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      _i.scissor(_x, _y, _width, _height);
+    },
+
+    webgl_shader_source: function(i, shader, source) {
+      let _i = A.g(i);
+
+      let _shader = A.g(shader);
+      let _source = this.s(source);
+      _i.shaderSource(_shader, _source);
+    },
+
+    webgl_stencil_func: function(i, func, setencelRef, mask) {
+      let _i = A.g(i);
+
+      let _func = A.g(func);
+      let _setencelRef = A.g(setencelRef);
+      let _mask = A.g(mask);
+      _i.stencilFunc(_func, _setencelRef, _mask);
+    },
+
+    webgl_stencil_func_separate: function(i, face, func, setencelRef, mask) {
+      let _i = A.g(i);
+
+      let _face = A.g(face);
+      let _func = A.g(func);
+      let _setencelRef = A.g(setencelRef);
+      let _mask = A.g(mask);
+      _i.stencilFuncSeparate(_face, _func, _setencelRef, _mask);
+    },
+
+    webgl_stencil_mask: function(i, mask) {
+      let _i = A.g(i);
+
+      let _mask = A.g(mask);
+      _i.stencilMask(_mask);
+    },
+
+    webgl_stencil_mask_separate: function(i, face, mask) {
+      let _i = A.g(i);
+
+      let _face = A.g(face);
+      let _mask = A.g(mask);
+      _i.stencilMaskSeparate(_face, _mask);
+    },
+
+    webgl_stencil_op: function(i, fail, zfail, zpass) {
+      let _i = A.g(i);
+
+      let _fail = A.g(fail);
+      let _zfail = A.g(zfail);
+      let _zpass = A.g(zpass);
+      _i.stencilOp(_fail, _zfail, _zpass);
+    },
+
+    webgl_stencil_op_separate: function(i, face, fail, zfail, zpass) {
+      let _i = A.g(i);
+
+      let _face = A.g(face);
+      let _fail = A.g(fail);
+      let _zfail = A.g(zfail);
+      let _zpass = A.g(zpass);
+      _i.stencilOpSeparate(_face, _fail, _zfail, _zpass);
+    },
+
+    webgl_tex_parameterf: function(i, target, pname, param) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _pname = A.g(pname);
+      let _param = A.g(param);
+      _i.texParameterf(_target, _pname, _param);
+    },
+
+    webgl_tex_parameteri: function(i, target, pname, param) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _pname = A.g(pname);
+      let _param = A.g(param);
+      _i.texParameteri(_target, _pname, _param);
+    },
+
+    webgl_uniform1f: function(i, location, x) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _x = A.g(x);
+      _i.uniform1f(_location, _x);
+    },
+
+    webgl_uniform2f: function(i, location, x, y) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      _i.uniform2f(_location, _x, _y);
+    },
+
+    webgl_uniform3f: function(i, location, x, y, z) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _z = A.g(z);
+      _i.uniform3f(_location, _x, _y, _z);
+    },
+
+    webgl_uniform4f: function(i, location, x, y, z, w) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _z = A.g(z);
+      let _w = A.g(w);
+      _i.uniform4f(_location, _x, _y, _z, _w);
+    },
+
+    webgl_uniform1i: function(i, location, x) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _x = A.g(x);
+      _i.uniform1i(_location, _x);
+    },
+
+    webgl_uniform2i: function(i, location, x, y) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      _i.uniform2i(_location, _x, _y);
+    },
+
+    webgl_uniform3i: function(i, location, x, y, z) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _z = A.g(z);
+      _i.uniform3i(_location, _x, _y, _z);
+    },
+
+    webgl_uniform4i: function(i, location, x, y, z, w) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _z = A.g(z);
+      let _w = A.g(w);
+      _i.uniform4i(_location, _x, _y, _z, _w);
+    },
+
+    webgl_use_program: function(i, program) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      _i.useProgram(_program);
+    },
+
+    webgl_validate_program: function(i, program) {
+      let _i = A.g(i);
+
+      let _program = A.g(program);
+      _i.validateProgram(_program);
+    },
+
+    webgl_vertex_attrib1f: function(i, indx, x) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _x = A.g(x);
+      _i.vertexAttrib1f(_indx, _x);
+    },
+
+    webgl_vertex_attrib1fv: function(i, indx, values) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _values = A.g(values);
+      _i.vertexAttrib1fv(_indx, _values);
+    },
+
+    webgl_vertex_attrib2f: function(i, indx, x, y) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      _i.vertexAttrib2f(_indx, _x, _y);
+    },
+
+    webgl_vertex_attrib2fv: function(i, indx, values) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _values = A.g(values);
+      _i.vertexAttrib2fv(_indx, _values);
+    },
+
+    webgl_vertex_attrib3f: function(i, indx, x, y, z) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _z = A.g(z);
+      _i.vertexAttrib3f(_indx, _x, _y, _z);
+    },
+
+    webgl_vertex_attrib3fv: function(i, indx, values) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _values = A.g(values);
+      _i.vertexAttrib3fv(_indx, _values);
+    },
+
+    webgl_vertex_attrib4f: function(i, indx, x, y, z, w) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _z = A.g(z);
+      let _w = A.g(w);
+      _i.vertexAttrib4f(_indx, _x, _y, _z, _w);
+    },
+
+    webgl_vertex_attrib4fv: function(i, indx, values) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _values = A.g(values);
+      _i.vertexAttrib4fv(_indx, _values);
+    },
+
+    webgl_vertex_attrib_pointer: function(
+      i,
+      indx,
+      size,
+      pointerType,
+      normalized,
+      stride,
+      offset
+    ) {
+      let _i = A.g(i);
+
+      let _indx = A.g(indx);
+      let _size = A.g(size);
+      let _pointerType = A.g(pointerType);
+      let _normalized = A.g(normalized);
+      let _stride = A.g(stride);
+      let _offset = A.g(offset);
+      _i.vertexAttribPointer(
+        _indx,
+        _size,
+        _pointerType,
+        _normalized,
+        _stride,
+        _offset
+      );
+    },
+
+    webgl_viewport: function(i, x, y, width, height) {
+      let _i = A.g(i);
+
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      _i.viewport(_x, _y, _width, _height);
+    },
+
     webgl_buffer_data: function(i, target, size, usage) {
       let _i = A.g(i);
 
