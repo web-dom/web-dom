@@ -22,6 +22,7 @@ pub mod oes_vertex_array_object;
 pub mod path2d;
 pub mod storage;
 pub mod textmetrics;
+pub mod webgl;
 pub mod webgl_compressed_texture_astc;
 pub mod webgl_debug_shaders;
 pub mod webgl_draw_buffers;

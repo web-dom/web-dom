@@ -4167,7 +4167,7 @@ function createWebIDLContext() {
       _i.precision = A.g(v);
     },
 
-    canvas_buffer_data: function(i, target, size, usage) {
+    webgl_buffer_data: function(i, target, size, usage) {
       let _i = A.g(i);
 
       let _target = A.g(target);
@@ -4176,7 +4176,7 @@ function createWebIDLContext() {
       _i.bufferData(_target, _size, _usage);
     },
 
-    canvas_buffer_data_1: function(i, target, data, usage) {
+    webgl_buffer_data_1: function(i, target, data, usage) {
       let _i = A.g(i);
 
       let _target = A.g(target);
@@ -4185,7 +4185,7 @@ function createWebIDLContext() {
       _i.bufferData(_target, _data, _usage);
     },
 
-    canvas_buffer_data_2: function(i, target, data, usage) {
+    webgl_buffer_data_2: function(i, target, data, usage) {
       let _i = A.g(i);
 
       let _target = A.g(target);
@@ -4194,7 +4194,7 @@ function createWebIDLContext() {
       _i.bufferData(_target, _data, _usage);
     },
 
-    canvas_buffer_sub_data: function(i, target, offset, data) {
+    webgl_buffer_sub_data: function(i, target, offset, data) {
       let _i = A.g(i);
 
       let _target = A.g(target);
@@ -4203,7 +4203,7 @@ function createWebIDLContext() {
       _i.bufferSubData(_target, _offset, _data);
     },
 
-    canvas_buffer_sub_data_1: function(i, target, offset, data) {
+    webgl_buffer_sub_data_1: function(i, target, offset, data) {
       let _i = A.g(i);
 
       let _target = A.g(target);
@@ -4212,7 +4212,7 @@ function createWebIDLContext() {
       _i.bufferSubData(_target, _offset, _data);
     },
 
-    canvas_compressed_tex_image2_d: function(
+    webgl_compressed_tex_image2_d: function(
       i,
       target,
       level,
@@ -4242,7 +4242,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_compressed_tex_sub_image2_d: function(
+    webgl_compressed_tex_sub_image2_d: function(
       i,
       target,
       level,
@@ -4275,7 +4275,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_read_pixels: function(
+    webgl_read_pixels: function(
       i,
       x,
       y,
@@ -4297,7 +4297,7 @@ function createWebIDLContext() {
       _i.readPixels(_x, _y, _width, _height, _format, _pixelType, _pixels);
     },
 
-    canvas_tex_image2_d: function(
+    webgl_tex_image2_d: function(
       i,
       target,
       level,
@@ -4333,7 +4333,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_image2_d_1: function(
+    webgl_tex_image2_d_1: function(
       i,
       target,
       level,
@@ -4360,7 +4360,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_image2_d_2: function(
+    webgl_tex_image2_d_2: function(
       i,
       target,
       level,
@@ -4387,7 +4387,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_image2_d_3: function(
+    webgl_tex_image2_d_3: function(
       i,
       target,
       level,
@@ -4414,7 +4414,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_image2_d_4: function(
+    webgl_tex_image2_d_4: function(
       i,
       target,
       level,
@@ -4441,7 +4441,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_image2_d_5: function(
+    webgl_tex_image2_d_5: function(
       i,
       target,
       level,
@@ -4468,7 +4468,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_sub_image2_d: function(
+    webgl_tex_sub_image2_d: function(
       i,
       target,
       level,
@@ -4504,7 +4504,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_sub_image2_d_1: function(
+    webgl_tex_sub_image2_d_1: function(
       i,
       target,
       level,
@@ -4534,7 +4534,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_sub_image2_d_2: function(
+    webgl_tex_sub_image2_d_2: function(
       i,
       target,
       level,
@@ -4564,7 +4564,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_sub_image2_d_3: function(
+    webgl_tex_sub_image2_d_3: function(
       i,
       target,
       level,
@@ -4594,7 +4594,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_sub_image2_d_4: function(
+    webgl_tex_sub_image2_d_4: function(
       i,
       target,
       level,
@@ -4624,7 +4624,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_tex_sub_image2_d_5: function(
+    webgl_tex_sub_image2_d_5: function(
       i,
       target,
       level,
@@ -4654,7 +4654,7 @@ function createWebIDLContext() {
       );
     },
 
-    canvas_uniform1fv: function(i, location, data) {
+    webgl_uniform1fv: function(i, location, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4662,7 +4662,7 @@ function createWebIDLContext() {
       _i.uniform1fv(_location, _data);
     },
 
-    canvas_uniform2fv: function(i, location, data) {
+    webgl_uniform2fv: function(i, location, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4670,7 +4670,7 @@ function createWebIDLContext() {
       _i.uniform2fv(_location, _data);
     },
 
-    canvas_uniform3fv: function(i, location, data) {
+    webgl_uniform3fv: function(i, location, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4678,7 +4678,7 @@ function createWebIDLContext() {
       _i.uniform3fv(_location, _data);
     },
 
-    canvas_uniform4fv: function(i, location, data) {
+    webgl_uniform4fv: function(i, location, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4686,7 +4686,7 @@ function createWebIDLContext() {
       _i.uniform4fv(_location, _data);
     },
 
-    canvas_uniform1iv: function(i, location, data) {
+    webgl_uniform1iv: function(i, location, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4694,7 +4694,7 @@ function createWebIDLContext() {
       _i.uniform1iv(_location, _data);
     },
 
-    canvas_uniform2iv: function(i, location, data) {
+    webgl_uniform2iv: function(i, location, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4702,7 +4702,7 @@ function createWebIDLContext() {
       _i.uniform2iv(_location, _data);
     },
 
-    canvas_uniform3iv: function(i, location, data) {
+    webgl_uniform3iv: function(i, location, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4710,7 +4710,7 @@ function createWebIDLContext() {
       _i.uniform3iv(_location, _data);
     },
 
-    canvas_uniform4iv: function(i, location, data) {
+    webgl_uniform4iv: function(i, location, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4718,7 +4718,7 @@ function createWebIDLContext() {
       _i.uniform4iv(_location, _data);
     },
 
-    canvas_uniform_matrix2fv: function(i, location, transpose, data) {
+    webgl_uniform_matrix2fv: function(i, location, transpose, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4727,7 +4727,7 @@ function createWebIDLContext() {
       _i.uniformMatrix2fv(_location, _transpose, _data);
     },
 
-    canvas_uniform_matrix3fv: function(i, location, transpose, data) {
+    webgl_uniform_matrix3fv: function(i, location, transpose, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4736,7 +4736,7 @@ function createWebIDLContext() {
       _i.uniformMatrix3fv(_location, _transpose, _data);
     },
 
-    canvas_uniform_matrix4fv: function(i, location, transpose, data) {
+    webgl_uniform_matrix4fv: function(i, location, transpose, data) {
       let _i = A.g(i);
 
       let _location = A.g(location);
@@ -4745,7 +4745,7 @@ function createWebIDLContext() {
       _i.uniformMatrix4fv(_location, _transpose, _data);
     },
 
-    canvas_commit: function(i) {
+    webgl_commit: function(i) {
       let _i = A.g(i);
 
       _i.commit();

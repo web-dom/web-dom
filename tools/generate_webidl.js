@@ -31,7 +31,7 @@ function finalNamespaceName(namespace) {
     return "canvas";
   }
   if (namespace == "webglrenderingcontext") {
-    return "canvas";
+    return "webgl";
   } else if (namespace != "element" && namespace.indexOf("element") != -1) {
     return namespace.replace("element", "");
   }
