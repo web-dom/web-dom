@@ -35,13 +35,18 @@ pub fn to_string(c: CString) -> String {
 
 extern "C" {
     fn global_convert_ref_to_string(instance: i32) -> CString;
-    fn global_create_uint8array(start: i32, len: i32) -> i32;
+    fn global_create_f32array(start: i32, len: i32) -> DOMReference;
+    fn global_create_uint8array(start: i32, len: i32) -> DOMReference;
     fn global_is_null() -> i32;
     fn global_debugger();
     fn global_get_window() -> Element;
     fn global_release(handle: i32);
     fn global_create_event_listener() -> EventListener;
     fn global_get_property(element: Element, property_name: CString) -> i32;
+}
+
+pub fn create_f32array(bytes: &[u8]) -> DOMReference {
+    unsafe { global_create_f32array(bytes.as_ptr() as _, bytes.len() as _) }
 }
 
 pub fn create_uint8array(bytes: &[u8]) -> DOMReference {

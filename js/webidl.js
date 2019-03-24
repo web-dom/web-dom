@@ -8,6 +8,16 @@ function createWebIDLContext() {
       return A;
     },
 
+    global_create_f32array: function(start, length) {
+      return A.a(
+        new Float32Array(
+          Uint8Array.from(
+            new Uint8Array(this.memory.buffer).subarray(start, start + length)
+          ).buffer
+        )
+      );
+    },
+
     global_create_uint8array: function(start, length) {
       return A.a(
         new Uint8Array(this.memory.buffer).subarray(start, start + length)
