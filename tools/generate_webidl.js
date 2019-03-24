@@ -1,8 +1,5 @@
 let fs = require("fs");
-let webidlParser = require("webidl2");
-
 let FUNCTIONS = [];
-
 let WHITELIST = process.argv.slice(2);
 
 function toInterfaceName(n) {
@@ -21,16 +18,11 @@ function toSnake(s) {
 }
 
 function isPrimitive(n) {
-  if (n == "DOMString") {
-    return true;
-  }
-  if (Array.isArray(n)) {
+  if (n == "object") {
     return false;
   }
-  return n[0] == n[0].toLowerCase();
+  return true;
 }
-
-let namespaces = [];
 
 function finalNamespaceName(namespace) {
   namespace = namespace.toLowerCase();
@@ -42,6 +34,7 @@ function finalNamespaceName(namespace) {
   return namespace;
 }
 
+let namespaces = [];
 function processNamespace(namespace) {
   namespace = finalNamespaceName(namespace);
   if (namespaces.includes(namespace)) {
@@ -59,7 +52,7 @@ function appendToNamespace(namespace, text) {
   fs.appendFileSync("src/" + namespace + ".rs", text);
 }
 
-function processOperation(namespace, operation, isInterface) {
+/*function processOperation(namespace, operation, isInterface) {
   if (
     operation.extAttrs &&
     operation.extAttrs.trivia.open.indexOf("[ChromeOnly]") !== -1
@@ -301,7 +294,14 @@ fs.readdirSync("webidl/").forEach(file => {
     var text = fs.readFileSync("webidl/" + file, "utf8");
     processIdl(webidlParser.parse(text), file);
   }
-});
+});*/
+
+let dom_api = JSON.parse(fs.readFileSync('dom_api.json', 'utf8'));
+
+for(i in dom_api){
+  processNamespace(i);
+  console.log(i)
+}
 
 const template = `// THIS FILE IS GENERATED FROM tools/generate_webidl.js
 import allocator from './allocator'
@@ -310,6 +310,10 @@ function createWebIDLContext(){
   let ALLOCATOR = allocator();
   const webidl = {
     allocator: function () {return ALLOCATOR;},
+
+    global_is_null: function(o){
+      ALLOCATOR.g(o) == null
+    },
 
     global_debugger: function(){
       debugger;
@@ -322,10 +326,12 @@ function createWebIDLContext(){
     global_release: function(handle) {
       ALLOCATOR.r(handle);
     },
+
     global_create_event_listener: function() {
       let handle = ALLOCATOR.a((e) => this.executeCallback(handle,e,ALLOCATOR));
       return handle;
     },
+
     global_get_property: function(handle,name) {
       let o = ALLOCATOR.g(handle);
       let p = o[this.s(name)];
@@ -338,6 +344,7 @@ function createWebIDLContext(){
       }
       return ALLOCATOR.a(p);
     },
+
     date_now: function() {
       return Date.now();
     },

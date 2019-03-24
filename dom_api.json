@@ -1,0 +1,4330 @@
+{
+  "CanvasRenderingContext2D": [
+    {
+      "type": "property",
+      "name": "canvas",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "drawWindow",
+      "params": [
+        {
+          "name": "window",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "w",
+          "type": "number"
+        },
+        {
+          "name": "h",
+          "type": "number"
+        },
+        {
+          "name": "bgColor",
+          "type": "string"
+        },
+        {
+          "name": "flags",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "demote",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "save",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "restore",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "scale",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "rotate",
+      "params": [
+        {
+          "name": "angle",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "translate",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "transform",
+      "params": [
+        {
+          "name": "a",
+          "type": "number"
+        },
+        {
+          "name": "b",
+          "type": "number"
+        },
+        {
+          "name": "c",
+          "type": "number"
+        },
+        {
+          "name": "d",
+          "type": "number"
+        },
+        {
+          "name": "e",
+          "type": "number"
+        },
+        {
+          "name": "f",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "a",
+          "type": "number"
+        },
+        {
+          "name": "b",
+          "type": "number"
+        },
+        {
+          "name": "c",
+          "type": "number"
+        },
+        {
+          "name": "d",
+          "type": "number"
+        },
+        {
+          "name": "e",
+          "type": "number"
+        },
+        {
+          "name": "f",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "resetTransform",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "globalAlpha",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "globalCompositeOperation",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "imageSmoothingEnabled",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "strokeStyle",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "fillStyle",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "createLinearGradient",
+      "params": [
+        {
+          "name": "x0",
+          "type": "number"
+        },
+        {
+          "name": "y0",
+          "type": "number"
+        },
+        {
+          "name": "x1",
+          "type": "number"
+        },
+        {
+          "name": "y1",
+          "type": "number"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createRadialGradient",
+      "params": [
+        {
+          "name": "x0",
+          "type": "number"
+        },
+        {
+          "name": "y0",
+          "type": "number"
+        },
+        {
+          "name": "r0",
+          "type": "number"
+        },
+        {
+          "name": "x1",
+          "type": "number"
+        },
+        {
+          "name": "y1",
+          "type": "number"
+        },
+        {
+          "name": "r1",
+          "type": "number"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createPattern",
+      "params": [
+        {
+          "name": "image",
+          "type": "object"
+        },
+        {
+          "name": "repetition",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "shadowOffsetX",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "shadowOffsetY",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "shadowBlur",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "shadowColor",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "filter",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "clearRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "w",
+          "type": "number"
+        },
+        {
+          "name": "h",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "w",
+          "type": "number"
+        },
+        {
+          "name": "h",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "strokeRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "w",
+          "type": "number"
+        },
+        {
+          "name": "h",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "beginPath",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "fill",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "stroke",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "clip",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "isPointInPath",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "winding",
+          "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "isPointInStroke",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "drawFocusIfNeeded",
+      "params": [
+        {
+          "name": "element",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "drawCustomFocusRing",
+      "params": [
+        {
+          "name": "element",
+          "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "fillText",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "maxWidth",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "strokeText",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "maxWidth",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "measureText",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "drawImage",
+      "params": [
+        {
+          "name": "image",
+          "type": "object"
+        },
+        {
+          "name": "sx",
+          "type": "number"
+        },
+        {
+          "name": "sy",
+          "type": "number"
+        },
+        {
+          "name": "sw",
+          "type": "number"
+        },
+        {
+          "name": "sh",
+          "type": "number"
+        },
+        {
+          "name": "dx",
+          "type": "number"
+        },
+        {
+          "name": "dy",
+          "type": "number"
+        },
+        {
+          "name": "dw",
+          "type": "number"
+        },
+        {
+          "name": "dh",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "createImageData",
+      "params": [
+        {
+          "name": "sw",
+          "type": "number"
+        },
+        {
+          "name": "sh",
+          "type": "number"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getImageData",
+      "params": [
+        {
+          "name": "sx",
+          "type": "number"
+        },
+        {
+          "name": "sy",
+          "type": "number"
+        },
+        {
+          "name": "sw",
+          "type": "number"
+        },
+        {
+          "name": "sh",
+          "type": "number"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "putImageData",
+      "params": [
+        {
+          "name": "imagedata",
+          "type": "object"
+        },
+        {
+          "name": "dx",
+          "type": "number"
+        },
+        {
+          "name": "dy",
+          "type": "number"
+        },
+        {
+          "name": "dirtyX",
+          "type": "number"
+        },
+        {
+          "name": "dirtyY",
+          "type": "number"
+        },
+        {
+          "name": "dirtyWidth",
+          "type": "number"
+        },
+        {
+          "name": "dirtyHeight",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "lineWidth",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "lineCap",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "lineJoin",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "miterLimit",
+      "property_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "setLineDash",
+      "params": [
+        {
+          "name": "segments",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getLineDash",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "lineDashOffset",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "font",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "textAlign",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "textBaseline",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "closePath",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "quadraticCurveTo",
+      "params": [
+        {
+          "name": "cpx",
+          "type": "number"
+        },
+        {
+          "name": "cpy",
+          "type": "number"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bezierCurveTo",
+      "params": [
+        {
+          "name": "cp1x",
+          "type": "number"
+        },
+        {
+          "name": "cp1y",
+          "type": "number"
+        },
+        {
+          "name": "cp2x",
+          "type": "number"
+        },
+        {
+          "name": "cp2y",
+          "type": "number"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "x1",
+          "type": "number"
+        },
+        {
+          "name": "y1",
+          "type": "number"
+        },
+        {
+          "name": "x2",
+          "type": "number"
+        },
+        {
+          "name": "y2",
+          "type": "number"
+        },
+        {
+          "name": "radius",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "rect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "w",
+          "type": "number"
+        },
+        {
+          "name": "h",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "arc",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "radius",
+          "type": "number"
+        },
+        {
+          "name": "startAngle",
+          "type": "number"
+        },
+        {
+          "name": "endAngle",
+          "type": "number"
+        },
+        {
+          "name": "anticlockwise",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "ellipse",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "radiusX",
+          "type": "number"
+        },
+        {
+          "name": "radiusY",
+          "type": "number"
+        },
+        {
+          "name": "rotation",
+          "type": "number"
+        },
+        {
+          "name": "startAngle",
+          "type": "number"
+        },
+        {
+          "name": "endAngle",
+          "type": "number"
+        },
+        {
+          "name": "anticlockwise",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "addHitRegion",
+      "params": [
+        {
+          "name": "options",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "removeHitRegion",
+      "params": [
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "clearHitRegions",
+      "params": []
+    }
+  ],
+  "CanvasGradient": [
+    {
+      "type": "function",
+      "name": "addColorStop",
+      "params": [
+        {
+          "name": "offset",
+          "type": "number"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "CanvasPattern": [
+    {
+      "type": "function",
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "matrix",
+          "type": "object"
+        }
+      ]
+    }
+  ],
+  "TextMetrics": [
+    {
+      "type": "property",
+      "name": "width",
+      "property_type": "number"
+    }
+  ],
+  "Path2D": [
+    {
+      "type": "function",
+      "name": "addPath",
+      "params": [
+        {
+          "name": "path",
+          "type": "object"
+        },
+        {
+          "name": "transformation",
+          "type": "object"
+        }
+      ]
+    }
+  ],
+  "console": [
+    {
+      "type": "function",
+      "name": "assert",
+      "params": [
+        {
+          "name": "condition",
+          "type": "boolean"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "clear",
+      "params": [],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "count",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "countReset",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "debug",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "error",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "info",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "log",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "table",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "trace",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "warn",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "dir",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "dirxml",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "group",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "groupCollapsed",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "groupEnd",
+      "params": [],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "time",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "timeLog",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "timeEnd",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "exception",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "timeStamp",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "profile",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    },
+    {
+      "type": "function",
+      "name": "profileEnd",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "is_static": true
+    }
+  ],
+  "ConsoleInstance": [
+    {
+      "type": "function",
+      "name": "assert",
+      "params": [
+        {
+          "name": "condition",
+          "type": "boolean"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "clear",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "count",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "countReset",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "debug",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "error",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "info",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "log",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "table",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "trace",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "warn",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "dir",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "dirxml",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "group",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "groupCollapsed",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "groupEnd",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "time",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "timeLog",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "timeEnd",
+      "params": [
+        {
+          "name": "label",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "exception",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "timeStamp",
+      "params": [
+        {
+          "name": "data",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "profile",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "profileEnd",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "reportForServiceWorkerScope",
+      "params": [
+        {
+          "name": "scope",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "filename",
+          "type": "string"
+        },
+        {
+          "name": "lineNumber",
+          "type": "number"
+        },
+        {
+          "name": "columnNumber",
+          "type": "number"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        }
+      ]
+    }
+  ],
+  "Document": [
+    {
+      "type": "property",
+      "name": "implementation",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "URL",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "documentURI",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "compatMode",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "characterSet",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "charset",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "inputEncoding",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "contentType",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "doctype",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "documentElement",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getElementsByTagName",
+      "params": [
+        {
+          "name": "localName",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getElementsByTagNameNS",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        },
+        {
+          "name": "localName",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getElementsByClassName",
+      "params": [
+        {
+          "name": "classNames",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getElementById",
+      "params": [
+        {
+          "name": "elementId",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createElement",
+      "params": [
+        {
+          "name": "localName",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createElementNS",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        },
+        {
+          "name": "qualifiedName",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createDocumentFragment",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createTextNode",
+      "params": [
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createComment",
+      "params": [
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createProcessingInstruction",
+      "params": [
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "importNode",
+      "params": [
+        {
+          "name": "node",
+          "type": "object"
+        },
+        {
+          "name": "deep",
+          "type": "boolean"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "adoptNode",
+      "params": [
+        {
+          "name": "node",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createEvent",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createRange",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createNodeIterator",
+      "params": [
+        {
+          "name": "root",
+          "type": "object"
+        },
+        {
+          "name": "whatToShow",
+          "type": "number"
+        },
+        {
+          "name": "filter",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createTreeWalker",
+      "params": [
+        {
+          "name": "root",
+          "type": "object"
+        },
+        {
+          "name": "whatToShow",
+          "type": "number"
+        },
+        {
+          "name": "filter",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createCDATASection",
+      "params": [
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createAttribute",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "createAttributeNS",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "location",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "referrer",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "lastModified",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "readyState",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "title",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "dir",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "body",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "head",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "images",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "embeds",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "plugins",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "links",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "forms",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "scripts",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getElementsByName",
+      "params": [
+        {
+          "name": "elementName",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "defaultView",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "hasFocus",
+      "params": [],
+      "return_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "onreadystatechange",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onbeforescriptexecute",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onafterscriptexecute",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onselectionchange",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "currentScript",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "releaseCapture",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "documentURIObject",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "referrerPolicy",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "anchors",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "applets",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "fullscreen",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "fullscreenEnabled",
+      "property_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "exitFullscreen",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "onfullscreenchange",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onfullscreenerror",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "exitPointerLock",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "onpointerlockchange",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onpointerlockerror",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "hidden",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "visibilityState",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onvisibilitychange",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "selectedStyleSheetSet",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "lastStyleSheetSet",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "preferredStyleSheetSet",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "styleSheetSets",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "enableStyleSheetsForSet",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "caretPositionFromPoint",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "scrollingElement",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "querySelector",
+      "params": [
+        {
+          "name": "selectors",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "querySelectorAll",
+      "params": [
+        {
+          "name": "selectors",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "timeline",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getAnimations",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "rootElement",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "isSrcdocDocument",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "sandboxFlagsAsString",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "insertAnonymousContent",
+      "params": [
+        {
+          "name": "aElement",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "removeAnonymousContent",
+      "params": [
+        {
+          "name": "aContent",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getSelection",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "userHasInteracted",
+      "property_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "notifyUserGestureActivation",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "documentFlashClassification",
+      "property_type": "object"
+    }
+  ],
+  "Element": [
+    {
+      "type": "property",
+      "name": "namespaceURI",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "prefix",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "localName",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "tagName",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "id",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "className",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "classList",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "attributes",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getAttributeNames",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getAttribute",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "getAttributeNS",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        },
+        {
+          "name": "localName",
+          "type": "string"
+        }
+      ],
+      "return_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "toggleAttribute",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "force",
+          "type": "boolean"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "setAttribute",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "setAttributeNS",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "removeAttribute",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "removeAttributeNS",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        },
+        {
+          "name": "localName",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "hasAttribute",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "hasAttributeNS",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        },
+        {
+          "name": "localName",
+          "type": "string"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "hasAttributes",
+      "params": [],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "closest",
+      "params": [
+        {
+          "name": "selector",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "matches",
+      "params": [
+        {
+          "name": "selector",
+          "type": "string"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "webkitMatchesSelector",
+      "params": [
+        {
+          "name": "selector",
+          "type": "string"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "getElementsWithGrid",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "insertAdjacentElement",
+      "params": [
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "element",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "insertAdjacentText",
+      "params": [
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "fontSizeInflation",
+      "property_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "setPointerCapture",
+      "params": [
+        {
+          "name": "pointerId",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "releasePointerCapture",
+      "params": [
+        {
+          "name": "pointerId",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "hasPointerCapture",
+      "params": [
+        {
+          "name": "pointerId",
+          "type": "number"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "setCapture",
+      "params": [
+        {
+          "name": "retargetToElement",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "releaseCapture",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "setCaptureAlways",
+      "params": [
+        {
+          "name": "retargetToElement",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getAttributeNode",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "setAttributeNode",
+      "params": [
+        {
+          "name": "newAttr",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "removeAttributeNode",
+      "params": [
+        {
+          "name": "oldAttr",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getAttributeNodeNS",
+      "params": [
+        {
+          "name": "namespaceURI",
+          "type": "string"
+        },
+        {
+          "name": "localName",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "setAttributeNodeNS",
+      "params": [
+        {
+          "name": "newAttr",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "scrollByNoFlush",
+      "params": [
+        {
+          "name": "dx",
+          "type": "number"
+        },
+        {
+          "name": "dy",
+          "type": "number"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "getAsFlexContainer",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getGridFragments",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getTransformToAncestor",
+      "params": [
+        {
+          "name": "ancestor",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getTransformToParent",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getTransformToViewport",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getClientRects",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getBoundingClientRect",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "scrollIntoView",
+      "params": [
+        {
+          "name": "arg",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "scrollTop",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "scrollLeft",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "scrollWidth",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "scrollHeight",
+      "property_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "scroll",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "scrollTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "scrollBy",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "clientTop",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "clientLeft",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "clientWidth",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "clientHeight",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "innerHTML",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "outerHTML",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "insertAdjacentHTML",
+      "params": [
+        {
+          "name": "position",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "querySelector",
+      "params": [
+        {
+          "name": "selectors",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "querySelectorAll",
+      "params": [
+        {
+          "name": "selectors",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "shadowRoot",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "openOrClosedShadowRoot",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "assignedSlot",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "slot",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "requestFullscreen",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "requestPointerLock",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "children",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "firstElementChild",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "lastElementChild",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "childElementCount",
+      "property_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "prepend",
+      "params": [
+        {
+          "name": "nodes",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "append",
+      "params": [
+        {
+          "name": "nodes",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "before",
+      "params": [
+        {
+          "name": "nodes",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "after",
+      "params": [
+        {
+          "name": "nodes",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "replaceWith",
+      "params": [
+        {
+          "name": "nodes",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "remove",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "previousElementSibling",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "nextElementSibling",
+      "property_type": "object"
+    }
+  ],
+  "EventTarget": [
+    {
+      "type": "function",
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "eventType",
+          "type": "string"
+        },
+        {
+          "name": "listener",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "removeEventListener",
+      "params": [
+        {
+          "name": "eventType",
+          "type": "string"
+        },
+        {
+          "name": "listener",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "event",
+          "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    }
+  ],
+  "HTMLCanvasElement": [
+    {
+      "type": "property",
+      "name": "width",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "height",
+      "property_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "getContext",
+      "params": [
+        {
+          "name": "contextId",
+          "type": "string"
+        }
+      ],
+      "return_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "toDataURL",
+      "params": [
+        {
+          "name": "dataType",
+          "type": "string"
+        },
+        {
+          "name": "encoderOptions",
+          "type": "number"
+        }
+      ],
+      "return_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "toBlob",
+      "params": [
+        {
+          "name": "callback",
+          "type": "object"
+        },
+        {
+          "name": "blobType",
+          "type": "string"
+        },
+        {
+          "name": "encoderOptions",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "transferControlToOffscreen",
+      "params": [],
+      "return_type": "object"
+    }
+  ],
+  "HTMLInputElement": [
+    {
+      "type": "property",
+      "name": "accept",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "alt",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "autocomplete",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "autofocus",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "defaultChecked",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "checked",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "disabled",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "form",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "files",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "formAction",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "formEnctype",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "formMethod",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "formNoValidate",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "formTarget",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "height",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "indeterminate",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "inputMode",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "list",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "max",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "maxLength",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "min",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "minLength",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "multiple",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "name",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "pattern",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "placeholder",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "readOnly",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "required",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "size",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "src",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "step",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "type",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "defaultValue",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "value",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "valueAsDate",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "valueAsNumber",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "width",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "willValidate",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "validity",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "validationMessage",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "checkValidity",
+      "params": [],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "reportValidity",
+      "params": [],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "setCustomValidity",
+      "params": [
+        {
+          "name": "error",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "labels",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "select",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "selectionDirection",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "setRangeText",
+      "params": [
+        {
+          "name": "replacement",
+          "type": "string"
+        },
+        {
+          "name": "start",
+          "type": "number"
+        },
+        {
+          "name": "end",
+          "type": "number"
+        },
+        {
+          "name": "selectionMode",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "setSelectionRange",
+      "params": [
+        {
+          "name": "start",
+          "type": "number"
+        },
+        {
+          "name": "end",
+          "type": "number"
+        },
+        {
+          "name": "direction",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "align",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "useMap",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "getDateTimeInputBoxValue",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "updateDateTimeInputBox",
+      "params": [
+        {
+          "name": "value",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "setDateTimePickerState",
+      "params": [
+        {
+          "name": "open",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getMinimum",
+      "params": [],
+      "return_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "getMaximum",
+      "params": [],
+      "return_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "previewValue",
+      "property_type": "string"
+    }
+  ],
+  "KeyboardEvent": [
+    {
+      "type": "property",
+      "name": "charCode",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "keyCode",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "altKey",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "ctrlKey",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "shiftKey",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "metaKey",
+      "property_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "getModifierState",
+      "params": [
+        {
+          "name": "key",
+          "type": "string"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "location",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "repeat",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "isComposing",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "key",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "code",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "initKeyboardEvent",
+      "params": [
+        {
+          "name": "typeArg",
+          "type": "string"
+        },
+        {
+          "name": "bubblesArg",
+          "type": "boolean"
+        },
+        {
+          "name": "cancelableArg",
+          "type": "boolean"
+        },
+        {
+          "name": "viewArg",
+          "type": "object"
+        },
+        {
+          "name": "keyArg",
+          "type": "string"
+        },
+        {
+          "name": "locationArg",
+          "type": "number"
+        },
+        {
+          "name": "ctrlKey",
+          "type": "boolean"
+        },
+        {
+          "name": "altKey",
+          "type": "boolean"
+        },
+        {
+          "name": "shiftKey",
+          "type": "boolean"
+        },
+        {
+          "name": "metaKey",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "initDict",
+      "property_type": "object"
+    }
+  ],
+  "MouseEvent": [
+    {
+      "type": "property",
+      "name": "screenX",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "screenY",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "clientX",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "clientY",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "x",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "y",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "offsetX",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "offsetY",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "ctrlKey",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "shiftKey",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "altKey",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "metaKey",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "button",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "buttons",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "relatedTarget",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "region",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "movementX",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "movementY",
+      "property_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "initMouseEvent",
+      "params": [
+        {
+          "name": "typeArg",
+          "type": "string"
+        },
+        {
+          "name": "canBubbleArg",
+          "type": "boolean"
+        },
+        {
+          "name": "cancelableArg",
+          "type": "boolean"
+        },
+        {
+          "name": "viewArg",
+          "type": "object"
+        },
+        {
+          "name": "detailArg",
+          "type": "number"
+        },
+        {
+          "name": "screenXArg",
+          "type": "number"
+        },
+        {
+          "name": "screenYArg",
+          "type": "number"
+        },
+        {
+          "name": "clientXArg",
+          "type": "number"
+        },
+        {
+          "name": "clientYArg",
+          "type": "number"
+        },
+        {
+          "name": "ctrlKeyArg",
+          "type": "boolean"
+        },
+        {
+          "name": "altKeyArg",
+          "type": "boolean"
+        },
+        {
+          "name": "shiftKeyArg",
+          "type": "boolean"
+        },
+        {
+          "name": "metaKeyArg",
+          "type": "boolean"
+        },
+        {
+          "name": "buttonArg",
+          "type": "number"
+        },
+        {
+          "name": "relatedTargetArg",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getModifierState",
+      "params": [
+        {
+          "name": "keyArg",
+          "type": "string"
+        }
+      ],
+      "return_type": "boolean"
+    }
+  ],
+  "Node": [
+    {
+      "type": "property",
+      "name": "nodeType",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "nodeName",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "baseURI",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "isConnected",
+      "property_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "ownerDocument",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getRootNode",
+      "params": [
+        {
+          "name": "options",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "parentNode",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "parentElement",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "hasChildNodes",
+      "params": [],
+      "return_type": "boolean"
+    },
+    {
+      "type": "property",
+      "name": "childNodes",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "firstChild",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "lastChild",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "previousSibling",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "nextSibling",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "nodeValue",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "textContent",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "insertBefore",
+      "params": [
+        {
+          "name": "node",
+          "type": "object"
+        },
+        {
+          "name": "child",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "appendChild",
+      "params": [
+        {
+          "name": "node",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "replaceChild",
+      "params": [
+        {
+          "name": "node",
+          "type": "object"
+        },
+        {
+          "name": "child",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "removeChild",
+      "params": [
+        {
+          "name": "child",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "normalize",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "cloneNode",
+      "params": [
+        {
+          "name": "deep",
+          "type": "boolean"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "isSameNode",
+      "params": [
+        {
+          "name": "node",
+          "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "isEqualNode",
+      "params": [
+        {
+          "name": "node",
+          "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "compareDocumentPosition",
+      "params": [
+        {
+          "name": "other",
+          "type": "object"
+        }
+      ],
+      "return_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "contains",
+      "params": [
+        {
+          "name": "other",
+          "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "lookupPrefix",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        }
+      ],
+      "return_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "lookupNamespaceURI",
+      "params": [
+        {
+          "name": "prefix",
+          "type": "string"
+        }
+      ],
+      "return_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "isDefaultNamespace",
+      "params": [
+        {
+          "name": "namespace",
+          "type": "string"
+        }
+      ],
+      "return_type": "boolean"
+    }
+  ],
+  "Window": [
+    {
+      "type": "property",
+      "name": "window",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "self",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "document",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "name",
+      "property_type": "string"
+    },
+    {
+      "type": "property",
+      "name": "location",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "history",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "customElements",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "locationbar",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "menubar",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "personalbar",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "scrollbars",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "statusbar",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "toolbar",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "status",
+      "property_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "close",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "closed",
+      "property_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "stop",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "focus",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "blur",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "event",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "frames",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "length",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "top",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "opener",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "parent",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "frameElement",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "open",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "features",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "navigator",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "external",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "applicationCache",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "alert",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "confirm",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "prompt",
+      "params": [
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "defaultMessage",
+          "type": "string"
+        }
+      ],
+      "return_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "print",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "postMessage",
+      "params": [
+        {
+          "name": "message",
+          "type": "number"
+        },
+        {
+          "name": "targetOrigin",
+          "type": "string"
+        },
+        {
+          "name": "transfer",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "onappinstalled",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "captureEvents",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "releaseEvents",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "getSelection",
+      "params": [],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getComputedStyle",
+      "params": [
+        {
+          "name": "elt",
+          "type": "object"
+        },
+        {
+          "name": "pseudoElt",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "matchMedia",
+      "params": [
+        {
+          "name": "query",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "screen",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "moveBy",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "resizeTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "resizeBy",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "innerWidth",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "innerHeight",
+      "property_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "scroll",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "scrollTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "scrollBy",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "scrollX",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "pageXOffset",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "scrollY",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "pageYOffset",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "screenX",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "screenY",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "outerWidth",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "outerHeight",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "devicePixelRatio",
+      "property_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "requestAnimationFrame",
+      "params": [
+        {
+          "name": "callback",
+          "type": "object"
+        }
+      ],
+      "return_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "cancelAnimationFrame",
+      "params": [
+        {
+          "name": "handle",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "performance",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "orientation",
+      "property_type": "number"
+    },
+    {
+      "type": "property",
+      "name": "onorientationchange",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onvrdisplayconnect",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onvrdisplaydisconnect",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onvrdisplayactivate",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onvrdisplaydeactivate",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "onvrdisplaypresentchange",
+      "property_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "paintWorklet",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "requestIdleCallback",
+      "params": [
+        {
+          "name": "callback",
+          "type": "object"
+        },
+        {
+          "name": "options",
+          "type": "object"
+        }
+      ],
+      "return_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "cancelIdleCallback",
+      "params": [
+        {
+          "name": "handle",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "origin",
+      "property_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "btoa",
+      "params": [
+        {
+          "name": "btoa",
+          "type": "string"
+        }
+      ],
+      "return_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "atob",
+      "params": [
+        {
+          "name": "atob",
+          "type": "string"
+        }
+      ],
+      "return_type": "string"
+    },
+    {
+      "type": "function",
+      "name": "setTimeout",
+      "params": [
+        {
+          "name": "handler",
+          "type": "object"
+        },
+        {
+          "name": "timeout",
+          "type": "number"
+        }
+      ],
+      "return_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "clearTimeout",
+      "params": [
+        {
+          "name": "handle",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "setInterval",
+      "params": [
+        {
+          "name": "handler",
+          "type": "object"
+        },
+        {
+          "name": "timeout",
+          "type": "number"
+        }
+      ],
+      "return_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "clearInterval",
+      "params": [
+        {
+          "name": "handle",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "createImageBitmap",
+      "params": [
+        {
+          "name": "aImage",
+          "type": "object"
+        },
+        {
+          "name": "aSx",
+          "type": "number"
+        },
+        {
+          "name": "aSy",
+          "type": "number"
+        },
+        {
+          "name": "aSw",
+          "type": "number"
+        },
+        {
+          "name": "aSh",
+          "type": "number"
+        }
+      ],
+      "return_type": "object"
+    }
+  ]
+}
