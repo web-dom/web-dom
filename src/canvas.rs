@@ -70,6 +70,11 @@ pub fn set_moz_image_smoothing_enabled(instance: DOMReference, value: bool) {
         canvas_set_moz_image_smoothing_enabled(instance, if value == true { 1 } else { 0 });
     }
 }
+pub const DRAWWINDOW_DRAW_CARET: i32 = 0x01;
+pub const DRAWWINDOW_DO_NOT_FLUSH: i32 = 0x02;
+pub const DRAWWINDOW_DRAW_VIEW: i32 = 0x04;
+pub const DRAWWINDOW_USE_WIDGET_LAYERS: i32 = 0x08;
+pub const DRAWWINDOW_ASYNC_DECODE_IMAGES: i32 = 0x10;
 extern "C" {
     fn canvas_draw_window(
         instance: DOMReference,

@@ -4,6 +4,7 @@ pub fn main() -> () {
     let doc = window::get_document(window());
     let canvas = document::query_selector(doc, "#screen");
     let ctx = htmlcanvas::get_context(canvas, "webgl");
+    let vertex_buffer = webgl::create_buffer(ctx);
     /*     var vertices = [
             -0.5,0.5,0.0,
             -0.5,-0.5,0.0,

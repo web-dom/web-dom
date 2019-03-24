@@ -1,5 +1,6 @@
 #[allow(unused_imports)]
 use crate::*;
+pub const VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE: i32 = 0x88FE;
 extern "C" {
     fn angle_instanced_arrays_draw_arrays_instanced_angle(
         instance: DOMReference,

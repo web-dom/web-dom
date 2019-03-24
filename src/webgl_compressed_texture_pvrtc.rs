@@ -1,0 +1,6 @@
+#[allow(unused_imports)]
+use crate::*;
+pub const COMPRESSED_RGB_PVRTC_4BPPV1_IMG: i32 = 0x8C00;
+pub const COMPRESSED_RGB_PVRTC_2BPPV1_IMG: i32 = 0x8C01;
+pub const COMPRESSED_RGBA_PVRTC_4BPPV1_IMG: i32 = 0x8C02;
+pub const COMPRESSED_RGBA_PVRTC_2BPPV1_IMG: i32 = 0x8C03;

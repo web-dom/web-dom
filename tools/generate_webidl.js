@@ -354,6 +354,12 @@ for (i in dom_api) {
             ${returnNullable ? "" : returnsString ? ")" : ""}
           }\n}\n`
       );
+    } else if (member.type == "const") {
+      let constType = member.const_type;
+      appendToNamespace(
+        i,
+        `pub const ${member.name.toUpperCase()}: i32 = ${member.value};\n`
+      );
     }
   }
 }
@@ -368,6 +374,10 @@ function createWebIDLContext(){
 
     global_is_null: function(o){
       A.g(o) == null
+    },
+
+    global_convert_ref_to_string: function(o){
+      return this.ms(A.g(o));
     },
 
     global_debugger: function(){

@@ -79,7 +79,7 @@ function processOperation(namespace, operation, isInterface) {
   if(hasReturn){
     f.return_type = toType(returnType);
     if(returnsNullable){
-      f.return_nullable = returnsNullable;  
+      f.return_nullable = returnsNullable;
     }
   }
   if(!isInterface){
@@ -108,6 +108,26 @@ function processAttribute(interface, idl) {
   dom_api[namespace].push({type:"property",name:name,return_type:propType})
 }
 
+function processConst(interface, idl) {
+  if (!idl.name) {
+    return;
+  }
+  let namespace = processNamespace(interface);
+  let name = idl.name;
+  let primitive = isPrimitive(idl.idlType.idlType);
+  let propType = "number";
+  if (primitive) {
+    if (idl.idlType.idlType == "DOMString") {
+      propType = "string"
+    } else if(idl.idlType.idlType == "boolean"){
+      propType = "boolean"
+    }
+  } else {
+    propType = "object"
+  }
+  dom_api[namespace].push({type:"const",name:name,const_type:idl.value.type,value:idl.value.value})
+}
+
 function processIdl(idls, file) {
   console.log(`Processing \`${file}\`...`);
   for (i in idls) {
@@ -124,9 +144,12 @@ function processIdl(idls, file) {
         let member = idl.members[m];
         if (member.type == "operation") {
           processOperation(idl.name, member, true);
-        }
-        if (member.type == "attribute") {
+        } else if (member.type == "attribute") {
           processAttribute(idl.name, member);
+        } else if (member.type == "const") {
+          processConst(idl.name, member);
+        } else {
+          console.log(member);
         }
       }
     }

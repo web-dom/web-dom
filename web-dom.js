@@ -49,6 +49,10 @@
         A.g(o) == null;
       },
 
+      global_convert_ref_to_string: function(o) {
+        return this.ms(A.g(o));
+      },
+
       global_debugger: function() {
         debugger;
       },

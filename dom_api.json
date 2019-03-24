@@ -26,6 +26,36 @@
       "return_type": "boolean"
     },
     {
+      "type": "const",
+      "name": "DRAWWINDOW_DRAW_CARET",
+      "const_type": "number",
+      "value": "0x01"
+    },
+    {
+      "type": "const",
+      "name": "DRAWWINDOW_DO_NOT_FLUSH",
+      "const_type": "number",
+      "value": "0x02"
+    },
+    {
+      "type": "const",
+      "name": "DRAWWINDOW_DRAW_VIEW",
+      "const_type": "number",
+      "value": "0x04"
+    },
+    {
+      "type": "const",
+      "name": "DRAWWINDOW_USE_WIDGET_LAYERS",
+      "const_type": "number",
+      "value": "0x08"
+    },
+    {
+      "type": "const",
+      "name": "DRAWWINDOW_ASYNC_DECODE_IMAGES",
+      "const_type": "number",
+      "value": "0x10"
+    },
+    {
       "type": "function",
       "name": "drawWindow",
       "params": [
@@ -3613,6 +3643,30 @@
       "return_type": "boolean"
     },
     {
+      "type": "const",
+      "name": "DOM_KEY_LOCATION_STANDARD",
+      "const_type": "number",
+      "value": "0x00"
+    },
+    {
+      "type": "const",
+      "name": "DOM_KEY_LOCATION_LEFT",
+      "const_type": "number",
+      "value": "0x01"
+    },
+    {
+      "type": "const",
+      "name": "DOM_KEY_LOCATION_RIGHT",
+      "const_type": "number",
+      "value": "0x02"
+    },
+    {
+      "type": "const",
+      "name": "DOM_KEY_LOCATION_NUMPAD",
+      "const_type": "number",
+      "value": "0x03"
+    },
+    {
       "type": "property",
       "name": "location",
       "return_type": "number"
@@ -3860,6 +3914,78 @@
   ],
   "Node": [
     {
+      "type": "const",
+      "name": "ELEMENT_NODE",
+      "const_type": "number",
+      "value": "1"
+    },
+    {
+      "type": "const",
+      "name": "ATTRIBUTE_NODE",
+      "const_type": "number",
+      "value": "2"
+    },
+    {
+      "type": "const",
+      "name": "TEXT_NODE",
+      "const_type": "number",
+      "value": "3"
+    },
+    {
+      "type": "const",
+      "name": "CDATA_SECTION_NODE",
+      "const_type": "number",
+      "value": "4"
+    },
+    {
+      "type": "const",
+      "name": "ENTITY_REFERENCE_NODE",
+      "const_type": "number",
+      "value": "5"
+    },
+    {
+      "type": "const",
+      "name": "ENTITY_NODE",
+      "const_type": "number",
+      "value": "6"
+    },
+    {
+      "type": "const",
+      "name": "PROCESSING_INSTRUCTION_NODE",
+      "const_type": "number",
+      "value": "7"
+    },
+    {
+      "type": "const",
+      "name": "COMMENT_NODE",
+      "const_type": "number",
+      "value": "8"
+    },
+    {
+      "type": "const",
+      "name": "DOCUMENT_NODE",
+      "const_type": "number",
+      "value": "9"
+    },
+    {
+      "type": "const",
+      "name": "DOCUMENT_TYPE_NODE",
+      "const_type": "number",
+      "value": "10"
+    },
+    {
+      "type": "const",
+      "name": "DOCUMENT_FRAGMENT_NODE",
+      "const_type": "number",
+      "value": "11"
+    },
+    {
+      "type": "const",
+      "name": "NOTATION_NODE",
+      "const_type": "number",
+      "value": "12"
+    },
+    {
       "type": "property",
       "name": "nodeType",
       "return_type": "number"
@@ -4037,6 +4163,42 @@
       "return_type": "boolean"
     },
     {
+      "type": "const",
+      "name": "DOCUMENT_POSITION_DISCONNECTED",
+      "const_type": "number",
+      "value": "0x01"
+    },
+    {
+      "type": "const",
+      "name": "DOCUMENT_POSITION_PRECEDING",
+      "const_type": "number",
+      "value": "0x02"
+    },
+    {
+      "type": "const",
+      "name": "DOCUMENT_POSITION_FOLLOWING",
+      "const_type": "number",
+      "value": "0x04"
+    },
+    {
+      "type": "const",
+      "name": "DOCUMENT_POSITION_CONTAINS",
+      "const_type": "number",
+      "value": "0x08"
+    },
+    {
+      "type": "const",
+      "name": "DOCUMENT_POSITION_CONTAINED_BY",
+      "const_type": "number",
+      "value": "0x10"
+    },
+    {
+      "type": "const",
+      "name": "DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC",
+      "const_type": "number",
+      "value": "0x20"
+    },
+    {
       "type": "function",
       "name": "compareDocumentPosition",
       "params": [
@@ -4194,6 +4356,1782 @@
     }
   ],
   "WebGLRenderingContext": [
+    {
+      "type": "const",
+      "name": "DEPTH_BUFFER_BIT",
+      "const_type": "number",
+      "value": "0x00000100"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BUFFER_BIT",
+      "const_type": "number",
+      "value": "0x00000400"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_BUFFER_BIT",
+      "const_type": "number",
+      "value": "0x00004000"
+    },
+    {
+      "type": "const",
+      "name": "POINTS",
+      "const_type": "number",
+      "value": "0x0000"
+    },
+    {
+      "type": "const",
+      "name": "LINES",
+      "const_type": "number",
+      "value": "0x0001"
+    },
+    {
+      "type": "const",
+      "name": "LINE_LOOP",
+      "const_type": "number",
+      "value": "0x0002"
+    },
+    {
+      "type": "const",
+      "name": "LINE_STRIP",
+      "const_type": "number",
+      "value": "0x0003"
+    },
+    {
+      "type": "const",
+      "name": "TRIANGLES",
+      "const_type": "number",
+      "value": "0x0004"
+    },
+    {
+      "type": "const",
+      "name": "TRIANGLE_STRIP",
+      "const_type": "number",
+      "value": "0x0005"
+    },
+    {
+      "type": "const",
+      "name": "TRIANGLE_FAN",
+      "const_type": "number",
+      "value": "0x0006"
+    },
+    {
+      "type": "const",
+      "name": "ZERO",
+      "const_type": "number",
+      "value": "0"
+    },
+    {
+      "type": "const",
+      "name": "ONE",
+      "const_type": "number",
+      "value": "1"
+    },
+    {
+      "type": "const",
+      "name": "SRC_COLOR",
+      "const_type": "number",
+      "value": "0x0300"
+    },
+    {
+      "type": "const",
+      "name": "ONE_MINUS_SRC_COLOR",
+      "const_type": "number",
+      "value": "0x0301"
+    },
+    {
+      "type": "const",
+      "name": "SRC_ALPHA",
+      "const_type": "number",
+      "value": "0x0302"
+    },
+    {
+      "type": "const",
+      "name": "ONE_MINUS_SRC_ALPHA",
+      "const_type": "number",
+      "value": "0x0303"
+    },
+    {
+      "type": "const",
+      "name": "DST_ALPHA",
+      "const_type": "number",
+      "value": "0x0304"
+    },
+    {
+      "type": "const",
+      "name": "ONE_MINUS_DST_ALPHA",
+      "const_type": "number",
+      "value": "0x0305"
+    },
+    {
+      "type": "const",
+      "name": "DST_COLOR",
+      "const_type": "number",
+      "value": "0x0306"
+    },
+    {
+      "type": "const",
+      "name": "ONE_MINUS_DST_COLOR",
+      "const_type": "number",
+      "value": "0x0307"
+    },
+    {
+      "type": "const",
+      "name": "SRC_ALPHA_SATURATE",
+      "const_type": "number",
+      "value": "0x0308"
+    },
+    {
+      "type": "const",
+      "name": "FUNC_ADD",
+      "const_type": "number",
+      "value": "0x8006"
+    },
+    {
+      "type": "const",
+      "name": "BLEND_EQUATION",
+      "const_type": "number",
+      "value": "0x8009"
+    },
+    {
+      "type": "const",
+      "name": "BLEND_EQUATION_RGB",
+      "const_type": "number",
+      "value": "0x8009"
+    },
+    {
+      "type": "const",
+      "name": "BLEND_EQUATION_ALPHA",
+      "const_type": "number",
+      "value": "0x883D"
+    },
+    {
+      "type": "const",
+      "name": "FUNC_SUBTRACT",
+      "const_type": "number",
+      "value": "0x800A"
+    },
+    {
+      "type": "const",
+      "name": "FUNC_REVERSE_SUBTRACT",
+      "const_type": "number",
+      "value": "0x800B"
+    },
+    {
+      "type": "const",
+      "name": "BLEND_DST_RGB",
+      "const_type": "number",
+      "value": "0x80C8"
+    },
+    {
+      "type": "const",
+      "name": "BLEND_SRC_RGB",
+      "const_type": "number",
+      "value": "0x80C9"
+    },
+    {
+      "type": "const",
+      "name": "BLEND_DST_ALPHA",
+      "const_type": "number",
+      "value": "0x80CA"
+    },
+    {
+      "type": "const",
+      "name": "BLEND_SRC_ALPHA",
+      "const_type": "number",
+      "value": "0x80CB"
+    },
+    {
+      "type": "const",
+      "name": "CONSTANT_COLOR",
+      "const_type": "number",
+      "value": "0x8001"
+    },
+    {
+      "type": "const",
+      "name": "ONE_MINUS_CONSTANT_COLOR",
+      "const_type": "number",
+      "value": "0x8002"
+    },
+    {
+      "type": "const",
+      "name": "CONSTANT_ALPHA",
+      "const_type": "number",
+      "value": "0x8003"
+    },
+    {
+      "type": "const",
+      "name": "ONE_MINUS_CONSTANT_ALPHA",
+      "const_type": "number",
+      "value": "0x8004"
+    },
+    {
+      "type": "const",
+      "name": "BLEND_COLOR",
+      "const_type": "number",
+      "value": "0x8005"
+    },
+    {
+      "type": "const",
+      "name": "ARRAY_BUFFER",
+      "const_type": "number",
+      "value": "0x8892"
+    },
+    {
+      "type": "const",
+      "name": "ELEMENT_ARRAY_BUFFER",
+      "const_type": "number",
+      "value": "0x8893"
+    },
+    {
+      "type": "const",
+      "name": "ARRAY_BUFFER_BINDING",
+      "const_type": "number",
+      "value": "0x8894"
+    },
+    {
+      "type": "const",
+      "name": "ELEMENT_ARRAY_BUFFER_BINDING",
+      "const_type": "number",
+      "value": "0x8895"
+    },
+    {
+      "type": "const",
+      "name": "STREAM_DRAW",
+      "const_type": "number",
+      "value": "0x88E0"
+    },
+    {
+      "type": "const",
+      "name": "STATIC_DRAW",
+      "const_type": "number",
+      "value": "0x88E4"
+    },
+    {
+      "type": "const",
+      "name": "DYNAMIC_DRAW",
+      "const_type": "number",
+      "value": "0x88E8"
+    },
+    {
+      "type": "const",
+      "name": "BUFFER_SIZE",
+      "const_type": "number",
+      "value": "0x8764"
+    },
+    {
+      "type": "const",
+      "name": "BUFFER_USAGE",
+      "const_type": "number",
+      "value": "0x8765"
+    },
+    {
+      "type": "const",
+      "name": "CURRENT_VERTEX_ATTRIB",
+      "const_type": "number",
+      "value": "0x8626"
+    },
+    {
+      "type": "const",
+      "name": "FRONT",
+      "const_type": "number",
+      "value": "0x0404"
+    },
+    {
+      "type": "const",
+      "name": "BACK",
+      "const_type": "number",
+      "value": "0x0405"
+    },
+    {
+      "type": "const",
+      "name": "FRONT_AND_BACK",
+      "const_type": "number",
+      "value": "0x0408"
+    },
+    {
+      "type": "const",
+      "name": "CULL_FACE",
+      "const_type": "number",
+      "value": "0x0B44"
+    },
+    {
+      "type": "const",
+      "name": "BLEND",
+      "const_type": "number",
+      "value": "0x0BE2"
+    },
+    {
+      "type": "const",
+      "name": "DITHER",
+      "const_type": "number",
+      "value": "0x0BD0"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_TEST",
+      "const_type": "number",
+      "value": "0x0B90"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_TEST",
+      "const_type": "number",
+      "value": "0x0B71"
+    },
+    {
+      "type": "const",
+      "name": "SCISSOR_TEST",
+      "const_type": "number",
+      "value": "0x0C11"
+    },
+    {
+      "type": "const",
+      "name": "POLYGON_OFFSET_FILL",
+      "const_type": "number",
+      "value": "0x8037"
+    },
+    {
+      "type": "const",
+      "name": "SAMPLE_ALPHA_TO_COVERAGE",
+      "const_type": "number",
+      "value": "0x809E"
+    },
+    {
+      "type": "const",
+      "name": "SAMPLE_COVERAGE",
+      "const_type": "number",
+      "value": "0x80A0"
+    },
+    {
+      "type": "const",
+      "name": "NO_ERROR",
+      "const_type": "number",
+      "value": "0"
+    },
+    {
+      "type": "const",
+      "name": "INVALID_ENUM",
+      "const_type": "number",
+      "value": "0x0500"
+    },
+    {
+      "type": "const",
+      "name": "INVALID_VALUE",
+      "const_type": "number",
+      "value": "0x0501"
+    },
+    {
+      "type": "const",
+      "name": "INVALID_OPERATION",
+      "const_type": "number",
+      "value": "0x0502"
+    },
+    {
+      "type": "const",
+      "name": "OUT_OF_MEMORY",
+      "const_type": "number",
+      "value": "0x0505"
+    },
+    {
+      "type": "const",
+      "name": "CW",
+      "const_type": "number",
+      "value": "0x0900"
+    },
+    {
+      "type": "const",
+      "name": "CCW",
+      "const_type": "number",
+      "value": "0x0901"
+    },
+    {
+      "type": "const",
+      "name": "LINE_WIDTH",
+      "const_type": "number",
+      "value": "0x0B21"
+    },
+    {
+      "type": "const",
+      "name": "ALIASED_POINT_SIZE_RANGE",
+      "const_type": "number",
+      "value": "0x846D"
+    },
+    {
+      "type": "const",
+      "name": "ALIASED_LINE_WIDTH_RANGE",
+      "const_type": "number",
+      "value": "0x846E"
+    },
+    {
+      "type": "const",
+      "name": "CULL_FACE_MODE",
+      "const_type": "number",
+      "value": "0x0B45"
+    },
+    {
+      "type": "const",
+      "name": "FRONT_FACE",
+      "const_type": "number",
+      "value": "0x0B46"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_RANGE",
+      "const_type": "number",
+      "value": "0x0B70"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_WRITEMASK",
+      "const_type": "number",
+      "value": "0x0B72"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_CLEAR_VALUE",
+      "const_type": "number",
+      "value": "0x0B73"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_FUNC",
+      "const_type": "number",
+      "value": "0x0B74"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_CLEAR_VALUE",
+      "const_type": "number",
+      "value": "0x0B91"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_FUNC",
+      "const_type": "number",
+      "value": "0x0B92"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_FAIL",
+      "const_type": "number",
+      "value": "0x0B94"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_PASS_DEPTH_FAIL",
+      "const_type": "number",
+      "value": "0x0B95"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_PASS_DEPTH_PASS",
+      "const_type": "number",
+      "value": "0x0B96"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_REF",
+      "const_type": "number",
+      "value": "0x0B97"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_VALUE_MASK",
+      "const_type": "number",
+      "value": "0x0B93"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_WRITEMASK",
+      "const_type": "number",
+      "value": "0x0B98"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BACK_FUNC",
+      "const_type": "number",
+      "value": "0x8800"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BACK_FAIL",
+      "const_type": "number",
+      "value": "0x8801"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BACK_PASS_DEPTH_FAIL",
+      "const_type": "number",
+      "value": "0x8802"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BACK_PASS_DEPTH_PASS",
+      "const_type": "number",
+      "value": "0x8803"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BACK_REF",
+      "const_type": "number",
+      "value": "0x8CA3"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BACK_VALUE_MASK",
+      "const_type": "number",
+      "value": "0x8CA4"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BACK_WRITEMASK",
+      "const_type": "number",
+      "value": "0x8CA5"
+    },
+    {
+      "type": "const",
+      "name": "VIEWPORT",
+      "const_type": "number",
+      "value": "0x0BA2"
+    },
+    {
+      "type": "const",
+      "name": "SCISSOR_BOX",
+      "const_type": "number",
+      "value": "0x0C10"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_CLEAR_VALUE",
+      "const_type": "number",
+      "value": "0x0C22"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_WRITEMASK",
+      "const_type": "number",
+      "value": "0x0C23"
+    },
+    {
+      "type": "const",
+      "name": "UNPACK_ALIGNMENT",
+      "const_type": "number",
+      "value": "0x0CF5"
+    },
+    {
+      "type": "const",
+      "name": "PACK_ALIGNMENT",
+      "const_type": "number",
+      "value": "0x0D05"
+    },
+    {
+      "type": "const",
+      "name": "MAX_TEXTURE_SIZE",
+      "const_type": "number",
+      "value": "0x0D33"
+    },
+    {
+      "type": "const",
+      "name": "MAX_VIEWPORT_DIMS",
+      "const_type": "number",
+      "value": "0x0D3A"
+    },
+    {
+      "type": "const",
+      "name": "SUBPIXEL_BITS",
+      "const_type": "number",
+      "value": "0x0D50"
+    },
+    {
+      "type": "const",
+      "name": "RED_BITS",
+      "const_type": "number",
+      "value": "0x0D52"
+    },
+    {
+      "type": "const",
+      "name": "GREEN_BITS",
+      "const_type": "number",
+      "value": "0x0D53"
+    },
+    {
+      "type": "const",
+      "name": "BLUE_BITS",
+      "const_type": "number",
+      "value": "0x0D54"
+    },
+    {
+      "type": "const",
+      "name": "ALPHA_BITS",
+      "const_type": "number",
+      "value": "0x0D55"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_BITS",
+      "const_type": "number",
+      "value": "0x0D56"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_BITS",
+      "const_type": "number",
+      "value": "0x0D57"
+    },
+    {
+      "type": "const",
+      "name": "POLYGON_OFFSET_UNITS",
+      "const_type": "number",
+      "value": "0x2A00"
+    },
+    {
+      "type": "const",
+      "name": "POLYGON_OFFSET_FACTOR",
+      "const_type": "number",
+      "value": "0x8038"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_BINDING_2D",
+      "const_type": "number",
+      "value": "0x8069"
+    },
+    {
+      "type": "const",
+      "name": "SAMPLE_BUFFERS",
+      "const_type": "number",
+      "value": "0x80A8"
+    },
+    {
+      "type": "const",
+      "name": "SAMPLES",
+      "const_type": "number",
+      "value": "0x80A9"
+    },
+    {
+      "type": "const",
+      "name": "SAMPLE_COVERAGE_VALUE",
+      "const_type": "number",
+      "value": "0x80AA"
+    },
+    {
+      "type": "const",
+      "name": "SAMPLE_COVERAGE_INVERT",
+      "const_type": "number",
+      "value": "0x80AB"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_TEXTURE_FORMATS",
+      "const_type": "number",
+      "value": "0x86A3"
+    },
+    {
+      "type": "const",
+      "name": "DONT_CARE",
+      "const_type": "number",
+      "value": "0x1100"
+    },
+    {
+      "type": "const",
+      "name": "FASTEST",
+      "const_type": "number",
+      "value": "0x1101"
+    },
+    {
+      "type": "const",
+      "name": "NICEST",
+      "const_type": "number",
+      "value": "0x1102"
+    },
+    {
+      "type": "const",
+      "name": "GENERATE_MIPMAP_HINT",
+      "const_type": "number",
+      "value": "0x8192"
+    },
+    {
+      "type": "const",
+      "name": "BYTE",
+      "const_type": "number",
+      "value": "0x1400"
+    },
+    {
+      "type": "const",
+      "name": "UNSIGNED_BYTE",
+      "const_type": "number",
+      "value": "0x1401"
+    },
+    {
+      "type": "const",
+      "name": "SHORT",
+      "const_type": "number",
+      "value": "0x1402"
+    },
+    {
+      "type": "const",
+      "name": "UNSIGNED_SHORT",
+      "const_type": "number",
+      "value": "0x1403"
+    },
+    {
+      "type": "const",
+      "name": "INT",
+      "const_type": "number",
+      "value": "0x1404"
+    },
+    {
+      "type": "const",
+      "name": "UNSIGNED_INT",
+      "const_type": "number",
+      "value": "0x1405"
+    },
+    {
+      "type": "const",
+      "name": "FLOAT",
+      "const_type": "number",
+      "value": "0x1406"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_COMPONENT",
+      "const_type": "number",
+      "value": "0x1902"
+    },
+    {
+      "type": "const",
+      "name": "ALPHA",
+      "const_type": "number",
+      "value": "0x1906"
+    },
+    {
+      "type": "const",
+      "name": "RGB",
+      "const_type": "number",
+      "value": "0x1907"
+    },
+    {
+      "type": "const",
+      "name": "RGBA",
+      "const_type": "number",
+      "value": "0x1908"
+    },
+    {
+      "type": "const",
+      "name": "LUMINANCE",
+      "const_type": "number",
+      "value": "0x1909"
+    },
+    {
+      "type": "const",
+      "name": "LUMINANCE_ALPHA",
+      "const_type": "number",
+      "value": "0x190A"
+    },
+    {
+      "type": "const",
+      "name": "UNSIGNED_SHORT_4_4_4_4",
+      "const_type": "number",
+      "value": "0x8033"
+    },
+    {
+      "type": "const",
+      "name": "UNSIGNED_SHORT_5_5_5_1",
+      "const_type": "number",
+      "value": "0x8034"
+    },
+    {
+      "type": "const",
+      "name": "UNSIGNED_SHORT_5_6_5",
+      "const_type": "number",
+      "value": "0x8363"
+    },
+    {
+      "type": "const",
+      "name": "FRAGMENT_SHADER",
+      "const_type": "number",
+      "value": "0x8B30"
+    },
+    {
+      "type": "const",
+      "name": "VERTEX_SHADER",
+      "const_type": "number",
+      "value": "0x8B31"
+    },
+    {
+      "type": "const",
+      "name": "MAX_VERTEX_ATTRIBS",
+      "const_type": "number",
+      "value": "0x8869"
+    },
+    {
+      "type": "const",
+      "name": "MAX_VERTEX_UNIFORM_VECTORS",
+      "const_type": "number",
+      "value": "0x8DFB"
+    },
+    {
+      "type": "const",
+      "name": "MAX_VARYING_VECTORS",
+      "const_type": "number",
+      "value": "0x8DFC"
+    },
+    {
+      "type": "const",
+      "name": "MAX_COMBINED_TEXTURE_IMAGE_UNITS",
+      "const_type": "number",
+      "value": "0x8B4D"
+    },
+    {
+      "type": "const",
+      "name": "MAX_VERTEX_TEXTURE_IMAGE_UNITS",
+      "const_type": "number",
+      "value": "0x8B4C"
+    },
+    {
+      "type": "const",
+      "name": "MAX_TEXTURE_IMAGE_UNITS",
+      "const_type": "number",
+      "value": "0x8872"
+    },
+    {
+      "type": "const",
+      "name": "MAX_FRAGMENT_UNIFORM_VECTORS",
+      "const_type": "number",
+      "value": "0x8DFD"
+    },
+    {
+      "type": "const",
+      "name": "SHADER_TYPE",
+      "const_type": "number",
+      "value": "0x8B4F"
+    },
+    {
+      "type": "const",
+      "name": "DELETE_STATUS",
+      "const_type": "number",
+      "value": "0x8B80"
+    },
+    {
+      "type": "const",
+      "name": "LINK_STATUS",
+      "const_type": "number",
+      "value": "0x8B82"
+    },
+    {
+      "type": "const",
+      "name": "VALIDATE_STATUS",
+      "const_type": "number",
+      "value": "0x8B83"
+    },
+    {
+      "type": "const",
+      "name": "ATTACHED_SHADERS",
+      "const_type": "number",
+      "value": "0x8B85"
+    },
+    {
+      "type": "const",
+      "name": "ACTIVE_UNIFORMS",
+      "const_type": "number",
+      "value": "0x8B86"
+    },
+    {
+      "type": "const",
+      "name": "ACTIVE_ATTRIBUTES",
+      "const_type": "number",
+      "value": "0x8B89"
+    },
+    {
+      "type": "const",
+      "name": "SHADING_LANGUAGE_VERSION",
+      "const_type": "number",
+      "value": "0x8B8C"
+    },
+    {
+      "type": "const",
+      "name": "CURRENT_PROGRAM",
+      "const_type": "number",
+      "value": "0x8B8D"
+    },
+    {
+      "type": "const",
+      "name": "NEVER",
+      "const_type": "number",
+      "value": "0x0200"
+    },
+    {
+      "type": "const",
+      "name": "LESS",
+      "const_type": "number",
+      "value": "0x0201"
+    },
+    {
+      "type": "const",
+      "name": "EQUAL",
+      "const_type": "number",
+      "value": "0x0202"
+    },
+    {
+      "type": "const",
+      "name": "LEQUAL",
+      "const_type": "number",
+      "value": "0x0203"
+    },
+    {
+      "type": "const",
+      "name": "GREATER",
+      "const_type": "number",
+      "value": "0x0204"
+    },
+    {
+      "type": "const",
+      "name": "NOTEQUAL",
+      "const_type": "number",
+      "value": "0x0205"
+    },
+    {
+      "type": "const",
+      "name": "GEQUAL",
+      "const_type": "number",
+      "value": "0x0206"
+    },
+    {
+      "type": "const",
+      "name": "ALWAYS",
+      "const_type": "number",
+      "value": "0x0207"
+    },
+    {
+      "type": "const",
+      "name": "KEEP",
+      "const_type": "number",
+      "value": "0x1E00"
+    },
+    {
+      "type": "const",
+      "name": "REPLACE",
+      "const_type": "number",
+      "value": "0x1E01"
+    },
+    {
+      "type": "const",
+      "name": "INCR",
+      "const_type": "number",
+      "value": "0x1E02"
+    },
+    {
+      "type": "const",
+      "name": "DECR",
+      "const_type": "number",
+      "value": "0x1E03"
+    },
+    {
+      "type": "const",
+      "name": "INVERT",
+      "const_type": "number",
+      "value": "0x150A"
+    },
+    {
+      "type": "const",
+      "name": "INCR_WRAP",
+      "const_type": "number",
+      "value": "0x8507"
+    },
+    {
+      "type": "const",
+      "name": "DECR_WRAP",
+      "const_type": "number",
+      "value": "0x8508"
+    },
+    {
+      "type": "const",
+      "name": "VENDOR",
+      "const_type": "number",
+      "value": "0x1F00"
+    },
+    {
+      "type": "const",
+      "name": "RENDERER",
+      "const_type": "number",
+      "value": "0x1F01"
+    },
+    {
+      "type": "const",
+      "name": "VERSION",
+      "const_type": "number",
+      "value": "0x1F02"
+    },
+    {
+      "type": "const",
+      "name": "NEAREST",
+      "const_type": "number",
+      "value": "0x2600"
+    },
+    {
+      "type": "const",
+      "name": "LINEAR",
+      "const_type": "number",
+      "value": "0x2601"
+    },
+    {
+      "type": "const",
+      "name": "NEAREST_MIPMAP_NEAREST",
+      "const_type": "number",
+      "value": "0x2700"
+    },
+    {
+      "type": "const",
+      "name": "LINEAR_MIPMAP_NEAREST",
+      "const_type": "number",
+      "value": "0x2701"
+    },
+    {
+      "type": "const",
+      "name": "NEAREST_MIPMAP_LINEAR",
+      "const_type": "number",
+      "value": "0x2702"
+    },
+    {
+      "type": "const",
+      "name": "LINEAR_MIPMAP_LINEAR",
+      "const_type": "number",
+      "value": "0x2703"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_MAG_FILTER",
+      "const_type": "number",
+      "value": "0x2800"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_MIN_FILTER",
+      "const_type": "number",
+      "value": "0x2801"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_WRAP_S",
+      "const_type": "number",
+      "value": "0x2802"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_WRAP_T",
+      "const_type": "number",
+      "value": "0x2803"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_2D",
+      "const_type": "number",
+      "value": "0x0DE1"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE",
+      "const_type": "number",
+      "value": "0x1702"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_CUBE_MAP",
+      "const_type": "number",
+      "value": "0x8513"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_BINDING_CUBE_MAP",
+      "const_type": "number",
+      "value": "0x8514"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_CUBE_MAP_POSITIVE_X",
+      "const_type": "number",
+      "value": "0x8515"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_CUBE_MAP_NEGATIVE_X",
+      "const_type": "number",
+      "value": "0x8516"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_CUBE_MAP_POSITIVE_Y",
+      "const_type": "number",
+      "value": "0x8517"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_CUBE_MAP_NEGATIVE_Y",
+      "const_type": "number",
+      "value": "0x8518"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_CUBE_MAP_POSITIVE_Z",
+      "const_type": "number",
+      "value": "0x8519"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE_CUBE_MAP_NEGATIVE_Z",
+      "const_type": "number",
+      "value": "0x851A"
+    },
+    {
+      "type": "const",
+      "name": "MAX_CUBE_MAP_TEXTURE_SIZE",
+      "const_type": "number",
+      "value": "0x851C"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE0",
+      "const_type": "number",
+      "value": "0x84C0"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE1",
+      "const_type": "number",
+      "value": "0x84C1"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE2",
+      "const_type": "number",
+      "value": "0x84C2"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE3",
+      "const_type": "number",
+      "value": "0x84C3"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE4",
+      "const_type": "number",
+      "value": "0x84C4"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE5",
+      "const_type": "number",
+      "value": "0x84C5"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE6",
+      "const_type": "number",
+      "value": "0x84C6"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE7",
+      "const_type": "number",
+      "value": "0x84C7"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE8",
+      "const_type": "number",
+      "value": "0x84C8"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE9",
+      "const_type": "number",
+      "value": "0x84C9"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE10",
+      "const_type": "number",
+      "value": "0x84CA"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE11",
+      "const_type": "number",
+      "value": "0x84CB"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE12",
+      "const_type": "number",
+      "value": "0x84CC"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE13",
+      "const_type": "number",
+      "value": "0x84CD"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE14",
+      "const_type": "number",
+      "value": "0x84CE"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE15",
+      "const_type": "number",
+      "value": "0x84CF"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE16",
+      "const_type": "number",
+      "value": "0x84D0"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE17",
+      "const_type": "number",
+      "value": "0x84D1"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE18",
+      "const_type": "number",
+      "value": "0x84D2"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE19",
+      "const_type": "number",
+      "value": "0x84D3"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE20",
+      "const_type": "number",
+      "value": "0x84D4"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE21",
+      "const_type": "number",
+      "value": "0x84D5"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE22",
+      "const_type": "number",
+      "value": "0x84D6"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE23",
+      "const_type": "number",
+      "value": "0x84D7"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE24",
+      "const_type": "number",
+      "value": "0x84D8"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE25",
+      "const_type": "number",
+      "value": "0x84D9"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE26",
+      "const_type": "number",
+      "value": "0x84DA"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE27",
+      "const_type": "number",
+      "value": "0x84DB"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE28",
+      "const_type": "number",
+      "value": "0x84DC"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE29",
+      "const_type": "number",
+      "value": "0x84DD"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE30",
+      "const_type": "number",
+      "value": "0x84DE"
+    },
+    {
+      "type": "const",
+      "name": "TEXTURE31",
+      "const_type": "number",
+      "value": "0x84DF"
+    },
+    {
+      "type": "const",
+      "name": "ACTIVE_TEXTURE",
+      "const_type": "number",
+      "value": "0x84E0"
+    },
+    {
+      "type": "const",
+      "name": "REPEAT",
+      "const_type": "number",
+      "value": "0x2901"
+    },
+    {
+      "type": "const",
+      "name": "CLAMP_TO_EDGE",
+      "const_type": "number",
+      "value": "0x812F"
+    },
+    {
+      "type": "const",
+      "name": "MIRRORED_REPEAT",
+      "const_type": "number",
+      "value": "0x8370"
+    },
+    {
+      "type": "const",
+      "name": "FLOAT_VEC2",
+      "const_type": "number",
+      "value": "0x8B50"
+    },
+    {
+      "type": "const",
+      "name": "FLOAT_VEC3",
+      "const_type": "number",
+      "value": "0x8B51"
+    },
+    {
+      "type": "const",
+      "name": "FLOAT_VEC4",
+      "const_type": "number",
+      "value": "0x8B52"
+    },
+    {
+      "type": "const",
+      "name": "INT_VEC2",
+      "const_type": "number",
+      "value": "0x8B53"
+    },
+    {
+      "type": "const",
+      "name": "INT_VEC3",
+      "const_type": "number",
+      "value": "0x8B54"
+    },
+    {
+      "type": "const",
+      "name": "INT_VEC4",
+      "const_type": "number",
+      "value": "0x8B55"
+    },
+    {
+      "type": "const",
+      "name": "BOOL",
+      "const_type": "number",
+      "value": "0x8B56"
+    },
+    {
+      "type": "const",
+      "name": "BOOL_VEC2",
+      "const_type": "number",
+      "value": "0x8B57"
+    },
+    {
+      "type": "const",
+      "name": "BOOL_VEC3",
+      "const_type": "number",
+      "value": "0x8B58"
+    },
+    {
+      "type": "const",
+      "name": "BOOL_VEC4",
+      "const_type": "number",
+      "value": "0x8B59"
+    },
+    {
+      "type": "const",
+      "name": "FLOAT_MAT2",
+      "const_type": "number",
+      "value": "0x8B5A"
+    },
+    {
+      "type": "const",
+      "name": "FLOAT_MAT3",
+      "const_type": "number",
+      "value": "0x8B5B"
+    },
+    {
+      "type": "const",
+      "name": "FLOAT_MAT4",
+      "const_type": "number",
+      "value": "0x8B5C"
+    },
+    {
+      "type": "const",
+      "name": "SAMPLER_2D",
+      "const_type": "number",
+      "value": "0x8B5E"
+    },
+    {
+      "type": "const",
+      "name": "SAMPLER_CUBE",
+      "const_type": "number",
+      "value": "0x8B60"
+    },
+    {
+      "type": "const",
+      "name": "VERTEX_ATTRIB_ARRAY_ENABLED",
+      "const_type": "number",
+      "value": "0x8622"
+    },
+    {
+      "type": "const",
+      "name": "VERTEX_ATTRIB_ARRAY_SIZE",
+      "const_type": "number",
+      "value": "0x8623"
+    },
+    {
+      "type": "const",
+      "name": "VERTEX_ATTRIB_ARRAY_STRIDE",
+      "const_type": "number",
+      "value": "0x8624"
+    },
+    {
+      "type": "const",
+      "name": "VERTEX_ATTRIB_ARRAY_TYPE",
+      "const_type": "number",
+      "value": "0x8625"
+    },
+    {
+      "type": "const",
+      "name": "VERTEX_ATTRIB_ARRAY_NORMALIZED",
+      "const_type": "number",
+      "value": "0x886A"
+    },
+    {
+      "type": "const",
+      "name": "VERTEX_ATTRIB_ARRAY_POINTER",
+      "const_type": "number",
+      "value": "0x8645"
+    },
+    {
+      "type": "const",
+      "name": "VERTEX_ATTRIB_ARRAY_BUFFER_BINDING",
+      "const_type": "number",
+      "value": "0x889F"
+    },
+    {
+      "type": "const",
+      "name": "IMPLEMENTATION_COLOR_READ_TYPE",
+      "const_type": "number",
+      "value": "0x8B9A"
+    },
+    {
+      "type": "const",
+      "name": "IMPLEMENTATION_COLOR_READ_FORMAT",
+      "const_type": "number",
+      "value": "0x8B9B"
+    },
+    {
+      "type": "const",
+      "name": "COMPILE_STATUS",
+      "const_type": "number",
+      "value": "0x8B81"
+    },
+    {
+      "type": "const",
+      "name": "LOW_FLOAT",
+      "const_type": "number",
+      "value": "0x8DF0"
+    },
+    {
+      "type": "const",
+      "name": "MEDIUM_FLOAT",
+      "const_type": "number",
+      "value": "0x8DF1"
+    },
+    {
+      "type": "const",
+      "name": "HIGH_FLOAT",
+      "const_type": "number",
+      "value": "0x8DF2"
+    },
+    {
+      "type": "const",
+      "name": "LOW_INT",
+      "const_type": "number",
+      "value": "0x8DF3"
+    },
+    {
+      "type": "const",
+      "name": "MEDIUM_INT",
+      "const_type": "number",
+      "value": "0x8DF4"
+    },
+    {
+      "type": "const",
+      "name": "HIGH_INT",
+      "const_type": "number",
+      "value": "0x8DF5"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER",
+      "const_type": "number",
+      "value": "0x8D40"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER",
+      "const_type": "number",
+      "value": "0x8D41"
+    },
+    {
+      "type": "const",
+      "name": "RGBA4",
+      "const_type": "number",
+      "value": "0x8056"
+    },
+    {
+      "type": "const",
+      "name": "RGB5_A1",
+      "const_type": "number",
+      "value": "0x8057"
+    },
+    {
+      "type": "const",
+      "name": "RGB565",
+      "const_type": "number",
+      "value": "0x8D62"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_COMPONENT16",
+      "const_type": "number",
+      "value": "0x81A5"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_INDEX8",
+      "const_type": "number",
+      "value": "0x8D48"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_STENCIL",
+      "const_type": "number",
+      "value": "0x84F9"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_WIDTH",
+      "const_type": "number",
+      "value": "0x8D42"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_HEIGHT",
+      "const_type": "number",
+      "value": "0x8D43"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_INTERNAL_FORMAT",
+      "const_type": "number",
+      "value": "0x8D44"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_RED_SIZE",
+      "const_type": "number",
+      "value": "0x8D50"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_GREEN_SIZE",
+      "const_type": "number",
+      "value": "0x8D51"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_BLUE_SIZE",
+      "const_type": "number",
+      "value": "0x8D52"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_ALPHA_SIZE",
+      "const_type": "number",
+      "value": "0x8D53"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_DEPTH_SIZE",
+      "const_type": "number",
+      "value": "0x8D54"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_STENCIL_SIZE",
+      "const_type": "number",
+      "value": "0x8D55"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE",
+      "const_type": "number",
+      "value": "0x8CD0"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_ATTACHMENT_OBJECT_NAME",
+      "const_type": "number",
+      "value": "0x8CD1"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL",
+      "const_type": "number",
+      "value": "0x8CD2"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE",
+      "const_type": "number",
+      "value": "0x8CD3"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT0",
+      "const_type": "number",
+      "value": "0x8CE0"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_ATTACHMENT",
+      "const_type": "number",
+      "value": "0x8D00"
+    },
+    {
+      "type": "const",
+      "name": "STENCIL_ATTACHMENT",
+      "const_type": "number",
+      "value": "0x8D20"
+    },
+    {
+      "type": "const",
+      "name": "DEPTH_STENCIL_ATTACHMENT",
+      "const_type": "number",
+      "value": "0x821A"
+    },
+    {
+      "type": "const",
+      "name": "NONE",
+      "const_type": "number",
+      "value": "0"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_COMPLETE",
+      "const_type": "number",
+      "value": "0x8CD5"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_INCOMPLETE_ATTACHMENT",
+      "const_type": "number",
+      "value": "0x8CD6"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT",
+      "const_type": "number",
+      "value": "0x8CD7"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_INCOMPLETE_DIMENSIONS",
+      "const_type": "number",
+      "value": "0x8CD9"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_UNSUPPORTED",
+      "const_type": "number",
+      "value": "0x8CDD"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_BINDING",
+      "const_type": "number",
+      "value": "0x8CA6"
+    },
+    {
+      "type": "const",
+      "name": "RENDERBUFFER_BINDING",
+      "const_type": "number",
+      "value": "0x8CA7"
+    },
+    {
+      "type": "const",
+      "name": "MAX_RENDERBUFFER_SIZE",
+      "const_type": "number",
+      "value": "0x84E8"
+    },
+    {
+      "type": "const",
+      "name": "INVALID_FRAMEBUFFER_OPERATION",
+      "const_type": "number",
+      "value": "0x0506"
+    },
+    {
+      "type": "const",
+      "name": "UNPACK_FLIP_Y_WEBGL",
+      "const_type": "number",
+      "value": "0x9240"
+    },
+    {
+      "type": "const",
+      "name": "UNPACK_PREMULTIPLY_ALPHA_WEBGL",
+      "const_type": "number",
+      "value": "0x9241"
+    },
+    {
+      "type": "const",
+      "name": "CONTEXT_LOST_WEBGL",
+      "const_type": "number",
+      "value": "0x9242"
+    },
+    {
+      "type": "const",
+      "name": "UNPACK_COLORSPACE_CONVERSION_WEBGL",
+      "const_type": "number",
+      "value": "0x9243"
+    },
+    {
+      "type": "const",
+      "name": "BROWSER_DEFAULT_WEBGL",
+      "const_type": "number",
+      "value": "0x9244"
+    },
     {
       "type": "property",
       "name": "canvas",
@@ -6689,13 +8627,363 @@
       "params": []
     }
   ],
+  "WEBGL_compressed_texture_s3tc": [
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGB_S3TC_DXT1_EXT",
+      "const_type": "number",
+      "value": "0x83F0"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_S3TC_DXT1_EXT",
+      "const_type": "number",
+      "value": "0x83F1"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_S3TC_DXT3_EXT",
+      "const_type": "number",
+      "value": "0x83F2"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_S3TC_DXT5_EXT",
+      "const_type": "number",
+      "value": "0x83F3"
+    }
+  ],
+  "WEBGL_compressed_texture_s3tc_srgb": [
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB_S3TC_DXT1_EXT",
+      "const_type": "number",
+      "value": "0x8C4C"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT",
+      "const_type": "number",
+      "value": "0x8C4D"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT",
+      "const_type": "number",
+      "value": "0x8C4E"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT",
+      "const_type": "number",
+      "value": "0x8C4F"
+    }
+  ],
   "WEBGL_compressed_texture_astc": [
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_4x4_KHR",
+      "const_type": "number",
+      "value": "0x93B0"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_5x4_KHR",
+      "const_type": "number",
+      "value": "0x93B1"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_5x5_KHR",
+      "const_type": "number",
+      "value": "0x93B2"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_6x5_KHR",
+      "const_type": "number",
+      "value": "0x93B3"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_6x6_KHR",
+      "const_type": "number",
+      "value": "0x93B4"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_8x5_KHR",
+      "const_type": "number",
+      "value": "0x93B5"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_8x6_KHR",
+      "const_type": "number",
+      "value": "0x93B6"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_8x8_KHR",
+      "const_type": "number",
+      "value": "0x93B7"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_10x5_KHR",
+      "const_type": "number",
+      "value": "0x93B8"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_10x6_KHR",
+      "const_type": "number",
+      "value": "0x93B9"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_10x8_KHR",
+      "const_type": "number",
+      "value": "0x93BA"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_10x10_KHR",
+      "const_type": "number",
+      "value": "0x93BB"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_12x10_KHR",
+      "const_type": "number",
+      "value": "0x93BC"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ASTC_12x12_KHR",
+      "const_type": "number",
+      "value": "0x93BD"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_4x4_KHR",
+      "const_type": "number",
+      "value": "0x93D0"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_5x4_KHR",
+      "const_type": "number",
+      "value": "0x93D1"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_5x5_KHR",
+      "const_type": "number",
+      "value": "0x93D2"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_6x5_KHR",
+      "const_type": "number",
+      "value": "0x93D3"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_6x6_KHR",
+      "const_type": "number",
+      "value": "0x93D4"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_8x5_KHR",
+      "const_type": "number",
+      "value": "0x93D5"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_8x6_KHR",
+      "const_type": "number",
+      "value": "0x93D6"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR",
+      "const_type": "number",
+      "value": "0x93D7"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_10x5_KHR",
+      "const_type": "number",
+      "value": "0x93D8"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_10x6_KHR",
+      "const_type": "number",
+      "value": "0x93D9"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_10x8_KHR",
+      "const_type": "number",
+      "value": "0x93DA"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR",
+      "const_type": "number",
+      "value": "0x93DB"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR",
+      "const_type": "number",
+      "value": "0x93DC"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR",
+      "const_type": "number",
+      "value": "0x93DD"
+    },
     {
       "type": "function",
       "name": "getSupportedProfiles",
       "params": [],
       "return_type": "object",
       "return_nullable": true
+    }
+  ],
+  "WEBGL_compressed_texture_atc": [
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGB_ATC_WEBGL",
+      "const_type": "number",
+      "value": "0x8C92"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ATC_EXPLICIT_ALPHA_WEBGL",
+      "const_type": "number",
+      "value": "0x8C93"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_ATC_INTERPOLATED_ALPHA_WEBGL",
+      "const_type": "number",
+      "value": "0x87EE"
+    }
+  ],
+  "WEBGL_compressed_texture_etc": [
+    {
+      "type": "const",
+      "name": "COMPRESSED_R11_EAC",
+      "const_type": "number",
+      "value": "0x9270"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SIGNED_R11_EAC",
+      "const_type": "number",
+      "value": "0x9271"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RG11_EAC",
+      "const_type": "number",
+      "value": "0x9272"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SIGNED_RG11_EAC",
+      "const_type": "number",
+      "value": "0x9273"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGB8_ETC2",
+      "const_type": "number",
+      "value": "0x9274"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ETC2",
+      "const_type": "number",
+      "value": "0x9275"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2",
+      "const_type": "number",
+      "value": "0x9276"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2",
+      "const_type": "number",
+      "value": "0x9277"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA8_ETC2_EAC",
+      "const_type": "number",
+      "value": "0x9278"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_SRGB8_ALPHA8_ETC2_EAC",
+      "const_type": "number",
+      "value": "0x9279"
+    }
+  ],
+  "WEBGL_compressed_texture_etc1": [
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGB_ETC1_WEBGL",
+      "const_type": "number",
+      "value": "0x8D64"
+    }
+  ],
+  "WEBGL_compressed_texture_pvrtc": [
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGB_PVRTC_4BPPV1_IMG",
+      "const_type": "number",
+      "value": "0x8C00"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGB_PVRTC_2BPPV1_IMG",
+      "const_type": "number",
+      "value": "0x8C01"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_PVRTC_4BPPV1_IMG",
+      "const_type": "number",
+      "value": "0x8C02"
+    },
+    {
+      "type": "const",
+      "name": "COMPRESSED_RGBA_PVRTC_2BPPV1_IMG",
+      "const_type": "number",
+      "value": "0x8C03"
+    }
+  ],
+  "WEBGL_debug_renderer_info": [
+    {
+      "type": "const",
+      "name": "UNMASKED_VENDOR_WEBGL",
+      "const_type": "number",
+      "value": "0x9245"
+    },
+    {
+      "type": "const",
+      "name": "UNMASKED_RENDERER_WEBGL",
+      "const_type": "number",
+      "value": "0x9246"
     }
   ],
   "WEBGL_debug_shaders": [
@@ -6711,6 +8999,14 @@
       "return_type": "string"
     }
   ],
+  "WEBGL_depth_texture": [
+    {
+      "type": "const",
+      "name": "UNSIGNED_INT_24_8_WEBGL",
+      "const_type": "number",
+      "value": "0x84FA"
+    }
+  ],
   "WEBGL_lose_context": [
     {
       "type": "function",
@@ -6723,7 +9019,259 @@
       "params": []
     }
   ],
+  "EXT_texture_filter_anisotropic": [
+    {
+      "type": "const",
+      "name": "TEXTURE_MAX_ANISOTROPY_EXT",
+      "const_type": "number",
+      "value": "0x84FE"
+    },
+    {
+      "type": "const",
+      "name": "MAX_TEXTURE_MAX_ANISOTROPY_EXT",
+      "const_type": "number",
+      "value": "0x84FF"
+    }
+  ],
+  "EXT_sRGB": [
+    {
+      "type": "const",
+      "name": "SRGB_EXT",
+      "const_type": "number",
+      "value": "0x8C40"
+    },
+    {
+      "type": "const",
+      "name": "SRGB_ALPHA_EXT",
+      "const_type": "number",
+      "value": "0x8C42"
+    },
+    {
+      "type": "const",
+      "name": "SRGB8_ALPHA8_EXT",
+      "const_type": "number",
+      "value": "0x8C43"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING_EXT",
+      "const_type": "number",
+      "value": "0x8210"
+    }
+  ],
+  "OES_standard_derivatives": [
+    {
+      "type": "const",
+      "name": "FRAGMENT_SHADER_DERIVATIVE_HINT_OES",
+      "const_type": "number",
+      "value": "0x8B8B"
+    }
+  ],
   "WEBGL_draw_buffers": [
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT0_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE0"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT1_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE1"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT2_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE2"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT3_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE3"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT4_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE4"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT5_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE5"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT6_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE6"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT7_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE7"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT8_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE8"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT9_WEBGL",
+      "const_type": "number",
+      "value": "0x8CE9"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT10_WEBGL",
+      "const_type": "number",
+      "value": "0x8CEA"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT11_WEBGL",
+      "const_type": "number",
+      "value": "0x8CEB"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT12_WEBGL",
+      "const_type": "number",
+      "value": "0x8CEC"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT13_WEBGL",
+      "const_type": "number",
+      "value": "0x8CED"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT14_WEBGL",
+      "const_type": "number",
+      "value": "0x8CEE"
+    },
+    {
+      "type": "const",
+      "name": "COLOR_ATTACHMENT15_WEBGL",
+      "const_type": "number",
+      "value": "0x8CEF"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER0_WEBGL",
+      "const_type": "number",
+      "value": "0x8825"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER1_WEBGL",
+      "const_type": "number",
+      "value": "0x8826"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER2_WEBGL",
+      "const_type": "number",
+      "value": "0x8827"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER3_WEBGL",
+      "const_type": "number",
+      "value": "0x8828"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER4_WEBGL",
+      "const_type": "number",
+      "value": "0x8829"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER5_WEBGL",
+      "const_type": "number",
+      "value": "0x882A"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER6_WEBGL",
+      "const_type": "number",
+      "value": "0x882B"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER7_WEBGL",
+      "const_type": "number",
+      "value": "0x882C"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER8_WEBGL",
+      "const_type": "number",
+      "value": "0x882D"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER9_WEBGL",
+      "const_type": "number",
+      "value": "0x882E"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER10_WEBGL",
+      "const_type": "number",
+      "value": "0x882F"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER11_WEBGL",
+      "const_type": "number",
+      "value": "0x8830"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER12_WEBGL",
+      "const_type": "number",
+      "value": "0x8831"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER13_WEBGL",
+      "const_type": "number",
+      "value": "0x8832"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER14_WEBGL",
+      "const_type": "number",
+      "value": "0x8833"
+    },
+    {
+      "type": "const",
+      "name": "DRAW_BUFFER15_WEBGL",
+      "const_type": "number",
+      "value": "0x8834"
+    },
+    {
+      "type": "const",
+      "name": "MAX_COLOR_ATTACHMENTS_WEBGL",
+      "const_type": "number",
+      "value": "0x8CDF"
+    },
+    {
+      "type": "const",
+      "name": "MAX_DRAW_BUFFERS_WEBGL",
+      "const_type": "number",
+      "value": "0x8824"
+    },
     {
       "type": "function",
       "name": "drawBuffersWEBGL",
@@ -6735,7 +9283,73 @@
       ]
     }
   ],
+  "OES_texture_half_float": [
+    {
+      "type": "const",
+      "name": "HALF_FLOAT_OES",
+      "const_type": "number",
+      "value": "0x8D61"
+    }
+  ],
+  "WEBGL_color_buffer_float": [
+    {
+      "type": "const",
+      "name": "RGBA32F_EXT",
+      "const_type": "number",
+      "value": "0x8814"
+    },
+    {
+      "type": "const",
+      "name": "RGB32F_EXT",
+      "const_type": "number",
+      "value": "0x8815"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT",
+      "const_type": "number",
+      "value": "0x8211"
+    },
+    {
+      "type": "const",
+      "name": "UNSIGNED_NORMALIZED_EXT",
+      "const_type": "number",
+      "value": "0x8C17"
+    }
+  ],
+  "EXT_color_buffer_half_float": [
+    {
+      "type": "const",
+      "name": "RGBA16F_EXT",
+      "const_type": "number",
+      "value": "0x881A"
+    },
+    {
+      "type": "const",
+      "name": "RGB16F_EXT",
+      "const_type": "number",
+      "value": "0x881B"
+    },
+    {
+      "type": "const",
+      "name": "FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT",
+      "const_type": "number",
+      "value": "0x8211"
+    },
+    {
+      "type": "const",
+      "name": "UNSIGNED_NORMALIZED_EXT",
+      "const_type": "number",
+      "value": "0x8C17"
+    }
+  ],
   "OES_vertex_array_object": [
+    {
+      "type": "const",
+      "name": "VERTEX_ARRAY_BINDING_OES",
+      "const_type": "number",
+      "value": "0x85B5"
+    },
     {
       "type": "function",
       "name": "createVertexArrayOES",
@@ -6776,6 +9390,12 @@
     }
   ],
   "ANGLE_instanced_arrays": [
+    {
+      "type": "const",
+      "name": "VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE",
+      "const_type": "number",
+      "value": "0x88FE"
+    },
     {
       "type": "function",
       "name": "drawArraysInstancedANGLE",
@@ -6839,7 +9459,63 @@
       ]
     }
   ],
+  "EXT_blend_minmax": [
+    {
+      "type": "const",
+      "name": "MIN_EXT",
+      "const_type": "number",
+      "value": "0x8007"
+    },
+    {
+      "type": "const",
+      "name": "MAX_EXT",
+      "const_type": "number",
+      "value": "0x8008"
+    }
+  ],
   "EXT_disjoint_timer_query": [
+    {
+      "type": "const",
+      "name": "QUERY_COUNTER_BITS_EXT",
+      "const_type": "number",
+      "value": "0x8864"
+    },
+    {
+      "type": "const",
+      "name": "CURRENT_QUERY_EXT",
+      "const_type": "number",
+      "value": "0x8865"
+    },
+    {
+      "type": "const",
+      "name": "QUERY_RESULT_EXT",
+      "const_type": "number",
+      "value": "0x8866"
+    },
+    {
+      "type": "const",
+      "name": "QUERY_RESULT_AVAILABLE_EXT",
+      "const_type": "number",
+      "value": "0x8867"
+    },
+    {
+      "type": "const",
+      "name": "TIME_ELAPSED_EXT",
+      "const_type": "number",
+      "value": "0x88BF"
+    },
+    {
+      "type": "const",
+      "name": "TIMESTAMP_EXT",
+      "const_type": "number",
+      "value": "0x8E28"
+    },
+    {
+      "type": "const",
+      "name": "GPU_DISJOINT_EXT",
+      "const_type": "number",
+      "value": "0x8FBB"
+    },
     {
       "type": "function",
       "name": "createQueryEXT",

@@ -1,5 +1,17 @@
 #[allow(unused_imports)]
 use crate::*;
+pub const ELEMENT_NODE: i32 = 1;
+pub const ATTRIBUTE_NODE: i32 = 2;
+pub const TEXT_NODE: i32 = 3;
+pub const CDATA_SECTION_NODE: i32 = 4;
+pub const ENTITY_REFERENCE_NODE: i32 = 5;
+pub const ENTITY_NODE: i32 = 6;
+pub const PROCESSING_INSTRUCTION_NODE: i32 = 7;
+pub const COMMENT_NODE: i32 = 8;
+pub const DOCUMENT_NODE: i32 = 9;
+pub const DOCUMENT_TYPE_NODE: i32 = 10;
+pub const DOCUMENT_FRAGMENT_NODE: i32 = 11;
+pub const NOTATION_NODE: i32 = 12;
 extern "C" {
     fn node_get_node_type(instance: DOMReference) -> f32;
     fn node_set_node_type(instance: DOMReference, value: f32);
@@ -282,6 +294,12 @@ extern "C" {
 pub fn is_equal_node(instance: DOMReference, node: DOMReference) -> bool {
     unsafe { 0 != node_is_equal_node(instance, node) }
 }
+pub const DOCUMENT_POSITION_DISCONNECTED: i32 = 0x01;
+pub const DOCUMENT_POSITION_PRECEDING: i32 = 0x02;
+pub const DOCUMENT_POSITION_FOLLOWING: i32 = 0x04;
+pub const DOCUMENT_POSITION_CONTAINS: i32 = 0x08;
+pub const DOCUMENT_POSITION_CONTAINED_BY: i32 = 0x10;
+pub const DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: i32 = 0x20;
 extern "C" {
     fn node_compare_document_position(
         instance: DOMReference,

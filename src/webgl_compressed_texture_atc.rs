@@ -1,0 +1,5 @@
+#[allow(unused_imports)]
+use crate::*;
+pub const COMPRESSED_RGB_ATC_WEBGL: i32 = 0x8C92;
+pub const COMPRESSED_RGBA_ATC_EXPLICIT_ALPHA_WEBGL: i32 = 0x8C93;
+pub const COMPRESSED_RGBA_ATC_INTERPOLATED_ALPHA_WEBGL: i32 = 0x87EE;

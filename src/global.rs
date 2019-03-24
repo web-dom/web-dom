@@ -19,12 +19,17 @@ pub fn to_string(c: CString) -> String {
 }
 
 extern "C" {
+    fn convert_ref_to_string(instance: i32) -> CString;
     fn global_is_null() -> i32;
     fn global_debugger();
     fn global_get_window() -> Element;
     fn global_release(handle: i32);
     fn global_create_event_listener() -> EventListener;
     fn global_get_property(element: Element, property_name: CString) -> i32;
+}
+
+pub fn ref_to_string(instance: DOMReference) -> String {
+    unsafe { to_string(convert_ref_to_string(instance)) }
 }
 
 pub fn is_null() -> bool {

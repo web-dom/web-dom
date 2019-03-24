@@ -1,5 +1,12 @@
 #[allow(unused_imports)]
 use crate::*;
+pub const QUERY_COUNTER_BITS_EXT: i32 = 0x8864;
+pub const CURRENT_QUERY_EXT: i32 = 0x8865;
+pub const QUERY_RESULT_EXT: i32 = 0x8866;
+pub const QUERY_RESULT_AVAILABLE_EXT: i32 = 0x8867;
+pub const TIME_ELAPSED_EXT: i32 = 0x88BF;
+pub const TIMESTAMP_EXT: i32 = 0x8E28;
+pub const GPU_DISJOINT_EXT: i32 = 0x8FBB;
 extern "C" {
     fn ext_disjoint_timer_query_create_query_e_x_t(instance: DOMReference) -> DOMReference;
 }

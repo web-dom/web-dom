@@ -1,5 +1,6 @@
 #[allow(unused_imports)]
 use crate::*;
+pub const VERTEX_ARRAY_BINDING_OES: i32 = 0x85B5;
 extern "C" {
     fn oes_vertex_array_object_create_vertex_array_o_e_s(instance: DOMReference) -> DOMReference;
 }
