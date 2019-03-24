@@ -99,29 +99,29 @@ pub fn set_disabled(instance: DOMReference, value: bool) {
     }
 }
 extern "C" {
-    fn htmlinput_get_form(instance: DOMReference) -> i32;
-    fn htmlinput_set_form(instance: DOMReference, value: i32);
+    fn htmlinput_get_form(instance: DOMReference) -> DOMReference;
+    fn htmlinput_set_form(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_form(instance: DOMReference) -> i32 {
+pub fn get_form(instance: DOMReference) -> DOMReference {
     unsafe { htmlinput_get_form(instance) }
 }
 
-pub fn set_form(instance: DOMReference, value: i32) {
+pub fn set_form(instance: DOMReference, value: DOMReference) {
     unsafe {
         htmlinput_set_form(instance, value);
     }
 }
 extern "C" {
-    fn htmlinput_get_files(instance: DOMReference) -> i32;
-    fn htmlinput_set_files(instance: DOMReference, value: i32);
+    fn htmlinput_get_files(instance: DOMReference) -> DOMReference;
+    fn htmlinput_set_files(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_files(instance: DOMReference) -> i32 {
+pub fn get_files(instance: DOMReference) -> DOMReference {
     unsafe { htmlinput_get_files(instance) }
 }
 
-pub fn set_files(instance: DOMReference, value: i32) {
+pub fn set_files(instance: DOMReference, value: DOMReference) {
     unsafe {
         htmlinput_set_files(instance, value);
     }
@@ -239,15 +239,15 @@ pub fn set_input_mode(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinput_get_list(instance: DOMReference) -> i32;
-    fn htmlinput_set_list(instance: DOMReference, value: i32);
+    fn htmlinput_get_list(instance: DOMReference) -> DOMReference;
+    fn htmlinput_set_list(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_list(instance: DOMReference) -> i32 {
+pub fn get_list(instance: DOMReference) -> DOMReference {
     unsafe { htmlinput_get_list(instance) }
 }
 
-pub fn set_list(instance: DOMReference, value: i32) {
+pub fn set_list(instance: DOMReference, value: DOMReference) {
     unsafe {
         htmlinput_set_list(instance, value);
     }
@@ -477,15 +477,15 @@ pub fn set_value(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinput_get_value_as_date(instance: DOMReference) -> i32;
-    fn htmlinput_set_value_as_date(instance: DOMReference, value: i32);
+    fn htmlinput_get_value_as_date(instance: DOMReference) -> DOMReference;
+    fn htmlinput_set_value_as_date(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_value_as_date(instance: DOMReference) -> i32 {
+pub fn get_value_as_date(instance: DOMReference) -> DOMReference {
     unsafe { htmlinput_get_value_as_date(instance) }
 }
 
-pub fn set_value_as_date(instance: DOMReference, value: i32) {
+pub fn set_value_as_date(instance: DOMReference, value: DOMReference) {
     unsafe {
         htmlinput_set_value_as_date(instance, value);
     }
@@ -533,15 +533,15 @@ pub fn set_will_validate(instance: DOMReference, value: bool) {
     }
 }
 extern "C" {
-    fn htmlinput_get_validity(instance: DOMReference) -> i32;
-    fn htmlinput_set_validity(instance: DOMReference, value: i32);
+    fn htmlinput_get_validity(instance: DOMReference) -> DOMReference;
+    fn htmlinput_set_validity(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_validity(instance: DOMReference) -> i32 {
+pub fn get_validity(instance: DOMReference) -> DOMReference {
     unsafe { htmlinput_get_validity(instance) }
 }
 
-pub fn set_validity(instance: DOMReference, value: i32) {
+pub fn set_validity(instance: DOMReference, value: DOMReference) {
     unsafe {
         htmlinput_set_validity(instance, value);
     }
@@ -582,15 +582,15 @@ pub fn set_custom_validity(instance: DOMReference, error: &str) {
     unsafe { htmlinput_set_custom_validity(instance, to_cstring(error)) }
 }
 extern "C" {
-    fn htmlinput_get_labels(instance: DOMReference) -> i32;
-    fn htmlinput_set_labels(instance: DOMReference, value: i32);
+    fn htmlinput_get_labels(instance: DOMReference) -> DOMReference;
+    fn htmlinput_set_labels(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_labels(instance: DOMReference) -> i32 {
+pub fn get_labels(instance: DOMReference) -> DOMReference {
     unsafe { htmlinput_get_labels(instance) }
 }
 
-pub fn set_labels(instance: DOMReference, value: i32) {
+pub fn set_labels(instance: DOMReference, value: DOMReference) {
     unsafe {
         htmlinput_set_labels(instance, value);
     }
@@ -622,7 +622,7 @@ extern "C" {
         set_range_text: CString,
         set_range_text: f32,
         set_range_text: f32,
-        set_range_text: i32,
+        set_range_text: DOMReference,
     );
 }
 
@@ -631,7 +631,7 @@ pub fn set_range_text(
     replacement: &str,
     start: f32,
     end: f32,
-    selection_mode: i32,
+    selection_mode: DOMReference,
 ) {
     unsafe {
         htmlinput_set_range_text(
@@ -684,20 +684,20 @@ pub fn set_use_map(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn htmlinput_get_date_time_input_box_value(instance: DOMReference) -> i32;
+    fn htmlinput_get_date_time_input_box_value(instance: DOMReference) -> DOMReference;
 }
 
-pub fn get_date_time_input_box_value(instance: DOMReference) -> i32 {
+pub fn get_date_time_input_box_value(instance: DOMReference) -> DOMReference {
     unsafe { htmlinput_get_date_time_input_box_value(instance) }
 }
 extern "C" {
     fn htmlinput_update_date_time_input_box(
         instance: DOMReference,
-        update_date_time_input_box: i32,
+        update_date_time_input_box: DOMReference,
     );
 }
 
-pub fn update_date_time_input_box(instance: DOMReference, value: i32) {
+pub fn update_date_time_input_box(instance: DOMReference, value: DOMReference) {
     unsafe { htmlinput_update_date_time_input_box(instance, value) }
 }
 extern "C" {

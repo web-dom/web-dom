@@ -57,50 +57,50 @@ pub fn set_is_connected(instance: DOMReference, value: bool) {
     }
 }
 extern "C" {
-    fn node_get_owner_document(instance: DOMReference) -> i32;
-    fn node_set_owner_document(instance: DOMReference, value: i32);
+    fn node_get_owner_document(instance: DOMReference) -> DOMReference;
+    fn node_set_owner_document(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_owner_document(instance: DOMReference) -> i32 {
+pub fn get_owner_document(instance: DOMReference) -> DOMReference {
     unsafe { node_get_owner_document(instance) }
 }
 
-pub fn set_owner_document(instance: DOMReference, value: i32) {
+pub fn set_owner_document(instance: DOMReference, value: DOMReference) {
     unsafe {
         node_set_owner_document(instance, value);
     }
 }
 extern "C" {
-    fn node_get_root_node(instance: DOMReference, get_root_node: i32) -> i32;
+    fn node_get_root_node(instance: DOMReference, get_root_node: DOMReference) -> DOMReference;
 }
 
-pub fn get_root_node(instance: DOMReference, options: i32) -> i32 {
+pub fn get_root_node(instance: DOMReference, options: DOMReference) -> DOMReference {
     unsafe { node_get_root_node(instance, options) }
 }
 extern "C" {
-    fn node_get_parent_node(instance: DOMReference) -> i32;
-    fn node_set_parent_node(instance: DOMReference, value: i32);
+    fn node_get_parent_node(instance: DOMReference) -> DOMReference;
+    fn node_set_parent_node(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_parent_node(instance: DOMReference) -> i32 {
+pub fn get_parent_node(instance: DOMReference) -> DOMReference {
     unsafe { node_get_parent_node(instance) }
 }
 
-pub fn set_parent_node(instance: DOMReference, value: i32) {
+pub fn set_parent_node(instance: DOMReference, value: DOMReference) {
     unsafe {
         node_set_parent_node(instance, value);
     }
 }
 extern "C" {
-    fn node_get_parent_element(instance: DOMReference) -> i32;
-    fn node_set_parent_element(instance: DOMReference, value: i32);
+    fn node_get_parent_element(instance: DOMReference) -> DOMReference;
+    fn node_set_parent_element(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_parent_element(instance: DOMReference) -> i32 {
+pub fn get_parent_element(instance: DOMReference) -> DOMReference {
     unsafe { node_get_parent_element(instance) }
 }
 
-pub fn set_parent_element(instance: DOMReference, value: i32) {
+pub fn set_parent_element(instance: DOMReference, value: DOMReference) {
     unsafe {
         node_set_parent_element(instance, value);
     }
@@ -113,71 +113,71 @@ pub fn has_child_nodes(instance: DOMReference) -> bool {
     unsafe { 0 != node_has_child_nodes(instance) }
 }
 extern "C" {
-    fn node_get_child_nodes(instance: DOMReference) -> i32;
-    fn node_set_child_nodes(instance: DOMReference, value: i32);
+    fn node_get_child_nodes(instance: DOMReference) -> DOMReference;
+    fn node_set_child_nodes(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_child_nodes(instance: DOMReference) -> i32 {
+pub fn get_child_nodes(instance: DOMReference) -> DOMReference {
     unsafe { node_get_child_nodes(instance) }
 }
 
-pub fn set_child_nodes(instance: DOMReference, value: i32) {
+pub fn set_child_nodes(instance: DOMReference, value: DOMReference) {
     unsafe {
         node_set_child_nodes(instance, value);
     }
 }
 extern "C" {
-    fn node_get_first_child(instance: DOMReference) -> i32;
-    fn node_set_first_child(instance: DOMReference, value: i32);
+    fn node_get_first_child(instance: DOMReference) -> DOMReference;
+    fn node_set_first_child(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_first_child(instance: DOMReference) -> i32 {
+pub fn get_first_child(instance: DOMReference) -> DOMReference {
     unsafe { node_get_first_child(instance) }
 }
 
-pub fn set_first_child(instance: DOMReference, value: i32) {
+pub fn set_first_child(instance: DOMReference, value: DOMReference) {
     unsafe {
         node_set_first_child(instance, value);
     }
 }
 extern "C" {
-    fn node_get_last_child(instance: DOMReference) -> i32;
-    fn node_set_last_child(instance: DOMReference, value: i32);
+    fn node_get_last_child(instance: DOMReference) -> DOMReference;
+    fn node_set_last_child(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_last_child(instance: DOMReference) -> i32 {
+pub fn get_last_child(instance: DOMReference) -> DOMReference {
     unsafe { node_get_last_child(instance) }
 }
 
-pub fn set_last_child(instance: DOMReference, value: i32) {
+pub fn set_last_child(instance: DOMReference, value: DOMReference) {
     unsafe {
         node_set_last_child(instance, value);
     }
 }
 extern "C" {
-    fn node_get_previous_sibling(instance: DOMReference) -> i32;
-    fn node_set_previous_sibling(instance: DOMReference, value: i32);
+    fn node_get_previous_sibling(instance: DOMReference) -> DOMReference;
+    fn node_set_previous_sibling(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_previous_sibling(instance: DOMReference) -> i32 {
+pub fn get_previous_sibling(instance: DOMReference) -> DOMReference {
     unsafe { node_get_previous_sibling(instance) }
 }
 
-pub fn set_previous_sibling(instance: DOMReference, value: i32) {
+pub fn set_previous_sibling(instance: DOMReference, value: DOMReference) {
     unsafe {
         node_set_previous_sibling(instance, value);
     }
 }
 extern "C" {
-    fn node_get_next_sibling(instance: DOMReference) -> i32;
-    fn node_set_next_sibling(instance: DOMReference, value: i32);
+    fn node_get_next_sibling(instance: DOMReference) -> DOMReference;
+    fn node_set_next_sibling(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_next_sibling(instance: DOMReference) -> i32 {
+pub fn get_next_sibling(instance: DOMReference) -> DOMReference {
     unsafe { node_get_next_sibling(instance) }
 }
 
-pub fn set_next_sibling(instance: DOMReference, value: i32) {
+pub fn set_next_sibling(instance: DOMReference, value: DOMReference) {
     unsafe {
         node_set_next_sibling(instance, value);
     }
@@ -211,31 +211,47 @@ pub fn set_text_content(instance: DOMReference, value: &str) {
     }
 }
 extern "C" {
-    fn node_insert_before(instance: DOMReference, insert_before: i32, insert_before: i32) -> i32;
+    fn node_insert_before(
+        instance: DOMReference,
+        insert_before: DOMReference,
+        insert_before: DOMReference,
+    ) -> DOMReference;
 }
 
-pub fn insert_before(instance: DOMReference, node: i32, child: i32) -> i32 {
+pub fn insert_before(
+    instance: DOMReference,
+    node: DOMReference,
+    child: DOMReference,
+) -> DOMReference {
     unsafe { node_insert_before(instance, node, child) }
 }
 extern "C" {
-    fn node_append_child(instance: DOMReference, append_child: i32) -> i32;
+    fn node_append_child(instance: DOMReference, append_child: DOMReference) -> DOMReference;
 }
 
-pub fn append_child(instance: DOMReference, node: i32) -> i32 {
+pub fn append_child(instance: DOMReference, node: DOMReference) -> DOMReference {
     unsafe { node_append_child(instance, node) }
 }
 extern "C" {
-    fn node_replace_child(instance: DOMReference, replace_child: i32, replace_child: i32) -> i32;
+    fn node_replace_child(
+        instance: DOMReference,
+        replace_child: DOMReference,
+        replace_child: DOMReference,
+    ) -> DOMReference;
 }
 
-pub fn replace_child(instance: DOMReference, node: i32, child: i32) -> i32 {
+pub fn replace_child(
+    instance: DOMReference,
+    node: DOMReference,
+    child: DOMReference,
+) -> DOMReference {
     unsafe { node_replace_child(instance, node, child) }
 }
 extern "C" {
-    fn node_remove_child(instance: DOMReference, remove_child: i32) -> i32;
+    fn node_remove_child(instance: DOMReference, remove_child: DOMReference) -> DOMReference;
 }
 
-pub fn remove_child(instance: DOMReference, child: i32) -> i32 {
+pub fn remove_child(instance: DOMReference, child: DOMReference) -> DOMReference {
     unsafe { node_remove_child(instance, child) }
 }
 extern "C" {
@@ -246,56 +262,59 @@ pub fn normalize(instance: DOMReference) {
     unsafe { node_normalize(instance) }
 }
 extern "C" {
-    fn node_clone_node(instance: DOMReference, clone_node: i32) -> i32;
+    fn node_clone_node(instance: DOMReference, clone_node: i32) -> DOMReference;
 }
 
-pub fn clone_node(instance: DOMReference, deep: bool) -> i32 {
+pub fn clone_node(instance: DOMReference, deep: bool) -> DOMReference {
     unsafe { node_clone_node(instance, if deep { 1 } else { 0 }) }
 }
 extern "C" {
-    fn node_is_same_node(instance: DOMReference, is_same_node: i32) -> i32;
+    fn node_is_same_node(instance: DOMReference, is_same_node: DOMReference) -> i32;
 }
 
-pub fn is_same_node(instance: DOMReference, node: i32) -> bool {
+pub fn is_same_node(instance: DOMReference, node: DOMReference) -> bool {
     unsafe { 0 != node_is_same_node(instance, node) }
 }
 extern "C" {
-    fn node_is_equal_node(instance: DOMReference, is_equal_node: i32) -> i32;
+    fn node_is_equal_node(instance: DOMReference, is_equal_node: DOMReference) -> i32;
 }
 
-pub fn is_equal_node(instance: DOMReference, node: i32) -> bool {
+pub fn is_equal_node(instance: DOMReference, node: DOMReference) -> bool {
     unsafe { 0 != node_is_equal_node(instance, node) }
 }
 extern "C" {
     fn node_compare_document_position(
         instance: DOMReference,
-        compare_document_position: i32,
+        compare_document_position: DOMReference,
     ) -> f32;
 }
 
-pub fn compare_document_position(instance: DOMReference, other: i32) -> f32 {
+pub fn compare_document_position(instance: DOMReference, other: DOMReference) -> f32 {
     unsafe { node_compare_document_position(instance, other) }
 }
 extern "C" {
-    fn node_contains(instance: DOMReference, contains: i32) -> i32;
+    fn node_contains(instance: DOMReference, contains: DOMReference) -> i32;
 }
 
-pub fn contains(instance: DOMReference, other: i32) -> bool {
+pub fn contains(instance: DOMReference, other: DOMReference) -> bool {
     unsafe { 0 != node_contains(instance, other) }
 }
 extern "C" {
-    fn node_lookup_prefix(instance: DOMReference, lookup_prefix: CString) -> CString;
+    fn node_lookup_prefix(instance: DOMReference, lookup_prefix: CString) -> DOMReference;
 }
 
-pub fn lookup_prefix(instance: DOMReference, namespace: &str) -> String {
-    unsafe { to_string(node_lookup_prefix(instance, to_cstring(namespace))) }
+pub fn lookup_prefix(instance: DOMReference, namespace: &str) -> DOMReference {
+    unsafe { node_lookup_prefix(instance, to_cstring(namespace)) }
 }
 extern "C" {
-    fn node_lookup_namespace_uri(instance: DOMReference, lookup_namespace_uri: CString) -> CString;
+    fn node_lookup_namespace_uri(
+        instance: DOMReference,
+        lookup_namespace_uri: CString,
+    ) -> DOMReference;
 }
 
-pub fn lookup_namespace_uri(instance: DOMReference, prefix: &str) -> String {
-    unsafe { to_string(node_lookup_namespace_uri(instance, to_cstring(prefix))) }
+pub fn lookup_namespace_uri(instance: DOMReference, prefix: &str) -> DOMReference {
+    unsafe { node_lookup_namespace_uri(instance, to_cstring(prefix)) }
 }
 extern "C" {
     fn node_is_default_namespace(instance: DOMReference, is_default_namespace: CString) -> i32;

@@ -61,6 +61,7 @@ function processOperation(namespace, operation, isInterface) {
   }
   namespace = processNamespace(namespace);
   let operationName = operation.body.name.value;
+  let returnsNullable = operation.body.idlType.nullable !== null;
   let params = [];
   let returnType = operation.body.idlType.idlType;
   let hasReturn = returnType != "void";
@@ -77,6 +78,9 @@ function processOperation(namespace, operation, isInterface) {
   let f = {type:"function",name:operationName,params:params};
   if(hasReturn){
     f.return_type = toType(returnType);
+    if(returnsNullable){
+      f.return_nullable = returnsNullable;  
+    }
   }
   if(!isInterface){
     f.is_static = true;

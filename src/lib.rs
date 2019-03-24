@@ -17,6 +17,7 @@ pub mod math;
 pub mod mouseevent;
 pub mod node;
 pub mod path2d;
+pub mod storage;
 pub mod textmetrics;
 pub mod window;
 pub use global::*;

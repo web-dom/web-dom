@@ -53,12 +53,26 @@ function appendToNamespace(namespace, text) {
   fs.appendFileSync("src/" + namespace + ".rs", text);
 }
 
-function toUnsafeRustType(returnType) {
-  let returnsString = returnType == "string";
-  return returnsString ? "CString" : returnType == "number" ? "f32" : "i32";
+function toUnsafeRustType(returnType, returnNullable) {
+  if (returnNullable) {
+    return "DOMReference";
+  }
+  if (returnType == "string") {
+    return "CString";
+  }
+  if (returnType == "number") {
+    return "f32";
+  }
+  if (returnType == "object") {
+    return "DOMReference";
+  }
+  return "i32";
 }
 
-function toRustParamType(returnType) {
+function toRustParamType(returnType, returnNullable) {
+  if (returnNullable) {
+    return "DOMReference";
+  }
   if (returnType == "string") {
     return "&str";
   }
@@ -68,10 +82,16 @@ function toRustParamType(returnType) {
   if (returnType == "number") {
     return "f32";
   }
+  if (returnType == "object") {
+    return "DOMReference";
+  }
   return "i32";
 }
 
-function toRustReturnType(returnType) {
+function toRustReturnType(returnType, returnNullable) {
+  if (returnNullable) {
+    return "DOMReference";
+  }
   if (returnType == "string") {
     return "String";
   }
@@ -80,6 +100,9 @@ function toRustReturnType(returnType) {
   }
   if (returnType == "number") {
     return "f32";
+  }
+  if (returnType == "object") {
+    return "DOMReference";
   }
   return "i32";
 }
@@ -171,6 +194,7 @@ for (i in dom_api) {
     let trueName = member.name;
     let newName = toSnake(member.name);
     let returnType = member.return_type;
+    let returnNullable = member.return_nullable;
     let returnsString = returnType == "string";
     let returnsBool = returnType == "boolean";
     if (member.type == "property") {
@@ -202,23 +226,33 @@ for (i in dom_api) {
         i,
         `extern \"C\" {
         fn ${newNamespace}_get_${newName}(instance:DOMReference) -> ${toUnsafeRustType(
-          returnType
+          returnType,
+          returnNullable
         )};
         fn ${newNamespace}_set_${newName}(instance:DOMReference,value:${toUnsafeRustType(
-          returnType
+          returnType,
+          returnNullable
         )});
     }\n
     pub fn get_${newName}(instance:DOMReference) -> ${toRustReturnType(
-          returnType
+          returnType,
+          returnNullable
         )} {\nunsafe{
       ${
-        returnsBool ? "0 !=" : returnsString ? "to_string(" : ""
+        returnNullable
+          ? ""
+          : returnsBool
+          ? "0 !="
+          : returnsString
+          ? "to_string("
+          : ""
       } ${newNamespace}_get_${newName}(instance)
       ${returnsString ? ")" : ""}
       }\n}\n
 
       pub fn set_${newName}(instance:DOMReference,value:${toRustParamType(
-          returnType
+          returnType,
+          returnNullable
         )}){\nunsafe{
       ${newNamespace}_set_${newName}(instance,  ${
           returnsBool ? "if " : returnsString ? "to_cstring(" : ""
@@ -238,6 +272,7 @@ for (i in dom_api) {
 
       let params = member.params;
       let returnType = member.return_type;
+      let returnNullable = member.return_nullable;
       let hasReturn = member.return_type != null;
       let isStatic = member.is_static;
       FUNCTIONS.push(`
@@ -278,7 +313,7 @@ for (i in dom_api) {
         }${params
           .map(x => newName + ":" + toUnsafeRustType(x.type))
           .join(", ")}) ${
-          hasReturn ? ` -> ${toUnsafeRustType(returnType)}` : ""
+          hasReturn ? ` -> ${toUnsafeRustType(returnType, returnNullable)}` : ""
         };
     }\n
     pub fn ` +
@@ -286,9 +321,19 @@ for (i in dom_api) {
           `(${isStatic ? "" : "instance:DOMReference,"}${params
             .map(x => toSnake(x.name) + ":" + toRustParamType(x.type))
             .join(", ")}) ${
-            hasReturn ? ` -> ${toRustReturnType(returnType)}` : ""
+            hasReturn
+              ? ` -> ${toRustReturnType(returnType, returnNullable)}`
+              : ""
           } {\nunsafe{
-            ${returnsBool ? "0 !=" : returnsString ? "to_string(" : ""}
+            ${
+              returnNullable
+                ? ""
+                : returnsBool
+                ? "0 !="
+                : returnsString
+                ? "to_string("
+                : ""
+            }
             ${newNamespace}_${newName}(${
             isStatic ? "" : "instance,"
           }${params
@@ -302,7 +347,7 @@ for (i in dom_api) {
                 (x.type == "boolean" ? " {1} else {0}" : "")
             )
             .join(", ")})
-            ${returnsString ? ")" : ""}
+            ${returnNullable ? "" : returnsString ? ")" : ""}
           }\n}\n`
       );
     }

@@ -168,7 +168,7 @@ extern "C" {
         init_keyboard_event: CString,
         init_keyboard_event: i32,
         init_keyboard_event: i32,
-        init_keyboard_event: i32,
+        init_keyboard_event: DOMReference,
         init_keyboard_event: CString,
         init_keyboard_event: f32,
         init_keyboard_event: i32,
@@ -183,7 +183,7 @@ pub fn init_keyboard_event(
     type_arg: &str,
     bubbles_arg: bool,
     cancelable_arg: bool,
-    view_arg: i32,
+    view_arg: DOMReference,
     key_arg: &str,
     location_arg: f32,
     ctrl_key: bool,
@@ -208,15 +208,15 @@ pub fn init_keyboard_event(
     }
 }
 extern "C" {
-    fn keyboardevent_get_init_dict(instance: DOMReference) -> i32;
-    fn keyboardevent_set_init_dict(instance: DOMReference, value: i32);
+    fn keyboardevent_get_init_dict(instance: DOMReference) -> DOMReference;
+    fn keyboardevent_set_init_dict(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_init_dict(instance: DOMReference) -> i32 {
+pub fn get_init_dict(instance: DOMReference) -> DOMReference {
     unsafe { keyboardevent_get_init_dict(instance) }
 }
 
-pub fn set_init_dict(instance: DOMReference, value: i32) {
+pub fn set_init_dict(instance: DOMReference, value: DOMReference) {
     unsafe {
         keyboardevent_set_init_dict(instance, value);
     }

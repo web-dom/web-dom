@@ -269,7 +269,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",
@@ -1903,7 +1904,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2340,7 +2342,8 @@
           "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",
@@ -2356,7 +2359,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2420,7 +2424,8 @@
       "type": "function",
       "name": "getSelection",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",
@@ -2494,7 +2499,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2509,7 +2515,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2623,7 +2630,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2666,7 +2674,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2752,7 +2761,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2763,7 +2773,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2774,7 +2785,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2789,7 +2801,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2800,7 +2813,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2821,7 +2835,8 @@
       "type": "function",
       "name": "getAsFlexContainer",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2989,7 +3004,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -3179,7 +3195,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4050,7 +4067,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4061,7 +4079,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4072,6 +4091,71 @@
           "type": "string"
         }
       ],
+      "return_type": "boolean"
+    }
+  ],
+  "Storage": [
+    {
+      "type": "property",
+      "name": "length",
+      "return_type": "number"
+    },
+    {
+      "type": "function",
+      "name": "key",
+      "params": [
+        {
+          "name": "index",
+          "type": "number"
+        }
+      ],
+      "return_type": "string",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "getItem",
+      "params": [
+        {
+          "name": "key",
+          "type": "string"
+        }
+      ],
+      "return_type": "string",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "setItem",
+      "params": [
+        {
+          "name": "key",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "removeItem",
+      "params": [
+        {
+          "name": "key",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "clear",
+      "params": []
+    },
+    {
+      "type": "property",
+      "name": "isSessionOnly",
       "return_type": "boolean"
     }
   ],
@@ -4223,7 +4307,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",
@@ -4274,7 +4359,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4305,6 +4391,16 @@
       "return_type": "object"
     },
     {
+      "type": "property",
+      "name": "sessionStorage",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "localStorage",
+      "return_type": "object"
+    },
+    {
       "type": "function",
       "name": "captureEvents",
       "params": []
@@ -4318,7 +4414,8 @@
       "type": "function",
       "name": "getSelection",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4333,7 +4430,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4344,7 +4442,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",

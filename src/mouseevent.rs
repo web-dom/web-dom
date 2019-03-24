@@ -197,15 +197,15 @@ pub fn set_buttons(instance: DOMReference, value: f32) {
     }
 }
 extern "C" {
-    fn mouseevent_get_related_target(instance: DOMReference) -> i32;
-    fn mouseevent_set_related_target(instance: DOMReference, value: i32);
+    fn mouseevent_get_related_target(instance: DOMReference) -> DOMReference;
+    fn mouseevent_set_related_target(instance: DOMReference, value: DOMReference);
 }
 
-pub fn get_related_target(instance: DOMReference) -> i32 {
+pub fn get_related_target(instance: DOMReference) -> DOMReference {
     unsafe { mouseevent_get_related_target(instance) }
 }
 
-pub fn set_related_target(instance: DOMReference, value: i32) {
+pub fn set_related_target(instance: DOMReference, value: DOMReference) {
     unsafe {
         mouseevent_set_related_target(instance, value);
     }
@@ -258,7 +258,7 @@ extern "C" {
         init_mouse_event: CString,
         init_mouse_event: i32,
         init_mouse_event: i32,
-        init_mouse_event: i32,
+        init_mouse_event: DOMReference,
         init_mouse_event: f32,
         init_mouse_event: f32,
         init_mouse_event: f32,
@@ -269,7 +269,7 @@ extern "C" {
         init_mouse_event: i32,
         init_mouse_event: i32,
         init_mouse_event: f32,
-        init_mouse_event: i32,
+        init_mouse_event: DOMReference,
     );
 }
 
@@ -278,7 +278,7 @@ pub fn init_mouse_event(
     type_arg: &str,
     can_bubble_arg: bool,
     cancelable_arg: bool,
-    view_arg: i32,
+    view_arg: DOMReference,
     detail_arg: f32,
     screen_x_arg: f32,
     screen_y_arg: f32,
@@ -289,7 +289,7 @@ pub fn init_mouse_event(
     shift_key_arg: bool,
     meta_key_arg: bool,
     button_arg: f32,
-    related_target_arg: i32,
+    related_target_arg: DOMReference,
 ) {
     unsafe {
         mouseevent_init_mouse_event(

@@ -141,10 +141,10 @@ pub fn exception(instance: DOMReference, message: &str) {
     unsafe { consoleinstance_exception(instance, to_cstring(message)) }
 }
 extern "C" {
-    fn consoleinstance_time_stamp(instance: DOMReference, time_stamp: i32);
+    fn consoleinstance_time_stamp(instance: DOMReference, time_stamp: DOMReference);
 }
 
-pub fn time_stamp(instance: DOMReference, data: i32) {
+pub fn time_stamp(instance: DOMReference, data: DOMReference) {
     unsafe { consoleinstance_time_stamp(instance, data) }
 }
 extern "C" {
@@ -169,7 +169,7 @@ extern "C" {
         report_for_service_worker_scope: CString,
         report_for_service_worker_scope: f32,
         report_for_service_worker_scope: f32,
-        report_for_service_worker_scope: i32,
+        report_for_service_worker_scope: DOMReference,
     );
 }
 
@@ -180,7 +180,7 @@ pub fn report_for_service_worker_scope(
     filename: &str,
     line_number: f32,
     column_number: f32,
-    level: i32,
+    level: DOMReference,
 ) {
     unsafe {
         consoleinstance_report_for_service_worker_scope(

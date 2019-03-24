@@ -98,14 +98,14 @@ partial interface Window {
 };
 
 // http://www.whatwg.org/specs/web-apps/current-work/
-interface mixin WindowSessionStorage {
+partial interface Window  {
   //[Throws] readonly attribute Storage sessionStorage;
   [Throws] readonly attribute Storage? sessionStorage;
 };
 Window includes WindowSessionStorage;
 
 // http://www.whatwg.org/specs/web-apps/current-work/
-interface mixin WindowLocalStorage {
+partial interface Window  {
   [Throws] readonly attribute Storage? localStorage;
 };
 Window includes WindowLocalStorage;

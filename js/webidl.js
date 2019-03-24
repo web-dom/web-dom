@@ -4052,6 +4052,61 @@ function createWebIDLContext() {
       return A.a(_i.isDefaultNamespace(_namespace)) ? 1 : 0;
     },
 
+    storage_get_length: function(i) {
+      let _i = A.g(i);
+      return _i.length;
+    },
+
+    storage_set_length: function(i, v) {
+      let _i = A.g(i);
+      _i.length = v;
+    },
+
+    storage_key: function(i, index) {
+      let _i = A.g(i);
+
+      let _index = index;
+      return this.ms(_i.key(_index));
+    },
+
+    storage_get_item: function(i, key) {
+      let _i = A.g(i);
+
+      let _key = this.s(key);
+      return this.ms(_i.getItem(_key));
+    },
+
+    storage_set_item: function(i, key, value) {
+      let _i = A.g(i);
+
+      let _key = this.s(key);
+      let _value = this.s(value);
+      _i.setItem(_key, _value);
+    },
+
+    storage_remove_item: function(i, key) {
+      let _i = A.g(i);
+
+      let _key = this.s(key);
+      _i.removeItem(_key);
+    },
+
+    storage_clear: function(i) {
+      let _i = A.g(i);
+
+      _i.clear();
+    },
+
+    storage_get_is_session_only: function(i) {
+      let _i = A.g(i);
+      return _i.isSessionOnly ? 1 : 0;
+    },
+
+    storage_set_is_session_only: function(i, v) {
+      let _i = A.g(i);
+      _i.isSessionOnly = 1 == v;
+    },
+
     window_get_window: function(i) {
       let _i = A.g(i);
       return A.a(_i.window);
@@ -4380,6 +4435,26 @@ function createWebIDLContext() {
     window_set_onappinstalled: function(i, v) {
       let _i = A.g(i);
       _i.onappinstalled = A.g(v);
+    },
+
+    window_get_session_storage: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.sessionStorage);
+    },
+
+    window_set_session_storage: function(i, v) {
+      let _i = A.g(i);
+      _i.sessionStorage = A.g(v);
+    },
+
+    window_get_local_storage: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.localStorage);
+    },
+
+    window_set_local_storage: function(i, v) {
+      let _i = A.g(i);
+      _i.localStorage = A.g(v);
     },
 
     window_capture_events: function(i) {
