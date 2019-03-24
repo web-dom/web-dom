@@ -151,8 +151,8 @@ extern "C" {
     ) -> i32;
 }
 
-pub fn toggle_attribute(instance: DOMReference, name: &str, force: i32) -> i32 {
-    unsafe { element_toggle_attribute(instance, to_cstring(name), force) }
+pub fn toggle_attribute(instance: DOMReference, name: &str, force: bool) -> bool {
+    unsafe { 0 != element_toggle_attribute(instance, to_cstring(name), if force { 1 } else { 0 }) }
 }
 extern "C" {
     fn element_set_attribute(
@@ -206,8 +206,8 @@ extern "C" {
     fn element_has_attribute(instance: DOMReference, has_attribute: CString) -> i32;
 }
 
-pub fn has_attribute(instance: DOMReference, name: &str) -> i32 {
-    unsafe { element_has_attribute(instance, to_cstring(name)) }
+pub fn has_attribute(instance: DOMReference, name: &str) -> bool {
+    unsafe { 0 != element_has_attribute(instance, to_cstring(name)) }
 }
 extern "C" {
     fn element_has_attribute_n_s(
@@ -217,15 +217,17 @@ extern "C" {
     ) -> i32;
 }
 
-pub fn has_attribute_n_s(instance: DOMReference, namespace: &str, local_name: &str) -> i32 {
-    unsafe { element_has_attribute_n_s(instance, to_cstring(namespace), to_cstring(local_name)) }
+pub fn has_attribute_n_s(instance: DOMReference, namespace: &str, local_name: &str) -> bool {
+    unsafe {
+        0 != element_has_attribute_n_s(instance, to_cstring(namespace), to_cstring(local_name))
+    }
 }
 extern "C" {
     fn element_has_attributes(instance: DOMReference) -> i32;
 }
 
-pub fn has_attributes(instance: DOMReference) -> i32 {
-    unsafe { element_has_attributes(instance) }
+pub fn has_attributes(instance: DOMReference) -> bool {
+    unsafe { 0 != element_has_attributes(instance) }
 }
 extern "C" {
     fn element_closest(instance: DOMReference, closest: CString) -> i32;
@@ -238,8 +240,8 @@ extern "C" {
     fn element_matches(instance: DOMReference, matches: CString) -> i32;
 }
 
-pub fn matches(instance: DOMReference, selector: &str) -> i32 {
-    unsafe { element_matches(instance, to_cstring(selector)) }
+pub fn matches(instance: DOMReference, selector: &str) -> bool {
+    unsafe { 0 != element_matches(instance, to_cstring(selector)) }
 }
 extern "C" {
     fn element_webkit_matches_selector(
@@ -248,8 +250,8 @@ extern "C" {
     ) -> i32;
 }
 
-pub fn webkit_matches_selector(instance: DOMReference, selector: &str) -> i32 {
-    unsafe { element_webkit_matches_selector(instance, to_cstring(selector)) }
+pub fn webkit_matches_selector(instance: DOMReference, selector: &str) -> bool {
+    unsafe { 0 != element_webkit_matches_selector(instance, to_cstring(selector)) }
 }
 extern "C" {
     fn element_get_elements_with_grid(instance: DOMReference) -> i32;
@@ -312,15 +314,15 @@ extern "C" {
     fn element_has_pointer_capture(instance: DOMReference, has_pointer_capture: f32) -> i32;
 }
 
-pub fn has_pointer_capture(instance: DOMReference, pointer_id: f32) -> i32 {
-    unsafe { element_has_pointer_capture(instance, pointer_id) }
+pub fn has_pointer_capture(instance: DOMReference, pointer_id: f32) -> bool {
+    unsafe { 0 != element_has_pointer_capture(instance, pointer_id) }
 }
 extern "C" {
     fn element_set_capture(instance: DOMReference, set_capture: i32);
 }
 
-pub fn set_capture(instance: DOMReference, retarget_to_element: i32) {
-    unsafe { element_set_capture(instance, retarget_to_element) }
+pub fn set_capture(instance: DOMReference, retarget_to_element: bool) {
+    unsafe { element_set_capture(instance, if retarget_to_element { 1 } else { 0 }) }
 }
 extern "C" {
     fn element_release_capture(instance: DOMReference);
@@ -333,8 +335,8 @@ extern "C" {
     fn element_set_capture_always(instance: DOMReference, set_capture_always: i32);
 }
 
-pub fn set_capture_always(instance: DOMReference, retarget_to_element: i32) {
-    unsafe { element_set_capture_always(instance, retarget_to_element) }
+pub fn set_capture_always(instance: DOMReference, retarget_to_element: bool) {
+    unsafe { element_set_capture_always(instance, if retarget_to_element { 1 } else { 0 }) }
 }
 extern "C" {
     fn element_get_attribute_node(instance: DOMReference, get_attribute_node: CString) -> i32;
@@ -389,8 +391,8 @@ extern "C" {
     ) -> i32;
 }
 
-pub fn scroll_by_no_flush(instance: DOMReference, dx: f32, dy: f32) -> i32 {
-    unsafe { element_scroll_by_no_flush(instance, dx, dy) }
+pub fn scroll_by_no_flush(instance: DOMReference, dx: f32, dy: f32) -> bool {
+    unsafe { 0 != element_scroll_by_no_flush(instance, dx, dy) }
 }
 extern "C" {
     fn element_get_as_flex_container(instance: DOMReference) -> i32;

@@ -339,12 +339,12 @@
 
       drawing_get_image_smoothing_enabled: function(i) {
         let _i = A.g(i);
-        return _i.imageSmoothingEnabled;
+        return _i.imageSmoothingEnabled ? 1 : 0;
       },
 
       drawing_set_image_smoothing_enabled: function(i, v) {
         let _i = A.g(i);
-        _i.imageSmoothingEnabled = v;
+        _i.imageSmoothingEnabled = 1 == v;
       },
 
       drawing_get_stroke_style: function(i) {
@@ -507,7 +507,7 @@
         let _x = x;
         let _y = y;
         let _winding = A.g(winding);
-        return A.a(_i.isPointInPath(_x, _y, _winding));
+        return A.a(_i.isPointInPath(_x, _y, _winding)) ? 1 : 0;
       },
 
       drawing_is_point_in_stroke: function(i, x, y) {
@@ -515,7 +515,7 @@
 
         let _x = x;
         let _y = y;
-        return A.a(_i.isPointInStroke(_x, _y));
+        return A.a(_i.isPointInStroke(_x, _y)) ? 1 : 0;
       },
 
       drawing_draw_focus_if_needed: function(i, element) {
@@ -529,7 +529,7 @@
         let _i = A.g(i);
 
         let _element = A.g(element);
-        return A.a(_i.drawCustomFocusRing(_element));
+        return A.a(_i.drawCustomFocusRing(_element)) ? 1 : 0;
       },
 
       drawing_fill_text: function(i, text, x, y, maxWidth) {
@@ -796,7 +796,7 @@
         let _radius = radius;
         let _startAngle = startAngle;
         let _endAngle = endAngle;
-        let _anticlockwise = anticlockwise;
+        let _anticlockwise = 0 != anticlockwise;
         _i.arc(_x, _y, _radius, _startAngle, _endAngle, _anticlockwise);
       },
 
@@ -820,7 +820,7 @@
         let _rotation = rotation;
         let _startAngle = startAngle;
         let _endAngle = endAngle;
-        let _anticlockwise = anticlockwise;
+        let _anticlockwise = 0 != anticlockwise;
         _i.ellipse(
           _x,
           _y,
@@ -887,7 +887,7 @@
       },
 
       console_assert: function(condition, message) {
-        let _condition = condition;
+        let _condition = 0 != condition;
         let _message = this.s(message);
         console.assert(_condition, _message);
       },
@@ -1004,7 +1004,7 @@
       consoleinstance_assert: function(i, condition, message) {
         let _i = A.g(i);
 
-        let _condition = condition;
+        let _condition = 0 != condition;
         let _message = this.s(message);
         _i.assert(_condition, _message);
       },
@@ -1372,7 +1372,7 @@
         let _i = A.g(i);
 
         let _node = A.g(node);
-        let _deep = deep;
+        let _deep = 0 != deep;
         return A.a(_i.importNode(_node, _deep));
       },
 
@@ -1596,7 +1596,7 @@
       document_has_focus: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.hasFocus());
+        return A.a(_i.hasFocus()) ? 1 : 0;
       },
 
       document_get_onreadystatechange: function(i) {
@@ -1697,22 +1697,22 @@
 
       document_get_fullscreen: function(i) {
         let _i = A.g(i);
-        return _i.fullscreen;
+        return _i.fullscreen ? 1 : 0;
       },
 
       document_set_fullscreen: function(i, v) {
         let _i = A.g(i);
-        _i.fullscreen = v;
+        _i.fullscreen = 1 == v;
       },
 
       document_get_fullscreen_enabled: function(i) {
         let _i = A.g(i);
-        return _i.fullscreenEnabled;
+        return _i.fullscreenEnabled ? 1 : 0;
       },
 
       document_set_fullscreen_enabled: function(i, v) {
         let _i = A.g(i);
-        _i.fullscreenEnabled = v;
+        _i.fullscreenEnabled = 1 == v;
       },
 
       document_exit_fullscreen: function(i) {
@@ -1769,12 +1769,12 @@
 
       document_get_hidden: function(i) {
         let _i = A.g(i);
-        return _i.hidden;
+        return _i.hidden ? 1 : 0;
       },
 
       document_set_hidden: function(i, v) {
         let _i = A.g(i);
-        _i.hidden = v;
+        _i.hidden = 1 == v;
       },
 
       document_get_visibility_state: function(i) {
@@ -1904,12 +1904,12 @@
 
       document_get_is_srcdoc_document: function(i) {
         let _i = A.g(i);
-        return _i.isSrcdocDocument;
+        return _i.isSrcdocDocument ? 1 : 0;
       },
 
       document_set_is_srcdoc_document: function(i, v) {
         let _i = A.g(i);
-        _i.isSrcdocDocument = v;
+        _i.isSrcdocDocument = 1 == v;
       },
 
       document_get_sandbox_flags_as_string: function(i) {
@@ -1944,12 +1944,12 @@
 
       document_get_user_has_interacted: function(i) {
         let _i = A.g(i);
-        return _i.userHasInteracted;
+        return _i.userHasInteracted ? 1 : 0;
       },
 
       document_set_user_has_interacted: function(i, v) {
         let _i = A.g(i);
-        _i.userHasInteracted = v;
+        _i.userHasInteracted = 1 == v;
       },
 
       document_notify_user_gesture_activation: function(i) {
@@ -2073,8 +2073,8 @@
         let _i = A.g(i);
 
         let _name = this.s(name);
-        let _force = force;
-        return A.a(_i.toggleAttribute(_name, _force));
+        let _force = 0 != force;
+        return A.a(_i.toggleAttribute(_name, _force)) ? 1 : 0;
       },
 
       element_set_attribute: function(i, name, value) {
@@ -2113,7 +2113,7 @@
         let _i = A.g(i);
 
         let _name = this.s(name);
-        return A.a(_i.hasAttribute(_name));
+        return A.a(_i.hasAttribute(_name)) ? 1 : 0;
       },
 
       element_has_attribute_n_s: function(i, namespace, localName) {
@@ -2121,13 +2121,13 @@
 
         let _namespace = this.s(namespace);
         let _localName = this.s(localName);
-        return A.a(_i.hasAttributeNS(_namespace, _localName));
+        return A.a(_i.hasAttributeNS(_namespace, _localName)) ? 1 : 0;
       },
 
       element_has_attributes: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.hasAttributes());
+        return A.a(_i.hasAttributes()) ? 1 : 0;
       },
 
       element_closest: function(i, selector) {
@@ -2141,14 +2141,14 @@
         let _i = A.g(i);
 
         let _selector = this.s(selector);
-        return A.a(_i.matches(_selector));
+        return A.a(_i.matches(_selector)) ? 1 : 0;
       },
 
       element_webkit_matches_selector: function(i, selector) {
         let _i = A.g(i);
 
         let _selector = this.s(selector);
-        return A.a(_i.webkitMatchesSelector(_selector));
+        return A.a(_i.webkitMatchesSelector(_selector)) ? 1 : 0;
       },
 
       element_get_elements_with_grid: function(i) {
@@ -2201,13 +2201,13 @@
         let _i = A.g(i);
 
         let _pointerId = pointerId;
-        return A.a(_i.hasPointerCapture(_pointerId));
+        return A.a(_i.hasPointerCapture(_pointerId)) ? 1 : 0;
       },
 
       element_set_capture: function(i, retargetToElement) {
         let _i = A.g(i);
 
-        let _retargetToElement = retargetToElement;
+        let _retargetToElement = 0 != retargetToElement;
         _i.setCapture(_retargetToElement);
       },
 
@@ -2220,7 +2220,7 @@
       element_set_capture_always: function(i, retargetToElement) {
         let _i = A.g(i);
 
-        let _retargetToElement = retargetToElement;
+        let _retargetToElement = 0 != retargetToElement;
         _i.setCaptureAlways(_retargetToElement);
       },
 
@@ -2265,7 +2265,7 @@
 
         let _dx = dx;
         let _dy = dy;
-        return A.a(_i.scrollByNoFlush(_dx, _dy));
+        return A.a(_i.scrollByNoFlush(_dx, _dy)) ? 1 : 0;
       },
 
       element_get_as_flex_container: function(i) {
@@ -2637,7 +2637,7 @@
         let _i = A.g(i);
 
         let _event = A.g(event);
-        return A.a(_i.dispatchEvent(_event));
+        return A.a(_i.dispatchEvent(_event)) ? 1 : 0;
       },
 
       htmlcanvas_get_width: function(i) {
@@ -2722,42 +2722,42 @@
 
       htmlinput_get_autofocus: function(i) {
         let _i = A.g(i);
-        return _i.autofocus;
+        return _i.autofocus ? 1 : 0;
       },
 
       htmlinput_set_autofocus: function(i, v) {
         let _i = A.g(i);
-        _i.autofocus = v;
+        _i.autofocus = 1 == v;
       },
 
       htmlinput_get_default_checked: function(i) {
         let _i = A.g(i);
-        return _i.defaultChecked;
+        return _i.defaultChecked ? 1 : 0;
       },
 
       htmlinput_set_default_checked: function(i, v) {
         let _i = A.g(i);
-        _i.defaultChecked = v;
+        _i.defaultChecked = 1 == v;
       },
 
       htmlinput_get_checked: function(i) {
         let _i = A.g(i);
-        return _i.checked;
+        return _i.checked ? 1 : 0;
       },
 
       htmlinput_set_checked: function(i, v) {
         let _i = A.g(i);
-        _i.checked = v;
+        _i.checked = 1 == v;
       },
 
       htmlinput_get_disabled: function(i) {
         let _i = A.g(i);
-        return _i.disabled;
+        return _i.disabled ? 1 : 0;
       },
 
       htmlinput_set_disabled: function(i, v) {
         let _i = A.g(i);
-        _i.disabled = v;
+        _i.disabled = 1 == v;
       },
 
       htmlinput_get_form: function(i) {
@@ -2812,12 +2812,12 @@
 
       htmlinput_get_form_no_validate: function(i) {
         let _i = A.g(i);
-        return _i.formNoValidate;
+        return _i.formNoValidate ? 1 : 0;
       },
 
       htmlinput_set_form_no_validate: function(i, v) {
         let _i = A.g(i);
-        _i.formNoValidate = v;
+        _i.formNoValidate = 1 == v;
       },
 
       htmlinput_get_form_target: function(i) {
@@ -2842,12 +2842,12 @@
 
       htmlinput_get_indeterminate: function(i) {
         let _i = A.g(i);
-        return _i.indeterminate;
+        return _i.indeterminate ? 1 : 0;
       },
 
       htmlinput_set_indeterminate: function(i, v) {
         let _i = A.g(i);
-        _i.indeterminate = v;
+        _i.indeterminate = 1 == v;
       },
 
       htmlinput_get_input_mode: function(i) {
@@ -2912,12 +2912,12 @@
 
       htmlinput_get_multiple: function(i) {
         let _i = A.g(i);
-        return _i.multiple;
+        return _i.multiple ? 1 : 0;
       },
 
       htmlinput_set_multiple: function(i, v) {
         let _i = A.g(i);
-        _i.multiple = v;
+        _i.multiple = 1 == v;
       },
 
       htmlinput_get_name: function(i) {
@@ -2952,22 +2952,22 @@
 
       htmlinput_get_read_only: function(i) {
         let _i = A.g(i);
-        return _i.readOnly;
+        return _i.readOnly ? 1 : 0;
       },
 
       htmlinput_set_read_only: function(i, v) {
         let _i = A.g(i);
-        _i.readOnly = v;
+        _i.readOnly = 1 == v;
       },
 
       htmlinput_get_required: function(i) {
         let _i = A.g(i);
-        return _i.required;
+        return _i.required ? 1 : 0;
       },
 
       htmlinput_set_required: function(i, v) {
         let _i = A.g(i);
-        _i.required = v;
+        _i.required = 1 == v;
       },
 
       htmlinput_get_size: function(i) {
@@ -3062,12 +3062,12 @@
 
       htmlinput_get_will_validate: function(i) {
         let _i = A.g(i);
-        return _i.willValidate;
+        return _i.willValidate ? 1 : 0;
       },
 
       htmlinput_set_will_validate: function(i, v) {
         let _i = A.g(i);
-        _i.willValidate = v;
+        _i.willValidate = 1 == v;
       },
 
       htmlinput_get_validity: function(i) {
@@ -3093,13 +3093,13 @@
       htmlinput_check_validity: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.checkValidity());
+        return A.a(_i.checkValidity()) ? 1 : 0;
       },
 
       htmlinput_report_validity: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.reportValidity());
+        return A.a(_i.reportValidity()) ? 1 : 0;
       },
 
       htmlinput_set_custom_validity: function(i, error) {
@@ -3196,7 +3196,7 @@
       htmlinput_set_date_time_picker_state: function(i, open) {
         let _i = A.g(i);
 
-        let _open = open;
+        let _open = 0 != open;
         _i.setDateTimePickerState(_open);
       },
 
@@ -3244,49 +3244,49 @@
 
       keyboardevent_get_alt_key: function(i) {
         let _i = A.g(i);
-        return _i.altKey;
+        return _i.altKey ? 1 : 0;
       },
 
       keyboardevent_set_alt_key: function(i, v) {
         let _i = A.g(i);
-        _i.altKey = v;
+        _i.altKey = 1 == v;
       },
 
       keyboardevent_get_ctrl_key: function(i) {
         let _i = A.g(i);
-        return _i.ctrlKey;
+        return _i.ctrlKey ? 1 : 0;
       },
 
       keyboardevent_set_ctrl_key: function(i, v) {
         let _i = A.g(i);
-        _i.ctrlKey = v;
+        _i.ctrlKey = 1 == v;
       },
 
       keyboardevent_get_shift_key: function(i) {
         let _i = A.g(i);
-        return _i.shiftKey;
+        return _i.shiftKey ? 1 : 0;
       },
 
       keyboardevent_set_shift_key: function(i, v) {
         let _i = A.g(i);
-        _i.shiftKey = v;
+        _i.shiftKey = 1 == v;
       },
 
       keyboardevent_get_meta_key: function(i) {
         let _i = A.g(i);
-        return _i.metaKey;
+        return _i.metaKey ? 1 : 0;
       },
 
       keyboardevent_set_meta_key: function(i, v) {
         let _i = A.g(i);
-        _i.metaKey = v;
+        _i.metaKey = 1 == v;
       },
 
       keyboardevent_get_modifier_state: function(i, key) {
         let _i = A.g(i);
 
         let _key = this.s(key);
-        return A.a(_i.getModifierState(_key));
+        return A.a(_i.getModifierState(_key)) ? 1 : 0;
       },
 
       keyboardevent_get_location: function(i) {
@@ -3301,22 +3301,22 @@
 
       keyboardevent_get_repeat: function(i) {
         let _i = A.g(i);
-        return _i.repeat;
+        return _i.repeat ? 1 : 0;
       },
 
       keyboardevent_set_repeat: function(i, v) {
         let _i = A.g(i);
-        _i.repeat = v;
+        _i.repeat = 1 == v;
       },
 
       keyboardevent_get_is_composing: function(i) {
         let _i = A.g(i);
-        return _i.isComposing;
+        return _i.isComposing ? 1 : 0;
       },
 
       keyboardevent_set_is_composing: function(i, v) {
         let _i = A.g(i);
-        _i.isComposing = v;
+        _i.isComposing = 1 == v;
       },
 
       keyboardevent_get_key: function(i) {
@@ -3355,15 +3355,15 @@
         let _i = A.g(i);
 
         let _typeArg = this.s(typeArg);
-        let _bubblesArg = bubblesArg;
-        let _cancelableArg = cancelableArg;
+        let _bubblesArg = 0 != bubblesArg;
+        let _cancelableArg = 0 != cancelableArg;
         let _viewArg = A.g(viewArg);
         let _keyArg = this.s(keyArg);
         let _locationArg = locationArg;
-        let _ctrlKey = ctrlKey;
-        let _altKey = altKey;
-        let _shiftKey = shiftKey;
-        let _metaKey = metaKey;
+        let _ctrlKey = 0 != ctrlKey;
+        let _altKey = 0 != altKey;
+        let _shiftKey = 0 != shiftKey;
+        let _metaKey = 0 != metaKey;
         _i.initKeyboardEvent(
           _typeArg,
           _bubblesArg,
@@ -3470,42 +3470,42 @@
 
       mouseevent_get_ctrl_key: function(i) {
         let _i = A.g(i);
-        return _i.ctrlKey;
+        return _i.ctrlKey ? 1 : 0;
       },
 
       mouseevent_set_ctrl_key: function(i, v) {
         let _i = A.g(i);
-        _i.ctrlKey = v;
+        _i.ctrlKey = 1 == v;
       },
 
       mouseevent_get_shift_key: function(i) {
         let _i = A.g(i);
-        return _i.shiftKey;
+        return _i.shiftKey ? 1 : 0;
       },
 
       mouseevent_set_shift_key: function(i, v) {
         let _i = A.g(i);
-        _i.shiftKey = v;
+        _i.shiftKey = 1 == v;
       },
 
       mouseevent_get_alt_key: function(i) {
         let _i = A.g(i);
-        return _i.altKey;
+        return _i.altKey ? 1 : 0;
       },
 
       mouseevent_set_alt_key: function(i, v) {
         let _i = A.g(i);
-        _i.altKey = v;
+        _i.altKey = 1 == v;
       },
 
       mouseevent_get_meta_key: function(i) {
         let _i = A.g(i);
-        return _i.metaKey;
+        return _i.metaKey ? 1 : 0;
       },
 
       mouseevent_set_meta_key: function(i, v) {
         let _i = A.g(i);
-        _i.metaKey = v;
+        _i.metaKey = 1 == v;
       },
 
       mouseevent_get_button: function(i) {
@@ -3589,18 +3589,18 @@
         let _i = A.g(i);
 
         let _typeArg = this.s(typeArg);
-        let _canBubbleArg = canBubbleArg;
-        let _cancelableArg = cancelableArg;
+        let _canBubbleArg = 0 != canBubbleArg;
+        let _cancelableArg = 0 != cancelableArg;
         let _viewArg = A.g(viewArg);
         let _detailArg = detailArg;
         let _screenXArg = screenXArg;
         let _screenYArg = screenYArg;
         let _clientXArg = clientXArg;
         let _clientYArg = clientYArg;
-        let _ctrlKeyArg = ctrlKeyArg;
-        let _altKeyArg = altKeyArg;
-        let _shiftKeyArg = shiftKeyArg;
-        let _metaKeyArg = metaKeyArg;
+        let _ctrlKeyArg = 0 != ctrlKeyArg;
+        let _altKeyArg = 0 != altKeyArg;
+        let _shiftKeyArg = 0 != shiftKeyArg;
+        let _metaKeyArg = 0 != metaKeyArg;
         let _buttonArg = buttonArg;
         let _relatedTargetArg = A.g(relatedTargetArg);
         _i.initMouseEvent(
@@ -3626,7 +3626,7 @@
         let _i = A.g(i);
 
         let _keyArg = this.s(keyArg);
-        return A.a(_i.getModifierState(_keyArg));
+        return A.a(_i.getModifierState(_keyArg)) ? 1 : 0;
       },
 
       node_get_node_type: function(i) {
@@ -3661,12 +3661,12 @@
 
       node_get_is_connected: function(i) {
         let _i = A.g(i);
-        return _i.isConnected;
+        return _i.isConnected ? 1 : 0;
       },
 
       node_set_is_connected: function(i, v) {
         let _i = A.g(i);
-        _i.isConnected = v;
+        _i.isConnected = 1 == v;
       },
 
       node_get_owner_document: function(i) {
@@ -3709,7 +3709,7 @@
       node_has_child_nodes: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.hasChildNodes());
+        return A.a(_i.hasChildNodes()) ? 1 : 0;
       },
 
       node_get_child_nodes: function(i) {
@@ -3821,7 +3821,7 @@
       node_clone_node: function(i, deep) {
         let _i = A.g(i);
 
-        let _deep = deep;
+        let _deep = 0 != deep;
         return A.a(_i.cloneNode(_deep));
       },
 
@@ -3829,14 +3829,14 @@
         let _i = A.g(i);
 
         let _node = A.g(node);
-        return A.a(_i.isSameNode(_node));
+        return A.a(_i.isSameNode(_node)) ? 1 : 0;
       },
 
       node_is_equal_node: function(i, node) {
         let _i = A.g(i);
 
         let _node = A.g(node);
-        return A.a(_i.isEqualNode(_node));
+        return A.a(_i.isEqualNode(_node)) ? 1 : 0;
       },
 
       node_compare_document_position: function(i, other) {
@@ -3850,7 +3850,7 @@
         let _i = A.g(i);
 
         let _other = A.g(other);
-        return A.a(_i.contains(_other));
+        return A.a(_i.contains(_other)) ? 1 : 0;
       },
 
       node_lookup_prefix: function(i, namespace) {
@@ -3871,7 +3871,7 @@
         let _i = A.g(i);
 
         let _namespace = this.s(namespace);
-        return A.a(_i.isDefaultNamespace(_namespace));
+        return A.a(_i.isDefaultNamespace(_namespace)) ? 1 : 0;
       },
 
       window_get_window: function(i) {
@@ -4022,12 +4022,12 @@
 
       window_get_closed: function(i) {
         let _i = A.g(i);
-        return _i.closed;
+        return _i.closed ? 1 : 0;
       },
 
       window_set_closed: function(i, v) {
         let _i = A.g(i);
-        _i.closed = v;
+        _i.closed = 1 == v;
       },
 
       window_stop: function(i) {
@@ -4168,7 +4168,7 @@
         let _i = A.g(i);
 
         let _message = this.s(message);
-        return A.a(_i.confirm(_message));
+        return A.a(_i.confirm(_message)) ? 1 : 0;
       },
 
       window_prompt: function(i, message, defaultMessage) {

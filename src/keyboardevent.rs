@@ -33,13 +33,13 @@ extern "C" {
     fn keyboardevent_set_alt_key(instance: DOMReference, value: i32);
 }
 
-pub fn get_alt_key(instance: DOMReference) -> i32 {
-    unsafe { keyboardevent_get_alt_key(instance) }
+pub fn get_alt_key(instance: DOMReference) -> bool {
+    unsafe { 0 != keyboardevent_get_alt_key(instance) }
 }
 
-pub fn set_alt_key(instance: DOMReference, value: i32) {
+pub fn set_alt_key(instance: DOMReference, value: bool) {
     unsafe {
-        keyboardevent_set_alt_key(instance, value);
+        keyboardevent_set_alt_key(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -47,13 +47,13 @@ extern "C" {
     fn keyboardevent_set_ctrl_key(instance: DOMReference, value: i32);
 }
 
-pub fn get_ctrl_key(instance: DOMReference) -> i32 {
-    unsafe { keyboardevent_get_ctrl_key(instance) }
+pub fn get_ctrl_key(instance: DOMReference) -> bool {
+    unsafe { 0 != keyboardevent_get_ctrl_key(instance) }
 }
 
-pub fn set_ctrl_key(instance: DOMReference, value: i32) {
+pub fn set_ctrl_key(instance: DOMReference, value: bool) {
     unsafe {
-        keyboardevent_set_ctrl_key(instance, value);
+        keyboardevent_set_ctrl_key(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -61,13 +61,13 @@ extern "C" {
     fn keyboardevent_set_shift_key(instance: DOMReference, value: i32);
 }
 
-pub fn get_shift_key(instance: DOMReference) -> i32 {
-    unsafe { keyboardevent_get_shift_key(instance) }
+pub fn get_shift_key(instance: DOMReference) -> bool {
+    unsafe { 0 != keyboardevent_get_shift_key(instance) }
 }
 
-pub fn set_shift_key(instance: DOMReference, value: i32) {
+pub fn set_shift_key(instance: DOMReference, value: bool) {
     unsafe {
-        keyboardevent_set_shift_key(instance, value);
+        keyboardevent_set_shift_key(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -75,13 +75,13 @@ extern "C" {
     fn keyboardevent_set_meta_key(instance: DOMReference, value: i32);
 }
 
-pub fn get_meta_key(instance: DOMReference) -> i32 {
-    unsafe { keyboardevent_get_meta_key(instance) }
+pub fn get_meta_key(instance: DOMReference) -> bool {
+    unsafe { 0 != keyboardevent_get_meta_key(instance) }
 }
 
-pub fn set_meta_key(instance: DOMReference, value: i32) {
+pub fn set_meta_key(instance: DOMReference, value: bool) {
     unsafe {
-        keyboardevent_set_meta_key(instance, value);
+        keyboardevent_set_meta_key(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -89,8 +89,8 @@ extern "C" {
         -> i32;
 }
 
-pub fn get_modifier_state(instance: DOMReference, key: &str) -> i32 {
-    unsafe { keyboardevent_get_modifier_state(instance, to_cstring(key)) }
+pub fn get_modifier_state(instance: DOMReference, key: &str) -> bool {
+    unsafe { 0 != keyboardevent_get_modifier_state(instance, to_cstring(key)) }
 }
 extern "C" {
     fn keyboardevent_get_location(instance: DOMReference) -> f32;
@@ -111,13 +111,13 @@ extern "C" {
     fn keyboardevent_set_repeat(instance: DOMReference, value: i32);
 }
 
-pub fn get_repeat(instance: DOMReference) -> i32 {
-    unsafe { keyboardevent_get_repeat(instance) }
+pub fn get_repeat(instance: DOMReference) -> bool {
+    unsafe { 0 != keyboardevent_get_repeat(instance) }
 }
 
-pub fn set_repeat(instance: DOMReference, value: i32) {
+pub fn set_repeat(instance: DOMReference, value: bool) {
     unsafe {
-        keyboardevent_set_repeat(instance, value);
+        keyboardevent_set_repeat(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -125,13 +125,13 @@ extern "C" {
     fn keyboardevent_set_is_composing(instance: DOMReference, value: i32);
 }
 
-pub fn get_is_composing(instance: DOMReference) -> i32 {
-    unsafe { keyboardevent_get_is_composing(instance) }
+pub fn get_is_composing(instance: DOMReference) -> bool {
+    unsafe { 0 != keyboardevent_get_is_composing(instance) }
 }
 
-pub fn set_is_composing(instance: DOMReference, value: i32) {
+pub fn set_is_composing(instance: DOMReference, value: bool) {
     unsafe {
-        keyboardevent_set_is_composing(instance, value);
+        keyboardevent_set_is_composing(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -181,29 +181,29 @@ extern "C" {
 pub fn init_keyboard_event(
     instance: DOMReference,
     type_arg: &str,
-    bubbles_arg: i32,
-    cancelable_arg: i32,
+    bubbles_arg: bool,
+    cancelable_arg: bool,
     view_arg: i32,
     key_arg: &str,
     location_arg: f32,
-    ctrl_key: i32,
-    alt_key: i32,
-    shift_key: i32,
-    meta_key: i32,
+    ctrl_key: bool,
+    alt_key: bool,
+    shift_key: bool,
+    meta_key: bool,
 ) {
     unsafe {
         keyboardevent_init_keyboard_event(
             instance,
             to_cstring(type_arg),
-            bubbles_arg,
-            cancelable_arg,
+            if bubbles_arg { 1 } else { 0 },
+            if cancelable_arg { 1 } else { 0 },
             view_arg,
             to_cstring(key_arg),
             location_arg,
-            ctrl_key,
-            alt_key,
-            shift_key,
-            meta_key,
+            if ctrl_key { 1 } else { 0 },
+            if alt_key { 1 } else { 0 },
+            if shift_key { 1 } else { 0 },
+            if meta_key { 1 } else { 0 },
         )
     }
 }

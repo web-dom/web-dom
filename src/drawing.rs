@@ -151,13 +151,13 @@ extern "C" {
     fn drawing_set_image_smoothing_enabled(instance: DOMReference, value: i32);
 }
 
-pub fn get_image_smoothing_enabled(instance: DOMReference) -> i32 {
-    unsafe { drawing_get_image_smoothing_enabled(instance) }
+pub fn get_image_smoothing_enabled(instance: DOMReference) -> bool {
+    unsafe { 0 != drawing_get_image_smoothing_enabled(instance) }
 }
 
-pub fn set_image_smoothing_enabled(instance: DOMReference, value: i32) {
+pub fn set_image_smoothing_enabled(instance: DOMReference, value: bool) {
     unsafe {
-        drawing_set_image_smoothing_enabled(instance, value);
+        drawing_set_image_smoothing_enabled(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -381,8 +381,8 @@ extern "C" {
     ) -> i32;
 }
 
-pub fn is_point_in_path(instance: DOMReference, x: f32, y: f32, winding: i32) -> i32 {
-    unsafe { drawing_is_point_in_path(instance, x, y, winding) }
+pub fn is_point_in_path(instance: DOMReference, x: f32, y: f32, winding: i32) -> bool {
+    unsafe { 0 != drawing_is_point_in_path(instance, x, y, winding) }
 }
 extern "C" {
     fn drawing_is_point_in_stroke(
@@ -392,8 +392,8 @@ extern "C" {
     ) -> i32;
 }
 
-pub fn is_point_in_stroke(instance: DOMReference, x: f32, y: f32) -> i32 {
-    unsafe { drawing_is_point_in_stroke(instance, x, y) }
+pub fn is_point_in_stroke(instance: DOMReference, x: f32, y: f32) -> bool {
+    unsafe { 0 != drawing_is_point_in_stroke(instance, x, y) }
 }
 extern "C" {
     fn drawing_draw_focus_if_needed(instance: DOMReference, draw_focus_if_needed: i32);
@@ -406,8 +406,8 @@ extern "C" {
     fn drawing_draw_custom_focus_ring(instance: DOMReference, draw_custom_focus_ring: i32) -> i32;
 }
 
-pub fn draw_custom_focus_ring(instance: DOMReference, element: i32) -> i32 {
-    unsafe { drawing_draw_custom_focus_ring(instance, element) }
+pub fn draw_custom_focus_ring(instance: DOMReference, element: i32) -> bool {
+    unsafe { 0 != drawing_draw_custom_focus_ring(instance, element) }
 }
 extern "C" {
     fn drawing_fill_text(
@@ -754,7 +754,7 @@ pub fn arc(
     radius: f32,
     start_angle: f32,
     end_angle: f32,
-    anticlockwise: i32,
+    anticlockwise: bool,
 ) {
     unsafe {
         drawing_arc(
@@ -764,7 +764,7 @@ pub fn arc(
             radius,
             start_angle,
             end_angle,
-            anticlockwise,
+            if anticlockwise { 1 } else { 0 },
         )
     }
 }
@@ -791,7 +791,7 @@ pub fn ellipse(
     rotation: f32,
     start_angle: f32,
     end_angle: f32,
-    anticlockwise: i32,
+    anticlockwise: bool,
 ) {
     unsafe {
         drawing_ellipse(
@@ -803,7 +803,7 @@ pub fn ellipse(
             rotation,
             start_angle,
             end_angle,
-            anticlockwise,
+            if anticlockwise { 1 } else { 0 },
         )
     }
 }

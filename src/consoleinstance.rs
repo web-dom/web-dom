@@ -4,8 +4,8 @@ extern "C" {
     fn consoleinstance_assert(instance: DOMReference, assert: i32, assert: CString);
 }
 
-pub fn assert(instance: DOMReference, condition: i32, message: &str) {
-    unsafe { consoleinstance_assert(instance, condition, to_cstring(message)) }
+pub fn assert(instance: DOMReference, condition: bool, message: &str) {
+    unsafe { consoleinstance_assert(instance, if condition { 1 } else { 0 }, to_cstring(message)) }
 }
 extern "C" {
     fn consoleinstance_clear(instance: DOMReference);

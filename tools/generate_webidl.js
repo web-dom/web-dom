@@ -59,13 +59,29 @@ function toUnsafeRustType(returnType) {
 }
 
 function toRustParamType(returnType) {
-  let returnsString = returnType == "string";
-  return returnsString ? "&str" : returnType == "number" ? "f32" : "i32";
+  if (returnType == "string") {
+    return "&str";
+  }
+  if (returnType == "boolean") {
+    return "bool";
+  }
+  if (returnType == "number") {
+    return "f32";
+  }
+  return "i32";
 }
 
 function toRustReturnType(returnType) {
-  let returnsString = returnType == "string";
-  return returnsString ? "String" : returnType == "number" ? "f32" : "i32";
+  if (returnType == "string") {
+    return "String";
+  }
+  if (returnType == "boolean") {
+    return "bool";
+  }
+  if (returnType == "number") {
+    return "f32";
+  }
+  return "i32";
 }
 
 /*function processOperation(namespace, operation, isInterface) {
@@ -155,6 +171,7 @@ for (i in dom_api) {
     let newName = toSnake(member.name);
     let returnType = member.return_type;
     let returnsString = returnType == "string";
+    let returnsBool = returnType == "boolean";
     if (member.type == "property") {
       FUNCTIONS.push(`
         ${newNamespace}_get_${newName}: function(i) {
@@ -165,13 +182,19 @@ for (i in dom_api) {
               : isPrimitive(returnType)
               ? `_i.${trueName}`
               : `A.a(_i.${trueName})`
-          };
+          } ${returnsBool ? "? 1: 0" : ""};
         }`);
       FUNCTIONS.push(`
         ${newNamespace}_set_${newName}: function(i,v) {
           let _i = A.g(i);
           _i.${trueName} = ${
-        returnsString ? `this.s(v)` : isPrimitive(returnType) ? `v` : ` A.g(v)`
+        returnsBool
+          ? "1 == v"
+          : returnsString
+          ? `this.s(v)`
+          : isPrimitive(returnType)
+          ? `v`
+          : ` A.g(v)`
       };
         }`);
       appendToNamespace(
@@ -188,7 +211,7 @@ for (i in dom_api) {
           returnType
         )} {\nunsafe{
       ${
-        returnsString ? "to_string(" : ""
+        returnsBool ? "0 !=" : returnsString ? "to_string(" : ""
       } ${newNamespace}_get_${newName}(instance)
       ${returnsString ? ")" : ""}
       }\n}\n
@@ -197,8 +220,10 @@ for (i in dom_api) {
           returnType
         )}){\nunsafe{
       ${newNamespace}_set_${newName}(instance,  ${
-          returnsString ? "to_cstring(" : ""
-        }value${returnsString ? ")" : ""});
+          returnsBool ? "if " : returnsString ? "to_cstring(" : ""
+        }value${returnsString ? ")" : ""}${
+          returnsBool ? " == true { 1 } else { 0 } " : ""
+        });
             }\n}\n`
       );
     } else if (member.type == "function") {
@@ -210,12 +235,14 @@ for (i in dom_api) {
           ${newNamespace}_${newName}: function(${
         member.is_static ? "" : "i,"
       }${params.map(x => x.name).join(", ")}){
-              ${member.is_static ? "" : "let _i = A.g(i);\n"}
+        ${member.is_static ? "" : "let _i = A.g(i);\n"}
               ${params
                 .map(
                   x =>
                     `let _${x.name} = ${
-                      x.type == "string"
+                      x.type == "boolean"
+                        ? `0 != ${x.name}`
+                        : x.type == "string"
                         ? `this.s(${x.name})`
                         : x.type == "object"
                         ? ` A.g(${x.name})`
@@ -232,7 +259,7 @@ for (i in dom_api) {
               }
               ${!isStatic ? "_i" : i}.${trueName}(${params
         .map(x => "_" + x.name)
-        .join(", ")}));
+        .join(", ")}))${returnsBool ? "?1:0" : ""};
           }`);
       appendToNamespace(
         i,
@@ -252,14 +279,18 @@ for (i in dom_api) {
             .join(", ")}) ${
             hasReturn ? ` -> ${toRustReturnType(returnType)}` : ""
           } {\nunsafe{
-            ${returnsString ? "to_string(" : ""}
+            ${returnsBool ? "0 !=" : returnsString ? "to_string(" : ""}
             ${newNamespace}_${newName}(${
             isStatic ? "" : "instance,"
           }${params
-            .map(x =>
-              x.type == "string"
-                ? `to_cstring(${toSnake(x.name)})`
-                : toSnake(x.name)
+            .map(
+              x =>
+                (x.type == "boolean"
+                  ? `if ${toSnake(x.name)}`
+                  : x.type == "string"
+                  ? `to_cstring(${toSnake(x.name)})`
+                  : toSnake(x.name)) +
+                (x.type == "boolean" ? " {1} else {0}" : "")
             )
             .join(", ")})
             ${returnsString ? ")" : ""}

@@ -4,8 +4,8 @@ extern "C" {
     fn console_assert(assert: i32, assert: CString);
 }
 
-pub fn assert(condition: i32, message: &str) {
-    unsafe { console_assert(condition, to_cstring(message)) }
+pub fn assert(condition: bool, message: &str) {
+    unsafe { console_assert(if condition { 1 } else { 0 }, to_cstring(message)) }
 }
 extern "C" {
     fn console_clear();

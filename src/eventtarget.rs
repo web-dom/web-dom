@@ -26,6 +26,6 @@ extern "C" {
     fn eventtarget_dispatch_event(instance: DOMReference, dispatch_event: i32) -> i32;
 }
 
-pub fn dispatch_event(instance: DOMReference, event: i32) -> i32 {
-    unsafe { eventtarget_dispatch_event(instance, event) }
+pub fn dispatch_event(instance: DOMReference, event: i32) -> bool {
+    unsafe { 0 != eventtarget_dispatch_event(instance, event) }
 }

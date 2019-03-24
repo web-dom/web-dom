@@ -261,8 +261,8 @@ extern "C" {
     fn document_import_node(instance: DOMReference, import_node: i32, import_node: i32) -> i32;
 }
 
-pub fn import_node(instance: DOMReference, node: i32, deep: i32) -> i32 {
-    unsafe { document_import_node(instance, node, deep) }
+pub fn import_node(instance: DOMReference, node: i32, deep: bool) -> i32 {
+    unsafe { document_import_node(instance, node, if deep { 1 } else { 0 }) }
 }
 extern "C" {
     fn document_adopt_node(instance: DOMReference, adopt_node: i32) -> i32;
@@ -568,8 +568,8 @@ extern "C" {
     fn document_has_focus(instance: DOMReference) -> i32;
 }
 
-pub fn has_focus(instance: DOMReference) -> i32 {
-    unsafe { document_has_focus(instance) }
+pub fn has_focus(instance: DOMReference) -> bool {
+    unsafe { 0 != document_has_focus(instance) }
 }
 extern "C" {
     fn document_get_onreadystatechange(instance: DOMReference) -> i32;
@@ -709,13 +709,13 @@ extern "C" {
     fn document_set_fullscreen(instance: DOMReference, value: i32);
 }
 
-pub fn get_fullscreen(instance: DOMReference) -> i32 {
-    unsafe { document_get_fullscreen(instance) }
+pub fn get_fullscreen(instance: DOMReference) -> bool {
+    unsafe { 0 != document_get_fullscreen(instance) }
 }
 
-pub fn set_fullscreen(instance: DOMReference, value: i32) {
+pub fn set_fullscreen(instance: DOMReference, value: bool) {
     unsafe {
-        document_set_fullscreen(instance, value);
+        document_set_fullscreen(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -723,13 +723,13 @@ extern "C" {
     fn document_set_fullscreen_enabled(instance: DOMReference, value: i32);
 }
 
-pub fn get_fullscreen_enabled(instance: DOMReference) -> i32 {
-    unsafe { document_get_fullscreen_enabled(instance) }
+pub fn get_fullscreen_enabled(instance: DOMReference) -> bool {
+    unsafe { 0 != document_get_fullscreen_enabled(instance) }
 }
 
-pub fn set_fullscreen_enabled(instance: DOMReference, value: i32) {
+pub fn set_fullscreen_enabled(instance: DOMReference, value: bool) {
     unsafe {
-        document_set_fullscreen_enabled(instance, value);
+        document_set_fullscreen_enabled(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -807,13 +807,13 @@ extern "C" {
     fn document_set_hidden(instance: DOMReference, value: i32);
 }
 
-pub fn get_hidden(instance: DOMReference) -> i32 {
-    unsafe { document_get_hidden(instance) }
+pub fn get_hidden(instance: DOMReference) -> bool {
+    unsafe { 0 != document_get_hidden(instance) }
 }
 
-pub fn set_hidden(instance: DOMReference, value: i32) {
+pub fn set_hidden(instance: DOMReference, value: bool) {
     unsafe {
-        document_set_hidden(instance, value);
+        document_set_hidden(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -989,13 +989,13 @@ extern "C" {
     fn document_set_is_srcdoc_document(instance: DOMReference, value: i32);
 }
 
-pub fn get_is_srcdoc_document(instance: DOMReference) -> i32 {
-    unsafe { document_get_is_srcdoc_document(instance) }
+pub fn get_is_srcdoc_document(instance: DOMReference) -> bool {
+    unsafe { 0 != document_get_is_srcdoc_document(instance) }
 }
 
-pub fn set_is_srcdoc_document(instance: DOMReference, value: i32) {
+pub fn set_is_srcdoc_document(instance: DOMReference, value: bool) {
     unsafe {
-        document_set_is_srcdoc_document(instance, value);
+        document_set_is_srcdoc_document(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -1041,13 +1041,13 @@ extern "C" {
     fn document_set_user_has_interacted(instance: DOMReference, value: i32);
 }
 
-pub fn get_user_has_interacted(instance: DOMReference) -> i32 {
-    unsafe { document_get_user_has_interacted(instance) }
+pub fn get_user_has_interacted(instance: DOMReference) -> bool {
+    unsafe { 0 != document_get_user_has_interacted(instance) }
 }
 
-pub fn set_user_has_interacted(instance: DOMReference, value: i32) {
+pub fn set_user_has_interacted(instance: DOMReference, value: bool) {
     unsafe {
-        document_set_user_has_interacted(instance, value);
+        document_set_user_has_interacted(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {

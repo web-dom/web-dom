@@ -208,13 +208,13 @@ extern "C" {
     fn window_set_closed(instance: DOMReference, value: i32);
 }
 
-pub fn get_closed(instance: DOMReference) -> i32 {
-    unsafe { window_get_closed(instance) }
+pub fn get_closed(instance: DOMReference) -> bool {
+    unsafe { 0 != window_get_closed(instance) }
 }
 
-pub fn set_closed(instance: DOMReference, value: i32) {
+pub fn set_closed(instance: DOMReference, value: bool) {
     unsafe {
-        window_set_closed(instance, value);
+        window_set_closed(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -403,8 +403,8 @@ extern "C" {
     fn window_confirm(instance: DOMReference, confirm: CString) -> i32;
 }
 
-pub fn confirm(instance: DOMReference, message: &str) -> i32 {
-    unsafe { window_confirm(instance, to_cstring(message)) }
+pub fn confirm(instance: DOMReference, message: &str) -> bool {
+    unsafe { 0 != window_confirm(instance, to_cstring(message)) }
 }
 extern "C" {
     fn window_prompt(instance: DOMReference, prompt: CString, prompt: CString) -> CString;

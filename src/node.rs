@@ -47,13 +47,13 @@ extern "C" {
     fn node_set_is_connected(instance: DOMReference, value: i32);
 }
 
-pub fn get_is_connected(instance: DOMReference) -> i32 {
-    unsafe { node_get_is_connected(instance) }
+pub fn get_is_connected(instance: DOMReference) -> bool {
+    unsafe { 0 != node_get_is_connected(instance) }
 }
 
-pub fn set_is_connected(instance: DOMReference, value: i32) {
+pub fn set_is_connected(instance: DOMReference, value: bool) {
     unsafe {
-        node_set_is_connected(instance, value);
+        node_set_is_connected(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -109,8 +109,8 @@ extern "C" {
     fn node_has_child_nodes(instance: DOMReference) -> i32;
 }
 
-pub fn has_child_nodes(instance: DOMReference) -> i32 {
-    unsafe { node_has_child_nodes(instance) }
+pub fn has_child_nodes(instance: DOMReference) -> bool {
+    unsafe { 0 != node_has_child_nodes(instance) }
 }
 extern "C" {
     fn node_get_child_nodes(instance: DOMReference) -> i32;
@@ -249,22 +249,22 @@ extern "C" {
     fn node_clone_node(instance: DOMReference, clone_node: i32) -> i32;
 }
 
-pub fn clone_node(instance: DOMReference, deep: i32) -> i32 {
-    unsafe { node_clone_node(instance, deep) }
+pub fn clone_node(instance: DOMReference, deep: bool) -> i32 {
+    unsafe { node_clone_node(instance, if deep { 1 } else { 0 }) }
 }
 extern "C" {
     fn node_is_same_node(instance: DOMReference, is_same_node: i32) -> i32;
 }
 
-pub fn is_same_node(instance: DOMReference, node: i32) -> i32 {
-    unsafe { node_is_same_node(instance, node) }
+pub fn is_same_node(instance: DOMReference, node: i32) -> bool {
+    unsafe { 0 != node_is_same_node(instance, node) }
 }
 extern "C" {
     fn node_is_equal_node(instance: DOMReference, is_equal_node: i32) -> i32;
 }
 
-pub fn is_equal_node(instance: DOMReference, node: i32) -> i32 {
-    unsafe { node_is_equal_node(instance, node) }
+pub fn is_equal_node(instance: DOMReference, node: i32) -> bool {
+    unsafe { 0 != node_is_equal_node(instance, node) }
 }
 extern "C" {
     fn node_compare_document_position(
@@ -280,8 +280,8 @@ extern "C" {
     fn node_contains(instance: DOMReference, contains: i32) -> i32;
 }
 
-pub fn contains(instance: DOMReference, other: i32) -> i32 {
-    unsafe { node_contains(instance, other) }
+pub fn contains(instance: DOMReference, other: i32) -> bool {
+    unsafe { 0 != node_contains(instance, other) }
 }
 extern "C" {
     fn node_lookup_prefix(instance: DOMReference, lookup_prefix: CString) -> CString;
@@ -301,6 +301,6 @@ extern "C" {
     fn node_is_default_namespace(instance: DOMReference, is_default_namespace: CString) -> i32;
 }
 
-pub fn is_default_namespace(instance: DOMReference, namespace: &str) -> i32 {
-    unsafe { node_is_default_namespace(instance, to_cstring(namespace)) }
+pub fn is_default_namespace(instance: DOMReference, namespace: &str) -> bool {
+    unsafe { 0 != node_is_default_namespace(instance, to_cstring(namespace)) }
 }

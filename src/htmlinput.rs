@@ -47,13 +47,13 @@ extern "C" {
     fn htmlinput_set_autofocus(instance: DOMReference, value: i32);
 }
 
-pub fn get_autofocus(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_autofocus(instance) }
+pub fn get_autofocus(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_autofocus(instance) }
 }
 
-pub fn set_autofocus(instance: DOMReference, value: i32) {
+pub fn set_autofocus(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_autofocus(instance, value);
+        htmlinput_set_autofocus(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -61,13 +61,13 @@ extern "C" {
     fn htmlinput_set_default_checked(instance: DOMReference, value: i32);
 }
 
-pub fn get_default_checked(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_default_checked(instance) }
+pub fn get_default_checked(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_default_checked(instance) }
 }
 
-pub fn set_default_checked(instance: DOMReference, value: i32) {
+pub fn set_default_checked(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_default_checked(instance, value);
+        htmlinput_set_default_checked(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -75,13 +75,13 @@ extern "C" {
     fn htmlinput_set_checked(instance: DOMReference, value: i32);
 }
 
-pub fn get_checked(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_checked(instance) }
+pub fn get_checked(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_checked(instance) }
 }
 
-pub fn set_checked(instance: DOMReference, value: i32) {
+pub fn set_checked(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_checked(instance, value);
+        htmlinput_set_checked(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -89,13 +89,13 @@ extern "C" {
     fn htmlinput_set_disabled(instance: DOMReference, value: i32);
 }
 
-pub fn get_disabled(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_disabled(instance) }
+pub fn get_disabled(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_disabled(instance) }
 }
 
-pub fn set_disabled(instance: DOMReference, value: i32) {
+pub fn set_disabled(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_disabled(instance, value);
+        htmlinput_set_disabled(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -173,13 +173,13 @@ extern "C" {
     fn htmlinput_set_form_no_validate(instance: DOMReference, value: i32);
 }
 
-pub fn get_form_no_validate(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_form_no_validate(instance) }
+pub fn get_form_no_validate(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_form_no_validate(instance) }
 }
 
-pub fn set_form_no_validate(instance: DOMReference, value: i32) {
+pub fn set_form_no_validate(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_form_no_validate(instance, value);
+        htmlinput_set_form_no_validate(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -215,13 +215,13 @@ extern "C" {
     fn htmlinput_set_indeterminate(instance: DOMReference, value: i32);
 }
 
-pub fn get_indeterminate(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_indeterminate(instance) }
+pub fn get_indeterminate(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_indeterminate(instance) }
 }
 
-pub fn set_indeterminate(instance: DOMReference, value: i32) {
+pub fn set_indeterminate(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_indeterminate(instance, value);
+        htmlinput_set_indeterminate(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -313,13 +313,13 @@ extern "C" {
     fn htmlinput_set_multiple(instance: DOMReference, value: i32);
 }
 
-pub fn get_multiple(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_multiple(instance) }
+pub fn get_multiple(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_multiple(instance) }
 }
 
-pub fn set_multiple(instance: DOMReference, value: i32) {
+pub fn set_multiple(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_multiple(instance, value);
+        htmlinput_set_multiple(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -369,13 +369,13 @@ extern "C" {
     fn htmlinput_set_read_only(instance: DOMReference, value: i32);
 }
 
-pub fn get_read_only(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_read_only(instance) }
+pub fn get_read_only(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_read_only(instance) }
 }
 
-pub fn set_read_only(instance: DOMReference, value: i32) {
+pub fn set_read_only(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_read_only(instance, value);
+        htmlinput_set_read_only(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -383,13 +383,13 @@ extern "C" {
     fn htmlinput_set_required(instance: DOMReference, value: i32);
 }
 
-pub fn get_required(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_required(instance) }
+pub fn get_required(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_required(instance) }
 }
 
-pub fn set_required(instance: DOMReference, value: i32) {
+pub fn set_required(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_required(instance, value);
+        htmlinput_set_required(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -523,13 +523,13 @@ extern "C" {
     fn htmlinput_set_will_validate(instance: DOMReference, value: i32);
 }
 
-pub fn get_will_validate(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_get_will_validate(instance) }
+pub fn get_will_validate(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_get_will_validate(instance) }
 }
 
-pub fn set_will_validate(instance: DOMReference, value: i32) {
+pub fn set_will_validate(instance: DOMReference, value: bool) {
     unsafe {
-        htmlinput_set_will_validate(instance, value);
+        htmlinput_set_will_validate(instance, if value == true { 1 } else { 0 });
     }
 }
 extern "C" {
@@ -564,15 +564,15 @@ extern "C" {
     fn htmlinput_check_validity(instance: DOMReference) -> i32;
 }
 
-pub fn check_validity(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_check_validity(instance) }
+pub fn check_validity(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_check_validity(instance) }
 }
 extern "C" {
     fn htmlinput_report_validity(instance: DOMReference) -> i32;
 }
 
-pub fn report_validity(instance: DOMReference) -> i32 {
-    unsafe { htmlinput_report_validity(instance) }
+pub fn report_validity(instance: DOMReference) -> bool {
+    unsafe { 0 != htmlinput_report_validity(instance) }
 }
 extern "C" {
     fn htmlinput_set_custom_validity(instance: DOMReference, set_custom_validity: CString);
@@ -707,8 +707,8 @@ extern "C" {
     );
 }
 
-pub fn set_date_time_picker_state(instance: DOMReference, open: i32) {
-    unsafe { htmlinput_set_date_time_picker_state(instance, open) }
+pub fn set_date_time_picker_state(instance: DOMReference, open: bool) {
+    unsafe { htmlinput_set_date_time_picker_state(instance, if open { 1 } else { 0 }) }
 }
 extern "C" {
     fn htmlinput_get_minimum(instance: DOMReference) -> f32;
