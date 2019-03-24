@@ -5,7 +5,7 @@ DOM access for web assembly
 * no abstractions
 * no code generation
 * api generated from webidl
-* technology agnostic and can be used with many languages that compile to web assembly
+* can be used with many languages that compile to web assembly
 
 ```toml
 web-dom = "0.0"
