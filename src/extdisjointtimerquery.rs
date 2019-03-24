@@ -8,34 +8,34 @@ pub const TIME_ELAPSED_EXT: i32 = 0x88BF;
 pub const TIMESTAMP_EXT: i32 = 0x8E28;
 pub const GPU_DISJOINT_EXT: i32 = 0x8FBB;
 extern "C" {
-    fn ext_disjoint_timer_query_create_query_e_x_t(instance: DOMReference) -> DOMReference;
+    fn extdisjointtimerquery_create_query_e_x_t(instance: DOMReference) -> DOMReference;
 }
 
 pub fn create_query_e_x_t(instance: DOMReference) -> DOMReference {
-    unsafe { ext_disjoint_timer_query_create_query_e_x_t(instance) }
+    unsafe { extdisjointtimerquery_create_query_e_x_t(instance) }
 }
 extern "C" {
-    fn ext_disjoint_timer_query_delete_query_e_x_t(
+    fn extdisjointtimerquery_delete_query_e_x_t(
         instance: DOMReference,
         delete_query_e_x_t: DOMReference,
     );
 }
 
 pub fn delete_query_e_x_t(instance: DOMReference, query: DOMReference) {
-    unsafe { ext_disjoint_timer_query_delete_query_e_x_t(instance, query) }
+    unsafe { extdisjointtimerquery_delete_query_e_x_t(instance, query) }
 }
 extern "C" {
-    fn ext_disjoint_timer_query_is_query_e_x_t(
+    fn extdisjointtimerquery_is_query_e_x_t(
         instance: DOMReference,
         is_query_e_x_t: DOMReference,
     ) -> i32;
 }
 
 pub fn is_query_e_x_t(instance: DOMReference, query: DOMReference) -> bool {
-    unsafe { 0 != ext_disjoint_timer_query_is_query_e_x_t(instance, query) }
+    unsafe { 0 != extdisjointtimerquery_is_query_e_x_t(instance, query) }
 }
 extern "C" {
-    fn ext_disjoint_timer_query_begin_query_e_x_t(
+    fn extdisjointtimerquery_begin_query_e_x_t(
         instance: DOMReference,
         begin_query_e_x_t: DOMReference,
         begin_query_e_x_t: DOMReference,
@@ -43,20 +43,17 @@ extern "C" {
 }
 
 pub fn begin_query_e_x_t(instance: DOMReference, target: DOMReference, query: DOMReference) {
-    unsafe { ext_disjoint_timer_query_begin_query_e_x_t(instance, target, query) }
+    unsafe { extdisjointtimerquery_begin_query_e_x_t(instance, target, query) }
 }
 extern "C" {
-    fn ext_disjoint_timer_query_end_query_e_x_t(
-        instance: DOMReference,
-        end_query_e_x_t: DOMReference,
-    );
+    fn extdisjointtimerquery_end_query_e_x_t(instance: DOMReference, end_query_e_x_t: DOMReference);
 }
 
 pub fn end_query_e_x_t(instance: DOMReference, target: DOMReference) {
-    unsafe { ext_disjoint_timer_query_end_query_e_x_t(instance, target) }
+    unsafe { extdisjointtimerquery_end_query_e_x_t(instance, target) }
 }
 extern "C" {
-    fn ext_disjoint_timer_query_query_counter_e_x_t(
+    fn extdisjointtimerquery_query_counter_e_x_t(
         instance: DOMReference,
         query_counter_e_x_t: DOMReference,
         query_counter_e_x_t: DOMReference,
@@ -64,10 +61,10 @@ extern "C" {
 }
 
 pub fn query_counter_e_x_t(instance: DOMReference, query: DOMReference, target: DOMReference) {
-    unsafe { ext_disjoint_timer_query_query_counter_e_x_t(instance, query, target) }
+    unsafe { extdisjointtimerquery_query_counter_e_x_t(instance, query, target) }
 }
 extern "C" {
-    fn ext_disjoint_timer_query_get_query_e_x_t(
+    fn extdisjointtimerquery_get_query_e_x_t(
         instance: DOMReference,
         get_query_e_x_t: DOMReference,
         get_query_e_x_t: DOMReference,
@@ -79,10 +76,10 @@ pub fn get_query_e_x_t(
     target: DOMReference,
     pname: DOMReference,
 ) -> DOMReference {
-    unsafe { ext_disjoint_timer_query_get_query_e_x_t(instance, target, pname) }
+    unsafe { extdisjointtimerquery_get_query_e_x_t(instance, target, pname) }
 }
 extern "C" {
-    fn ext_disjoint_timer_query_get_query_object_e_x_t(
+    fn extdisjointtimerquery_get_query_object_e_x_t(
         instance: DOMReference,
         get_query_object_e_x_t: DOMReference,
         get_query_object_e_x_t: DOMReference,
@@ -94,5 +91,5 @@ pub fn get_query_object_e_x_t(
     query: DOMReference,
     pname: DOMReference,
 ) -> DOMReference {
-    unsafe { ext_disjoint_timer_query_get_query_object_e_x_t(instance, query, pname) }
+    unsafe { extdisjointtimerquery_get_query_object_e_x_t(instance, query, pname) }
 }

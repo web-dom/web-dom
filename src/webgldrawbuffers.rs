@@ -35,12 +35,12 @@ pub const DRAW_BUFFER15_WEBGL: i32 = 0x8834;
 pub const MAX_COLOR_ATTACHMENTS_WEBGL: i32 = 0x8CDF;
 pub const MAX_DRAW_BUFFERS_WEBGL: i32 = 0x8824;
 extern "C" {
-    fn webgl_draw_buffers_draw_buffers_w_e_b_g_l(
+    fn webgldrawbuffers_draw_buffers_w_e_b_g_l(
         instance: DOMReference,
         draw_buffers_w_e_b_g_l: DOMReference,
     );
 }
 
 pub fn draw_buffers_w_e_b_g_l(instance: DOMReference, buffers: DOMReference) {
-    unsafe { webgl_draw_buffers_draw_buffers_w_e_b_g_l(instance, buffers) }
+    unsafe { webgldrawbuffers_draw_buffers_w_e_b_g_l(instance, buffers) }
 }

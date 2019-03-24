@@ -5859,69 +5859,66 @@
         _i.commit();
       },
 
-      webgl_compressed_texture_astc_get_supported_profiles: function(i) {
+      webglcompressedtextureastc_get_supported_profiles: function(i) {
         let _i = A.g(i);
 
         return A.a(_i.getSupportedProfiles());
       },
 
-      webgl_debug_shaders_get_translated_shader_source: function(i, shader) {
+      webgldebugshaders_get_translated_shader_source: function(i, shader) {
         let _i = A.g(i);
 
         let _shader = A.g(shader);
         return this.ms(_i.getTranslatedShaderSource(_shader));
       },
 
-      webgl_lose_context_lose_context: function(i) {
+      webgllosecontext_lose_context: function(i) {
         let _i = A.g(i);
 
         _i.loseContext();
       },
 
-      webgl_lose_context_restore_context: function(i) {
+      webgllosecontext_restore_context: function(i) {
         let _i = A.g(i);
 
         _i.restoreContext();
       },
 
-      webgl_draw_buffers_draw_buffers_w_e_b_g_l: function(i, buffers) {
+      webgldrawbuffers_draw_buffers_w_e_b_g_l: function(i, buffers) {
         let _i = A.g(i);
 
         let _buffers = A.g(buffers);
         _i.drawBuffersWEBGL(_buffers);
       },
 
-      oes_vertex_array_object_create_vertex_array_o_e_s: function(i) {
+      oesvertexarrayobject_create_vertex_array_o_e_s: function(i) {
         let _i = A.g(i);
 
         return A.a(_i.createVertexArrayOES());
       },
 
-      oes_vertex_array_object_delete_vertex_array_o_e_s: function(
-        i,
-        arrayObject
-      ) {
+      oesvertexarrayobject_delete_vertex_array_o_e_s: function(i, arrayObject) {
         let _i = A.g(i);
 
         let _arrayObject = A.g(arrayObject);
         _i.deleteVertexArrayOES(_arrayObject);
       },
 
-      oes_vertex_array_object_is_vertex_array_o_e_s: function(i, arrayObject) {
+      oesvertexarrayobject_is_vertex_array_o_e_s: function(i, arrayObject) {
         let _i = A.g(i);
 
         let _arrayObject = A.g(arrayObject);
         return A.a(_i.isVertexArrayOES(_arrayObject));
       },
 
-      oes_vertex_array_object_bind_vertex_array_o_e_s: function(i, arrayObject) {
+      oesvertexarrayobject_bind_vertex_array_o_e_s: function(i, arrayObject) {
         let _i = A.g(i);
 
         let _arrayObject = A.g(arrayObject);
         _i.bindVertexArrayOES(_arrayObject);
       },
 
-      angle_instanced_arrays_draw_arrays_instanced_angle: function(
+      angleinstancedarrays_draw_arrays_instanced_angle: function(
         i,
         mode,
         first,
@@ -5937,7 +5934,7 @@
         _i.drawArraysInstancedANGLE(_mode, _first, _count, _primcount);
       },
 
-      angle_instanced_arrays_draw_elements_instanced_angle: function(
+      angleinstancedarrays_draw_elements_instanced_angle: function(
         i,
         mode,
         count,
@@ -5961,7 +5958,7 @@
         );
       },
 
-      angle_instanced_arrays_vertex_attrib_divisor_angle: function(
+      angleinstancedarrays_vertex_attrib_divisor_angle: function(
         i,
         index,
         divisor
@@ -5973,27 +5970,27 @@
         _i.vertexAttribDivisorANGLE(_index, _divisor);
       },
 
-      ext_disjoint_timer_query_create_query_e_x_t: function(i) {
+      extdisjointtimerquery_create_query_e_x_t: function(i) {
         let _i = A.g(i);
 
         return A.a(_i.createQueryEXT());
       },
 
-      ext_disjoint_timer_query_delete_query_e_x_t: function(i, query) {
+      extdisjointtimerquery_delete_query_e_x_t: function(i, query) {
         let _i = A.g(i);
 
         let _query = A.g(query);
         _i.deleteQueryEXT(_query);
       },
 
-      ext_disjoint_timer_query_is_query_e_x_t: function(i, query) {
+      extdisjointtimerquery_is_query_e_x_t: function(i, query) {
         let _i = A.g(i);
 
         let _query = A.g(query);
         return A.a(_i.isQueryEXT(_query)) ? 1 : 0;
       },
 
-      ext_disjoint_timer_query_begin_query_e_x_t: function(i, target, query) {
+      extdisjointtimerquery_begin_query_e_x_t: function(i, target, query) {
         let _i = A.g(i);
 
         let _target = A.g(target);
@@ -6001,14 +5998,14 @@
         _i.beginQueryEXT(_target, _query);
       },
 
-      ext_disjoint_timer_query_end_query_e_x_t: function(i, target) {
+      extdisjointtimerquery_end_query_e_x_t: function(i, target) {
         let _i = A.g(i);
 
         let _target = A.g(target);
         _i.endQueryEXT(_target);
       },
 
-      ext_disjoint_timer_query_query_counter_e_x_t: function(i, query, target) {
+      extdisjointtimerquery_query_counter_e_x_t: function(i, query, target) {
         let _i = A.g(i);
 
         let _query = A.g(query);
@@ -6016,7 +6013,7 @@
         _i.queryCounterEXT(_query, _target);
       },
 
-      ext_disjoint_timer_query_get_query_e_x_t: function(i, target, pname) {
+      extdisjointtimerquery_get_query_e_x_t: function(i, target, pname) {
         let _i = A.g(i);
 
         let _target = A.g(target);
@@ -6024,7 +6021,7 @@
         return A.a(_i.getQueryEXT(_target, _pname));
       },
 
-      ext_disjoint_timer_query_get_query_object_e_x_t: function(i, query, pname) {
+      extdisjointtimerquery_get_query_object_e_x_t: function(i, query, pname) {
         let _i = A.g(i);
 
         let _query = A.g(query);

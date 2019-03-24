@@ -29,10 +29,9 @@ pub const COMPRESSED_SRGB8_ALPHA8_ASTC_10X10_KHR: i32 = 0x93DB;
 pub const COMPRESSED_SRGB8_ALPHA8_ASTC_12X10_KHR: i32 = 0x93DC;
 pub const COMPRESSED_SRGB8_ALPHA8_ASTC_12X12_KHR: i32 = 0x93DD;
 extern "C" {
-    fn webgl_compressed_texture_astc_get_supported_profiles(instance: DOMReference)
-        -> DOMReference;
+    fn webglcompressedtextureastc_get_supported_profiles(instance: DOMReference) -> DOMReference;
 }
 
 pub fn get_supported_profiles(instance: DOMReference) -> DOMReference {
-    unsafe { webgl_compressed_texture_astc_get_supported_profiles(instance) }
+    unsafe { webglcompressedtextureastc_get_supported_profiles(instance) }
 }

@@ -35,7 +35,7 @@ function finalNamespaceName(namespace) {
   } else if (namespace != "element" && namespace.indexOf("element") != -1) {
     return namespace.replace("element", "");
   }
-  return namespace;
+  return namespace.split("_").join("");
 }
 
 let namespaces = [];

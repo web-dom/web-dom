@@ -2,7 +2,7 @@
 use crate::*;
 pub const VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE: i32 = 0x88FE;
 extern "C" {
-    fn angle_instanced_arrays_draw_arrays_instanced_angle(
+    fn angleinstancedarrays_draw_arrays_instanced_angle(
         instance: DOMReference,
         draw_arrays_instanced_angle: DOMReference,
         draw_arrays_instanced_angle: DOMReference,
@@ -19,11 +19,11 @@ pub fn draw_arrays_instanced_angle(
     primcount: DOMReference,
 ) {
     unsafe {
-        angle_instanced_arrays_draw_arrays_instanced_angle(instance, mode, first, count, primcount)
+        angleinstancedarrays_draw_arrays_instanced_angle(instance, mode, first, count, primcount)
     }
 }
 extern "C" {
-    fn angle_instanced_arrays_draw_elements_instanced_angle(
+    fn angleinstancedarrays_draw_elements_instanced_angle(
         instance: DOMReference,
         draw_elements_instanced_angle: DOMReference,
         draw_elements_instanced_angle: DOMReference,
@@ -42,7 +42,7 @@ pub fn draw_elements_instanced_angle(
     primcount: DOMReference,
 ) {
     unsafe {
-        angle_instanced_arrays_draw_elements_instanced_angle(
+        angleinstancedarrays_draw_elements_instanced_angle(
             instance,
             mode,
             count,
@@ -53,7 +53,7 @@ pub fn draw_elements_instanced_angle(
     }
 }
 extern "C" {
-    fn angle_instanced_arrays_vertex_attrib_divisor_angle(
+    fn angleinstancedarrays_vertex_attrib_divisor_angle(
         instance: DOMReference,
         vertex_attrib_divisor_angle: DOMReference,
         vertex_attrib_divisor_angle: DOMReference,
@@ -65,5 +65,5 @@ pub fn vertex_attrib_divisor_angle(
     index: DOMReference,
     divisor: DOMReference,
 ) {
-    unsafe { angle_instanced_arrays_vertex_attrib_divisor_angle(instance, index, divisor) }
+    unsafe { angleinstancedarrays_vertex_attrib_divisor_angle(instance, index, divisor) }
 }
