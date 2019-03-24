@@ -4107,6 +4107,823 @@ function createWebIDLContext() {
       _i.isSessionOnly = 1 == v;
     },
 
+    webglactiveinfo_get_size: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.size);
+    },
+
+    webglactiveinfo_set_size: function(i, v) {
+      let _i = A.g(i);
+      _i.size = A.g(v);
+    },
+
+    webglactiveinfo_get_type: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.type);
+    },
+
+    webglactiveinfo_set_type: function(i, v) {
+      let _i = A.g(i);
+      _i.type = A.g(v);
+    },
+
+    webglactiveinfo_get_name: function(i) {
+      let _i = A.g(i);
+      return this.ms(_i.name);
+    },
+
+    webglactiveinfo_set_name: function(i, v) {
+      let _i = A.g(i);
+      _i.name = this.s(v);
+    },
+
+    webglshaderprecisionformat_get_range_min: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.rangeMin);
+    },
+
+    webglshaderprecisionformat_set_range_min: function(i, v) {
+      let _i = A.g(i);
+      _i.rangeMin = A.g(v);
+    },
+
+    webglshaderprecisionformat_get_range_max: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.rangeMax);
+    },
+
+    webglshaderprecisionformat_set_range_max: function(i, v) {
+      let _i = A.g(i);
+      _i.rangeMax = A.g(v);
+    },
+
+    webglshaderprecisionformat_get_precision: function(i) {
+      let _i = A.g(i);
+      return A.a(_i.precision);
+    },
+
+    webglshaderprecisionformat_set_precision: function(i, v) {
+      let _i = A.g(i);
+      _i.precision = A.g(v);
+    },
+
+    canvas_buffer_data: function(i, target, size, usage) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _size = A.g(size);
+      let _usage = A.g(usage);
+      _i.bufferData(_target, _size, _usage);
+    },
+
+    canvas_buffer_data_1: function(i, target, data, usage) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _data = A.g(data);
+      let _usage = A.g(usage);
+      _i.bufferData(_target, _data, _usage);
+    },
+
+    canvas_buffer_data_2: function(i, target, data, usage) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _data = A.g(data);
+      let _usage = A.g(usage);
+      _i.bufferData(_target, _data, _usage);
+    },
+
+    canvas_buffer_sub_data: function(i, target, offset, data) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _offset = A.g(offset);
+      let _data = A.g(data);
+      _i.bufferSubData(_target, _offset, _data);
+    },
+
+    canvas_buffer_sub_data_1: function(i, target, offset, data) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _offset = A.g(offset);
+      let _data = A.g(data);
+      _i.bufferSubData(_target, _offset, _data);
+    },
+
+    canvas_compressed_tex_image2_d: function(
+      i,
+      target,
+      level,
+      internalformat,
+      width,
+      height,
+      border,
+      data
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _internalformat = A.g(internalformat);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      let _border = A.g(border);
+      let _data = A.g(data);
+      _i.compressedTexImage2D(
+        _target,
+        _level,
+        _internalformat,
+        _width,
+        _height,
+        _border,
+        _data
+      );
+    },
+
+    canvas_compressed_tex_sub_image2_d: function(
+      i,
+      target,
+      level,
+      xoffset,
+      yoffset,
+      width,
+      height,
+      format,
+      data
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _xoffset = A.g(xoffset);
+      let _yoffset = A.g(yoffset);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      let _format = A.g(format);
+      let _data = A.g(data);
+      _i.compressedTexSubImage2D(
+        _target,
+        _level,
+        _xoffset,
+        _yoffset,
+        _width,
+        _height,
+        _format,
+        _data
+      );
+    },
+
+    canvas_read_pixels: function(
+      i,
+      x,
+      y,
+      width,
+      height,
+      format,
+      pixelType,
+      pixels
+    ) {
+      let _i = A.g(i);
+
+      let _x = A.g(x);
+      let _y = A.g(y);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      let _format = A.g(format);
+      let _pixelType = A.g(pixelType);
+      let _pixels = A.g(pixels);
+      _i.readPixels(_x, _y, _width, _height, _format, _pixelType, _pixels);
+    },
+
+    canvas_tex_image2_d: function(
+      i,
+      target,
+      level,
+      internalformat,
+      width,
+      height,
+      border,
+      format,
+      imageType,
+      pixels
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _internalformat = A.g(internalformat);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      let _border = A.g(border);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _pixels = A.g(pixels);
+      _i.texImage2D(
+        _target,
+        _level,
+        _internalformat,
+        _width,
+        _height,
+        _border,
+        _format,
+        _imageType,
+        _pixels
+      );
+    },
+
+    canvas_tex_image2_d_1: function(
+      i,
+      target,
+      level,
+      internalformat,
+      format,
+      imageType,
+      pixels
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _internalformat = A.g(internalformat);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _pixels = A.g(pixels);
+      _i.texImage2D(
+        _target,
+        _level,
+        _internalformat,
+        _format,
+        _imageType,
+        _pixels
+      );
+    },
+
+    canvas_tex_image2_d_2: function(
+      i,
+      target,
+      level,
+      internalformat,
+      format,
+      imageType,
+      pixels
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _internalformat = A.g(internalformat);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _pixels = A.g(pixels);
+      _i.texImage2D(
+        _target,
+        _level,
+        _internalformat,
+        _format,
+        _imageType,
+        _pixels
+      );
+    },
+
+    canvas_tex_image2_d_3: function(
+      i,
+      target,
+      level,
+      internalformat,
+      format,
+      imageType,
+      image
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _internalformat = A.g(internalformat);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _image = A.g(image);
+      _i.texImage2D(
+        _target,
+        _level,
+        _internalformat,
+        _format,
+        _imageType,
+        _image
+      );
+    },
+
+    canvas_tex_image2_d_4: function(
+      i,
+      target,
+      level,
+      internalformat,
+      format,
+      imageType,
+      canvas
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _internalformat = A.g(internalformat);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _canvas = A.g(canvas);
+      _i.texImage2D(
+        _target,
+        _level,
+        _internalformat,
+        _format,
+        _imageType,
+        _canvas
+      );
+    },
+
+    canvas_tex_image2_d_5: function(
+      i,
+      target,
+      level,
+      internalformat,
+      format,
+      imageType,
+      video
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _internalformat = A.g(internalformat);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _video = A.g(video);
+      _i.texImage2D(
+        _target,
+        _level,
+        _internalformat,
+        _format,
+        _imageType,
+        _video
+      );
+    },
+
+    canvas_tex_sub_image2_d: function(
+      i,
+      target,
+      level,
+      xoffset,
+      yoffset,
+      width,
+      height,
+      format,
+      imageType,
+      pixels
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _xoffset = A.g(xoffset);
+      let _yoffset = A.g(yoffset);
+      let _width = A.g(width);
+      let _height = A.g(height);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _pixels = A.g(pixels);
+      _i.texSubImage2D(
+        _target,
+        _level,
+        _xoffset,
+        _yoffset,
+        _width,
+        _height,
+        _format,
+        _imageType,
+        _pixels
+      );
+    },
+
+    canvas_tex_sub_image2_d_1: function(
+      i,
+      target,
+      level,
+      xoffset,
+      yoffset,
+      format,
+      imageType,
+      pixels
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _xoffset = A.g(xoffset);
+      let _yoffset = A.g(yoffset);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _pixels = A.g(pixels);
+      _i.texSubImage2D(
+        _target,
+        _level,
+        _xoffset,
+        _yoffset,
+        _format,
+        _imageType,
+        _pixels
+      );
+    },
+
+    canvas_tex_sub_image2_d_2: function(
+      i,
+      target,
+      level,
+      xoffset,
+      yoffset,
+      format,
+      imageType,
+      pixels
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _xoffset = A.g(xoffset);
+      let _yoffset = A.g(yoffset);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _pixels = A.g(pixels);
+      _i.texSubImage2D(
+        _target,
+        _level,
+        _xoffset,
+        _yoffset,
+        _format,
+        _imageType,
+        _pixels
+      );
+    },
+
+    canvas_tex_sub_image2_d_3: function(
+      i,
+      target,
+      level,
+      xoffset,
+      yoffset,
+      format,
+      imageType,
+      image
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _xoffset = A.g(xoffset);
+      let _yoffset = A.g(yoffset);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _image = A.g(image);
+      _i.texSubImage2D(
+        _target,
+        _level,
+        _xoffset,
+        _yoffset,
+        _format,
+        _imageType,
+        _image
+      );
+    },
+
+    canvas_tex_sub_image2_d_4: function(
+      i,
+      target,
+      level,
+      xoffset,
+      yoffset,
+      format,
+      imageType,
+      canvas
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _xoffset = A.g(xoffset);
+      let _yoffset = A.g(yoffset);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _canvas = A.g(canvas);
+      _i.texSubImage2D(
+        _target,
+        _level,
+        _xoffset,
+        _yoffset,
+        _format,
+        _imageType,
+        _canvas
+      );
+    },
+
+    canvas_tex_sub_image2_d_5: function(
+      i,
+      target,
+      level,
+      xoffset,
+      yoffset,
+      format,
+      imageType,
+      video
+    ) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _level = A.g(level);
+      let _xoffset = A.g(xoffset);
+      let _yoffset = A.g(yoffset);
+      let _format = A.g(format);
+      let _imageType = A.g(imageType);
+      let _video = A.g(video);
+      _i.texSubImage2D(
+        _target,
+        _level,
+        _xoffset,
+        _yoffset,
+        _format,
+        _imageType,
+        _video
+      );
+    },
+
+    canvas_uniform1fv: function(i, location, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _data = A.g(data);
+      _i.uniform1fv(_location, _data);
+    },
+
+    canvas_uniform2fv: function(i, location, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _data = A.g(data);
+      _i.uniform2fv(_location, _data);
+    },
+
+    canvas_uniform3fv: function(i, location, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _data = A.g(data);
+      _i.uniform3fv(_location, _data);
+    },
+
+    canvas_uniform4fv: function(i, location, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _data = A.g(data);
+      _i.uniform4fv(_location, _data);
+    },
+
+    canvas_uniform1iv: function(i, location, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _data = A.g(data);
+      _i.uniform1iv(_location, _data);
+    },
+
+    canvas_uniform2iv: function(i, location, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _data = A.g(data);
+      _i.uniform2iv(_location, _data);
+    },
+
+    canvas_uniform3iv: function(i, location, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _data = A.g(data);
+      _i.uniform3iv(_location, _data);
+    },
+
+    canvas_uniform4iv: function(i, location, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _data = A.g(data);
+      _i.uniform4iv(_location, _data);
+    },
+
+    canvas_uniform_matrix2fv: function(i, location, transpose, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _transpose = A.g(transpose);
+      let _data = A.g(data);
+      _i.uniformMatrix2fv(_location, _transpose, _data);
+    },
+
+    canvas_uniform_matrix3fv: function(i, location, transpose, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _transpose = A.g(transpose);
+      let _data = A.g(data);
+      _i.uniformMatrix3fv(_location, _transpose, _data);
+    },
+
+    canvas_uniform_matrix4fv: function(i, location, transpose, data) {
+      let _i = A.g(i);
+
+      let _location = A.g(location);
+      let _transpose = A.g(transpose);
+      let _data = A.g(data);
+      _i.uniformMatrix4fv(_location, _transpose, _data);
+    },
+
+    canvas_commit: function(i) {
+      let _i = A.g(i);
+
+      _i.commit();
+    },
+
+    webgl_compressed_texture_astc_get_supported_profiles: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.getSupportedProfiles());
+    },
+
+    webgl_debug_shaders_get_translated_shader_source: function(i, shader) {
+      let _i = A.g(i);
+
+      let _shader = A.g(shader);
+      return this.ms(_i.getTranslatedShaderSource(_shader));
+    },
+
+    webgl_lose_context_lose_context: function(i) {
+      let _i = A.g(i);
+
+      _i.loseContext();
+    },
+
+    webgl_lose_context_restore_context: function(i) {
+      let _i = A.g(i);
+
+      _i.restoreContext();
+    },
+
+    webgl_draw_buffers_draw_buffers_w_e_b_g_l: function(i, buffers) {
+      let _i = A.g(i);
+
+      let _buffers = A.g(buffers);
+      _i.drawBuffersWEBGL(_buffers);
+    },
+
+    oes_vertex_array_object_create_vertex_array_o_e_s: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createVertexArrayOES());
+    },
+
+    oes_vertex_array_object_delete_vertex_array_o_e_s: function(
+      i,
+      arrayObject
+    ) {
+      let _i = A.g(i);
+
+      let _arrayObject = A.g(arrayObject);
+      _i.deleteVertexArrayOES(_arrayObject);
+    },
+
+    oes_vertex_array_object_is_vertex_array_o_e_s: function(i, arrayObject) {
+      let _i = A.g(i);
+
+      let _arrayObject = A.g(arrayObject);
+      return A.a(_i.isVertexArrayOES(_arrayObject));
+    },
+
+    oes_vertex_array_object_bind_vertex_array_o_e_s: function(i, arrayObject) {
+      let _i = A.g(i);
+
+      let _arrayObject = A.g(arrayObject);
+      _i.bindVertexArrayOES(_arrayObject);
+    },
+
+    angle_instanced_arrays_draw_arrays_instanced_angle: function(
+      i,
+      mode,
+      first,
+      count,
+      primcount
+    ) {
+      let _i = A.g(i);
+
+      let _mode = A.g(mode);
+      let _first = A.g(first);
+      let _count = A.g(count);
+      let _primcount = A.g(primcount);
+      _i.drawArraysInstancedANGLE(_mode, _first, _count, _primcount);
+    },
+
+    angle_instanced_arrays_draw_elements_instanced_angle: function(
+      i,
+      mode,
+      count,
+      elementType,
+      offset,
+      primcount
+    ) {
+      let _i = A.g(i);
+
+      let _mode = A.g(mode);
+      let _count = A.g(count);
+      let _elementType = A.g(elementType);
+      let _offset = A.g(offset);
+      let _primcount = A.g(primcount);
+      _i.drawElementsInstancedANGLE(
+        _mode,
+        _count,
+        _elementType,
+        _offset,
+        _primcount
+      );
+    },
+
+    angle_instanced_arrays_vertex_attrib_divisor_angle: function(
+      i,
+      index,
+      divisor
+    ) {
+      let _i = A.g(i);
+
+      let _index = A.g(index);
+      let _divisor = A.g(divisor);
+      _i.vertexAttribDivisorANGLE(_index, _divisor);
+    },
+
+    ext_disjoint_timer_query_create_query_e_x_t: function(i) {
+      let _i = A.g(i);
+
+      return A.a(_i.createQueryEXT());
+    },
+
+    ext_disjoint_timer_query_delete_query_e_x_t: function(i, query) {
+      let _i = A.g(i);
+
+      let _query = A.g(query);
+      _i.deleteQueryEXT(_query);
+    },
+
+    ext_disjoint_timer_query_is_query_e_x_t: function(i, query) {
+      let _i = A.g(i);
+
+      let _query = A.g(query);
+      return A.a(_i.isQueryEXT(_query)) ? 1 : 0;
+    },
+
+    ext_disjoint_timer_query_begin_query_e_x_t: function(i, target, query) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _query = A.g(query);
+      _i.beginQueryEXT(_target, _query);
+    },
+
+    ext_disjoint_timer_query_end_query_e_x_t: function(i, target) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      _i.endQueryEXT(_target);
+    },
+
+    ext_disjoint_timer_query_query_counter_e_x_t: function(i, query, target) {
+      let _i = A.g(i);
+
+      let _query = A.g(query);
+      let _target = A.g(target);
+      _i.queryCounterEXT(_query, _target);
+    },
+
+    ext_disjoint_timer_query_get_query_e_x_t: function(i, target, pname) {
+      let _i = A.g(i);
+
+      let _target = A.g(target);
+      let _pname = A.g(pname);
+      return A.a(_i.getQueryEXT(_target, _pname));
+    },
+
+    ext_disjoint_timer_query_get_query_object_e_x_t: function(i, query, pname) {
+      let _i = A.g(i);
+
+      let _query = A.g(query);
+      let _pname = A.g(pname);
+      return A.a(_i.getQueryObjectEXT(_query, _pname));
+    },
+
     window_get_window: function(i) {
       let _i = A.g(i);
       return A.a(_i.window);

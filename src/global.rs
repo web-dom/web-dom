@@ -19,11 +19,16 @@ pub fn to_string(c: CString) -> String {
 }
 
 extern "C" {
+    fn global_is_null() -> i32;
     fn global_debugger();
     fn global_get_window() -> Element;
     fn global_release(handle: i32);
     fn global_create_event_listener() -> EventListener;
     fn global_get_property(element: Element, property_name: CString) -> i32;
+}
+
+pub fn is_null() -> bool {
+    unsafe { 0 != global_is_null() }
 }
 
 pub fn debugger() {

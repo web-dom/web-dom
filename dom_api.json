@@ -4159,6 +4159,1061 @@
       "return_type": "boolean"
     }
   ],
+  "WebGLActiveInfo": [
+    {
+      "type": "property",
+      "name": "size",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "type",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "name",
+      "return_type": "string"
+    }
+  ],
+  "WebGLShaderPrecisionFormat": [
+    {
+      "type": "property",
+      "name": "rangeMin",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "rangeMax",
+      "return_type": "object"
+    },
+    {
+      "type": "property",
+      "name": "precision",
+      "return_type": "object"
+    }
+  ],
+  "WebGLRenderingContext": [
+    {
+      "type": "function",
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "size",
+          "type": "object"
+        },
+        {
+          "name": "usage",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        },
+        {
+          "name": "usage",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        },
+        {
+          "name": "usage",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bufferSubData",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "offset",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "bufferSubData",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "offset",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "compressedTexImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        },
+        {
+          "name": "border",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "compressedTexSubImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "xoffset",
+          "type": "object"
+        },
+        {
+          "name": "yoffset",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "readPixels",
+      "params": [
+        {
+          "name": "x",
+          "type": "object"
+        },
+        {
+          "name": "y",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "pixelType",
+          "type": "object"
+        },
+        {
+          "name": "pixels",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        },
+        {
+          "name": "border",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "pixels",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "pixels",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "pixels",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "image",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "canvas",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "internalformat",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "video",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texSubImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "xoffset",
+          "type": "object"
+        },
+        {
+          "name": "yoffset",
+          "type": "object"
+        },
+        {
+          "name": "width",
+          "type": "object"
+        },
+        {
+          "name": "height",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "pixels",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texSubImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "xoffset",
+          "type": "object"
+        },
+        {
+          "name": "yoffset",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "pixels",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texSubImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "xoffset",
+          "type": "object"
+        },
+        {
+          "name": "yoffset",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "pixels",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texSubImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "xoffset",
+          "type": "object"
+        },
+        {
+          "name": "yoffset",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "image",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texSubImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "xoffset",
+          "type": "object"
+        },
+        {
+          "name": "yoffset",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "canvas",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "texSubImage2D",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "level",
+          "type": "object"
+        },
+        {
+          "name": "xoffset",
+          "type": "object"
+        },
+        {
+          "name": "yoffset",
+          "type": "object"
+        },
+        {
+          "name": "format",
+          "type": "object"
+        },
+        {
+          "name": "imageType",
+          "type": "object"
+        },
+        {
+          "name": "video",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform1fv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform2fv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform3fv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform4fv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform1iv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform2iv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform3iv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniform4iv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniformMatrix2fv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "transpose",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniformMatrix3fv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "transpose",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "uniformMatrix4fv",
+      "params": [
+        {
+          "name": "location",
+          "type": "object"
+        },
+        {
+          "name": "transpose",
+          "type": "object"
+        },
+        {
+          "name": "data",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "commit",
+      "params": []
+    }
+  ],
+  "WEBGL_compressed_texture_astc": [
+    {
+      "type": "function",
+      "name": "getSupportedProfiles",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    }
+  ],
+  "WEBGL_debug_shaders": [
+    {
+      "type": "function",
+      "name": "getTranslatedShaderSource",
+      "params": [
+        {
+          "name": "shader",
+          "type": "object"
+        }
+      ],
+      "return_type": "string"
+    }
+  ],
+  "WEBGL_lose_context": [
+    {
+      "type": "function",
+      "name": "loseContext",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "restoreContext",
+      "params": []
+    }
+  ],
+  "WEBGL_draw_buffers": [
+    {
+      "type": "function",
+      "name": "drawBuffersWEBGL",
+      "params": [
+        {
+          "name": "buffers",
+          "type": "object"
+        }
+      ]
+    }
+  ],
+  "OES_vertex_array_object": [
+    {
+      "type": "function",
+      "name": "createVertexArrayOES",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "deleteVertexArrayOES",
+      "params": [
+        {
+          "name": "arrayObject",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "isVertexArrayOES",
+      "params": [
+        {
+          "name": "arrayObject",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "bindVertexArrayOES",
+      "params": [
+        {
+          "name": "arrayObject",
+          "type": "object"
+        }
+      ]
+    }
+  ],
+  "ANGLE_instanced_arrays": [
+    {
+      "type": "function",
+      "name": "drawArraysInstancedANGLE",
+      "params": [
+        {
+          "name": "mode",
+          "type": "object"
+        },
+        {
+          "name": "first",
+          "type": "object"
+        },
+        {
+          "name": "count",
+          "type": "object"
+        },
+        {
+          "name": "primcount",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "drawElementsInstancedANGLE",
+      "params": [
+        {
+          "name": "mode",
+          "type": "object"
+        },
+        {
+          "name": "count",
+          "type": "object"
+        },
+        {
+          "name": "elementType",
+          "type": "object"
+        },
+        {
+          "name": "offset",
+          "type": "object"
+        },
+        {
+          "name": "primcount",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "vertexAttribDivisorANGLE",
+      "params": [
+        {
+          "name": "index",
+          "type": "object"
+        },
+        {
+          "name": "divisor",
+          "type": "object"
+        }
+      ]
+    }
+  ],
+  "EXT_disjoint_timer_query": [
+    {
+      "type": "function",
+      "name": "createQueryEXT",
+      "params": [],
+      "return_type": "object",
+      "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "deleteQueryEXT",
+      "params": [
+        {
+          "name": "query",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "isQueryEXT",
+      "params": [
+        {
+          "name": "query",
+          "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "beginQueryEXT",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "query",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "endQueryEXT",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "queryCounterEXT",
+      "params": [
+        {
+          "name": "query",
+          "type": "object"
+        },
+        {
+          "name": "target",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getQueryEXT",
+      "params": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    },
+    {
+      "type": "function",
+      "name": "getQueryObjectEXT",
+      "params": [
+        {
+          "name": "query",
+          "type": "object"
+        },
+        {
+          "name": "pname",
+          "type": "object"
+        }
+      ],
+      "return_type": "object"
+    }
+  ],
   "Window": [
     {
       "type": "property",

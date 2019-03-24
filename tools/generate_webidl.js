@@ -10,6 +10,7 @@ function toSnake(s) {
   s = s.replace("HTML", "Html");
   s = s.replace("URL", "Url");
   s = s.replace("URI", "Uri");
+  s = s.replace("ANGLE", "Angle");
   return s
     .replace(/(?:^|\.?)([A-Z])/g, function(x, y) {
       return "_" + y.toLowerCase();
@@ -27,6 +28,9 @@ function isPrimitive(n) {
 function finalNamespaceName(namespace) {
   namespace = namespace.toLowerCase();
   if (namespace == "canvasrenderingcontext2d") {
+    return "canvas";
+  }
+  if (namespace == "webglrenderingcontext") {
     return "canvas";
   } else if (namespace != "element" && namespace.indexOf("element") != -1) {
     return namespace.replace("element", "");

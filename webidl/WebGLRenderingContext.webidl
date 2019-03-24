@@ -577,7 +577,7 @@ interface mixin WebGLRenderingContextBase {
     WebGLFramebuffer? createFramebuffer();
     WebGLProgram? createProgram();
     WebGLRenderbuffer? createRenderbuffer();
-    WebGLShader? createShader(GLenum type);
+    WebGLShader? createShader(GLenum shaderType);
     WebGLTexture? createTexture();
 
     void cullFace(GLenum mode);
@@ -596,7 +596,7 @@ interface mixin WebGLRenderingContextBase {
     void disable(GLenum cap);
     void disableVertexAttribArray(GLuint index);
     void drawArrays(GLenum mode, GLint first, GLsizei count);
-    void drawElements(GLenum mode, GLsizei count, GLenum type, GLintptr offset);
+    void drawElements(GLenum mode, GLsizei count, GLenum elementType, GLintptr offset);
 
     void enable(GLenum cap);
     void enableVertexAttribArray(GLuint index);
@@ -704,7 +704,7 @@ interface mixin WebGLRenderingContextBase {
     void vertexAttrib3fv(GLuint indx, Float32List values);
     void vertexAttrib4f(GLuint indx, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     void vertexAttrib4fv(GLuint indx, Float32List values);
-    void vertexAttribPointer(GLuint indx, GLint size, GLenum type,
+    void vertexAttribPointer(GLuint indx, GLint size, GLenum pointerType,
                              GLboolean normalized, GLsizei stride, GLintptr offset);
 
     void viewport(GLint x, GLint y, GLsizei width, GLsizei height);
@@ -734,50 +734,50 @@ interface WebGLRenderingContext {
     // readPixels has WebGL2 overloads.
     [Throws, NeedsCallerType]
     void readPixels(GLint x, GLint y, GLsizei width, GLsizei height,
-                    GLenum format, GLenum type, ArrayBufferView? pixels);
+                    GLenum format, GLenum pixelType, ArrayBufferView? pixels);
 
     // texImage2D has WebGL2 overloads.
     // Overloads must share [Throws].
     [Throws] // Can't actually throw.
     void texImage2D(GLenum target, GLint level, GLint internalformat,
                     GLsizei width, GLsizei height, GLint border, GLenum format,
-                    GLenum type, ArrayBufferView? pixels);
+                    GLenum imageType, ArrayBufferView? pixels);
     [Throws] // Can't actually throw.
     void texImage2D(GLenum target, GLint level, GLint internalformat,
-                    GLenum format, GLenum type, ImageBitmap pixels);
+                    GLenum format, GLenum imageType, ImageBitmap pixels);
     [Throws] // Can't actually throw.
     void texImage2D(GLenum target, GLint level, GLint internalformat,
-                    GLenum format, GLenum type, ImageData pixels);
+                    GLenum format, GLenum imageType, ImageData pixels);
     [Throws]
     void texImage2D(GLenum target, GLint level, GLint internalformat,
-                    GLenum format, GLenum type, HTMLImageElement image); // May throw DOMException
+                    GLenum format, GLenum imageType, HTMLImageElement image); // May throw DOMException
     [Throws]
     void texImage2D(GLenum target, GLint level, GLint internalformat,
-                    GLenum format, GLenum type, HTMLCanvasElement canvas); // May throw DOMException
+                    GLenum format, GLenum imageType, HTMLCanvasElement canvas); // May throw DOMException
     [Throws]
     void texImage2D(GLenum target, GLint level, GLint internalformat,
-                    GLenum format, GLenum type, HTMLVideoElement video); // May throw DOMException
+                    GLenum format, GLenum imageType, HTMLVideoElement video); // May throw DOMException
 
     // texSubImage2D has WebGL2 overloads.
     [Throws] // Can't actually throw.
     void texSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
                        GLsizei width, GLsizei height,
-                       GLenum format, GLenum type, ArrayBufferView? pixels);
+                       GLenum format, GLenum imageType, ArrayBufferView? pixels);
     [Throws] // Can't actually throw.
     void texSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
-                       GLenum format, GLenum type, ImageBitmap pixels);
+                       GLenum format, GLenum imageType, ImageBitmap pixels);
     [Throws] // Can't actually throw.
     void texSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
-                       GLenum format, GLenum type, ImageData pixels);
+                       GLenum format, GLenum imageType, ImageData pixels);
     [Throws]
     void texSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
-                       GLenum format, GLenum type, HTMLImageElement image); // May throw DOMException
+                       GLenum format, GLenum imageType, HTMLImageElement image); // May throw DOMException
     [Throws]
     void texSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
-                       GLenum format, GLenum type, HTMLCanvasElement canvas); // May throw DOMException
+                       GLenum format, GLenum imageType, HTMLCanvasElement canvas); // May throw DOMException
     [Throws]
     void texSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
-                       GLenum format, GLenum type, HTMLVideoElement video); // May throw DOMException
+                       GLenum format, GLenum imageType, HTMLVideoElement video); // May throw DOMException
 
     // uniform*fv have WebGL2 overloads, or rather extensions, that are not
     // distinguishable from the WebGL1 versions when called with two arguments.
@@ -1064,7 +1064,7 @@ interface ANGLE_instanced_arrays {
     const GLenum VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE = 0x88FE;
 
     void drawArraysInstancedANGLE(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
-    void drawElementsInstancedANGLE(GLenum mode, GLsizei count, GLenum type, GLintptr offset, GLsizei primcount);
+    void drawElementsInstancedANGLE(GLenum mode, GLsizei count, GLenum elementType, GLintptr offset, GLsizei primcount);
     void vertexAttribDivisorANGLE(GLuint index, GLuint divisor);
 };
 
@@ -1097,7 +1097,7 @@ interface EXT_disjoint_timer_query {
     any getQueryObjectEXT(WebGLQuery query, GLenum pname);
 };
 
-[NoInterfaceObject]
+/*[NoInterfaceObject]
 interface MOZ_debug {
     const GLenum EXTENSIONS = 0x1F03;
     const GLenum WSI_INFO   = 0x10000;
@@ -1105,4 +1105,4 @@ interface MOZ_debug {
 
     [Throws]
     any getParameter(GLenum pname);
-};
+};*/
