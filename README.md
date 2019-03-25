@@ -146,3 +146,13 @@ int main(void) {
                        (drawing_fill_rect ctx (* x 10) (* x 10) 50 50 )
                        (recur [x (+ x 1)]))))))
 ```
+
+# Want to add your own functions?
+Do you need a function I haven't provided? You can easily add your own function to your module context by calling WebDOM imperatively.
+
+```
+WebDOM.run("my.wasm",{
+    my_function: function(){
+    }
+}
+```
