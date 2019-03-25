@@ -13,6 +13,12 @@ web-dom = "0.1"
 
 Documentation: https://docs.rs/web-dom/
 
+* [x] dom
+* [x] canvas
+* [x] localStorage
+* [x] webgl
+* [ ] audio
+
 Want to create web components? Check out https://github.com/web-dom/webcomponent
 
 ```rust
