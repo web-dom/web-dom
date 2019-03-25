@@ -9,6 +9,7 @@ DOM access for web assembly
 
 Features:
 * [x] dom
+* [x] events
 * [x] canvas
 * [x] localStorage
 * [x] webgl
