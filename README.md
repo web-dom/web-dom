@@ -7,17 +7,18 @@ DOM access for web assembly
 * api generated from webidl
 * can be used with many languages that compile to web assembly
 
-```toml
-web-dom = "0.1"
-```
-
-Documentation: https://docs.rs/web-dom/
-
+Features:
 * [x] dom
 * [x] canvas
 * [x] localStorage
 * [x] webgl
 * [ ] audio
+
+Documentation: https://docs.rs/web-dom/
+
+```toml
+web-dom = "0.1"
+```
 
 Want to create web components? Check out https://github.com/web-dom/webcomponent
 
