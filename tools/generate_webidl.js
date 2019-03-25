@@ -225,7 +225,9 @@ for (i in dom_api) {
                 hasReturn
                   ? returnsString
                     ? "return this.ms("
-                    : "return A.a("
+                    : returnType == "object"
+                    ? "return A.a("
+                    : "return ("
                   : "("
               }
               ${!isStatic ? "_i" : i}.${trueName}(${params
@@ -309,11 +311,19 @@ function createWebIDLContext(){
       return A.g(o) == null;
     },
 
-    global_convert_ref_to_bool: function(o){
+    global_convert_to_ref: function(o){
+      return A.g(o);
+    },
+
+    global_convert_to_number: function(o){
+      return A.g(o);
+    },
+
+    global_convert_to_bool: function(o){
       return A.g(o) ? 1 : 0;
     },
 
-    global_convert_ref_to_string: function(o){
+    global_convert_to_string: function(o){
       return this.ms(A.g(o));
     },
 

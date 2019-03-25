@@ -299,7 +299,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",
@@ -1933,7 +1934,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2370,7 +2372,8 @@
           "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",
@@ -2386,7 +2389,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2450,7 +2454,8 @@
       "type": "function",
       "name": "getSelection",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",
@@ -2524,7 +2529,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2539,7 +2545,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2653,7 +2660,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2696,7 +2704,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2782,7 +2791,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2793,7 +2803,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2804,7 +2815,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2819,7 +2831,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2830,7 +2843,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -2851,7 +2865,8 @@
       "type": "function",
       "name": "getAsFlexContainer",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -3019,7 +3034,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -3209,7 +3225,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4212,7 +4229,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4223,7 +4241,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4252,7 +4271,8 @@
           "type": "number"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -4263,7 +4283,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6130,7 +6151,8 @@
       "type": "function",
       "name": "getContextAttributes",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6142,7 +6164,8 @@
       "type": "function",
       "name": "getSupportedExtensions",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6153,7 +6176,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6510,25 +6534,29 @@
       "type": "function",
       "name": "createBuffer",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
       "name": "createFramebuffer",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
       "name": "createProgram",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
       "name": "createRenderbuffer",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6539,13 +6567,15 @@
           "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
       "name": "createTexture",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6836,7 +6866,8 @@
           "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6851,7 +6882,8 @@
           "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6862,7 +6894,8 @@
           "type": "object"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6954,7 +6987,8 @@
           "type": "object"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -6999,7 +7033,8 @@
           "type": "number"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -7010,7 +7045,8 @@
           "type": "object"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -7021,7 +7057,8 @@
           "type": "object"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -7066,7 +7103,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -8814,7 +8852,8 @@
       "type": "function",
       "name": "getSupportedProfiles",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     }
   ],
   "WEBGL_compressed_texture_atc": [
@@ -9315,7 +9354,8 @@
       "type": "function",
       "name": "createVertexArrayOES",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -9480,7 +9520,8 @@
       "type": "function",
       "name": "createQueryEXT",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -9720,7 +9761,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",
@@ -9771,7 +9813,8 @@
           "type": "string"
         }
       ],
-      "return_type": "string"
+      "return_type": "string",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -9825,7 +9868,8 @@
       "type": "function",
       "name": "getSelection",
       "params": [],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -9840,7 +9884,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "function",
@@ -9851,7 +9896,8 @@
           "type": "string"
         }
       ],
-      "return_type": "object"
+      "return_type": "object",
+      "return_nullable": true
     },
     {
       "type": "property",

@@ -412,17 +412,11 @@ pub fn confirm(instance: DOMReference, message: &str) -> bool {
     unsafe { 0 != window_confirm(instance, to_cstring(message)) }
 }
 extern "C" {
-    fn window_prompt(instance: DOMReference, prompt: CString, prompt: CString) -> CString;
+    fn window_prompt(instance: DOMReference, prompt: CString, prompt: CString) -> DOMReference;
 }
 
-pub fn prompt(instance: DOMReference, message: &str, default_message: &str) -> String {
-    unsafe {
-        to_string(window_prompt(
-            instance,
-            to_cstring(message),
-            to_cstring(default_message),
-        ))
-    }
+pub fn prompt(instance: DOMReference, message: &str, default_message: &str) -> DOMReference {
+    unsafe { window_prompt(instance, to_cstring(message), to_cstring(default_message)) }
 }
 extern "C" {
     fn window_print(instance: DOMReference);

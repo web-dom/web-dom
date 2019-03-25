@@ -34,8 +34,10 @@ pub fn to_string(c: CString) -> String {
 }
 
 extern "C" {
-    fn global_convert_ref_to_string(instance: i32) -> CString;
-    fn global_convert_ref_to_bool(instance: i32) -> i32;
+    fn global_convert_to_string(instance: i32) -> CString;
+    fn global_convert_to_bool(instance: i32) -> i32;
+    fn global_convert_to_number(instance: i32) -> f32;
+    fn global_convert_to_ref(instance: i32) -> DOMReference;
     fn global_create_f32array(start: i32, len: i32) -> DOMReference;
     fn global_create_uint8array(start: i32, len: i32) -> DOMReference;
     fn global_is_null() -> i32;
@@ -54,12 +56,20 @@ pub fn create_uint8array(bytes: &[u8]) -> DOMReference {
     unsafe { global_create_uint8array(bytes.as_ptr() as _, bytes.len() as _) }
 }
 
-pub fn ref_to_string(instance: DOMReference) -> String {
-    unsafe { to_string(global_convert_ref_to_string(instance)) }
+pub fn convert_to_string(instance: DOMReference) -> String {
+    unsafe { to_string(global_convert_to_string(instance)) }
 }
 
-pub fn ref_to_bool(instance: DOMReference) -> bool {
-    unsafe { 0 != global_convert_ref_to_bool(instance) }
+pub fn convert_to_bool(instance: DOMReference) -> bool {
+    unsafe { 0 != global_convert_to_bool(instance) }
+}
+
+pub fn convert_to_number(instance: DOMReference) -> f32 {
+    unsafe { global_convert_to_number(instance) }
+}
+
+pub fn convert_to_ref(instance: DOMReference) -> DOMReference {
+    unsafe { global_convert_to_ref(instance) }
 }
 
 pub fn is_null() -> bool {

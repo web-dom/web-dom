@@ -15,18 +15,18 @@ pub fn set_length(instance: DOMReference, value: f32) {
     }
 }
 extern "C" {
-    fn storage_key(instance: DOMReference, key: f32) -> CString;
+    fn storage_key(instance: DOMReference, key: f32) -> DOMReference;
 }
 
-pub fn key(instance: DOMReference, index: f32) -> String {
-    unsafe { to_string(storage_key(instance, index)) }
+pub fn key(instance: DOMReference, index: f32) -> DOMReference {
+    unsafe { storage_key(instance, index) }
 }
 extern "C" {
-    fn storage_get_item(instance: DOMReference, get_item: CString) -> CString;
+    fn storage_get_item(instance: DOMReference, get_item: CString) -> DOMReference;
 }
 
-pub fn get_item(instance: DOMReference, key: &str) -> String {
-    unsafe { to_string(storage_get_item(instance, to_cstring(key))) }
+pub fn get_item(instance: DOMReference, key: &str) -> DOMReference {
+    unsafe { storage_get_item(instance, to_cstring(key)) }
 }
 extern "C" {
     fn storage_set_item(instance: DOMReference, set_item: CString, set_item: CString);

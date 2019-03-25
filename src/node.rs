@@ -318,18 +318,21 @@ pub fn contains(instance: DOMReference, other: DOMReference) -> bool {
     unsafe { 0 != node_contains(instance, other) }
 }
 extern "C" {
-    fn node_lookup_prefix(instance: DOMReference, lookup_prefix: CString) -> CString;
+    fn node_lookup_prefix(instance: DOMReference, lookup_prefix: CString) -> DOMReference;
 }
 
-pub fn lookup_prefix(instance: DOMReference, namespace: &str) -> String {
-    unsafe { to_string(node_lookup_prefix(instance, to_cstring(namespace))) }
+pub fn lookup_prefix(instance: DOMReference, namespace: &str) -> DOMReference {
+    unsafe { node_lookup_prefix(instance, to_cstring(namespace)) }
 }
 extern "C" {
-    fn node_lookup_namespace_uri(instance: DOMReference, lookup_namespace_uri: CString) -> CString;
+    fn node_lookup_namespace_uri(
+        instance: DOMReference,
+        lookup_namespace_uri: CString,
+    ) -> DOMReference;
 }
 
-pub fn lookup_namespace_uri(instance: DOMReference, prefix: &str) -> String {
-    unsafe { to_string(node_lookup_namespace_uri(instance, to_cstring(prefix))) }
+pub fn lookup_namespace_uri(instance: DOMReference, prefix: &str) -> DOMReference {
+    unsafe { node_lookup_namespace_uri(instance, to_cstring(prefix)) }
 }
 extern "C" {
     fn node_is_default_namespace(instance: DOMReference, is_default_namespace: CString) -> i32;

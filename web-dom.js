@@ -65,11 +65,19 @@
         return A.g(o) == null;
       },
 
-      global_convert_ref_to_bool: function(o) {
+      global_convert_to_ref: function(o) {
+        return A.g(o);
+      },
+
+      global_convert_to_number: function(o) {
+        return A.g(o);
+      },
+
+      global_convert_to_bool: function(o) {
         return A.g(o) ? 1 : 0;
       },
 
-      global_convert_ref_to_string: function(o) {
+      global_convert_to_string: function(o) {
         return this.ms(A.g(o));
       },
 
@@ -596,7 +604,7 @@
         let _x = x;
         let _y = y;
         let _winding = A.g(winding);
-        return A.a(_i.isPointInPath(_x, _y, _winding)) ? 1 : 0;
+        return _i.isPointInPath(_x, _y, _winding) ? 1 : 0;
       },
 
       canvas_is_point_in_path_1: function(i, path, x, y, winding) {
@@ -606,7 +614,7 @@
         let _x = x;
         let _y = y;
         let _winding = A.g(winding);
-        return A.a(_i.isPointInPath(_path, _x, _y, _winding)) ? 1 : 0;
+        return _i.isPointInPath(_path, _x, _y, _winding) ? 1 : 0;
       },
 
       canvas_is_point_in_stroke: function(i, x, y) {
@@ -614,7 +622,7 @@
 
         let _x = x;
         let _y = y;
-        return A.a(_i.isPointInStroke(_x, _y)) ? 1 : 0;
+        return _i.isPointInStroke(_x, _y) ? 1 : 0;
       },
 
       canvas_is_point_in_stroke_1: function(i, path, x, y) {
@@ -623,7 +631,7 @@
         let _path = A.g(path);
         let _x = x;
         let _y = y;
-        return A.a(_i.isPointInStroke(_path, _x, _y)) ? 1 : 0;
+        return _i.isPointInStroke(_path, _x, _y) ? 1 : 0;
       },
 
       canvas_draw_focus_if_needed: function(i, element) {
@@ -1835,7 +1843,7 @@
       document_has_focus: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.hasFocus()) ? 1 : 0;
+        return _i.hasFocus() ? 1 : 0;
       },
 
       document_get_onreadystatechange: function(i) {
@@ -2313,7 +2321,7 @@
 
         let _name = this.s(name);
         let _force = 0 != force;
-        return A.a(_i.toggleAttribute(_name, _force)) ? 1 : 0;
+        return _i.toggleAttribute(_name, _force) ? 1 : 0;
       },
 
       element_set_attribute: function(i, name, value) {
@@ -2352,7 +2360,7 @@
         let _i = A.g(i);
 
         let _name = this.s(name);
-        return A.a(_i.hasAttribute(_name)) ? 1 : 0;
+        return _i.hasAttribute(_name) ? 1 : 0;
       },
 
       element_has_attribute_n_s: function(i, namespace, localName) {
@@ -2360,13 +2368,13 @@
 
         let _namespace = this.s(namespace);
         let _localName = this.s(localName);
-        return A.a(_i.hasAttributeNS(_namespace, _localName)) ? 1 : 0;
+        return _i.hasAttributeNS(_namespace, _localName) ? 1 : 0;
       },
 
       element_has_attributes: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.hasAttributes()) ? 1 : 0;
+        return _i.hasAttributes() ? 1 : 0;
       },
 
       element_closest: function(i, selector) {
@@ -2380,14 +2388,14 @@
         let _i = A.g(i);
 
         let _selector = this.s(selector);
-        return A.a(_i.matches(_selector)) ? 1 : 0;
+        return _i.matches(_selector) ? 1 : 0;
       },
 
       element_webkit_matches_selector: function(i, selector) {
         let _i = A.g(i);
 
         let _selector = this.s(selector);
-        return A.a(_i.webkitMatchesSelector(_selector)) ? 1 : 0;
+        return _i.webkitMatchesSelector(_selector) ? 1 : 0;
       },
 
       element_get_elements_with_grid: function(i) {
@@ -2440,7 +2448,7 @@
         let _i = A.g(i);
 
         let _pointerId = pointerId;
-        return A.a(_i.hasPointerCapture(_pointerId)) ? 1 : 0;
+        return _i.hasPointerCapture(_pointerId) ? 1 : 0;
       },
 
       element_set_capture: function(i, retargetToElement) {
@@ -2504,7 +2512,7 @@
 
         let _dx = dx;
         let _dy = dy;
-        return A.a(_i.scrollByNoFlush(_dx, _dy)) ? 1 : 0;
+        return _i.scrollByNoFlush(_dx, _dy) ? 1 : 0;
       },
 
       element_get_as_flex_container: function(i) {
@@ -2876,7 +2884,7 @@
         let _i = A.g(i);
 
         let _event = A.g(event);
-        return A.a(_i.dispatchEvent(_event)) ? 1 : 0;
+        return _i.dispatchEvent(_event) ? 1 : 0;
       },
 
       htmlcanvas_get_width: function(i) {
@@ -3332,13 +3340,13 @@
       htmlinput_check_validity: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.checkValidity()) ? 1 : 0;
+        return _i.checkValidity() ? 1 : 0;
       },
 
       htmlinput_report_validity: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.reportValidity()) ? 1 : 0;
+        return _i.reportValidity() ? 1 : 0;
       },
 
       htmlinput_set_custom_validity: function(i, error) {
@@ -3442,13 +3450,13 @@
       htmlinput_get_minimum: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.getMinimum());
+        return _i.getMinimum();
       },
 
       htmlinput_get_maximum: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.getMaximum());
+        return _i.getMaximum();
       },
 
       htmlinput_get_preview_value: function(i) {
@@ -3525,7 +3533,7 @@
         let _i = A.g(i);
 
         let _key = this.s(key);
-        return A.a(_i.getModifierState(_key)) ? 1 : 0;
+        return _i.getModifierState(_key) ? 1 : 0;
       },
 
       keyboardevent_get_location: function(i) {
@@ -3865,7 +3873,7 @@
         let _i = A.g(i);
 
         let _keyArg = this.s(keyArg);
-        return A.a(_i.getModifierState(_keyArg)) ? 1 : 0;
+        return _i.getModifierState(_keyArg) ? 1 : 0;
       },
 
       node_get_node_type: function(i) {
@@ -3948,7 +3956,7 @@
       node_has_child_nodes: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.hasChildNodes()) ? 1 : 0;
+        return _i.hasChildNodes() ? 1 : 0;
       },
 
       node_get_child_nodes: function(i) {
@@ -4068,28 +4076,28 @@
         let _i = A.g(i);
 
         let _node = A.g(node);
-        return A.a(_i.isSameNode(_node)) ? 1 : 0;
+        return _i.isSameNode(_node) ? 1 : 0;
       },
 
       node_is_equal_node: function(i, node) {
         let _i = A.g(i);
 
         let _node = A.g(node);
-        return A.a(_i.isEqualNode(_node)) ? 1 : 0;
+        return _i.isEqualNode(_node) ? 1 : 0;
       },
 
       node_compare_document_position: function(i, other) {
         let _i = A.g(i);
 
         let _other = A.g(other);
-        return A.a(_i.compareDocumentPosition(_other));
+        return _i.compareDocumentPosition(_other);
       },
 
       node_contains: function(i, other) {
         let _i = A.g(i);
 
         let _other = A.g(other);
-        return A.a(_i.contains(_other)) ? 1 : 0;
+        return _i.contains(_other) ? 1 : 0;
       },
 
       node_lookup_prefix: function(i, namespace) {
@@ -4110,7 +4118,7 @@
         let _i = A.g(i);
 
         let _namespace = this.s(namespace);
-        return A.a(_i.isDefaultNamespace(_namespace)) ? 1 : 0;
+        return _i.isDefaultNamespace(_namespace) ? 1 : 0;
       },
 
       storage_get_length: function(i) {
@@ -4267,7 +4275,7 @@
       webgl_is_context_lost: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.isContextLost()) ? 1 : 0;
+        return _i.isContextLost() ? 1 : 0;
       },
 
       webgl_get_supported_extensions: function(i) {
@@ -4386,7 +4394,7 @@
         let _i = A.g(i);
 
         let _target = target;
-        return A.a(_i.checkFramebufferStatus(_target));
+        return _i.checkFramebufferStatus(_target);
       },
 
       webgl_clear: function(i, mask) {
@@ -4765,7 +4773,7 @@
 
         let _program = A.g(program);
         let _name = this.s(name);
-        return A.a(_i.getAttribLocation(_program, _name));
+        return _i.getAttribLocation(_program, _name);
       },
 
       webgl_get_buffer_parameter: function(i, target, pname) {
@@ -4786,7 +4794,7 @@
       webgl_get_error: function(i) {
         let _i = A.g(i);
 
-        return A.a(_i.getError());
+        return _i.getError();
       },
 
       webgl_get_framebuffer_attachment_parameter: function(
@@ -4895,7 +4903,7 @@
 
         let _index = index;
         let _pname = pname;
-        return A.a(_i.getVertexAttribOffset(_index, _pname));
+        return _i.getVertexAttribOffset(_index, _pname);
       },
 
       webgl_hint: function(i, target, mode) {
@@ -4910,49 +4918,49 @@
         let _i = A.g(i);
 
         let _buffer = A.g(buffer);
-        return A.a(_i.isBuffer(_buffer)) ? 1 : 0;
+        return _i.isBuffer(_buffer) ? 1 : 0;
       },
 
       webgl_is_enabled: function(i, cap) {
         let _i = A.g(i);
 
         let _cap = cap;
-        return A.a(_i.isEnabled(_cap)) ? 1 : 0;
+        return _i.isEnabled(_cap) ? 1 : 0;
       },
 
       webgl_is_framebuffer: function(i, framebuffer) {
         let _i = A.g(i);
 
         let _framebuffer = A.g(framebuffer);
-        return A.a(_i.isFramebuffer(_framebuffer)) ? 1 : 0;
+        return _i.isFramebuffer(_framebuffer) ? 1 : 0;
       },
 
       webgl_is_program: function(i, program) {
         let _i = A.g(i);
 
         let _program = A.g(program);
-        return A.a(_i.isProgram(_program)) ? 1 : 0;
+        return _i.isProgram(_program) ? 1 : 0;
       },
 
       webgl_is_renderbuffer: function(i, renderbuffer) {
         let _i = A.g(i);
 
         let _renderbuffer = A.g(renderbuffer);
-        return A.a(_i.isRenderbuffer(_renderbuffer)) ? 1 : 0;
+        return _i.isRenderbuffer(_renderbuffer) ? 1 : 0;
       },
 
       webgl_is_shader: function(i, shader) {
         let _i = A.g(i);
 
         let _shader = A.g(shader);
-        return A.a(_i.isShader(_shader)) ? 1 : 0;
+        return _i.isShader(_shader) ? 1 : 0;
       },
 
       webgl_is_texture: function(i, texture) {
         let _i = A.g(i);
 
         let _texture = A.g(texture);
-        return A.a(_i.isTexture(_texture)) ? 1 : 0;
+        return _i.isTexture(_texture) ? 1 : 0;
       },
 
       webgl_line_width: function(i, width) {
@@ -5928,7 +5936,7 @@
         let _i = A.g(i);
 
         let _arrayObject = A.g(arrayObject);
-        return A.a(_i.isVertexArrayOES(_arrayObject)) ? 1 : 0;
+        return _i.isVertexArrayOES(_arrayObject) ? 1 : 0;
       },
 
       oesvertexarrayobject_bind_vertex_array_o_e_s: function(i, arrayObject) {
@@ -6007,7 +6015,7 @@
         let _i = A.g(i);
 
         let _query = A.g(query);
-        return A.a(_i.isQueryEXT(_query)) ? 1 : 0;
+        return _i.isQueryEXT(_query) ? 1 : 0;
       },
 
       extdisjointtimerquery_begin_query_e_x_t: function(i, target, query) {
@@ -6343,7 +6351,7 @@
         let _i = A.g(i);
 
         let _message = this.s(message);
-        return A.a(_i.confirm(_message)) ? 1 : 0;
+        return _i.confirm(_message) ? 1 : 0;
       },
 
       window_prompt: function(i, message, defaultMessage) {
@@ -6612,7 +6620,7 @@
         let _i = A.g(i);
 
         let _callback = A.g(callback);
-        return A.a(_i.requestAnimationFrame(_callback));
+        return _i.requestAnimationFrame(_callback);
       },
 
       window_cancel_animation_frame: function(i, handle) {
@@ -6717,7 +6725,7 @@
 
         let _callback = A.g(callback);
         let _options = A.g(options);
-        return A.a(_i.requestIdleCallback(_callback, _options));
+        return _i.requestIdleCallback(_callback, _options);
       },
 
       window_cancel_idle_callback: function(i, handle) {
@@ -6756,7 +6764,7 @@
 
         let _handler = A.g(handler);
         let _timeout = timeout;
-        return A.a(_i.setTimeout(_handler, _timeout));
+        return _i.setTimeout(_handler, _timeout);
       },
 
       window_clear_timeout: function(i, handle) {
@@ -6771,7 +6779,7 @@
 
         let _handler = A.g(handler);
         let _timeout = timeout;
-        return A.a(_i.setInterval(_handler, _timeout));
+        return _i.setInterval(_handler, _timeout);
       },
 
       window_clear_interval: function(i, handle) {

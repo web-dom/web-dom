@@ -79,7 +79,7 @@ function processOperation(namespace, operation, isInterface) {
   if(hasReturn){
     f.return_type = toType(returnType);
     if(returnsNullable){
-      //f.return_nullable = returnsNullable;
+      f.return_nullable = returnsNullable;
     }
   }
   if(!isInterface){

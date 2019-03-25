@@ -999,11 +999,11 @@ extern "C" {
     fn webgl_get_program_info_log(
         instance: DOMReference,
         get_program_info_log: DOMReference,
-    ) -> CString;
+    ) -> DOMReference;
 }
 
-pub fn get_program_info_log(instance: DOMReference, program: DOMReference) -> String {
-    unsafe { to_string(webgl_get_program_info_log(instance, program)) }
+pub fn get_program_info_log(instance: DOMReference, program: DOMReference) -> DOMReference {
+    unsafe { webgl_get_program_info_log(instance, program) }
 }
 extern "C" {
     fn webgl_get_renderbuffer_parameter(
@@ -1050,18 +1050,21 @@ extern "C" {
     fn webgl_get_shader_info_log(
         instance: DOMReference,
         get_shader_info_log: DOMReference,
-    ) -> CString;
+    ) -> DOMReference;
 }
 
-pub fn get_shader_info_log(instance: DOMReference, shader: DOMReference) -> String {
-    unsafe { to_string(webgl_get_shader_info_log(instance, shader)) }
+pub fn get_shader_info_log(instance: DOMReference, shader: DOMReference) -> DOMReference {
+    unsafe { webgl_get_shader_info_log(instance, shader) }
 }
 extern "C" {
-    fn webgl_get_shader_source(instance: DOMReference, get_shader_source: DOMReference) -> CString;
+    fn webgl_get_shader_source(
+        instance: DOMReference,
+        get_shader_source: DOMReference,
+    ) -> DOMReference;
 }
 
-pub fn get_shader_source(instance: DOMReference, shader: DOMReference) -> String {
-    unsafe { to_string(webgl_get_shader_source(instance, shader)) }
+pub fn get_shader_source(instance: DOMReference, shader: DOMReference) -> DOMReference {
+    unsafe { webgl_get_shader_source(instance, shader) }
 }
 extern "C" {
     fn webgl_get_tex_parameter(
