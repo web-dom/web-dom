@@ -65,8 +65,12 @@
         return A.g(o) == null;
       },
 
+      global_convert_ref_to_bool: function(o) {
+        return A.g(o) ? 1 : 0;
+      },
+
       global_convert_ref_to_string: function(o) {
-        return this.ms(o);
+        return this.ms(A.g(o));
       },
 
       global_debugger: function() {

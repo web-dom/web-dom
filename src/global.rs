@@ -35,6 +35,7 @@ pub fn to_string(c: CString) -> String {
 
 extern "C" {
     fn global_convert_ref_to_string(instance: i32) -> CString;
+    fn global_convert_ref_to_bool(instance: i32) -> i32;
     fn global_create_f32array(start: i32, len: i32) -> DOMReference;
     fn global_create_uint8array(start: i32, len: i32) -> DOMReference;
     fn global_is_null() -> i32;
@@ -55,6 +56,10 @@ pub fn create_uint8array(bytes: &[u8]) -> DOMReference {
 
 pub fn ref_to_string(instance: DOMReference) -> String {
     unsafe { to_string(global_convert_ref_to_string(instance)) }
+}
+
+pub fn ref_to_bool(instance: DOMReference) -> bool {
+    unsafe { 0 != global_convert_ref_to_bool(instance) }
 }
 
 pub fn is_null() -> bool {
