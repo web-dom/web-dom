@@ -14,6 +14,7 @@ Features:
 * [x] localStorage
 * [x] webgl
 * [ ] audio
+* [ ] networking
 
 Documentation: https://docs.rs/web-dom/
 
