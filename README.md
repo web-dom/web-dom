@@ -7,11 +7,20 @@ DOM access for web assembly
 * api generated from webidl
 * can be used with many languages that compile to web assembly
 
+Features:
+* [x] dom
+* [x] events
+* [x] canvas
+* [x] localStorage
+* [x] webgl
+* [ ] audio
+* [ ] networking
+
+Documentation: https://docs.rs/web-dom/
+
 ```toml
 web-dom = "0.1"
 ```
-
-Documentation: https://docs.rs/web-dom/
 
 Want to create web components? Check out https://github.com/web-dom/webcomponent
 
@@ -136,4 +145,14 @@ int main(void) {
                    (do (drawing_set_fill_style ctx (mem32 (+ colors (* 4 x))))
                        (drawing_fill_rect ctx (* x 10) (* x 10) 50 50 )
                        (recur [x (+ x 1)]))))))
+```
+
+# Want to add your own functions?
+Do you need a function I haven't provided? You can easily add your own function to your module context by calling WebDOM imperatively.
+
+```
+WebDOM.run("my.wasm",{
+    my_function: function(){
+    }
+}
 ```
