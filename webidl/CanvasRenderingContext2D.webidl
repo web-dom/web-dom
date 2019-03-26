@@ -148,8 +148,8 @@ interface CanvasRenderingContext2D {
   attribute boolean imageSmoothingEnabled;
 
   // colors and styles (see also the CanvasPathDrawingStyles interface)
-  attribute (DOMString or CanvasGradient or CanvasPattern) strokeStyle; // (default black)
-  attribute (DOMString or CanvasGradient or CanvasPattern) fillStyle; // (default black)
+  attribute DOMString strokeStyle; // (default black)
+  attribute DOMString fillStyle; // (default black)
   [NewObject]
   CanvasGradient createLinearGradient(double x0, double y0, double x1, double y1);
   [NewObject, Throws]

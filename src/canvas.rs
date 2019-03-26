@@ -222,31 +222,31 @@ pub fn set_image_smoothing_enabled(instance: DOMReference, value: bool) {
     }
 }
 extern "C" {
-    fn canvas_get_stroke_style(instance: DOMReference) -> DOMReference;
-    fn canvas_set_stroke_style(instance: DOMReference, value: DOMReference);
+    fn canvas_get_stroke_style(instance: DOMReference) -> CString;
+    fn canvas_set_stroke_style(instance: DOMReference, value: CString);
 }
 
-pub fn get_stroke_style(instance: DOMReference) -> DOMReference {
-    unsafe { canvas_get_stroke_style(instance) }
+pub fn get_stroke_style(instance: DOMReference) -> String {
+    unsafe { to_string(canvas_get_stroke_style(instance)) }
 }
 
-pub fn set_stroke_style(instance: DOMReference, value: DOMReference) {
+pub fn set_stroke_style(instance: DOMReference, value: &str) {
     unsafe {
-        canvas_set_stroke_style(instance, value);
+        canvas_set_stroke_style(instance, to_cstring(value));
     }
 }
 extern "C" {
-    fn canvas_get_fill_style(instance: DOMReference) -> DOMReference;
-    fn canvas_set_fill_style(instance: DOMReference, value: DOMReference);
+    fn canvas_get_fill_style(instance: DOMReference) -> CString;
+    fn canvas_set_fill_style(instance: DOMReference, value: CString);
 }
 
-pub fn get_fill_style(instance: DOMReference) -> DOMReference {
-    unsafe { canvas_get_fill_style(instance) }
+pub fn get_fill_style(instance: DOMReference) -> String {
+    unsafe { to_string(canvas_get_fill_style(instance)) }
 }
 
-pub fn set_fill_style(instance: DOMReference, value: DOMReference) {
+pub fn set_fill_style(instance: DOMReference, value: &str) {
     unsafe {
-        canvas_set_fill_style(instance, value);
+        canvas_set_fill_style(instance, to_cstring(value));
     }
 }
 extern "C" {

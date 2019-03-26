@@ -462,22 +462,22 @@ function createWebIDLContext() {
 
     canvas_get_stroke_style: function(i) {
       let _i = A.g(i);
-      return A.a(_i.strokeStyle);
+      return this.ms(_i.strokeStyle);
     },
 
     canvas_set_stroke_style: function(i, v) {
       let _i = A.g(i);
-      _i.strokeStyle = A.g(v);
+      _i.strokeStyle = this.s(v);
     },
 
     canvas_get_fill_style: function(i) {
       let _i = A.g(i);
-      return A.a(_i.fillStyle);
+      return this.ms(_i.fillStyle);
     },
 
     canvas_set_fill_style: function(i, v) {
       let _i = A.g(i);
-      _i.fillStyle = A.g(v);
+      _i.fillStyle = this.s(v);
     },
 
     canvas_create_linear_gradient: function(i, x0, y0, x1, y1) {

@@ -225,12 +225,12 @@
     {
       "type": "property",
       "name": "strokeStyle",
-      "return_type": "object"
+      "return_type": "string"
     },
     {
       "type": "property",
       "name": "fillStyle",
-      "return_type": "object"
+      "return_type": "string"
     },
     {
       "type": "function",
