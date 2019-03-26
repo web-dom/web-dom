@@ -8,6 +8,7 @@ pub mod consoleinstance;
 pub mod customelement;
 pub mod date;
 pub mod document;
+pub mod dynamic;
 pub mod element;
 pub mod eventtarget;
 pub mod extblendminmax;

@@ -247,6 +247,24 @@
         return start;
       },
 
+      dynamic_load(value) {},
+      dynamic_unload(instance) {},
+      dynamic_begin(instance) {},
+      dynamic_param_cstring(call, s) {},
+      dynamic_param_memory(call, start, len) {},
+      dynamic_param_i32(call, p) {},
+      dynamic_param_i64(call, p) {},
+      dynamic_param_f32(call, p) {},
+      dynamic_param_f64(call, p) {},
+      dynamic_call(call, name) {},
+      dynamic_result_i32(call) {},
+      dynamic_result_i64(call) {},
+      dynamic_result_f32(call) {},
+      dynamic_result_f64(call) {},
+      dynamic_result_cstring(call) {},
+      dynamic_result_memory(call) {},
+      dynamic_result_memory_len(call) {},
+
       //TODO: get rid of one day when this isn't required by tinygo
       io_get_stdout: function() {
         return 1;

@@ -20,3 +20,5 @@ minify:
 	./node_modules/.bin/babel-minify web-dom.js -o web-dom.min.js
 publish:
 	npm publish
+serve:
+	http-server -p 8080
