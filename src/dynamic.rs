@@ -11,10 +11,10 @@ extern "C" {
     fn dynamic_param_f32(call_handle: DOMReference, param: f32);
     fn dynamic_param_f64(call_handle: DOMReference, param: f64);
     fn dynamic_call(call_handle: DOMReference, methodName: CString);
-    fn dynamic_result_i32(call_handle: DOMReference);
-    fn dynamic_result_i64(call_handle: DOMReference);
-    fn dynamic_result_f32(call_handle: DOMReference);
-    fn dynamic_result_f64(call_handle: DOMReference);
+    fn dynamic_result_i32(call_handle: DOMReference) -> i32;
+    fn dynamic_result_i64(call_handle: DOMReference) -> i64;
+    fn dynamic_result_f32(call_handle: DOMReference) -> f32;
+    fn dynamic_result_f64(call_handle: DOMReference) -> f64;
     fn dynamic_result_cstring(call_handle: DOMReference) -> CString;
     fn dynamic_result_memory(call_handle: DOMReference) -> i32;
     fn dynamic_result_memory_len(call_handle: DOMReference) -> i32;
@@ -50,16 +50,16 @@ pub fn param_f64(call_handle: DOMReference, param: f64) {
 pub fn call(call_handle: DOMReference, method_name: &str) {
     unsafe { dynamic_call(call_handle, to_cstring(method_name)) }
 }
-pub fn result_i32(call_handle: DOMReference) {
+pub fn result_i32(call_handle: DOMReference) -> i32 {
     unsafe { dynamic_result_i32(call_handle) }
 }
-pub fn result_i64(call_handle: DOMReference) {
+pub fn result_i64(call_handle: DOMReference) -> i64 {
     unsafe { dynamic_result_i64(call_handle) }
 }
-pub fn result_f32(call_handle: DOMReference) {
+pub fn result_f32(call_handle: DOMReference) -> f32 {
     unsafe { dynamic_result_f32(call_handle) }
 }
-pub fn result_f64(call_handle: DOMReference) {
+pub fn result_f64(call_handle: DOMReference) -> f64 {
     unsafe { dynamic_result_f64(call_handle) }
 }
 pub fn result_cstring(call_handle: DOMReference) -> String {

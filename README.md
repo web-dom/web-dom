@@ -156,3 +156,30 @@ WebDOM.run("my.wasm",{
     }
 }
 ```
+
+# Dynamic Calls
+In some situations your application may need to utilize behavior in external web assembly modules. Imagine for instance a library called `calculator.wasm` that knows how to do calculations for me. I can dynamically call an exported function on the module like so.
+
+```rust
+use web_dom::*;
+
+fn add(a:i32,b:i32) -> i32{
+  let calc = dynamic::load("calculator.wasm");
+  let dyn_call = dynamic::begin(calc);
+  dynamic::param_i32(dyn_call,a);
+  dynamic::param_i32(dyn_call,b);
+  dynamic::call(dyn_call,"add");
+  let result = dynamic::result_i32(dyn_call);
+  dynamic::unload(calc);
+  result
+}
+
+#[no_mangle]
+pub fn main() -> () {
+  let result = add(2,2);
+  console::log(&format!("{}",result));
+}
+```
+
+This approach has quite a lot of ceremony to it, but can enable some very powerful multi-language
+projects. It's intended to be used for big libraries you wouldn't want to compile in yourself, libraries written in another language, or proprietary libraries.
