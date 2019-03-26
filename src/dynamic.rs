@@ -1,7 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn dynamic_load(value: CString) -> DOMReference;
+    fn dynamic_load(value: CString, listener: DOMReference);
     fn dynamic_unload(dynamic_handle: DOMReference);
     fn dynamic_begin(dynamic_handle: DOMReference) -> DOMReference;
     fn dynamic_param_cstring(call_handle: DOMReference, cstr: CString);
@@ -20,8 +20,8 @@ extern "C" {
     fn dynamic_result_memory_len(call_handle: DOMReference) -> i32;
 }
 
-pub fn load(value: &str) -> DOMReference {
-    unsafe { dynamic_load(to_cstring(value)) }
+pub fn load(value: &str, listener: DOMReference) {
+    unsafe { dynamic_load(to_cstring(value), listener) }
 }
 pub fn unload(dynamic_handle: DOMReference) {
     unsafe { dynamic_unload(dynamic_handle) }

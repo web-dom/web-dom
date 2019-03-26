@@ -1,7 +1,7 @@
 import webidl from "./webidl";
 
 class WebDOMExecutor {
-  constructor(wasmSrc, funcs) {
+  constructor(wasmSrc, funcs, loaded, preventStart) {
     this.utf8dec = new TextDecoder("utf-8");
     this.utf8enc = new TextEncoder("utf-8");
     fetch(wasmSrc)
@@ -22,8 +22,11 @@ class WebDOMExecutor {
       .then(results => {
         this.memory = results.instance.exports.memory;
         this.exports = results.instance.exports;
-        results.instance.exports.main();
+        if (!preventStart) {
+          results.instance.exports.main();
+        }
         this.loaded = true;
+        loaded();
       })
       .catch(e => {
         console.error(e);
@@ -97,8 +100,8 @@ class WebDOMExecutor {
   }
 }
 
-export function run(wasmSrc, funcs) {
-  let w = new WebDOMExecutor(wasmSrc, funcs);
+export function run(wasmSrc, funcs, loaded, preventAutoLoad) {
+  let w = new WebDOMExecutor(wasmSrc, funcs, loaded, preventAutoLoad);
   return w;
 }
 

@@ -487,23 +487,74 @@ function createWebIDLContext(){
       return start
     },
 
-    dynamic_load(value) {},
-    dynamic_unload(instance) {},
-    dynamic_begin(instance) {},
-    dynamic_param_cstring(call, s) {},
-    dynamic_param_memory(call, start, len) {},
-    dynamic_param_i32(call, p) {},
-    dynamic_param_i64(call, p) {},
-    dynamic_param_f32(call, p) {},
-    dynamic_param_f64(call, p) {},
-    dynamic_call(call, name) {},
-    dynamic_result_i32(call) {},
-    dynamic_result_i64(call) {},
-    dynamic_result_f32(call) {},
-    dynamic_result_f64(call) {},
-    dynamic_result_cstring(call) {},
-    dynamic_result_memory(call) {},
-    dynamic_result_memory_len(call) {},
+    dynamic_load(moduleName,listener) {
+      let _listener = A.g(listener);
+      let handle = A.a({module:WebDOM.run(this.s(moduleName),{},function(){
+        _listener({module:handle});
+      },true),params:[],result:null});
+    },
+    dynamic_unload(dynHandle) {
+      A.r(dynHandle);
+    },
+    dynamic_begin(dynHandle) {
+      let call = A.g(dynHandle);
+      call.params = [];
+      call.result = null;
+      return dynHandle;
+    },
+    dynamic_param_cstring(call, cstr) {
+      window.alert("todo");
+    },
+    dynamic_param_memory(call, start, len) {
+      window.alert("todo");
+    },
+    dynamic_param_i32(call, p) {
+      let c = A.g(call);
+      c.params.push(p);
+    },
+    dynamic_param_i64(call, p) {
+      let c = A.g(call);
+      c.params.push(p);
+    },
+    dynamic_param_f32(call, p) {
+      let c = A.g(call);
+      c.params.push(p);
+    },
+    dynamic_param_f64(call, p) {
+      let c = A.g(call);
+      c.params.push(p);
+    },
+    dynamic_call(call, name) {
+      let c = A.g(call);
+      let _name = this.s(name);
+      c.result = c.module.exports[_name].apply(c.module.exports,c.params);
+      c.params = [];
+    },
+    dynamic_result_i32(call) {
+      let c = A.g(call);
+      return c.result;
+    },
+    dynamic_result_i64(call) {
+      let c = A.g(call);
+      return c.result;
+    },
+    dynamic_result_f32(call) {
+      let c = A.g(call);
+      return c.result;
+    },
+    dynamic_result_f64(call) {
+      let c = A.g(call);
+      return c.result;
+    },
+    dynamic_result_cstring(call) {
+      window.alert("todo");
+    },
+    dynamic_result_memory(call) {
+      window.alert("todo");
+    },
+    dynamic_result_memory_len(call) {
+      window.alert("todo");
+    },
 
     //TODO: get rid of one day when this isn't required by tinygo
     io_get_stdout: function() {

@@ -9,6 +9,7 @@ examples:
 	cd examples/canvas && make
 	cd examples/events && make
 	cd examples/webgl && make
+	cd examples/dynamic && make
 setup:
 	npm install
 generate_webidl:
