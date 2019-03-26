@@ -177,10 +177,12 @@ interface CanvasRenderingContext2D {
 
   // path API (see also CanvasPathMethods)
   void beginPath();
+  void fill();
   void fill(optional CanvasWindingRule winding = "nonzero");
   void fill(Path2D path, optional CanvasWindingRule winding = "nonzero");
   void stroke();
   void stroke(Path2D path);
+  void clip();
   void clip(optional CanvasWindingRule winding = "nonzero");
   void clip(Path2D path, optional CanvasWindingRule winding = "nonzero");
 // NOT IMPLEMENTED  void resetClip();

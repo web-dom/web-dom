@@ -633,14 +633,20 @@
         _i.beginPath();
       },
 
-      canvas_fill: function(i, winding) {
+      canvas_fill: function(i) {
+        let _i = A.g(i);
+
+        _i.fill();
+      },
+
+      canvas_fill_1: function(i, winding) {
         let _i = A.g(i);
 
         let _winding = A.g(winding);
         _i.fill(_winding);
       },
 
-      canvas_fill_1: function(i, path, winding) {
+      canvas_fill_2: function(i, path, winding) {
         let _i = A.g(i);
 
         let _path = A.g(path);
@@ -661,14 +667,20 @@
         _i.stroke(_path);
       },
 
-      canvas_clip: function(i, winding) {
+      canvas_clip: function(i) {
+        let _i = A.g(i);
+
+        _i.clip();
+      },
+
+      canvas_clip_1: function(i, winding) {
         let _i = A.g(i);
 
         let _winding = A.g(winding);
         _i.clip(_winding);
       },
 
-      canvas_clip_1: function(i, path, winding) {
+      canvas_clip_2: function(i, path, winding) {
         let _i = A.g(i);
 
         let _path = A.g(path);

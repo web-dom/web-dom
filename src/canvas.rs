@@ -423,18 +423,25 @@ pub fn begin_path(instance: DOMReference) {
     unsafe { canvas_begin_path(instance) }
 }
 extern "C" {
-    fn canvas_fill(instance: DOMReference, fill: DOMReference);
+    fn canvas_fill(instance: DOMReference);
 }
 
-pub fn fill(instance: DOMReference, winding: DOMReference) {
-    unsafe { canvas_fill(instance, winding) }
+pub fn fill(instance: DOMReference) {
+    unsafe { canvas_fill(instance) }
 }
 extern "C" {
-    fn canvas_fill_1(instance: DOMReference, fill_1: DOMReference, fill_1: DOMReference);
+    fn canvas_fill_1(instance: DOMReference, fill_1: DOMReference);
 }
 
-pub fn fill_1(instance: DOMReference, path: DOMReference, winding: DOMReference) {
-    unsafe { canvas_fill_1(instance, path, winding) }
+pub fn fill_1(instance: DOMReference, winding: DOMReference) {
+    unsafe { canvas_fill_1(instance, winding) }
+}
+extern "C" {
+    fn canvas_fill_2(instance: DOMReference, fill_2: DOMReference, fill_2: DOMReference);
+}
+
+pub fn fill_2(instance: DOMReference, path: DOMReference, winding: DOMReference) {
+    unsafe { canvas_fill_2(instance, path, winding) }
 }
 extern "C" {
     fn canvas_stroke(instance: DOMReference);
@@ -451,18 +458,25 @@ pub fn stroke_1(instance: DOMReference, path: DOMReference) {
     unsafe { canvas_stroke_1(instance, path) }
 }
 extern "C" {
-    fn canvas_clip(instance: DOMReference, clip: DOMReference);
+    fn canvas_clip(instance: DOMReference);
 }
 
-pub fn clip(instance: DOMReference, winding: DOMReference) {
-    unsafe { canvas_clip(instance, winding) }
+pub fn clip(instance: DOMReference) {
+    unsafe { canvas_clip(instance) }
 }
 extern "C" {
-    fn canvas_clip_1(instance: DOMReference, clip_1: DOMReference, clip_1: DOMReference);
+    fn canvas_clip_1(instance: DOMReference, clip_1: DOMReference);
 }
 
-pub fn clip_1(instance: DOMReference, path: DOMReference, winding: DOMReference) {
-    unsafe { canvas_clip_1(instance, path, winding) }
+pub fn clip_1(instance: DOMReference, winding: DOMReference) {
+    unsafe { canvas_clip_1(instance, winding) }
+}
+extern "C" {
+    fn canvas_clip_2(instance: DOMReference, clip_2: DOMReference, clip_2: DOMReference);
+}
+
+pub fn clip_2(instance: DOMReference, path: DOMReference, winding: DOMReference) {
+    unsafe { canvas_clip_2(instance, path, winding) }
 }
 extern "C" {
     fn canvas_is_point_in_path(

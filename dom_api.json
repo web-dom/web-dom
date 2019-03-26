@@ -401,6 +401,11 @@
     {
       "type": "function",
       "name": "fill",
+      "params": []
+    },
+    {
+      "type": "function",
+      "name": "fill",
       "params": [
         {
           "name": "winding",
@@ -436,6 +441,11 @@
           "type": "object"
         }
       ]
+    },
+    {
+      "type": "function",
+      "name": "clip",
+      "params": []
     },
     {
       "type": "function",
