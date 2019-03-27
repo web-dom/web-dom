@@ -483,31 +483,54 @@ extern "C" {
         instance: DOMReference,
         is_point_in_path: f32,
         is_point_in_path: f32,
-        is_point_in_path: DOMReference,
     ) -> i32;
 }
 
-pub fn is_point_in_path(instance: DOMReference, x: f32, y: f32, winding: DOMReference) -> bool {
-    unsafe { 0 != canvas_is_point_in_path(instance, x, y, winding) }
+pub fn is_point_in_path(instance: DOMReference, x: f32, y: f32) -> bool {
+    unsafe { 0 != canvas_is_point_in_path(instance, x, y) }
 }
 extern "C" {
     fn canvas_is_point_in_path_1(
         instance: DOMReference,
-        is_point_in_path_1: DOMReference,
         is_point_in_path_1: f32,
         is_point_in_path_1: f32,
         is_point_in_path_1: DOMReference,
     ) -> i32;
 }
 
-pub fn is_point_in_path_1(
+pub fn is_point_in_path_1(instance: DOMReference, x: f32, y: f32, winding: DOMReference) -> bool {
+    unsafe { 0 != canvas_is_point_in_path_1(instance, x, y, winding) }
+}
+extern "C" {
+    fn canvas_is_point_in_path_2(
+        instance: DOMReference,
+        is_point_in_path_2: DOMReference,
+        is_point_in_path_2: f32,
+        is_point_in_path_2: f32,
+    ) -> i32;
+}
+
+pub fn is_point_in_path_2(instance: DOMReference, path: DOMReference, x: f32, y: f32) -> bool {
+    unsafe { 0 != canvas_is_point_in_path_2(instance, path, x, y) }
+}
+extern "C" {
+    fn canvas_is_point_in_path_3(
+        instance: DOMReference,
+        is_point_in_path_3: DOMReference,
+        is_point_in_path_3: f32,
+        is_point_in_path_3: f32,
+        is_point_in_path_3: DOMReference,
+    ) -> i32;
+}
+
+pub fn is_point_in_path_3(
     instance: DOMReference,
     path: DOMReference,
     x: f32,
     y: f32,
     winding: DOMReference,
 ) -> bool {
-    unsafe { 0 != canvas_is_point_in_path_1(instance, path, x, y, winding) }
+    unsafe { 0 != canvas_is_point_in_path_3(instance, path, x, y, winding) }
 }
 extern "C" {
     fn canvas_is_point_in_stroke(
@@ -540,17 +563,24 @@ pub fn draw_focus_if_needed(instance: DOMReference, element: DOMReference) {
     unsafe { canvas_draw_focus_if_needed(instance, element) }
 }
 extern "C" {
-    fn canvas_fill_text(
+    fn canvas_fill_text(instance: DOMReference, fill_text: CString, fill_text: f32, fill_text: f32);
+}
+
+pub fn fill_text(instance: DOMReference, text: &str, x: f32, y: f32) {
+    unsafe { canvas_fill_text(instance, to_cstring(text), x, y) }
+}
+extern "C" {
+    fn canvas_fill_text_1(
         instance: DOMReference,
-        fill_text: CString,
-        fill_text: f32,
-        fill_text: f32,
-        fill_text: f32,
+        fill_text_1: CString,
+        fill_text_1: f32,
+        fill_text_1: f32,
+        fill_text_1: f32,
     );
 }
 
-pub fn fill_text(instance: DOMReference, text: &str, x: f32, y: f32, max_width: f32) {
-    unsafe { canvas_fill_text(instance, to_cstring(text), x, y, max_width) }
+pub fn fill_text_1(instance: DOMReference, text: &str, x: f32, y: f32, max_width: f32) {
+    unsafe { canvas_fill_text_1(instance, to_cstring(text), x, y, max_width) }
 }
 extern "C" {
     fn canvas_stroke_text(
@@ -558,12 +588,24 @@ extern "C" {
         stroke_text: CString,
         stroke_text: f32,
         stroke_text: f32,
-        stroke_text: f32,
     );
 }
 
-pub fn stroke_text(instance: DOMReference, text: &str, x: f32, y: f32, max_width: f32) {
-    unsafe { canvas_stroke_text(instance, to_cstring(text), x, y, max_width) }
+pub fn stroke_text(instance: DOMReference, text: &str, x: f32, y: f32) {
+    unsafe { canvas_stroke_text(instance, to_cstring(text), x, y) }
+}
+extern "C" {
+    fn canvas_stroke_text_1(
+        instance: DOMReference,
+        stroke_text_1: CString,
+        stroke_text_1: f32,
+        stroke_text_1: f32,
+        stroke_text_1: f32,
+    );
+}
+
+pub fn stroke_text_1(instance: DOMReference, text: &str, x: f32, y: f32, max_width: f32) {
+    unsafe { canvas_stroke_text_1(instance, to_cstring(text), x, y, max_width) }
 }
 extern "C" {
     fn canvas_measure_text(instance: DOMReference, measure_text: CString) -> DOMReference;
@@ -921,18 +963,25 @@ pub fn rect(instance: DOMReference, x: f32, y: f32, w: f32, h: f32) {
     unsafe { canvas_rect(instance, x, y, w, h) }
 }
 extern "C" {
-    fn canvas_arc(
+    fn canvas_arc(instance: DOMReference, arc: f32, arc: f32, arc: f32, arc: f32, arc: f32);
+}
+
+pub fn arc(instance: DOMReference, x: f32, y: f32, radius: f32, start_angle: f32, end_angle: f32) {
+    unsafe { canvas_arc(instance, x, y, radius, start_angle, end_angle) }
+}
+extern "C" {
+    fn canvas_arc_1(
         instance: DOMReference,
-        arc: f32,
-        arc: f32,
-        arc: f32,
-        arc: f32,
-        arc: f32,
-        arc: i32,
+        arc_1: f32,
+        arc_1: f32,
+        arc_1: f32,
+        arc_1: f32,
+        arc_1: f32,
+        arc_1: i32,
     );
 }
 
-pub fn arc(
+pub fn arc_1(
     instance: DOMReference,
     x: f32,
     y: f32,
@@ -942,7 +991,7 @@ pub fn arc(
     anticlockwise: bool,
 ) {
     unsafe {
-        canvas_arc(
+        canvas_arc_1(
             instance,
             x,
             y,

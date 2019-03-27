@@ -1,11 +1,22 @@
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {
-    fn path2d_add_path(instance: DOMReference, add_path: DOMReference, add_path: DOMReference);
+    fn path2d_add_path(instance: DOMReference, add_path: DOMReference);
 }
 
-pub fn add_path(instance: DOMReference, path: DOMReference, transformation: DOMReference) {
-    unsafe { path2d_add_path(instance, path, transformation) }
+pub fn add_path(instance: DOMReference, path: DOMReference) {
+    unsafe { path2d_add_path(instance, path) }
+}
+extern "C" {
+    fn path2d_add_path_1(
+        instance: DOMReference,
+        add_path_1: DOMReference,
+        add_path_1: DOMReference,
+    );
+}
+
+pub fn add_path_1(instance: DOMReference, path: DOMReference, transformation: DOMReference) {
+    unsafe { path2d_add_path_1(instance, path, transformation) }
 }
 extern "C" {
     fn path2d_close_path(instance: DOMReference);
@@ -86,18 +97,25 @@ pub fn rect(instance: DOMReference, x: f32, y: f32, w: f32, h: f32) {
     unsafe { path2d_rect(instance, x, y, w, h) }
 }
 extern "C" {
-    fn path2d_arc(
+    fn path2d_arc(instance: DOMReference, arc: f32, arc: f32, arc: f32, arc: f32, arc: f32);
+}
+
+pub fn arc(instance: DOMReference, x: f32, y: f32, radius: f32, start_angle: f32, end_angle: f32) {
+    unsafe { path2d_arc(instance, x, y, radius, start_angle, end_angle) }
+}
+extern "C" {
+    fn path2d_arc_1(
         instance: DOMReference,
-        arc: f32,
-        arc: f32,
-        arc: f32,
-        arc: f32,
-        arc: f32,
-        arc: i32,
+        arc_1: f32,
+        arc_1: f32,
+        arc_1: f32,
+        arc_1: f32,
+        arc_1: f32,
+        arc_1: i32,
     );
 }
 
-pub fn arc(
+pub fn arc_1(
     instance: DOMReference,
     x: f32,
     y: f32,
@@ -107,7 +125,7 @@ pub fn arc(
     anticlockwise: bool,
 ) {
     unsafe {
-        path2d_arc(
+        path2d_arc_1(
             instance,
             x,
             y,

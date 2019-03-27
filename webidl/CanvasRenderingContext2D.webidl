@@ -187,7 +187,11 @@ interface CanvasRenderingContext2D {
   void clip(Path2D path, optional CanvasWindingRule winding = "nonzero");
 // NOT IMPLEMENTED  void resetClip();
   [NeedsSubjectPrincipal]
+  boolean isPointInPath(unrestricted double x, unrestricted double y);
+  [NeedsSubjectPrincipal]
   boolean isPointInPath(unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
+  [NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
+  boolean isPointInPath(Path2D path, unrestricted double x, unrestricted double y);
   [NeedsSubjectPrincipal] // Only required because overloads can't have different extended attributes.
   boolean isPointInPath(Path2D path, unrestricted double x, unrestricted double y, optional CanvasWindingRule winding = "nonzero");
   [NeedsSubjectPrincipal]
@@ -201,7 +205,11 @@ interface CanvasRenderingContext2D {
 
   // text (see also the CanvasPathDrawingStyles interface)
   [Throws, LenientFloat]
+  void fillText(DOMString text, double x, double y);
+  [Throws, LenientFloat]
   void fillText(DOMString text, double x, double y, optional double maxWidth);
+  [Throws, LenientFloat]
+  void strokeText(DOMString text, double x, double y);
   [Throws, LenientFloat]
   void strokeText(DOMString text, double x, double y, optional double maxWidth);
   [NewObject, Throws]
@@ -266,6 +274,8 @@ interface CanvasRenderingContext2D {
   void rect(double x, double y, double w, double h);
 
   [Throws, LenientFloat]
+  void arc(double x, double y, double radius, double startAngle, double endAngle);
+  [Throws, LenientFloat]
   void arc(double x, double y, double radius, double startAngle, double endAngle, optional boolean anticlockwise = false);
 
   [Throws, LenientFloat]
@@ -324,6 +334,7 @@ interface TextMetrics {
  Constructor(DOMString pathString)]
 interface Path2D
 {
+  void addPath(Path2D path);
   void addPath(Path2D path, optional SVGMatrix transformation);
   // shared path API methods
   void closePath();
@@ -344,6 +355,8 @@ interface Path2D
   [LenientFloat]
   void rect(double x, double y, double w, double h);
 
+  [Throws, LenientFloat]
+  void arc(double x, double y, double radius, double startAngle, double endAngle);
   [Throws, LenientFloat]
   void arc(double x, double y, double radius, double startAngle, double endAngle, optional boolean anticlockwise = false);
 

@@ -651,7 +651,15 @@ function createWebIDLContext() {
       _i.clip(_path, _winding);
     },
 
-    canvas_is_point_in_path: function(i, x, y, winding) {
+    canvas_is_point_in_path: function(i, x, y) {
+      let _i = A.g(i);
+
+      let _x = x;
+      let _y = y;
+      return _i.isPointInPath(_x, _y) ? 1 : 0;
+    },
+
+    canvas_is_point_in_path_1: function(i, x, y, winding) {
       let _i = A.g(i);
 
       let _x = x;
@@ -660,7 +668,16 @@ function createWebIDLContext() {
       return _i.isPointInPath(_x, _y, _winding) ? 1 : 0;
     },
 
-    canvas_is_point_in_path_1: function(i, path, x, y, winding) {
+    canvas_is_point_in_path_2: function(i, path, x, y) {
+      let _i = A.g(i);
+
+      let _path = A.g(path);
+      let _x = x;
+      let _y = y;
+      return _i.isPointInPath(_path, _x, _y) ? 1 : 0;
+    },
+
+    canvas_is_point_in_path_3: function(i, path, x, y, winding) {
       let _i = A.g(i);
 
       let _path = A.g(path);
@@ -694,7 +711,16 @@ function createWebIDLContext() {
       _i.drawFocusIfNeeded(_element);
     },
 
-    canvas_fill_text: function(i, text, x, y, maxWidth) {
+    canvas_fill_text: function(i, text, x, y) {
+      let _i = A.g(i);
+
+      let _text = this.s(text);
+      let _x = x;
+      let _y = y;
+      _i.fillText(_text, _x, _y);
+    },
+
+    canvas_fill_text_1: function(i, text, x, y, maxWidth) {
       let _i = A.g(i);
 
       let _text = this.s(text);
@@ -704,7 +730,16 @@ function createWebIDLContext() {
       _i.fillText(_text, _x, _y, _maxWidth);
     },
 
-    canvas_stroke_text: function(i, text, x, y, maxWidth) {
+    canvas_stroke_text: function(i, text, x, y) {
+      let _i = A.g(i);
+
+      let _text = this.s(text);
+      let _x = x;
+      let _y = y;
+      _i.strokeText(_text, _x, _y);
+    },
+
+    canvas_stroke_text_1: function(i, text, x, y, maxWidth) {
       let _i = A.g(i);
 
       let _text = this.s(text);
@@ -978,7 +1013,26 @@ function createWebIDLContext() {
       _i.rect(_x, _y, _w, _h);
     },
 
-    canvas_arc: function(i, x, y, radius, startAngle, endAngle, anticlockwise) {
+    canvas_arc: function(i, x, y, radius, startAngle, endAngle) {
+      let _i = A.g(i);
+
+      let _x = x;
+      let _y = y;
+      let _radius = radius;
+      let _startAngle = startAngle;
+      let _endAngle = endAngle;
+      _i.arc(_x, _y, _radius, _startAngle, _endAngle);
+    },
+
+    canvas_arc_1: function(
+      i,
+      x,
+      y,
+      radius,
+      startAngle,
+      endAngle,
+      anticlockwise
+    ) {
       let _i = A.g(i);
 
       let _x = x;
@@ -1068,7 +1122,14 @@ function createWebIDLContext() {
       _i.width = v;
     },
 
-    path2d_add_path: function(i, path, transformation) {
+    path2d_add_path: function(i, path) {
+      let _i = A.g(i);
+
+      let _path = A.g(path);
+      _i.addPath(_path);
+    },
+
+    path2d_add_path_1: function(i, path, transformation) {
       let _i = A.g(i);
 
       let _path = A.g(path);
@@ -1141,7 +1202,26 @@ function createWebIDLContext() {
       _i.rect(_x, _y, _w, _h);
     },
 
-    path2d_arc: function(i, x, y, radius, startAngle, endAngle, anticlockwise) {
+    path2d_arc: function(i, x, y, radius, startAngle, endAngle) {
+      let _i = A.g(i);
+
+      let _x = x;
+      let _y = y;
+      let _radius = radius;
+      let _startAngle = startAngle;
+      let _endAngle = endAngle;
+      _i.arc(_x, _y, _radius, _startAngle, _endAngle);
+    },
+
+    path2d_arc_1: function(
+      i,
+      x,
+      y,
+      radius,
+      startAngle,
+      endAngle,
+      anticlockwise
+    ) {
       let _i = A.g(i);
 
       let _x = x;
@@ -1618,7 +1698,14 @@ function createWebIDLContext() {
       return A.a(_i.getElementById(_elementId));
     },
 
-    document_create_element: function(i, localName, options) {
+    document_create_element: function(i, localName) {
+      let _i = A.g(i);
+
+      let _localName = this.s(localName);
+      return A.a(_i.createElement(_localName));
+    },
+
+    document_create_element_1: function(i, localName, options) {
       let _i = A.g(i);
 
       let _localName = this.s(localName);

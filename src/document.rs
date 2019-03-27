@@ -192,19 +192,26 @@ pub fn get_element_by_id(instance: DOMReference, element_id: &str) -> DOMReferen
     unsafe { document_get_element_by_id(instance, to_cstring(element_id)) }
 }
 extern "C" {
-    fn document_create_element(
+    fn document_create_element(instance: DOMReference, create_element: CString) -> DOMReference;
+}
+
+pub fn create_element(instance: DOMReference, local_name: &str) -> DOMReference {
+    unsafe { document_create_element(instance, to_cstring(local_name)) }
+}
+extern "C" {
+    fn document_create_element_1(
         instance: DOMReference,
-        create_element: CString,
-        create_element: DOMReference,
+        create_element_1: CString,
+        create_element_1: DOMReference,
     ) -> DOMReference;
 }
 
-pub fn create_element(
+pub fn create_element_1(
     instance: DOMReference,
     local_name: &str,
     options: DOMReference,
 ) -> DOMReference {
-    unsafe { document_create_element(instance, to_cstring(local_name), options) }
+    unsafe { document_create_element_1(instance, to_cstring(local_name), options) }
 }
 extern "C" {
     fn document_create_element_n_s(

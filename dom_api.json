@@ -482,10 +482,44 @@
         {
           "name": "y",
           "type": "number"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "isPointInPath",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
         },
         {
           "name": "winding",
           "type": "object"
+        }
+      ],
+      "return_type": "boolean"
+    },
+    {
+      "type": "function",
+      "name": "isPointInPath",
+      "params": [
+        {
+          "name": "path",
+          "type": "object"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
         }
       ],
       "return_type": "boolean"
@@ -572,9 +606,45 @@
         {
           "name": "y",
           "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "fillText",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
         },
         {
           "name": "maxWidth",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "strokeText",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
           "type": "number"
         }
       ]
@@ -1011,6 +1081,32 @@
         {
           "name": "endAngle",
           "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "arc",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "radius",
+          "type": "number"
+        },
+        {
+          "name": "startAngle",
+          "type": "number"
+        },
+        {
+          "name": "endAngle",
+          "type": "number"
         },
         {
           "name": "anticlockwise",
@@ -1118,6 +1214,16 @@
     }
   ],
   "Path2D": [
+    {
+      "type": "function",
+      "name": "addPath",
+      "params": [
+        {
+          "name": "path",
+          "type": "object"
+        }
+      ]
+    },
     {
       "type": "function",
       "name": "addPath",
@@ -1261,6 +1367,32 @@
         },
         {
           "name": "h",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "arc",
+      "params": [
+        {
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "name": "radius",
+          "type": "number"
+        },
+        {
+          "name": "startAngle",
+          "type": "number"
+        },
+        {
+          "name": "endAngle",
           "type": "number"
         }
       ]
@@ -1946,6 +2078,17 @@
       ],
       "return_type": "object",
       "return_nullable": true
+    },
+    {
+      "type": "function",
+      "name": "createElement",
+      "params": [
+        {
+          "name": "localName",
+          "type": "string"
+        }
+      ],
+      "return_type": "object"
     },
     {
       "type": "function",

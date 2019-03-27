@@ -67,6 +67,7 @@ interface Document : Node {
   Element? getElementById(DOMString elementId);
 
   [CEReactions, NewObject, Throws]
+  Element createElement(DOMString localName);
   Element createElement(DOMString localName, optional (ElementCreationOptions or DOMString) options);
   [CEReactions, NewObject, Throws]
   Element createElementNS(DOMString? namespace, DOMString qualifiedName, optional (ElementCreationOptions or DOMString) options);
