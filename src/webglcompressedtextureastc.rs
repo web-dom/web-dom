@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 pub const COMPRESSED_RGBA_ASTC_4X4_KHR: f32 = 0x93B0 as f32;
 pub const COMPRESSED_RGBA_ASTC_5X4_KHR: f32 = 0x93B1 as f32;
 pub const COMPRESSED_RGBA_ASTC_5X5_KHR: f32 = 0x93B2 as f32;

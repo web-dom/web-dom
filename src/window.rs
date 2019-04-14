@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn window_get_window(instance: DOMReference) -> DOMReference;
     fn window_set_window(instance: DOMReference, value: DOMReference);

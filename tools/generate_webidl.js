@@ -47,7 +47,7 @@ function processNamespace(namespace) {
   namespaces.push(namespace);
   fs.writeFileSync(
     "src/" + namespace + ".rs",
-    "#[allow(unused_imports)]\nuse crate::*;\n"
+    "#[allow(unused_imports)]\nuse crate::*;\n#[allow(unused_imports)]\nuse alloc::string::String;\n"
   );
   return namespace;
 }
@@ -581,6 +581,8 @@ fs.writeFileSync(
 fs.writeFileSync(
   "src/lib.rs",
   `
+  #![feature(alloc)]
+  extern crate alloc;
   ${namespaces.map(x => `pub mod ${x};`).join("\n")}
   pub mod date;
   pub mod math;

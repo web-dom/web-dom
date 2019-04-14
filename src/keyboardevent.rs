@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn keyboardevent_get_char_code(instance: DOMReference) -> f32;
     fn keyboardevent_set_char_code(instance: DOMReference, value: f32);

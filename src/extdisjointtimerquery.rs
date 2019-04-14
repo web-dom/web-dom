@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 pub const QUERY_COUNTER_BITS_EXT: f32 = 0x8864 as f32;
 pub const CURRENT_QUERY_EXT: f32 = 0x8865 as f32;
 pub const QUERY_RESULT_EXT: f32 = 0x8866 as f32;

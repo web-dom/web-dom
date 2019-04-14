@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 pub const COLOR_ATTACHMENT0_WEBGL: f32 = 0x8CE0 as f32;
 pub const COLOR_ATTACHMENT1_WEBGL: f32 = 0x8CE1 as f32;
 pub const COLOR_ATTACHMENT2_WEBGL: f32 = 0x8CE2 as f32;

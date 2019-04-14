@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn eventtarget_add_event_listener(
         instance: DOMReference,

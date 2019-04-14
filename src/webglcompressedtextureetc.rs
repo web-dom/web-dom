@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 pub const COMPRESSED_R11_EAC: f32 = 0x9270 as f32;
 pub const COMPRESSED_SIGNED_R11_EAC: f32 = 0x9271 as f32;
 pub const COMPRESSED_RG11_EAC: f32 = 0x9272 as f32;

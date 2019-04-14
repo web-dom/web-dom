@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn mouseevent_get_screen_x(instance: DOMReference) -> f32;
     fn mouseevent_set_screen_x(instance: DOMReference, value: f32);

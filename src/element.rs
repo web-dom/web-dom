@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn element_get_namespace_uri(instance: DOMReference) -> CString;
     fn element_set_namespace_uri(instance: DOMReference, value: CString);

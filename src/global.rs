@@ -1,6 +1,6 @@
-use std::ffi::CStr;
-use std::os::raw::c_void;
-
+use alloc::borrow::ToOwned;
+use alloc::string::String;
+use alloc::vec::Vec;
 pub const NULL: i32 = 0;
 pub type DOMReference = i32;
 pub type CString = i32;
@@ -8,15 +8,13 @@ pub type Element = i32;
 pub type EventListener = i32;
 pub type Event = i32;
 
-use std::mem::size_of;
-
 pub trait IntoBytes {
     fn into_bytes(self) -> Vec<u8>;
 }
 
 impl<T> IntoBytes for Vec<T> {
     fn into_bytes(self) -> Vec<u8> {
-        let length = size_of::<T>() * self.len();
+        let length = core::mem::size_of::<T>() * self.len();
         unsafe {
             let slice = self.into_boxed_slice();
             Vec::<u8>::from_raw_parts(Box::into_raw(slice) as _, length, length)
@@ -25,12 +23,22 @@ impl<T> IntoBytes for Vec<T> {
 }
 
 pub fn to_cstring(s: &str) -> CString {
-    std::ffi::CString::new(s).unwrap().into_raw() as i32
+    s.as_ptr() as CString
 }
 
-pub fn to_string(c: CString) -> String {
-    let s: &CStr = unsafe { CStr::from_ptr(c as *const i8) };
-    s.to_str().unwrap().to_owned()
+pub fn to_string(c: CString) -> alloc::string::String {
+    let ptr = c as *const u8;
+    let mut ctr = 0usize;
+    loop {
+        if unsafe { *ptr.offset(ctr as isize) == 0 as u8 } {
+            break;
+        }
+
+        ctr += 1;
+    }
+
+    let data: alloc::vec::Vec<u8> = unsafe { Vec::from_raw_parts(c as *mut u8, ctr, ctr) };
+    alloc::str::from_utf8(data.as_slice()).unwrap().to_owned()
 }
 
 extern "C" {
@@ -103,9 +111,9 @@ pub fn get_property(element: Element, property_name: &str) -> i32 {
 }
 
 #[no_mangle]
-pub fn malloc(size: i32) -> *mut c_void {
+pub fn malloc(size: i32) -> *mut u8 {
     let mut buf = Vec::with_capacity(size as usize);
     let ptr = buf.as_mut_ptr();
-    std::mem::forget(buf);
-    return ptr as *mut c_void;
+    core::mem::forget(buf);
+    ptr
 }

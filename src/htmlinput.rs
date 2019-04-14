@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn htmlinput_get_accept(instance: DOMReference) -> CString;
     fn htmlinput_set_accept(instance: DOMReference, value: CString);

@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn webglshaderprecisionformat_get_range_min(instance: DOMReference) -> f32;
     fn webglshaderprecisionformat_set_range_min(instance: DOMReference, value: f32);

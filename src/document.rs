@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn document_get_implementation(instance: DOMReference) -> DOMReference;
     fn document_set_implementation(instance: DOMReference, value: DOMReference);

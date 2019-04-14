@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn htmlcanvas_get_width(instance: DOMReference) -> f32;
     fn htmlcanvas_set_width(instance: DOMReference, value: f32);

@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 pub const DEPTH_BUFFER_BIT: f32 = 0x00000100 as f32;
 pub const STENCIL_BUFFER_BIT: f32 = 0x00000400 as f32;
 pub const COLOR_BUFFER_BIT: f32 = 0x00004000 as f32;

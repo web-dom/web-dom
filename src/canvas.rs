@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn canvas_get_canvas(instance: DOMReference) -> DOMReference;
     fn canvas_set_canvas(instance: DOMReference, value: DOMReference);

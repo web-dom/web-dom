@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 pub const VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE: f32 = 0x88FE as f32;
 extern "C" {
     fn angleinstancedarrays_draw_arrays_instanced_angle(

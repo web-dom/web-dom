@@ -1,4 +1,6 @@
 
+#![feature(alloc)]
+extern crate alloc;
 pub mod angleinstancedarrays;
 pub mod canvas;
 pub mod canvasgradient;

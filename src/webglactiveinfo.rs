@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn webglactiveinfo_get_size(instance: DOMReference) -> f32;
     fn webglactiveinfo_set_size(instance: DOMReference, value: f32);

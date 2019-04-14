@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 pub const VERTEX_ARRAY_BINDING_OES: f32 = 0x85B5 as f32;
 extern "C" {
     fn oesvertexarrayobject_create_vertex_array_o_e_s(instance: DOMReference) -> DOMReference;

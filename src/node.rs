@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 pub const ELEMENT_NODE: f32 = 1 as f32;
 pub const ATTRIBUTE_NODE: f32 = 2 as f32;
 pub const TEXT_NODE: f32 = 3 as f32;

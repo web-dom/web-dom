@@ -1,3 +1,5 @@
+use alloc::string::String;
+
 #[allow(unused_imports)]
 use crate::*;
 extern "C" {

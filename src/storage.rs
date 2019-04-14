@@ -1,5 +1,7 @@
 #[allow(unused_imports)]
 use crate::*;
+#[allow(unused_imports)]
+use alloc::string::String;
 extern "C" {
     fn storage_get_length(instance: DOMReference) -> f32;
     fn storage_set_length(instance: DOMReference, value: f32);
